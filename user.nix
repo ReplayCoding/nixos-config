@@ -135,6 +135,7 @@ in {
       niv
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
+      imv
       /* sway */
       swaylock
       brightnessctl
