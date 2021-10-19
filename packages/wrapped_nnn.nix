@@ -1,4 +1,4 @@
-{ symlinkJoin, makeWrapper, lib, nnn, xdg-utils, file, findutils /* for xargs */, gnused, coreutils, gnutar, unzip }:
+{ symlinkJoin, makeWrapper, lib, nnn, file, findutils /* for xargs */, gnused, coreutils, gnutar, unzip }:
 
 symlinkJoin {
   name = "nnn-wrapped";
@@ -9,6 +9,6 @@ symlinkJoin {
   postBuild = ''
     wrapProgram $out/bin/nnn \
       --add-flags "-e" \
-      --prefix PATH : ${lib.makeBinPath [ xdg-utils file findutils gnused coreutils gnutar unzip ] }
+      --prefix PATH : ${lib.makeBinPath [ file findutils gnused coreutils gnutar unzip ] }
   '';
 }

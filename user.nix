@@ -145,6 +145,7 @@ in {
       slurp
       wob
       pamixer
+      xdg-utils
       /* ---- */
       myPackages.deemix
       myPackages.wrapped-nnn
