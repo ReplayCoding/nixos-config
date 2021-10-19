@@ -5,6 +5,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelModules = [ "acpi_call" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
+
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/sda2";
@@ -33,6 +36,7 @@
   services.upower.enable = true;
   services.upower.criticalPowerAction = "Hibernate";
   services.logind.killUserProcesses = true;
+  services.tlp.enable = true;
   powerManagement.cpuFreqGovernor = "performance";
 
   services.logind.extraConfig = ''
