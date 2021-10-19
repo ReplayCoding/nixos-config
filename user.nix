@@ -68,6 +68,10 @@ in {
         enable = true;
       };
       
+      exa = {
+        enable = true;
+        enableAliases = true;
+      };
 
       zsh = {
         enable = true;
@@ -80,9 +84,6 @@ in {
 	localVariables = {
           "PROMPT" = "%? (%n@%m) %B%d%b $ ";
 	};
-	envExtra = ''
-          alias ls="ls --color=auto"
-	'';
       };
 
       htop = {
