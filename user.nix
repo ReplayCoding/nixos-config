@@ -28,6 +28,9 @@ in {
 
       git = {
         enable = true;
+        delta.options = {
+          line-numbers = true;
+        };
         delta.enable = true;
         userName = "user";
         userEmail = "user@nixos";
