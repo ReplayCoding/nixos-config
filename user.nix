@@ -204,7 +204,6 @@ in {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = [];
     extraSessionCommands = ''
     export _JAVA_AWT_WM_NONREPARENTING=1
     '';
@@ -229,8 +228,6 @@ in {
   services.xserver.layout = "us";
   services.xserver.libinput.enable = true;
   services.xserver.enable = false;
-
-  security.chromiumSuidSandbox.enable = true;
 
   documentation.dev.enable = true;
 
