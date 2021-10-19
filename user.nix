@@ -30,6 +30,7 @@ in {
 
       git = {
         enable = true;
+        delta.enable = true;
         userName = "user";
         userEmail = "user@nixos";
       };
