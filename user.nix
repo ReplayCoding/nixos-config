@@ -2,11 +2,6 @@
 
 let myPackages = import ./packages { inherit pkgs; };
 in {
-  imports =
-    [
-      <home-manager/nixos>
-    ];
-
   users.users.user = {
     isNormalUser = true;
     home = "/home/user";
@@ -16,7 +11,6 @@ in {
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  home-manager.useGlobalPkgs = true;
   home-manager.users.user = { pkgs, ... }: {
     programs = {
       fzf.enable = true;
@@ -248,5 +242,4 @@ in {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
-
 }
