@@ -3,13 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, home-manager, nixpkgs }: {
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay }: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -24,8 +29,17 @@
           ./networking.nix
 
           home-manager.nixosModules.home-manager
+          { home-manager.useGlobalPkgs = true; }
           {
-            home-manager.useGlobalPkgs = true;
+            nix = {
+              binaryCaches = [
+                "https://nix-community.cachix.org"
+              ];
+              binaryCachePublicKeys = [
+                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+              ];
+            };
+            nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
           }
           ./user.nix
         ];
