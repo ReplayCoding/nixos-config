@@ -148,6 +148,7 @@ in
       evince
       age
       niv
+      aerc
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
       imv
