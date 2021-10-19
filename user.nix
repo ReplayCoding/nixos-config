@@ -28,6 +28,7 @@ in {
 
       git = {
         enable = true;
+        package = pkgs.gitFull;
         delta.options = {
           line-numbers = true;
         };
