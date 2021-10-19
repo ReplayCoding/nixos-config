@@ -86,29 +86,29 @@ in {
 
       zsh = {
         enable = true;
-	enableAutosuggestions = true;
-	enableCompletion = true;
+        enableAutosuggestions = true;
+        enableCompletion = true;
         enableSyntaxHighlighting = true;
-	autocd = true;
-	defaultKeymap = "emacs";
-	dotDir = ".config/zsh";
+        autocd = true;
+        defaultKeymap = "emacs";
+        dotDir = ".config/zsh";
       };
 
       htop = {
         enable = true;
-	settings = {
-	  show_cpu_usage = true;
-	};
+        settings = {
+          show_cpu_usage = true;
+        };
       };
 
       chromium = {
         enable = true;
-	package = myPackages.wrap-chromium { browser = pkgs.ungoogled-chromium; };
+        package = myPackages.wrap-chromium { browser = pkgs.ungoogled-chromium; };
       };
 
       mpv = {
         enable = true;
-	package = pkgs.mpv;
+        package = pkgs.mpv;
       };
 
     };
