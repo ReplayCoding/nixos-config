@@ -14,8 +14,6 @@ in {
   home-manager.users.user = { pkgs, ... }: {
     programs = {
       fzf.enable = true;
-      dircolors.enable = true;
-      command-not-found.enable = true;
       lazygit.enable = true;
       mako.enable = true;
       i3status.enable = true;
