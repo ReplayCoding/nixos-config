@@ -81,6 +81,7 @@ in
 
       rofi = {
         enable = true;
+        terminal = "foot";
       };
 
       starship = {
