@@ -36,6 +36,7 @@
             nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
           }
           ./user.nix
+          { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
         ];
     };
   };
