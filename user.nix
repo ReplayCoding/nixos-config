@@ -68,6 +68,16 @@ in {
         enable = true;
       };
       
+      starship = {
+        enable = true;
+        settings = {
+          add_newline = false;
+          character = {
+            success_symbol = "[→](bold green)";
+            error_symbol   = "[→](bold red)";
+          };
+        };
+      };
       exa = {
         enable = true;
         enableAliases = true;
@@ -81,9 +91,6 @@ in {
 	autocd = true;
 	defaultKeymap = "emacs";
 	dotDir = ".config/zsh";
-	localVariables = {
-          "PROMPT" = "%? (%n@%m) %B%d%b $ ";
-	};
       };
 
       htop = {
