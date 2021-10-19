@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let myPackages = import ./packages { inherit pkgs; };
-in {
+in
+{
   users.users.user = {
     isNormalUser = true;
     home = "/home/user";
@@ -17,7 +18,7 @@ in {
       lazygit.enable = true;
       mako.enable = true;
       i3status.enable = true;
-      
+
       direnv.enable = true;
       direnv.nix-direnv = {
         enable = true;
@@ -62,21 +63,21 @@ in {
             font = "JetBrainsMono Nerd Font Mono:size=7.5, Noto Sans Mono CJK:size=7.5";
             dpi-aware = "yes";
           };
-          mouse = {hide-when-typing = "yes";};
+          mouse = { hide-when-typing = "yes"; };
         };
       };
 
       rofi = {
         enable = true;
       };
-      
+
       starship = {
         enable = true;
         settings = {
           add_newline = false;
           character = {
             success_symbol = "[→](bold green)";
-            error_symbol   = "[→](bold red)";
+            error_symbol = "[→](bold red)";
           };
         };
       };
@@ -153,7 +154,7 @@ in {
       myPackages.wrapped-nnn
       myPackages.wrapped-neovim
     ];
-    
+
     gtk = {
       enable = true;
       /* theme.package = pkgs.dracula-theme; */
@@ -168,12 +169,12 @@ in {
 
     xsession.pointerCursor.package = pkgs.gnome.adwaita-icon-theme;
     xsession.pointerCursor.name = "Adwaita";
-  
+
 
     home.sessionVariables = {
       "VISUAL" = "nvim";
     };
-    
+
     services.mpris-proxy.enable = true;
     services.playerctld.enable = true;
     /* services.lorri.enable = true; */ # Not required for flakes anymore!!
@@ -181,9 +182,10 @@ in {
     home.file.".swaylock/config".text = "color=000000FF";
     home.file.".local/share/backgrounds/wallpaper.png".source = ./background.png;
     xdg.configFile."nnn/plugins".source = builtins.concatStringsSep "/" [
-      ( builtins.fetchTarball {
-            url = "https://github.com/jarun/nnn/releases/download/v4.2/nnn-v4.2.tar.gz";
-            sha256 = "18nwy44a0lddzxgs42xlgcdxv90kal6qlnfwrz1vrcb1nby0a990"; } )
+      (builtins.fetchTarball {
+        url = "https://github.com/jarun/nnn/releases/download/v4.2/nnn-v4.2.tar.gz";
+        sha256 = "18nwy44a0lddzxgs42xlgcdxv90kal6qlnfwrz1vrcb1nby0a990";
+      })
       "plugins"
     ];
   };
@@ -197,10 +199,10 @@ in {
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif"];
-      sansSerif = ["Noto Sans"];
-      emoji = ["Noto Color Emoji"];
-      monospace = ["JetBrains Mono NL"];
+      serif = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "JetBrains Mono NL" ];
     };
   };
 
@@ -208,16 +210,16 @@ in {
     enable = true;
     wrapperFeatures.gtk = true;
     extraSessionCommands = ''
-    export _JAVA_AWT_WM_NONREPARENTING=1
+      export _JAVA_AWT_WM_NONREPARENTING=1
     '';
   };
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-wlr];
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
-  programs.dconf.enable = true; 
+  programs.dconf.enable = true;
 
   services.greetd = {
     enable = true;

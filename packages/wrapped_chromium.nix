@@ -1,11 +1,11 @@
 { symlinkJoin, makeWrapper, lib }:
 
-{browser}:
+{ browser }:
 
 symlinkJoin {
   name = "my-chromium-wrapped";
-  paths = [ 
-    ( browser.override { enableWideVine = false; } )
+  paths = [
+    (browser.override { enableWideVine = false; })
   ];
   nativeBuildInputs = [ makeWrapper ];
   postBuild = ''

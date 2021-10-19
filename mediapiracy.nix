@@ -2,7 +2,7 @@
 
 {
   users.groups = {
-    mediapiracy = {};
+    mediapiracy = { };
   };
 
   services.jellyfin = {

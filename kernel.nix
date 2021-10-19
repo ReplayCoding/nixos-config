@@ -25,7 +25,7 @@
 
   # Enable zfs
   boot.zfs.forceImportRoot = false;
-  boot.supportedFilesystems = ["zfs"];
+  boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "7c5b9af1";
 
   # Some programs need SUID wrappers, can be configured further or are

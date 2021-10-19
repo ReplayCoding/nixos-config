@@ -1,7 +1,8 @@
 { python3Packages }:
 
-let pname = "deezer-py";
-    version = "1.2.2";
+let
+  pname = "deezer-py";
+  version = "1.2.2";
 in
 python3Packages.buildPythonPackage {
   inherit pname version;

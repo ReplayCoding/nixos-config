@@ -1,7 +1,8 @@
 { python3Packages, deezer-py, spotipy }:
 
-let pname = "deemix";
-    version = "3.4.4";
+let
+  pname = "deemix";
+  version = "3.4.4";
 in
 python3Packages.buildPythonApplication {
   inherit pname version;

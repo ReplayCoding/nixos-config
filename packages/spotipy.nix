@@ -1,7 +1,8 @@
 { python3Packages }:
 
-let pname = "spotipy";
-    version = "2.19.0";
+let
+  pname = "spotipy";
+  version = "2.19.0";
 in
 python3Packages.buildPythonPackage {
   inherit pname version;

@@ -2,8 +2,8 @@
 
 symlinkJoin {
   name = "nnn-wrapped";
-  paths = [ 
-    ( nnn.override { withNerdIcons = true; } )
+  paths = [
+    (nnn.override { withNerdIcons = true; })
   ];
   nativeBuildInputs = [ makeWrapper ];
   postBuild = ''
