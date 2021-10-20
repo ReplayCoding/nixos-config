@@ -18,6 +18,7 @@ in
       lazygit.enable = true;
       mako.enable = true;
       i3status.enable = true;
+      taskwarrior.enable = true;
 
       direnv.enable = true;
       direnv.nix-direnv = {
