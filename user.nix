@@ -217,7 +217,7 @@ in
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = [];
+    extraPackages = [ ];
     extraSessionCommands = ''
       export _JAVA_AWT_WM_NONREPARENTING=1
     '';
