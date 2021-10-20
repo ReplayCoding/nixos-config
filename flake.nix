@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -14,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay }: {
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, flake-utils }: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -39,5 +40,12 @@
           { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
         ];
     };
-  };
+  } // flake-utils.lib.eachDefaultSystem (system:
+    let pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      devShell = pkgs.mkShell {
+        packages = with pkgs; [ nixpkgs-fmt ];
+      };
+    });
 }
