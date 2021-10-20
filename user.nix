@@ -110,13 +110,6 @@ in
         history.ignorePatterns = [ "ls" "clear" "celar" /* common typo */ ]; # I have a bad habit of spamming these commands
       };
 
-      htop = {
-        enable = true;
-        settings = {
-          show_cpu_usage = true;
-        };
-      };
-
       chromium = {
         enable = true;
         package = myPackages.wrap-chromium { browser = pkgs.ungoogled-chromium; };
@@ -152,6 +145,7 @@ in
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
       imv
+      btop
       /* sway */
       swaylock
       brightnessctl
