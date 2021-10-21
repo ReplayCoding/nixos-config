@@ -145,6 +145,7 @@ in
       niv
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
+      element-desktop
       imv
       btop
       /* sway */
