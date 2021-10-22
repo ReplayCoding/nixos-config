@@ -17,7 +17,42 @@ in
       fzf.enable = true;
       lazygit.enable = true;
       mako.enable = true;
-      i3status.enable = true;
+      i3status-rust = {
+        enable = true;
+        bars.default = {
+          blocks = [
+            {
+              block = "music";
+              player = "cmus";
+              hide_when_empty = true;
+            }
+            {
+              block = "net";
+              format = "{ip} {ssid} {speed_up} {speed_down}";
+              interval = 5;
+            }
+            {
+              block = "memory";
+              clickable = false;
+            }
+            {
+              block = "cpu";
+              interval = 2;
+              format = "{barchart} {utilization}";
+            }
+            {
+              block = "time";
+              interval = 5;
+            }
+            {
+              block = "battery";
+              format = "{percentage} {time}";
+            }
+          ];
+          icons = "awesome5";
+          theme = "native";
+        };
+      };
       taskwarrior.enable = true;
 
       direnv.enable = true;
@@ -204,6 +239,7 @@ in
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk
+      font-awesome
       jetbrains-mono
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
