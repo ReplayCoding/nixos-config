@@ -164,20 +164,15 @@ in
       croc
       libreoffice
       restic
-      rclone
-      wineWowPackages.stable
-      # sc-im
       yt-dlp
       jellyfin-media-player
       /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
       spotify
-      ghidra-bin
       cmus
       weechat
       picard
       evince
       age
-      niv
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
       element-desktop
@@ -195,7 +190,6 @@ in
       xdg-utils
       /* ---- */
       myPackages.deemix
-      myPackages.wrapped-nnn
       myPackages.wrapped-neovim
     ];
 
@@ -221,17 +215,9 @@ in
 
     services.mpris-proxy.enable = true;
     services.playerctld.enable = true;
-    /* services.lorri.enable = true; */ # Not required for flakes anymore!!
 
     home.file.".swaylock/config".text = "color=000000FF";
     home.file.".local/share/backgrounds/wallpaper.png".source = ./background.png;
-    xdg.configFile."nnn/plugins".source = builtins.concatStringsSep "/" [
-      (builtins.fetchTarball {
-        url = "https://github.com/jarun/nnn/releases/download/v4.2/nnn-v4.2.tar.gz";
-        sha256 = "18nwy44a0lddzxgs42xlgcdxv90kal6qlnfwrz1vrcb1nby0a990";
-      })
-      "plugins"
-    ];
   };
 
   fonts = {
