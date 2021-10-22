@@ -50,7 +50,7 @@ in
             }
           ];
           icons = "awesome5";
-          theme = "native";
+          theme = "slick";
         };
       };
       taskwarrior.enable = true;
