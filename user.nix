@@ -211,6 +211,7 @@ in
 
     home.sessionVariables = {
       "VISUAL" = "nvim";
+      "EDITOR" = "nvim";
     };
 
     services.mpris-proxy.enable = true;
