@@ -37,6 +37,6 @@
 
   services.logind.extraConfig = ''
     # hibernate when power button is short-pressed
-    HandlePowerKey=hibernate
+    HandlePowerKey=ignore
   '';
 }
