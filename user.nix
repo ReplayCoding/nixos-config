@@ -178,6 +178,7 @@ in
       /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
       tdesktop
       element-desktop
+      signal-desktop
       imv
       btop
       /* sway */
