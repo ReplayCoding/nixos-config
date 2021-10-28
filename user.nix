@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let myPackages = import ./packages { inherit pkgs; };
+let myWrappers = import ./wrappers { inherit pkgs; };
 in
 {
   users.users.user = {
@@ -150,7 +150,7 @@ in
 
       chromium = {
         enable = true;
-        package = myPackages.wrap-chromium { browser = pkgs.ungoogled-chromium; };
+        package = myWrappers.chromium { browser = pkgs.ungoogled-chromium; };
       };
 
       mpv = {
@@ -192,8 +192,8 @@ in
       pamixer
       xdg-utils
       /* ---- */
-      myPackages.deemix
-      myPackages.wrapped-neovim
+      python39Packages.deemix
+      myWrappers.neovim
     ];
 
     gtk = {
