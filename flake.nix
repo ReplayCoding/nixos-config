@@ -22,13 +22,9 @@
       modules =
         [
           ./core.nix
-          ./kernel.nix
-          ./hardware-configuration.nix
+          ./hardware
 
-          ./sound.nix
           ./mediapiracy.nix
-          ./networking.nix
-
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
           {
