@@ -112,7 +112,7 @@ in
             dpi-aware = "yes";
           };
           mouse.hide-when-typing = "yes";
-          tweak.grapheme-shaping = true;
+          tweak.grapheme-shaping = "yes";
         };
       };
 
