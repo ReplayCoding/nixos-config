@@ -41,4 +41,10 @@
     # hibernate when power button is short-pressed
     HandlePowerKey=ignore
   '';
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+    earlySetup = true;
+  };
 }
