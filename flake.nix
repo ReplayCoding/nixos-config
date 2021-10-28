@@ -21,22 +21,13 @@
       system = "x86_64-linux";
       modules =
         [
-          ./core.nix
+          (import ./core.nix { inherit self nixpkgs neovim-nightly-overlay; })
           ./hardware
 
           ./mediapiracy.nix
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
-          {
-            nix.binaryCaches = [ "https://nix-community.cachix.org" ];
-            nix.binaryCachePublicKeys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-            nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
-          }
           ./user.nix
-          {
-            nix.registry.nixpkgs.flake = nixpkgs;
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          }
         ];
     };
   } // flake-utils.lib.eachDefaultSystem (system:

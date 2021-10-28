@@ -1,13 +1,19 @@
-{ config, pkgs, lib, ... }:
+{ self, nixpkgs, neovim-nightly-overlay }: { config, pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
 
   nix = {
     package = pkgs.nixUnstable;
     autoOptimiseStore = true;
+    binaryCaches = [ "https://nix-community.cachix.org" ];
+    binaryCachePublicKeys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+
+    registry.nixpkgs.flake = nixpkgs;
   };
 
   # This value determines the NixOS release from which the default
