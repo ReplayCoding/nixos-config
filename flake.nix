@@ -37,7 +37,10 @@
             nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
           }
           ./user.nix
-          { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
+          {
+            nix.registry.nixpkgs.flake = nixpkgs;
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          }
         ];
     };
   } // flake-utils.lib.eachDefaultSystem (system:
