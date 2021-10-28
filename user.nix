@@ -108,10 +108,11 @@ in
         enable = true;
         settings = {
           main = {
-            font = "JetBrainsMono Nerd Font Mono:size=7.5, Noto Sans Mono CJK:size=7.5";
+            font = "monospace:size=7.5, emoji";
             dpi-aware = "yes";
           };
-          mouse = { hide-when-typing = "yes"; };
+          mouse.hide-when-typing = "yes";
+          tweak.grapheme-shaping = true;
         };
       };
 
@@ -237,7 +238,7 @@ in
       serif = [ "Noto Serif" ];
       sansSerif = [ "Noto Sans" ];
       emoji = [ "Noto Color Emoji" ];
-      monospace = [ "JetBrains Mono NL" ];
+      monospace = [ "JetBrainsMono Nerd Font Mono" "Noto Sans Mono CJK JP" ];
     };
   };
 
