@@ -13,7 +13,7 @@ in
   users.users.user = {
     isNormalUser = true;
     home = "/home/user";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ]; # Enable ‘sudo’ for the user.
   };
 
@@ -24,6 +24,13 @@ in
       mako.enable = true;
       taskwarrior.enable = true;
       ssh.enable = true;
+
+      fish = {
+        enable = true;
+        interactiveShellInit = ''
+          set -g fish_greeting
+        '';
+      };
 
       direnv.enable = true;
       direnv.nix-direnv = {

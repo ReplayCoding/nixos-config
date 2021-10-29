@@ -7,5 +7,4 @@
   rtorrent = import ./rtorrent.nix;
   starship = import ./starship.nix;
   tmux = import ./tmux.nix;
-  zsh = import ./zsh.nix;
 }
