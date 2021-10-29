@@ -14,4 +14,14 @@
       };
     };
   };
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    wrapperFeatures.base = true;
+    extraPackages = [ ];
+    extraSessionCommands = ''
+      export _JAVA_AWT_WM_NONREPARENTING=1
+    '';
+  };
 }

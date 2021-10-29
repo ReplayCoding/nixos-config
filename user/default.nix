@@ -114,14 +114,4 @@ in
     home.file.".swaylock/config".text = "color=000000FF";
     home.file.".local/share/backgrounds/wallpaper.png".source = ./background.png;
   };
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    wrapperFeatures.base = true;
-    extraPackages = [ ];
-    extraSessionCommands = ''
-      export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
-  };
 }
