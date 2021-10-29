@@ -23,11 +23,10 @@
         [
           (import ./core.nix { inherit self nixpkgs neovim-nightly-overlay; })
           ./hardware
-
-          ./mediapiracy.nix
+          ./misc
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
-          ./user.nix
+          ./user
         ];
     };
   } // flake-utils.lib.eachDefaultSystem (system:
