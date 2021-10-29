@@ -7,19 +7,13 @@
   rtorrent = import ./rtorrent.nix;
   starship = import ./starship.nix;
   tmux = import ./tmux.nix;
+  fish = import ./fish.nix;
 
   fzf.enable = true;
   lazygit.enable = true;
   mako.enable = true;
   taskwarrior.enable = true;
   ssh.enable = true;
-
-  fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -g fish_greeting
-    '';
-  };
 
   direnv.enable = true;
   direnv.nix-direnv = {
