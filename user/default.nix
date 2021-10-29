@@ -18,46 +18,7 @@ in
   };
 
   home-manager.users.user = { pkgs, ... }: {
-    programs = {
-      fzf.enable = true;
-      lazygit.enable = true;
-      mako.enable = true;
-      taskwarrior.enable = true;
-      ssh.enable = true;
-
-      fish = {
-        enable = true;
-        interactiveShellInit = ''
-          set -g fish_greeting
-        '';
-      };
-
-      direnv.enable = true;
-      direnv.nix-direnv = {
-        enable = true;
-        enableFlakes = true;
-      };
-
-      rofi = {
-        enable = true;
-        terminal = "foot";
-      };
-
-      exa = {
-        enable = true;
-        enableAliases = true;
-      };
-
-      chromium = {
-        enable = true;
-        package = myWrappers.chromium { browser = pkgs.ungoogled-chromium; };
-      };
-
-      mpv = {
-        enable = true;
-        package = pkgs.mpv;
-      };
-    } // (import ./programs/default.nix { inherit pkgs; });
+    programs = (import ./programs/default.nix { inherit pkgs; wrappers = myWrappers; });
 
     home.packages = with pkgs; [
       ripgrep
