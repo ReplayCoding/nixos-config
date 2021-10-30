@@ -18,6 +18,9 @@ in
   };
 
   home-manager.users.user = { pkgs, ... }: {
+    imports = [
+      ./sway.nix
+    ];
     programs = (import ./programs/default.nix { inherit pkgs; wrappers = myWrappers; });
 
     home.packages = with pkgs; [
@@ -42,14 +45,7 @@ in
       imv
       btop
       /* sway */
-      swaylock
-      brightnessctl
-      playerctl
-      grim
       wl-clipboard
-      slurp
-      wob
-      pamixer
       xdg-utils
       /* ---- */
       python39Packages.deemix
@@ -80,6 +76,5 @@ in
     xsession.pointerCursor.name = "Adwaita";
 
     home.file.".swaylock/config".text = "color=000000FF";
-    home.file.".local/share/backgrounds/wallpaper.png".source = ./background.png;
   };
 }
