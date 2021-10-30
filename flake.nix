@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
 
     neovim-nightly-overlay = {
@@ -15,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, flake-utils }: {
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, flake-utils, pre-commit-hooks }: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -30,11 +31,18 @@
         ];
     };
   } // flake-utils.lib.eachDefaultSystem (system:
-    let pkgs = nixpkgs.legacyPackages.${system};
+    let
+      pkgs = nixpkgs.legacyPackages.${system};
+      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          nixpkgs-fmt.enable = true;
+        };
+      };
     in
     {
       devShell = pkgs.mkShell {
-        packages = with pkgs; [ nixpkgs-fmt ];
+        inherit (pre-commit-check) shellHook;
       };
     });
 }
