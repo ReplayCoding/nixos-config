@@ -44,4 +44,33 @@ in
       package = pkgs.mpv;
     };
   };
+
+  home.packages = with pkgs; [
+    ripgrep
+    fd
+    croc
+    libreoffice
+    restic
+    yt-dlp
+    jellyfin-media-player
+    /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
+    spotify
+    cmus
+    weechat
+    picard
+    evince
+    age
+    /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
+    tdesktop
+    element-desktop
+    signal-desktop
+    imv
+    btop
+    python39Packages.deemix
+    /* sway */
+    wl-clipboard
+    xdg-utils
+    /* ---- */
+    wrappers.neovim
+  ];
 }

@@ -1,7 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let myWrappers = import ../wrappers { inherit pkgs; };
-in
 {
   imports = [
     ./x11.nix
@@ -22,36 +20,6 @@ in
       ./sway.nix
       ./programs
     ];
-
-    home.packages = with pkgs; [
-      ripgrep
-      fd
-      croc
-      libreoffice
-      restic
-      yt-dlp
-      jellyfin-media-player
-      /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
-      spotify
-      cmus
-      weechat
-      picard
-      evince
-      age
-      /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
-      tdesktop
-      element-desktop
-      signal-desktop
-      imv
-      btop
-      /* sway */
-      wl-clipboard
-      xdg-utils
-      /* ---- */
-      python39Packages.deemix
-      myWrappers.neovim
-    ];
-
 
     home.sessionVariables = rec {
       "VISUAL" = "nvim";
