@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./x11.nix
-    ./wayland.nix
-    ./fonts.nix
-    ./misc.nix
+    ./system
   ];
 
   users.users.user = {
@@ -17,7 +14,7 @@
 
   home-manager.users.user = { pkgs, ... }: {
     imports = [
-      ./sway.nix
+      ./wayland.nix
       ./programs
     ];
 
