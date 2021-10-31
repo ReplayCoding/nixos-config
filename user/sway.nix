@@ -94,4 +94,6 @@
       ];
     };
   };
+
+  home.file.".swaylock/config".text = "color=000000FF";
 }

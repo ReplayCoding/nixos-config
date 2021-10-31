@@ -42,7 +42,5 @@
 
     xsession.pointerCursor.package = pkgs.gnome.adwaita-icon-theme;
     xsession.pointerCursor.name = "Adwaita";
-
-    home.file.".swaylock/config".text = "color=000000FF";
   };
 }
