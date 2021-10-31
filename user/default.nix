@@ -20,8 +20,8 @@ in
   home-manager.users.user = { pkgs, ... }: {
     imports = [
       ./sway.nix
+      ./programs
     ];
-    programs = (import ./programs/default.nix { inherit pkgs; wrappers = myWrappers; });
 
     home.packages = with pkgs; [
       ripgrep
