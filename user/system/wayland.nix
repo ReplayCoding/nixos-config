@@ -1,10 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
-  };
+  programs.sway.enable = true; # without this, swaylock will not work.
+  xdg.portal.enable = true;
 
   services.greetd = {
     enable = true;
