@@ -24,11 +24,6 @@ in
       enableFlakes = true;
     };
 
-    rofi = {
-      enable = true;
-      terminal = "foot";
-    };
-
     exa = {
       enable = true;
       enableAliases = true;

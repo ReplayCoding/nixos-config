@@ -14,7 +14,7 @@
     config = rec {
       modifier = "Mod4";
       terminal = "foot";
-      menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons -run-command \"echo {cmd}\" | ${pkgs.findutils}/bin/xargs ${config.wayland.windowManager.sway.package}/bin/swaymsg exec --";
+      menu = "${pkgs.fuzzel}/bin/fuzzel";
       gaps.inner = 1;
       window.border = 0;
       bars = [
