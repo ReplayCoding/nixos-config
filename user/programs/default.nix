@@ -3,6 +3,9 @@
 let wrappers = import ../../wrappers { inherit pkgs; };
 in
 {
+  imports = [
+    ./neovim
+  ];
   programs = {
     foot = import ./foot.nix;
     git = import ./git.nix { inherit pkgs; };
@@ -65,7 +68,5 @@ in
     /* sway */
     wl-clipboard
     xdg-utils
-    /* ---- */
-    wrappers.neovim
   ];
 }

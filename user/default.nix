@@ -39,5 +39,7 @@
 
     xsession.pointerCursor.package = pkgs.gnome.adwaita-icon-theme;
     xsession.pointerCursor.name = "Adwaita";
+
+    xdg.enable = true;
   };
 }
