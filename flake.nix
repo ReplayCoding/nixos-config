@@ -22,7 +22,8 @@
       system = "x86_64-linux";
       modules =
         [
-          (import ./core.nix { inherit self nixpkgs neovim-nightly-overlay; })
+          (import ./core.nix { inherit self nixpkgs; })
+          (import ./overlays { inherit neovim-nightly-overlay; })
           ./hardware
           ./misc
           home-manager.nixosModules.home-manager

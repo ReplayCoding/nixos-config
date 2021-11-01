@@ -1,8 +1,7 @@
-{ self, nixpkgs, neovim-nightly-overlay }: { config, pkgs, lib, ... }:
+{ self, nixpkgs }: { config, pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
-  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+  system.configurationRevision = pkgs.lib.mkIf (self ? rev) self.rev;
 
   nix = {
     package = pkgs.nixUnstable;
