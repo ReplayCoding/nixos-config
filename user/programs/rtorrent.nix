@@ -1,6 +1,10 @@
+{ ... }:
+
 {
-  enable = true;
-  settings = "
-    session.path.set = ./.rtorrent_session
-  ";
+  programs.rtorrent = {
+    enable = true;
+    settings = "
+      session.path.set = ./.rtorrent_session
+    ";
+  };
 }

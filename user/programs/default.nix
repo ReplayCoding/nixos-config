@@ -5,16 +5,15 @@ in
 {
   imports = [
     ./neovim
+    ./fish.nix
+    ./foot.nix
+    ./git.nix
+    ./tmux.nix
+    ./starship.nix
+    ./rtorrent.nix
+    ./i3status-rust.nix
   ];
   programs = {
-    foot = import ./foot.nix;
-    git = import ./git.nix { inherit pkgs; };
-    i3status-rust = import ./i3status-rust.nix;
-    rtorrent = import ./rtorrent.nix;
-    starship = import ./starship.nix;
-    tmux = import ./tmux.nix;
-    fish = import ./fish.nix;
-
     fzf.enable = true;
     lazygit.enable = true;
     mako.enable = true;
