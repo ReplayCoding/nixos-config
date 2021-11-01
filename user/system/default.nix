@@ -6,5 +6,6 @@ _:
     ./wayland.nix
     ./fonts.nix
     ./misc.nix
+    ./fish.nix
   ];
 }
