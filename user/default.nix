@@ -16,6 +16,7 @@
     imports = [
       ./wayland.nix
       ./programs
+      ./xdg.nix
     ];
 
     home.sessionVariables = rec {
@@ -39,7 +40,5 @@
 
     xsession.pointerCursor.package = pkgs.gnome.adwaita-icon-theme;
     xsession.pointerCursor.name = "Adwaita";
-
-    xdg.enable = true;
   };
 }
