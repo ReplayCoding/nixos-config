@@ -12,6 +12,7 @@ in
     ./starship.nix
     ./rtorrent.nix
     ./i3status-rust.nix
+    ./evince.nix
   ];
   programs = {
     fzf.enable = true;
@@ -55,7 +56,6 @@ in
     cmus
     weechat
     picard
-    evince
     age
     /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
     tdesktop
