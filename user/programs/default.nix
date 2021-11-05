@@ -13,6 +13,7 @@ in
     ./rtorrent.nix
     ./i3status-rust.nix
     ./evince.nix
+    ./sway.nix
   ];
   programs = {
     fzf.enable = true;

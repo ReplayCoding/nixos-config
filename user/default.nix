@@ -14,7 +14,6 @@
 
   home-manager.users.user = { pkgs, ... }: {
     imports = [
-      ./wayland.nix
       ./programs
       ./xdg.nix
     ];

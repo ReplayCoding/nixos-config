@@ -65,7 +65,7 @@
       };
       output = {
         "*" = {
-          bg = "${./background.png} fill";
+          bg = "${../background.png} fill";
         };
         "LVDS-1" = {
           resolution = "1366x768";
