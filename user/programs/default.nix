@@ -21,6 +21,11 @@ in
     taskwarrior.enable = true;
     ssh.enable = true;
 
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
+
     direnv.enable = true;
     direnv.nix-direnv = {
       enable = true;
