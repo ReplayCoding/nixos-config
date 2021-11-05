@@ -4,6 +4,7 @@
   programs.sway.enable = true; # without this, swaylock will not work.
   programs.sway.extraPackages = lib.mkForce [ ];
   xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
 
   services.greetd = {
     enable = true;
