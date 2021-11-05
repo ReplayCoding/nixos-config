@@ -6,13 +6,18 @@
     bars.default = {
       blocks = [
         {
+          block = "sound";
+          driver = "pulseaudio";
+        }
+        {
           block = "music";
           player = "cmus";
+          marquee = false;
           hide_when_empty = true;
         }
         {
           block = "net";
-          format = "{ip} {ssid} {speed_up} {speed_down}";
+          format = "{ip} {ssid}";
           interval = 5;
         }
         {
