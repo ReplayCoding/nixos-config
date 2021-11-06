@@ -15,11 +15,11 @@ in
     ./evince.nix
     ./sway.nix
     ./irssi.nix
+    ./mako.nix
   ];
   programs = {
     fzf.enable = true;
     lazygit.enable = true;
-    mako.enable = true;
     taskwarrior.enable = true;
     ssh.enable = true;
 
