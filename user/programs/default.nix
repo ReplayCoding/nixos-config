@@ -14,6 +14,7 @@ in
     ./i3status-rust.nix
     ./evince.nix
     ./sway.nix
+    ./irssi.nix
   ];
   programs = {
     fzf.enable = true;
@@ -60,7 +61,6 @@ in
     /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
     spotify
     cmus
-    weechat
     picard
     age
     /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
