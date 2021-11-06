@@ -25,7 +25,7 @@
           (import ./core.nix { inherit self nixpkgs; })
           (import ./overlays { inherit neovim-nightly-overlay; })
           ./hardware
-          ./misc
+          ./containers
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
           ./user

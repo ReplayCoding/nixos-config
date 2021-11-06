@@ -14,11 +14,6 @@
     enable = true;
     group = "mediapiracy";
   };
-  services.radarr = {
-    enable = true;
-    group = "mediapiracy";
-    openFirewall = true;
-  };
   services.transmission = {
     enable = true;
     group = "mediapiracy";
