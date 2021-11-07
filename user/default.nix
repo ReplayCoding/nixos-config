@@ -18,6 +18,7 @@
       ./xdg.nix
     ];
 
+    home.stateVersion = config.system.stateVersion;
     home.sessionVariables = rec {
       "VISUAL" = "nvim";
       "EDITOR" = VISUAL;
