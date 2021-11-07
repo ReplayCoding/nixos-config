@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
-let wrappers = import ../../wrappers { inherit pkgs; };
-in
 {
   imports = [
     ./neovim
@@ -22,6 +20,10 @@ in
     lazygit.enable = true;
     taskwarrior.enable = true;
     ssh.enable = true;
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-wayland;
+    };
 
     man = {
       enable = true;
@@ -37,11 +39,6 @@ in
     exa = {
       enable = true;
       enableAliases = true;
-    };
-
-    chromium = {
-      enable = true;
-      package = wrappers.chromium { browser = pkgs.ungoogled-chromium; };
     };
 
     mpv = {

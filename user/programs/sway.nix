@@ -8,9 +8,6 @@
       gtk = true;
       base = true;
     };
-    extraSessionCommands = ''
-      export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
     config = rec {
       modifier = "Mod4";
       terminal = "foot";
@@ -37,7 +34,7 @@
       ];
       seat = {
         "*" = {
-          xcursor_theme = "Adwaita";
+          xcursor_theme = "Adwaita 24";
           hide_cursor = "when-typing enable";
         };
       };
@@ -95,5 +92,9 @@
     };
   };
 
+  home.sessionVariables = {
+    "MOZ_ENABLE_WAYLAND" = 1;
+    "_JAVA_AWT_WM_NONREPARENTING" = 1;
+  };
   home.file.".swaylock/config".text = "color=000000FF";
 }

@@ -40,5 +40,6 @@
 
     xsession.pointerCursor.package = pkgs.gnome.gnome-themes-extra;
     xsession.pointerCursor.name = "Adwaita";
+    xsession.pointerCursor.size = 24;
   };
 }
