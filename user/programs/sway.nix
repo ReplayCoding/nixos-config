@@ -11,7 +11,7 @@
     config = rec {
       modifier = "Mod4";
       terminal = "foot";
-      menu = "${pkgs.fuzzel}/bin/fuzzel";
+      menu = "${pkgs.fuzzel}/bin/fuzzel --launch-prefix=\"${pkgs.sway}/bin/swaymsg exec --\"";
       gaps.inner = 1;
       window.border = 0;
       bars = [
