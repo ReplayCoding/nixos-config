@@ -1,4 +1,4 @@
-{ neovim-nightly-overlay }:
+{ neovim-nightly-overlay, nixpkgs-wayland }:
 
 { config, pkgs, lib, ... }:
 
@@ -9,5 +9,6 @@
   ];
   nixpkgs.overlays = [
     neovim-nightly-overlay.overlay
+    nixpkgs-wayland.overlay
   ];
 }

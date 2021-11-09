@@ -6,9 +6,8 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,14 +15,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, flake-utils, pre-commit-hooks }: {
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules =
         [
           (import ./core.nix { inherit self nixpkgs; })
-          (import ./overlays { inherit neovim-nightly-overlay; })
+          (import ./overlays { inherit neovim-nightly-overlay nixpkgs-wayland; })
           ./hardware
           ./containers
           home-manager.nixosModules.home-manager
