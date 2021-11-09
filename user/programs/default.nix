@@ -14,6 +14,7 @@
     ./sway.nix
     ./irssi.nix
     ./mako.nix
+    ./mpv.nix
   ];
   programs = {
     fzf.enable = true;
@@ -39,11 +40,6 @@
     exa = {
       enable = true;
       enableAliases = true;
-    };
-
-    mpv = {
-      enable = true;
-      package = pkgs.mpv;
     };
   };
 
