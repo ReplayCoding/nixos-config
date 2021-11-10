@@ -15,14 +15,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }: {
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules =
         [
-          (import ./core.nix { inherit self nixpkgs; })
-          (import ./overlays { inherit neovim-nightly-overlay nixpkgs-wayland; })
+          (import ./core.nix inputs)
+          (import ./overlays inputs)
           ./hardware
           ./containers
           home-manager.nixosModules.home-manager

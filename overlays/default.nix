@@ -1,4 +1,4 @@
-{ neovim-nightly-overlay, nixpkgs-wayland }:
+{ neovim-nightly-overlay, nixpkgs-wayland, ... }:
 
 { config, pkgs, lib, ... }:
 

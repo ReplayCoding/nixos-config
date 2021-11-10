@@ -1,4 +1,6 @@
-{ self, nixpkgs }: { config, pkgs, lib, ... }:
+{ self, nixpkgs, ... }:
+
+{ config, pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   system.configurationRevision = pkgs.lib.mkIf (self ? rev) self.rev;
