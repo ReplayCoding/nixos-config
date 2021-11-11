@@ -32,10 +32,7 @@
     };
 
     direnv.enable = true;
-    direnv.nix-direnv = {
-      enable = true;
-      enableFlakes = true;
-    };
+    direnv.nix-direnv.enable = true;
 
     exa = {
       enable = true;
