@@ -20,12 +20,5 @@
     ];
 
     home.stateVersion = config.system.stateVersion;
-    home.sessionVariables = rec {
-      "VISUAL" = "nvim";
-      "EDITOR" = VISUAL;
-    };
-
-    services.mpris-proxy.enable = true;
-    services.playerctld.enable = true;
   };
 }

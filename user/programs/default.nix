@@ -67,4 +67,7 @@
     wl-clipboard
     xdg-utils
   ];
+
+  services.mpris-proxy.enable = true;
+  services.playerctld.enable = true;
 }

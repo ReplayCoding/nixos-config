@@ -8,4 +8,8 @@ in
     source = pkgs.callPackage ./config.nix { };
     recursive = true;
   };
+  home.sessionVariables = rec {
+    "VISUAL" = "nvim";
+    "EDITOR" = VISUAL;
+  };
 }
