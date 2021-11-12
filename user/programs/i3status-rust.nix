@@ -12,8 +12,10 @@
         {
           block = "music";
           player = "cmus";
-          marquee = false;
+          format = "{title} ";
+          dynamic_width = true;
           hide_when_empty = true;
+          marquee = false;
         }
         {
           block = "net";
