@@ -32,8 +32,8 @@
     };
   } // flake-utils.lib.eachDefaultSystem (system:
     let
-      pkgs = nixpkgs.legacyPackages.${system};
-      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      pkgs = nixpkgs.legacyPackages."${system}";
+      pre-commit-check = pre-commit-hooks.lib."${system}".run {
         src = ./.;
         hooks = {
           nixpkgs-fmt.enable = true;
