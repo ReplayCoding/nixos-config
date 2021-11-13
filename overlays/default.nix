@@ -10,5 +10,6 @@
   nixpkgs.overlays = [
     neovim-nightly-overlay.overlay
     nixpkgs-wayland.overlay
+    (self: super: { aerc = super.pkgs.callPackage ./aerc.nix { }; })
   ];
 }

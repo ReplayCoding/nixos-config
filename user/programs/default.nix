@@ -59,6 +59,7 @@
     signal-desktop
     imv
     btop
+    aerc
     python39Packages.deemix
     /* sway */
     wl-clipboard
