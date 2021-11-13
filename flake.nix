@@ -43,6 +43,7 @@
     {
       devShell = pkgs.mkShell {
         inherit (pre-commit-check) shellHook;
+        packages = with pkgs; [ statix ];
       };
     });
 }
