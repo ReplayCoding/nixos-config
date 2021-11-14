@@ -3,6 +3,7 @@ _:
 {
   programs.foot = {
     enable = true;
+    server.enable = true;
     settings = {
       main = {
         font = "monospace:size=7.5, emoji";
