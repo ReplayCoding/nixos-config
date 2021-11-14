@@ -16,7 +16,7 @@
     imports = [
       ./programs
       ./xdg.nix
-      ./gui.nix
+      ./theme.nix
     ];
 
     home.stateVersion = config.system.stateVersion;
