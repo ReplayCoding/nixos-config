@@ -22,11 +22,6 @@
     opengl.extraPackages = [ pkgs.vaapiVdpau ];
   };
 
-  # Enable zfs
-  boot.zfs.forceImportRoot = false;
-  boot.supportedFilesystems = [ "zfs" ];
-  networking.hostId = "7c5b9af1";
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -34,17 +29,10 @@
   # List services that you want to enable:
   services.upower.enable = true;
   services.upower.criticalPowerAction = "Hibernate";
-  services.logind.killUserProcesses = true;
   powerManagement.cpuFreqGovernor = "performance";
 
   services.logind.extraConfig = ''
     # hibernate when power button is short-pressed
     HandlePowerKey=ignore
   '';
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-    earlySetup = true;
-  };
 }
