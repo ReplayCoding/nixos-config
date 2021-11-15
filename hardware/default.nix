@@ -3,7 +3,7 @@ _:
   imports = [
     ./kernel.nix
     ./hardware-configuration.nix
-    ./sound.nix
+    ./bluetooth.nix
     ./networking.nix
   ];
 }

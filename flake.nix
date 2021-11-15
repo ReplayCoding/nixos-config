@@ -24,6 +24,7 @@
           (import ./core.nix inputs)
           (import ./overlays inputs)
           ./hardware
+          ./system
           ./containers
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
