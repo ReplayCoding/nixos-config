@@ -1,9 +1,6 @@
-{ self, nixpkgs, ... }:
-
 { config, pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
-  system.configurationRevision = pkgs.lib.mkIf (self ? rev) self.rev;
 
   nix = {
     package = pkgs.nixUnstable;
@@ -18,8 +15,6 @@
       keep-outputs = true
       keep-derivations = true
     '';
-
-    registry.nixpkgs.flake = nixpkgs;
   };
 
   # This value determines the NixOS release from which the default

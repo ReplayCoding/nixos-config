@@ -8,6 +8,7 @@ _:
     ./network.nix
     ./dns.nix
     ./ssh.nix
+    ./nix.nix
   ];
 
   services.logind.killUserProcesses = true;
