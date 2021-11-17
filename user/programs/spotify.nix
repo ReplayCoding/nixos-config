@@ -1,18 +1,15 @@
 { secrets, config, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.spotify-tui ];
-  services.spotifyd = {
+  programs.ncspot = {
     enable = true;
-    package = pkgs.spotifyd.override { withMpris = true; };
-    settings.global = {
-      username = "6dx7kymdibwzhi3cj14is223f";
-      password_cmd = "${pkgs.busybox}/bin/cat ${secrets.spotifyd-password.path}";
-
-      use_mpris = true;
+    settings = {
+      default_keybindings = true;
       bitrate = 320;
-      device_type = "computer";
-      cache_path = "${config.xdg.cacheHome}/spotifyd";
+      flip_status_indicators = true;
+      use_nerdfont = true;
+      gapless = true;
+      repeat = "track";
     };
   };
 }

@@ -1,5 +1,14 @@
 _:
 
+let makeMusicBlock = player: {
+  inherit player;
+  block = "music";
+  format = "{title} ";
+  dynamic_width = true;
+  hide_when_empty = true;
+  marquee = false;
+};
+in
 {
   programs.i3status-rust = {
     enable = true;
@@ -9,14 +18,8 @@ _:
           block = "sound";
           driver = "pulseaudio";
         }
-        {
-          block = "music";
-          player = "cmus";
-          format = "{title} ";
-          dynamic_width = true;
-          hide_when_empty = true;
-          marquee = false;
-        }
+        (makeMusicBlock "cmus")
+        (makeMusicBlock "ncspot")
         {
           block = "net";
           format = "{ip} {ssid}";
