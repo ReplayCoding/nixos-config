@@ -3,6 +3,7 @@
 {
   imports = [
     ./system
+    ./secrets
   ];
 
   users.users.user = {
@@ -12,6 +13,7 @@
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ]; # Enable ‘sudo’ for the user.
   };
 
+  home-manager.extraSpecialArgs = { inherit (config.age) secrets; };
   home-manager.users.user = { pkgs, ... }: {
     imports = [
       ./programs

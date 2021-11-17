@@ -15,6 +15,7 @@
     ./irssi.nix
     ./mako.nix
     ./mpv.nix
+    ./spotify.nix
   ];
   programs = {
     fzf.enable = true;
@@ -49,7 +50,6 @@
     yt-dlp
     jellyfin-media-player
     /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
-    spotify
     cmus
     picard
     age

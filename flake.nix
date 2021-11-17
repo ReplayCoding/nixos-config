@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
+    agenix.url = "github:ryantm/agenix";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -15,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs: {
+  outputs = { self, nixpkgs, agenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -26,6 +27,7 @@
           ./hardware
           ./system
           ./containers
+          agenix.nixosModules.age
           home-manager.nixosModules.home-manager
           { home-manager.useGlobalPkgs = true; }
           ./user
@@ -44,7 +46,7 @@
     {
       devShell = pkgs.mkShell {
         inherit (pre-commit-check) shellHook;
-        packages = with pkgs; [ statix ];
+        packages = with pkgs; [ statix agenix.defaultPackage."${system}" ];
       };
     });
 }

@@ -7,6 +7,7 @@ _:
     ./zfs.nix
     ./network.nix
     ./dns.nix
+    ./ssh.nix
   ];
 
   services.logind.killUserProcesses = true;
