@@ -2,7 +2,7 @@
 {
   boot.kernelModules = [ "b43" ];
   boot.blacklistedKernelModules = [ "wl" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = lib.mkForce [ ];
 
   networking.enableB43Firmware = true;
 
