@@ -10,6 +10,7 @@
       use_nerdfont = true;
       gapless = true;
       repeat = "track";
+      backend = "pulseaudio";
     };
   };
 }
