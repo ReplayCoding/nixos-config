@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   networking = {
@@ -11,4 +11,6 @@ _:
     firewall.allowedUDPPorts = [ ];
     firewall.enable = true;
   };
+
+  programs.bandwhich.enable = true;
 }
