@@ -48,7 +48,7 @@
     libreoffice
     restic
     yt-dlp
-    jellyfin-media-player
+    jellyfin-mpv-shim
     /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
     cmus
     picard
