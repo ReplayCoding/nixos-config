@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
-let wrappers = import ../../../wrappers { inherit pkgs; };
-in
 {
-  home.packages = [ wrappers.neovim ];
+  home.packages = [ (pkgs.callPackage ./wrapped_neovim.nix { }) ];
   xdg.configFile."nvim" = {
     source = pkgs.callPackage ./config.nix { };
     recursive = true;

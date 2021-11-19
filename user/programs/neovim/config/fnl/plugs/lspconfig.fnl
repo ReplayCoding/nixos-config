@@ -15,7 +15,7 @@
     (buf_set_normal_keymap "<leader>lf" "<cmd>Telescope lsp_code_actions<CR>")
   )
   (let [
-      servers [:gopls :clangd :rust_analyzer :sumneko_lua :rnix]
+      servers [:gopls :clangd :rust_analyzer :sumneko_lua :rnix :pylsp]
       capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))]
     (fn setup_lua [setup on_attach]
       (var runtime_path (vim.split package.path ";"))
