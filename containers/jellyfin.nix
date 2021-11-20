@@ -5,11 +5,7 @@
     mediapiracy = { };
   };
 
-  services.sonarr = {
-    enable = true;
-    group = "mediapiracy";
-  };
-  services.transmission = {
+  services.jellyfin = {
     enable = true;
     group = "mediapiracy";
     openFirewall = true;
