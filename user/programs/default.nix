@@ -22,6 +22,7 @@
     lazygit.enable = true;
     taskwarrior.enable = true;
     ssh.enable = true;
+    dircolors.enable = true;
     firefox = {
       enable = true;
       package = pkgs.firefox-wayland;
