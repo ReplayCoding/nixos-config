@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 
-let rev = "817daecee60041ab18c36e8b068d915d73e3147e";
+let rev = "6a4e37a0f66e21be453e392b37d92647a91f2703";
 in
 {
   nixpkgs.overlays = [
@@ -11,7 +11,7 @@ in
           domain = "codeberg.org";
           owner = "dnkl";
           repo = "fuzzel";
-          sha256 = "sha256-BCyqwS8Ev7Gy78dp4FZZnDAW7feJHz/hchYMduhTCVw=";
+          sha256 = "sha256-o3rDpeH6ZnAcEe9sqA4po7PohdvxwFPvcsWgE9R5csw=";
           inherit rev;
         };
         patches = (old.patches or [ ]) ++ [ ./fuzzel-launch-prefix.patch ];
