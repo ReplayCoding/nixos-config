@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowAliases = false;
+  };
 
   nix = {
     package = pkgs.nixUnstable;

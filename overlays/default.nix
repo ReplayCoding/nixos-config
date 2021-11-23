@@ -2,14 +2,16 @@
 
 { config, pkgs, lib, ... }:
 
+let system = config.nixpkgs.system;
+in
 {
   imports = [
     ./cmus.nix
     ./fuzzel.nix
   ];
   nixpkgs.overlays = [
-    neovim-nightly-overlay.overlay
     nixpkgs-wayland.overlay
+    (self: super: neovim-nightly-overlay.overlay self (super // { inherit system; }))
     (self: super: { aerc = super.pkgs.callPackage ./aerc.nix { }; })
   ];
 }
