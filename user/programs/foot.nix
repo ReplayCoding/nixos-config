@@ -10,7 +10,10 @@ _:
         dpi-aware = "yes";
       };
       mouse.hide-when-typing = "yes";
-      tweak.grapheme-shaping = "yes";
+      tweak = {
+        grapheme-shaping = "yes";
+        grapheme-width-method = "wcswidth";
+      };
     };
   };
 }
