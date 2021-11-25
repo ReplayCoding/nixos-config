@@ -38,28 +38,32 @@
           hide_cursor = "when-typing enable";
         };
       };
-      keybindings = lib.mkOptionDefault {
-        # for some reason home-manager doesn't bind these keys, so we bind them manually
-        "${modifier}+0" = "workspace number 10";
-        "${modifier}+Shift+0" =
-          "move container to workspace number 10";
+      keybindings =
+        let wobSock = "$XDG_RUNTIME_DIR/wob.sock";
+          inherit (pkgs) pamixer brightnessctl playerctl grim slurp swaylock gnused;
+        in
+        lib.mkOptionDefault {
+          # for some reason home-manager doesn't bind these keys, so we bind them manually
+          "${modifier}+0" = "workspace number 10";
+          "${modifier}+Shift+0" =
+            "move container to workspace number 10";
 
+          "XF86AudioRaiseVolume" = "exec ${pamixer}/bin/pamixer -ui 2 && ${pamixer}/bin/pamixer --get-volume > ${wobSock}";
+          "XF86AudioLowerVolume" = "exec ${pamixer}/bin/pamixer -ud 2 && ${pamixer}/bin/pamixer --get-volume > ${wobSock}";
+          "XF86AudioMute" = "exec ${pamixer}/bin/pamixer --toggle-mute && " +
+            "${pamixer}/bin/pamixer --get-mute && echo 0 > ${wobSock} || ${pamixer}/bin/pamixer --get-volume > ${wobSock}";
 
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -ui 2";
-        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -ud 2";
-        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute";
+          "XF86MonBrightnessDown" = "exec ${brightnessctl}/bin/brightnessctl set 5%- | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
+          "XF86MonBrightnessUp" = "exec ${brightnessctl}/bin/brightnessctl set +5% | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
 
-        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
-        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+          "XF86AudioPlay" = "exec ${playerctl}/bin/playerctl play-pause";
+          "XF86AudioNext" = "exec ${playerctl}/bin/playerctl next";
+          "XF86AudioPrev" = "exec ${playerctl}/bin/playerctl previous";
 
-        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-
-        "${modifier}+s" = "exec ${pkgs.grim}/bin/grim";
-        "${modifier}+Shift+s" = "exec ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g -";
-        "${modifier}+p" = "exec ${pkgs.swaylock}/bin/swaylock";
-      };
+          "${modifier}+s" = "exec ${grim}/bin/grim";
+          "${modifier}+Shift+s" = "exec ${slurp}/bin/slurp | ${grim}/bin/grim -g -";
+          "${modifier}+p" = "exec ${swaylock}/bin/swaylock";
+        };
       output = {
         "*" = {
           bg = "${../background.png} fill";

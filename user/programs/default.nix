@@ -16,6 +16,7 @@
     ./mako.nix
     ./mpv.nix
     ./spotify.nix
+    ./wob.nix
   ];
   programs = {
     fzf.enable = true;
