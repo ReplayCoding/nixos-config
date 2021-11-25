@@ -22,10 +22,11 @@
       system = "x86_64-linux";
       modules =
         [
-          {
+          ({ lib, ... }: {
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
-          }
+            nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
+          })
           (import ./overlays inputs)
           ./hardware
           ./system
