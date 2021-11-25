@@ -25,7 +25,7 @@
     dircolors.enable = true;
     firefox = {
       enable = true;
-      package = pkgs.firefox-wayland;
+      package = pkgs.firefox-bin.override { forceWayland = true; };
     };
 
     man = {
