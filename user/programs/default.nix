@@ -63,6 +63,7 @@
     imv
     btop
     aerc
+    astronaut
     python39Packages.deemix
     /* sway */
     wl-clipboard
