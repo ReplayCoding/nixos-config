@@ -8,6 +8,7 @@ in
   imports = [
     ./cmus.nix
     ./fuzzel.nix
+    ./fish.nix
   ];
   nixpkgs.overlays = [
     nixpkgs-wayland.overlay
