@@ -24,6 +24,7 @@
     taskwarrior.enable = true;
     ssh.enable = true;
     dircolors.enable = true;
+    bat.enable = true;
     firefox = {
       enable = true;
       package = pkgs.firefox-bin.override { forceWayland = true; };

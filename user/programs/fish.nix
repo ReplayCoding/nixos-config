@@ -3,6 +3,7 @@ _:
 {
   programs.fish = {
     enable = true;
+    shellAliases.cat = "bat";
     interactiveShellInit = ''
       set -g fish_greeting
     '';
