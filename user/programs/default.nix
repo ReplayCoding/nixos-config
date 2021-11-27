@@ -72,4 +72,5 @@
 
   services.mpris-proxy.enable = true;
   services.playerctld.enable = true;
+  services.syncthing.enable = true;
 }
