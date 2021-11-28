@@ -7,5 +7,6 @@ _:
     ./fonts.nix
     ./misc.nix
     ./fish.nix
+    ./documentation.nix
   ];
 }
