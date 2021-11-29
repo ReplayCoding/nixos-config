@@ -40,7 +40,7 @@
       };
       keybindings =
         let wobSock = "$XDG_RUNTIME_DIR/wob.sock";
-          inherit (pkgs) pamixer brightnessctl playerctl grim slurp swaylock gnused;
+          inherit (pkgs) pamixer brightnessctl playerctl grim slurp gnused systemd;
         in
         lib.mkOptionDefault {
           # for some reason home-manager doesn't bind these keys, so we bind them manually
@@ -62,7 +62,7 @@
 
           "${modifier}+s" = "exec ${grim}/bin/grim";
           "${modifier}+Shift+s" = "exec ${slurp}/bin/slurp | ${grim}/bin/grim -g -";
-          "${modifier}+p" = "exec ${swaylock}/bin/swaylock";
+          "${modifier}+p" = "exec ${systemd}/bin/loginctl lock-session";
         };
       output = {
         "*" = {
@@ -101,24 +101,37 @@
     "_JAVA_AWT_WM_NONREPARENTING" = 1;
   };
 
-  systemd.user.services.swayidle = {
-    Unit = {
-      Description = "Idle manager for Wayland";
-      Documentation = "man:swayidle(1)";
-      PartOf = "sway-session.target";
+  systemd.user.services = {
+    swaylock = {
+      Unit = {
+        Description = "Screen locker for Wayland";
+        Documentation = "man:swaylock(1)";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.swaylock}/bin/swaylock";
+        Restart = "no"; # Otherwise there maybe a loop
+      };
     };
-    Service = {
-      Type = "simple";
-      ExecStart =
-        let config = pkgs.writeText "swayidle-config" ''
-          lock ${pkgs.swaylock}/bin/swaylock
-        '';
-        in "${pkgs.swayidle}/bin/swayidle -C ${config}";
-      RestartSec = 5;
-      Restart = "always";
-    };
-    Install = {
-      WantedBy = [ "sway-session.target" ];
+    swayidle = {
+      Unit = {
+        Description = "Idle manager for Wayland";
+        Documentation = "man:swayidle(1)";
+        PartOf = "sway-session.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart =
+          let config = pkgs.writeText "swayidle-config" ''
+            lock "${pkgs.systemd}/bin/systemctl start --user swaylock.service"
+          '';
+          in "${pkgs.swayidle}/bin/swayidle -C ${config}";
+        RestartSec = 5;
+        Restart = "always";
+      };
+      Install = {
+        WantedBy = [ "sway-session.target" ];
+      };
     };
   };
   home.file.".swaylock/config".text = "color=000000FF";
