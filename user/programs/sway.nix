@@ -103,7 +103,7 @@
 
   systemd.user.services.swayidle = {
     Unit = {
-      Description = "swayidle";
+      Description = "Idle manager for Wayland";
       Documentation = "man:swayidle(1)";
       PartOf = "sway-session.target";
     };

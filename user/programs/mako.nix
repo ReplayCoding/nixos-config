@@ -4,7 +4,7 @@
   programs.mako.enable = true;
   systemd.user.services.mako = {
     Unit = {
-      Description = "mako";
+      Description = "Notification daemon for Wayland";
       Documentation = "man:mako(1)";
       PartOf = "sway-session.target";
     };
