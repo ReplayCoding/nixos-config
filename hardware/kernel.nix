@@ -25,14 +25,4 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-
-  # List services that you want to enable:
-  services.upower.enable = true;
-  services.upower.criticalPowerAction = "Hibernate";
-  powerManagement.cpuFreqGovernor = "performance";
-
-  services.logind.extraConfig = ''
-    # hibernate when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
 }

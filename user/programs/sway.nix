@@ -100,5 +100,26 @@
     "MOZ_ENABLE_WAYLAND" = 1;
     "_JAVA_AWT_WM_NONREPARENTING" = 1;
   };
+
+  systemd.user.services.swayidle = {
+    Unit = {
+      Description = "swayidle";
+      Documentation = "man:swayidle(1)";
+      PartOf = "sway-session.target";
+    };
+    Service = {
+      Type = "simple";
+      ExecStart =
+        let config = pkgs.writeText "swayidle-config" ''
+          lock ${pkgs.swaylock}/bin/swaylock
+        '';
+        in "${pkgs.swayidle}/bin/swayidle -C ${config}";
+      RestartSec = 5;
+      Restart = "always";
+    };
+    Install = {
+      WantedBy = [ "sway-session.target" ];
+    };
+  };
   home.file.".swaylock/config".text = "color=000000FF";
 }
