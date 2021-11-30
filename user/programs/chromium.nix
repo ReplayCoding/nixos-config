@@ -5,12 +5,16 @@ let
     name = "chromium-wrapper";
     paths = [ pkgs.ungoogled-chromium ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/chromium \
-        --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
-      wrapProgram $out/bin/chromium-browser \
-        --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
-    '';
+    postBuild =
+      # --force-dark-mode until chromium respects my theme :|
+      let flags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --force-dark-mode";
+      in
+      ''
+        wrapProgram $out/bin/chromium \
+          --add-flags "${flags}"
+        wrapProgram $out/bin/chromium-browser \
+          --add-flags "${flags}"
+      '';
   };
 in
 {
