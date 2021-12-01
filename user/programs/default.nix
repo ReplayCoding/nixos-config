@@ -18,6 +18,7 @@
     ./spotify.nix
     ./wob.nix
     ./chromium.nix
+    ./mail.nix
   ];
   programs = {
     fzf.enable = true;
