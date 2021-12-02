@@ -1,0 +1,60 @@
+From c8a7b22ae645880f45a5868575816da211c8e900 Mon Sep 17 00:00:00 2001
+From: ReplayCoding <replaycoding@gmail.com>
+Date: Thu, 2 Dec 2021 09:16:16 -0800
+Subject: [PATCH] crop match text to selection box size
+
+---
+ render.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/render.c b/render.c
+index 7f5f6b7..b3948cd 100644
+--- a/render.c
++++ b/render.c
+@@ -213,7 +213,7 @@ render_prompt(const struct render *render, struct buffer *buf,
+ }
+ 
+ static void
+-render_match_text(struct buffer *buf, double *_x, double _y,
++render_match_text(struct buffer *buf, double *_x, double _y, const int max_x,
+                   const wchar_t *text, ssize_t start, size_t length,
+                   struct fcft_font *font, enum fcft_subpixel subpixel,
+                   int letter_spacing,
+@@ -264,6 +264,7 @@ render_match_text(struct buffer *buf, double *_x, double _y,
+     for (size_t i = 0; i < count; i++) {
+         bool is_match = start >= 0 && clusters[i] >= start && clusters[i] < start + length;
+         x += kern != NULL ? kern[i] : 0;
++        if ( (x + glyphs[i]->advance.x) > max_x ) break;
+         render_glyph(buf->pix, glyphs[i], x, y, is_match ? &match_color : &regular_color);
+         x += glyphs[i]->advance.x + letter_spacing;
+         y += glyphs[i]->advance.y;
+@@ -522,6 +523,8 @@ render_match_list(const struct render *render, struct buffer *buf,
+         }
+ 
+         const struct match *match = matches_get(matches, i);
++        const int row_width = buf->width - 2 * (x_margin - sel_margin);
++        const int max_row_x = row_width + (x_margin - sel_margin);
+ 
+         if (i == selected) {
+             /* If currently selected item has a scalable icon, and if
+@@ -543,7 +546,7 @@ render_match_list(const struct render *render, struct buffer *buf,
+                 &(pixman_rectangle16_t){
+                     x_margin - sel_margin,
+                     first_row + i * row_height,
+-                    buf->width - 2 * (x_margin - sel_margin),
++                    row_width,
+                     row_height}
+                 );
+         }
+@@ -575,7 +578,7 @@ render_match_list(const struct render *render, struct buffer *buf,
+ 
+         /* Application title */
+         render_match_text(
+-            buf, &cur_x, y,
++            buf, &cur_x, y, max_row_x,
+             match->application->title, match->start_title, wcslen(prompt_text(prompt)),
+             font, subpixel,
+             pt_or_px_as_pixels(render, &render->options.letter_spacing),
+-- 
+2.33.1
+

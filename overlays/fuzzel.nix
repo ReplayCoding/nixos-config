@@ -14,7 +14,11 @@ in
           sha256 = "sha256-o3rDpeH6ZnAcEe9sqA4po7PohdvxwFPvcsWgE9R5csw=";
           inherit rev;
         };
-        patches = (old.patches or [ ]) ++ [ ./fuzzel-launch-prefix.patch ];
+        patches = (old.patches or [ ]) ++
+          [
+            ./fuzzel-launch-prefix.patch
+            ./fuzzel-crop-match-text-to-selection-box-size.patch
+          ];
       });
     })
   ];
