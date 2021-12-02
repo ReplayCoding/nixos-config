@@ -7,7 +7,7 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild =
       # --force-dark-mode until chromium respects my theme :|
-      let flags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --force-dark-mode";
+      let flags = "--enable-features=UseOzonePlatform,VaapiVideoDecoder --ozone-platform=wayland --force-dark-mode";
       in
       ''
         wrapProgram $out/bin/chromium \
