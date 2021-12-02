@@ -10,7 +10,7 @@
     isNormalUser = true;
     home = "/home/user";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "video" "audio" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "audio" ];
   };
 
   home-manager.extraSpecialArgs = { inherit (config.age) secrets; };

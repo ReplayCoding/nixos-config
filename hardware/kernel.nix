@@ -6,6 +6,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_14;
+  boot.extraModulePackages = lib.mkForce [ ];
+  networking.enableB43Firmware = true;
 
   boot.initrd.luks.devices = {
     root = {
