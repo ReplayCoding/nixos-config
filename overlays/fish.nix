@@ -3,11 +3,14 @@
 {
   nixpkgs.overlays = [
     (self: super: {
-      fish = super.fish.overrideAttrs (old: {
-        postInstall = ''
+      fish = super.symlinkJoin {
+        inherit (super.fish) passthru;
+        name = "fish-wrapped";
+        paths = [ super.fish ];
+        postBuild = ''
           rm $out/share/applications/fish.desktop
         '';
-      });
+      };
     })
   ];
 }
