@@ -50,11 +50,9 @@
     restic
     yt-dlp
     jellyfin-mpv-shim
-    /* tor-browser-bundle-bin # security critical application, so we need the latest version # is currently broken */
     cmus
     picard
     age
-    /* steam-run */ # Broken as of latest nixpkgs ;; tracker build fails
     tdesktop
     element-desktop
     signal-desktop
