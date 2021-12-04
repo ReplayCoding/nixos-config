@@ -1,14 +1,18 @@
 (global have-we-loaded-packer-yet false)
 
-(global _wrapper_packer_function ( fn [function ...] ;; Using underscores to ensure global naming
-  (if (not have-we-loaded-packer-yet)
-    (require :setup_plugins))
-  (set _G.have-we-loaded-packer-yet true)
-  ((. (require :packer) function) ...)))
+;; Using underscores to ensure global naming
+(global _wrapper_packer_function
+        (fn [function ...]
+          (if (not have-we-loaded-packer-yet)
+              (require :setup_plugins))
+          (set _G.have-we-loaded-packer-yet true)
+          ((. (require :packer) function) ...)))
 
-((. (require :packer) :init) {
-  :display {:open_fn (fn [] ((. (require :packer.util) :float) {:border :shadow}))}
-  :disable_commands true})
+((. (require :packer) :init) {:display {:open_fn (fn []
+                                                   ((. (require :packer.util)
+                                                       :float) {:border :shadow}))}
+                              :disable_commands true})
+
 (vim.cmd "command! PackerInstall           lua _wrapper_packer_function('install')")
 (vim.cmd "command! PackerUpdate            lua _wrapper_packer_function('update')")
 (vim.cmd "command! PackerSync              lua _wrapper_packer_function('sync')")

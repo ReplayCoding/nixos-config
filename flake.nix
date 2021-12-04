@@ -50,7 +50,7 @@
     {
       devShell = pkgs.mkShell {
         inherit (pre-commit-check) shellHook;
-        packages = with pkgs; [ statix agenix.defaultPackage."${system}" ];
+        packages = with pkgs; [ statix agenix.defaultPackage."${system}" fnlfmt ];
       };
     });
 }
