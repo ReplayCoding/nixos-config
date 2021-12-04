@@ -9,6 +9,7 @@ _:
     ./ssh.nix
     ./nix.nix
     ./power.nix
+    ./greetd.nix
   ];
 
   services.logind.killUserProcesses = true;
