@@ -2,12 +2,9 @@
   (use :wbthomason/packer.nvim)
   (use :lewis6991/impatient.nvim)
 
-  (use {1 :terrortylor/nvim-comment
-        :keys [:<leader>c]
+  (use {1 :numToStr/Comment.nvim
         :config (fn []
-                ((. (require :nvim_comment) :setup) {
-                  :line_mapping :<leader>cc
-                  :operator_mapping :<leader>c}))})
+                 ((. (require :Comment) :setup)))})
 
   (use {1 :hrsh7th/vim-vsnip
         :after :nvim-cmp
