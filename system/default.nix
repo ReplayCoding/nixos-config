@@ -10,6 +10,7 @@ _:
     ./nix.nix
     ./power.nix
     ./greetd.nix
+    ./printing.nix
   ];
 
   services.logind.killUserProcesses = true;
