@@ -2,7 +2,7 @@
 
 { config, pkgs, lib, ... }:
 
-let system = config.nixpkgs.system;
+let inherit (config.nixpkgs) system;
 in
 {
   imports = [
