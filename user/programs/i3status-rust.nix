@@ -18,6 +18,12 @@ in
           block = "sound";
           driver = "pulseaudio";
         }
+        {
+          block = "bluetooth";
+          mac = "4C:87:5D:6B:72:B1";
+          hide_disconnected = true;
+          format = "{percentage}";
+        }
         (makeMusicBlock "cmus")
         (makeMusicBlock "ncspot")
         {

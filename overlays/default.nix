@@ -9,6 +9,7 @@ in
     ./cmus.nix
     ./fuzzel.nix
     ./fish.nix
+    ./bluez.nix
   ];
   nixpkgs.overlays = [
     nixpkgs-wayland.overlay
