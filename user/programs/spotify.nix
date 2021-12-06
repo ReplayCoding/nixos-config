@@ -8,6 +8,7 @@
       bitrate = 96;
       flip_status_indicators = true;
       use_nerdfont = true;
+      volnorm = true;
       gapless = true;
       repeat = "track";
       backend = "pulseaudio";
