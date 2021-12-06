@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 
-let rev = "6a4e37a0f66e21be453e392b37d92647a91f2703";
+let rev = "be7d766e202c2c354db10433be01f926c52f4516";
 in
 {
   nixpkgs.overlays = [
@@ -11,14 +11,10 @@ in
           domain = "codeberg.org";
           owner = "dnkl";
           repo = "fuzzel";
-          sha256 = "sha256-o3rDpeH6ZnAcEe9sqA4po7PohdvxwFPvcsWgE9R5csw=";
+          sha256 = "sha256-/KoDyw4hCFz5m6hlGVjpwRLoMphuA9TeWfqPb0JHaRo=";
           inherit rev;
         };
-        patches = (old.patches or [ ]) ++
-          [
-            ./fuzzel-launch-prefix.patch
-            ./fuzzel-crop-match-text-to-selection-box-size.patch
-          ];
+        patches = (old.patches or [ ]) ++ [ ./fuzzel-crop-match-text-to-selection-box-size.patch ];
       });
     })
   ];
