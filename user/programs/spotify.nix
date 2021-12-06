@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       default_keybindings = true;
-      bitrate = 320;
+      bitrate = 96;
       flip_status_indicators = true;
       use_nerdfont = true;
       gapless = true;
