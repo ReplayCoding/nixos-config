@@ -36,6 +36,7 @@ in
           format_mem = "{mem_used;M}/{mem_total;M}({mem_used_percents})";
           clickable = false;
         }
+        { block = "load"; }
         {
           block = "cpu";
           interval = 2;
