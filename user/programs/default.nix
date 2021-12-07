@@ -19,6 +19,7 @@
     ./wob.nix
     ./chromium.nix
     ./mail.nix
+    ./polkit.nix
   ];
   programs = {
     fzf.enable = true;
