@@ -6,7 +6,7 @@
     /* theme.package = pkgs.dracula-theme; */
     /* theme.name = "Dracula"; */
     theme.package = pkgs.gnome.gnome-themes-extra;
-    theme.name = "Adwaita";
+    theme.name = "Adwaita-dark";
     iconTheme.package = pkgs.gnome.gnome-themes-extra;
     iconTheme.name = "Adwaita-dark";
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = \"true\"";
