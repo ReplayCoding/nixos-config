@@ -17,7 +17,6 @@
     ./mpv.nix
     ./spotify.nix
     ./wob.nix
-    ./chromium.nix
     ./mail.nix
     ./polkit.nix
   ];
@@ -28,6 +27,10 @@
     ssh.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-bin.override { forceWayland = true; };
+    };
 
     man = {
       enable = true;
