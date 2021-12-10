@@ -10,6 +10,7 @@ in
     ./fuzzel.nix
     ./fish.nix
     ./bluez.nix
+    ./sway.nix
   ];
   nixpkgs.overlays = [
     nixpkgs-wayland.overlay
