@@ -1,4 +1,4 @@
-_:
+{ config, ... }:
 
 let makeMusicBlock = player: {
   inherit player;
@@ -55,4 +55,5 @@ in
       theme = "slick";
     };
   };
+  xdg.configFile."i3status-rust/config-default.toml".onChange = config.xdg.configFile."sway/config".onChange;
 }
