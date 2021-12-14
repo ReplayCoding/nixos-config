@@ -7,7 +7,7 @@
         configurePhase = oldAttrs.configurePhase + " " + lib.concatStringsSep " " [
           "USE_FALLBACK_IP=y"
         ];
-      })).override { ffmpeg = pkgs.ffmpeg-full; };
+      })).override { ffmpeg = super.ffmpeg-full; };
     })
   ];
 }
