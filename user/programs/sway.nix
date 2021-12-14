@@ -35,7 +35,6 @@
       seat = {
         "*" = {
           xcursor_theme = "Adwaita 24";
-          hide_cursor = "when-typing enable";
         };
       };
       keybindings =
