@@ -14,7 +14,7 @@
       serif = [ "Noto Serif" ];
       sansSerif = [ "Noto Sans" ];
       emoji = [ "Noto Color Emoji" ];
-      monospace = [ "JetBrainsMono Nerd Font Mono" "Noto Sans Mono CJK JP" ];
+      monospace = [ "JetBrains Mono NL" "Noto Sans Mono CJK JP" ];
     };
   };
 }

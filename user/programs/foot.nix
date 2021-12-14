@@ -6,7 +6,7 @@ _:
     server.enable = true;
     settings = {
       main = {
-        font = "monospace:size=7.5, emoji";
+        font = "JetBrainsMono Nerd Font Mono:size=7.5, monospace, emoji";
         dpi-aware = "yes";
       };
       scrollback.lines = 10000;
