@@ -13,7 +13,7 @@ in
     ./sway.nix
   ];
   nixpkgs.overlays = [
-    nixpkgs-wayland.overlay
+    (self: super: (nixpkgs-wayland.overlay self super) // { inherit (super) i3status-rust; })
     (self: super: neovim-nightly-overlay.overlay self (super // { inherit system; }))
     (self: super: {
       aerc = super.pkgs.callPackage ./aerc.nix { };
