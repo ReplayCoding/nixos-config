@@ -15,7 +15,9 @@ in
   nixpkgs.overlays = [
     nixpkgs-wayland.overlay
     (self: super: neovim-nightly-overlay.overlay self (super // { inherit system; }))
-    (self: super: { aerc = super.pkgs.callPackage ./aerc.nix { }; })
-    (self: super: { astronaut = super.pkgs.callPackage ./astronaut.nix { }; })
+    (self: super: {
+      aerc = super.pkgs.callPackage ./aerc.nix { };
+      astronaut = super.pkgs.callPackage ./astronaut.nix { };
+    })
   ];
 }
