@@ -6,7 +6,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.extraModulePackages = lib.mkForce [ ];
+  boot.blacklistedKernelModules = [ "wl" ];
   networking.enableB43Firmware = true;
 
   boot.initrd.luks.devices = {
