@@ -1,12 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
-  programs.sway.enable = true; # without this, swaylock will not work.
-  programs.sway.extraPackages = lib.mkForce [ ];
+  security.pam.services.swaylock = { };
+
   xdg.portal = {
     enable = true;
     gtkUsePortal = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
   };
 }

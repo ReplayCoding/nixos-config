@@ -24,8 +24,11 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
 
-    opengl.driSupport = true;
-    opengl.extraPackages = [ pkgs.vaapiVdpau ];
+    opengl = {
+      enable = true;
+      driSupport = true;
+      extraPackages = [ pkgs.vaapiVdpau ];
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
