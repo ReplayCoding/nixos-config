@@ -4,7 +4,7 @@
   services.greetd = {
     enable = true;
     settings =
-      let cmd = "systemd-cat sway";
+      let cmd = "sway";
       in
       {
         default_session = {
