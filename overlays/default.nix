@@ -13,6 +13,7 @@ in
         (self: super: {
           aerc = super.callPackage ./aerc.nix { };
           astronaut = super.callPackage ./astronaut.nix { };
+          foot = super.callPackage ./foot.nix { inherit (self) foot; };
         })
       ];
     }
