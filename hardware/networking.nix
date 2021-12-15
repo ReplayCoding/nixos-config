@@ -14,4 +14,5 @@
       DHCP = "yes";
     };
   };
+  boot.kernel.sysctl."net.core.default_qdisc" = "fq_pie";
 }
