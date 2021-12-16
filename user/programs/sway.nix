@@ -109,7 +109,7 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.swaylock}/bin/swaylock";
-        Restart = "no"; # Otherwise there maybe a loop
+        Restart = "on-failure";
       };
     };
     swayidle = {
