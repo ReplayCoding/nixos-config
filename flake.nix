@@ -8,7 +8,7 @@
     agenix.url = "github:ryantm/agenix";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixpkgs-wayland.url = "github:ReplayCoding/nixpkgs-wayland/foot-wayland-update";
 
     home-manager = {
       url = "github:nix-community/home-manager";

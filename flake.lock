@@ -175,15 +175,16 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1639319324,
-        "narHash": "sha256-Hw5xRVdLaUNBUGTjIhYc1qxNKpIfZMlHjpAns4/PwwY=",
-        "owner": "nix-community",
+        "lastModified": 1639854052,
+        "narHash": "sha256-BZdlf3u1TsRc808Tytb9WqpA3u4qIcUEW1dSC4Tu4YY=",
+        "owner": "ReplayCoding",
         "repo": "nixpkgs-wayland",
-        "rev": "3716a3aea917103d20330c13cd40b956f8e51078",
+        "rev": "7d106319f26f6b12b550e5191fd154cb210a11cf",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "ReplayCoding",
+        "ref": "foot-wayland-update",
         "repo": "nixpkgs-wayland",
         "type": "github"
       }
