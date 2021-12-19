@@ -5,11 +5,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod.extend (self: super: {
-    zfsUnstable = super.zfsUnstable.overrideAttrs (old: {
-      meta.broken = super.kernel.kernelOlder "3.10";
-    });
-  });
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
   boot.blacklistedKernelModules = [ "wl" ];
   networking.enableB43Firmware = true;
 
