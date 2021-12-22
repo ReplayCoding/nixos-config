@@ -15,6 +15,7 @@ in
     (import ./bluez.nix)
     (import ./sway.nix)
     (import ./optimise-wayland.nix)
+    (import ./optimise-mpv.nix)
 
     (self: super: {
       aerc = super.callPackage ./aerc.nix { };
