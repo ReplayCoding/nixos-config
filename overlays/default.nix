@@ -14,6 +14,7 @@ in
     (import ./fish.nix)
     (import ./bluez.nix)
     (import ./sway.nix)
+    (import ./optimise-wayland.nix)
 
     (self: super: {
       aerc = super.callPackage ./aerc.nix { };
