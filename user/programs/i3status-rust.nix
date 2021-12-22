@@ -28,7 +28,7 @@ in
         (makeMusicBlock "ncspot")
         {
           block = "net";
-          format = "{ip} {ssid} ({signal_strength})";
+          format = "{ip} ({signal_strength})";
           interval = 5;
         }
         {
