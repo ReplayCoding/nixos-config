@@ -1,14 +1,7 @@
 self: super:
 
 let
-  llvmPackages = super.llvmPackages_13.override {
-    bootBintoolsNoLibc = null;
-    bootBintools = null;
-  };
-  stdenv = super.impureUseNativeOptimizations (super.overrideCC llvmPackages.stdenv (llvmPackages.stdenv.cc.override {
-    inherit (llvmPackages) bintools;
-  }));
-  makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
+  inherit (import ./optimise-utils.nix super) stdenv makeStatic;
 
   thinLtoConfFlags = [ "LDFLAGS=-flto=thin" "CFLAGS=-flto=thin" ];
   dav1d = (super.dav1d.override {
