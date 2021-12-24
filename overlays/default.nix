@@ -9,7 +9,6 @@ in
     (self: super: (nixpkgs-wayland.overlay self super) // { inherit (super) i3status-rust; })
     (self: super: neovim-nightly-overlay.overlay self (super // { inherit system; }))
 
-    (import ./cmus.nix)
     (import ./fuzzel.nix)
     (import ./fish.nix)
     (import ./bluez.nix)
