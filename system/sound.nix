@@ -5,6 +5,7 @@
 
   services.pipewire = {
     enable = true;
+    package = pkgs.pipewire-optimised;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;

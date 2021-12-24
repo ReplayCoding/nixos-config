@@ -16,6 +16,7 @@ in
     (import ./sway.nix)
     (import ./optimise-wayland.nix)
     (import ./optimise-mpv.nix)
+    (import ./optimise-pipewire.nix)
 
     (self: super: {
       aerc = super.callPackage ./aerc.nix { };
