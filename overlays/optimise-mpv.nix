@@ -49,6 +49,7 @@ let
   });
   mpv-unwrapped = (super.mpv-unwrapped.override {
     inherit stdenv ffmpeg libass;
+    lua = super.luajit;
   }).overrideAttrs (old: {
     hardeningDisable = [ "all" ];
     wafConfigureFlags = old.wafConfigureFlags ++ thinLtoConfFlags;
