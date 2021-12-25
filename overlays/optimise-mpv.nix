@@ -6,8 +6,17 @@ let
   thinLtoConfFlags = [ "LDFLAGS=-flto=thin" "CFLAGS=-flto=thin" ];
   dav1d = (super.dav1d.override {
     # This cannot be made into a static library, as lld crashes when linking with lto
-    stdenv = stdenv;
-  }).overrideAttrs (old: {
+    inherit stdenv;
+  }).overrideAttrs (old: rec {
+    version = "b430f8ff21c72db72257d08812f09af5a0017448";
+    src = super.fetchFromGitLab {
+      domain = "code.videolan.org";
+      owner = "videolan";
+      repo = old.pname;
+      rev = version;
+      sha256 = "sha256-sIsSCxBkKi29pMGzejptkiVqUvPEdM+D9RwJf0SG/HQ=";
+    };
+
     mesonBuildType = "release";
     mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" ];
     ninjaFlags = [ "--verbose" ];
