@@ -20,6 +20,7 @@
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
       modules =
         [
           ({ lib, ... }: {
@@ -27,7 +28,7 @@
             nix.registry.nixpkgs.flake = nixpkgs;
             nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
           })
-          (import ./overlays inputs)
+          ./overlays
           ./hardware
           ./system
           ./containers
