@@ -6,4 +6,8 @@ _:
     ./networking.nix
     ./power.nix
   ];
+
+  home-manager.users.user = {
+    imports = [ ./user ];
+  };
 }

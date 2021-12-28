@@ -14,7 +14,7 @@
   };
 
   home-manager.extraSpecialArgs = { inherit (config.age) secrets; };
-  home-manager.users.user = { pkgs, ... }: {
+  home-manager.users.user = {
     imports = [
       ./programs
       ./xdg.nix
