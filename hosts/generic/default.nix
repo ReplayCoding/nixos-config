@@ -13,6 +13,7 @@ _:
     ./printing.nix
     ./journal.nix
     ./bluetooth.nix
+    ./opengl.nix
   ];
 
   services.logind.killUserProcesses = true;

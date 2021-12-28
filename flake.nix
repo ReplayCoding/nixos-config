@@ -18,6 +18,7 @@
 
   outputs = { self, nixpkgs, agenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs:
     let
+      specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
       generic = [
         ({ lib, ... }: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
@@ -35,10 +36,17 @@
     in
     {
 
-      nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
-        modules = [ ./hosts/thinkpad ] ++ generic;
+      nixosConfigurations = {
+        librem = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/librem ] ++ generic;
+          inherit specialArgs;
+        };
+        thinkpad = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/thinkpad ] ++ generic;
+          inherit specialArgs;
+        };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let
