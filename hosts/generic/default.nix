@@ -12,6 +12,7 @@ _:
     ./greetd.nix
     ./printing.nix
     ./journal.nix
+    ./bluetooth.nix
   ];
 
   services.logind.killUserProcesses = true;

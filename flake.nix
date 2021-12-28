@@ -16,42 +16,44 @@
     };
   };
 
-  outputs = { self, nixpkgs, agenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs: {
-
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
-      modules =
-        [
-          ({ lib, ... }: {
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            nix.registry.nixpkgs.flake = nixpkgs;
-            nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
-          })
-          ./overlays
-          ./hardware
-          ./system
-          ./containers
-          agenix.nixosModules.age
-          home-manager.nixosModules.home-manager
-          { home-manager.useGlobalPkgs = true; }
-          ./user
-        ];
-    };
-  } // flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs, agenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs:
     let
-      pkgs = nixpkgs.legacyPackages."${system}";
-      pre-commit-check = pre-commit-hooks.lib."${system}".run {
-        src = ./.;
-        hooks = {
-          nixpkgs-fmt.enable = true;
-        };
-      };
+      generic = [
+        ({ lib, ... }: {
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          nix.registry.nixpkgs.flake = nixpkgs;
+          nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
+        })
+        ./overlays
+        ./hosts/generic
+        ./containers
+        agenix.nixosModules.age
+        home-manager.nixosModules.home-manager
+        { home-manager.useGlobalPkgs = true; }
+        ./user
+      ];
     in
     {
-      devShell = pkgs.mkShell {
-        inherit (pre-commit-check) shellHook;
-        packages = with pkgs; [ statix agenix.defaultPackage."${system}" fnlfmt ];
+
+      nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
+        modules = [ ./hosts/thinkpad ] ++ generic;
       };
-    });
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages."${system}";
+        pre-commit-check = pre-commit-hooks.lib."${system}".run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true;
+          };
+        };
+      in
+      {
+        devShell = pkgs.mkShell {
+          inherit (pre-commit-check) shellHook;
+          packages = with pkgs; [ statix agenix.defaultPackage."${system}" fnlfmt ];
+        };
+      });
 }

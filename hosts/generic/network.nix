@@ -2,10 +2,15 @@
 
 {
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    useDHCP = false;
     dhcpcd.enable = false;
     useNetworkd = true;
-    wireless.iwd.enable = true;
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        General.AddressRandomization = "once";
+      };
+    };
 
     nameservers = [
       # "1.1.1.1#cloudflare-dns.com"
@@ -31,4 +36,5 @@
   };
 
   programs.bandwhich.enable = true;
+  boot.kernel.sysctl."net.core.default_qdisc" = "fq_pie";
 }
