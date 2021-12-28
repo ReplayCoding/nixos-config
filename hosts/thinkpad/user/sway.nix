@@ -13,26 +13,4 @@
       };
     };
   };
-
-  systemd.user.services.swayidle = {
-    Unit = {
-      Description = "Idle manager for Wayland";
-      Documentation = "man:swayidle(1)";
-      PartOf = "sway-session.target";
-    };
-    Service = {
-      Type = "simple";
-      ExecStart =
-        let config = pkgs.writeText "swayidle-config" ''
-          lock "${pkgs.systemd}/bin/systemctl start --user swaylock.service"
-        '';
-        in "${pkgs.swayidle}/bin/swayidle -C ${config}";
-      RestartSec = 5;
-      Restart = "always";
-    };
-    Install = {
-      WantedBy = [ "sway-session.target" ];
-    };
-  };
-
 }
