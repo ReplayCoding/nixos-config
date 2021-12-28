@@ -5,5 +5,6 @@ _:
     ./hardware-configuration.nix
     ./networking.nix
     ./kernel.nix
+    ./ssd.nix
   ];
 }
