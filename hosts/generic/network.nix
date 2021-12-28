@@ -37,4 +37,15 @@
 
   programs.bandwhich.enable = true;
   boot.kernel.sysctl."net.core.default_qdisc" = "fq_pie";
+
+  systemd.network.networks = {
+    "generic" = {
+      matchConfig.Name = "*";
+      DHCP = "yes";
+    };
+    "wireless" = {
+      matchConfig.Type = "wlan";
+      DHCP = "yes";
+    };
+  };
 }
