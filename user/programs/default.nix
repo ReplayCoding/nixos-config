@@ -58,6 +58,7 @@
     cmus
     picard
     age
+    multimc
     tdesktop
     element-desktop
     signal-desktop
