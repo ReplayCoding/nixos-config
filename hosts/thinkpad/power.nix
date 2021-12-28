@@ -2,7 +2,11 @@
 
 {
   powerManagement.cpuFreqGovernor = "performance";
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-  '';
+  services.logind = rec {
+    lidSwitch = "lock";
+    lidSwitchDocked = lidSwitch;
+    extraConfig = ''
+      HandlePowerKey=ignore
+    '';
+  };
 }

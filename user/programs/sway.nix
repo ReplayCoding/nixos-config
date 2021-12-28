@@ -92,37 +92,15 @@
     "_JAVA_AWT_WM_NONREPARENTING" = 1;
   };
 
-  systemd.user.services = {
-    swaylock = {
-      Unit = {
-        Description = "Screen locker for Wayland";
-        Documentation = "man:swaylock(1)";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.swaylock}/bin/swaylock";
-        Restart = "on-failure";
-      };
+  systemd.user.services.swaylock = {
+    Unit = {
+      Description = "Screen locker for Wayland";
+      Documentation = "man:swaylock(1)";
     };
-    swayidle = {
-      Unit = {
-        Description = "Idle manager for Wayland";
-        Documentation = "man:swayidle(1)";
-        PartOf = "sway-session.target";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart =
-          let config = pkgs.writeText "swayidle-config" ''
-            lock "${pkgs.systemd}/bin/systemctl start --user swaylock.service"
-          '';
-          in "${pkgs.swayidle}/bin/swayidle -C ${config}";
-        RestartSec = 5;
-        Restart = "always";
-      };
-      Install = {
-        WantedBy = [ "sway-session.target" ];
-      };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.swaylock}/bin/swaylock";
+      Restart = "on-failure";
     };
   };
   home.file.".swaylock/config".text = "color=000000FF";
