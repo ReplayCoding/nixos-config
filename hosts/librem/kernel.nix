@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   boot.loader.grub = {
@@ -7,4 +7,6 @@
     gfxpayloadBios = "keep";
     device = "/dev/nvme0n1";
   };
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
 }
