@@ -8,4 +8,8 @@ _:
     ./ssd.nix
     ./overlays
   ];
+
+  home-manager.users.user = {
+    imports = [ ./user ];
+  };
 }
