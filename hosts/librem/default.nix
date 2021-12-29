@@ -6,5 +6,6 @@ _:
     ./networking.nix
     ./kernel.nix
     ./ssd.nix
+    ./overlays
   ];
 }

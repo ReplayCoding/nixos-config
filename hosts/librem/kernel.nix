@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   boot.loader.grub = {
@@ -8,5 +8,6 @@
     device = "/dev/nvme0n1";
   };
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_librem;
+  boot.extraModulePackages = with config.boot.kernelPackages; [ librem-ec-acpi-dkms ];
 }
