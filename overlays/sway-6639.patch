@@ -1,135 +1,7 @@
-From 630388b2e17d019258afa8e3d4b74a7a482933e6 Mon Sep 17 00:00:00 2001
-From: Ronan Pigott <rpigott@berkeley.edu>
-Date: Sun, 24 Oct 2021 18:49:39 -0700
-Subject: [PATCH 01/12] output: change output::destroy to output::disable
-
-This changes output::destroy to output::disable and emits it only
-once when an output is disabled, instead of twice in succession.
----
- include/sway/output.h      | 2 +-
- sway/desktop/layer_shell.c | 2 +-
- sway/desktop/output.c      | 8 ++++++--
- sway/tree/output.c         | 8 ++------
- 4 files changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/include/sway/output.h b/include/sway/output.h
-index 5dfe0fff91..26b9709f98 100644
---- a/include/sway/output.h
-+++ b/include/sway/output.h
-@@ -48,7 +48,7 @@ struct sway_output {
- 	struct wl_listener damage_frame;
- 
- 	struct {
--		struct wl_signal destroy;
-+		struct wl_signal disable;
- 	} events;
- 
- 	struct timespec last_presentation;
-diff --git a/sway/desktop/layer_shell.c b/sway/desktop/layer_shell.c
-index 7f5a337b32..71563d1ec1 100644
---- a/sway/desktop/layer_shell.c
-+++ b/sway/desktop/layer_shell.c
-@@ -664,7 +664,7 @@ void handle_layer_shell_surface(struct wl_listener *listener, void *data) {
- 
- 	struct sway_output *output = layer_surface->output->data;
- 	sway_layer->output_destroy.notify = handle_output_destroy;
--	wl_signal_add(&output->events.destroy, &sway_layer->output_destroy);
-+	wl_signal_add(&output->events.disable, &sway_layer->output_destroy);
- 
- 	wl_list_insert(&output->layers[layer_surface->pending.layer],
- 			&sway_layer->link);
-diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index edec71ad1d..1bca43925e 100644
---- a/sway/desktop/output.c
-+++ b/sway/desktop/output.c
-@@ -755,18 +755,22 @@ static void update_output_manager_config(struct sway_server *server) {
- static void handle_destroy(struct wl_listener *listener, void *data) {
- 	struct sway_output *output = wl_container_of(listener, output, destroy);
- 	struct sway_server *server = output->server;
--	wl_signal_emit(&output->events.destroy, output);
-+	output_begin_destroy(output);
- 
- 	if (output->enabled) {
- 		output_disable(output);
- 	}
--	output_begin_destroy(output);
-+
-+	wl_list_remove(&output->link);
- 
- 	wl_list_remove(&output->destroy.link);
- 	wl_list_remove(&output->commit.link);
- 	wl_list_remove(&output->mode.link);
- 	wl_list_remove(&output->present.link);
- 
-+	output->wlr_output->data = NULL;
-+	output->wlr_output = NULL;
-+
- 	transaction_commit_dirty();
- 
- 	update_output_manager_config(server);
-diff --git a/sway/tree/output.c b/sway/tree/output.c
-index c095dce06e..9102f3391b 100644
---- a/sway/tree/output.c
-+++ b/sway/tree/output.c
-@@ -95,7 +95,7 @@ struct sway_output *output_create(struct wlr_output *wlr_output) {
- 	output->detected_subpixel = wlr_output->subpixel;
- 	output->scale_filter = SCALE_FILTER_NEAREST;
- 
--	wl_signal_init(&output->events.destroy);
-+	wl_signal_init(&output->events.disable);
- 
- 	wl_list_insert(&root->all_outputs, &output->link);
- 
-@@ -262,7 +262,7 @@ void output_disable(struct sway_output *output) {
- 	}
- 
- 	sway_log(SWAY_DEBUG, "Disabling output '%s'", output->wlr_output->name);
--	wl_signal_emit(&output->events.destroy, output);
-+	wl_signal_emit(&output->events.disable, output);
- 
- 	output_evacuate(output);
- 
-@@ -289,10 +289,6 @@ void output_begin_destroy(struct sway_output *output) {
- 
- 	output->node.destroying = true;
- 	node_set_dirty(&output->node);
--
--	wl_list_remove(&output->link);
--	output->wlr_output->data = NULL;
--	output->wlr_output = NULL;
- }
- 
- struct sway_output *output_from_wlr_output(struct wlr_output *output) {
-
-From bd502402737e5ac9136392f1e65715cefe3a041b Mon Sep 17 00:00:00 2001
-From: Ronan Pigott <rpigott@berkeley.edu>
-Date: Sun, 24 Oct 2021 18:51:16 -0700
-Subject: [PATCH 02/12] output: emit node::destroy event
-
-Now output_begin_destroy emits the node::destroy event similar to
-workspace_begin_destroy. It currently has no listeners, since they
-listen to output::disable or wlr_output::destroy instead.
----
- sway/tree/output.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sway/tree/output.c b/sway/tree/output.c
-index 9102f3391b..6a0963c80a 100644
---- a/sway/tree/output.c
-+++ b/sway/tree/output.c
-@@ -286,6 +286,7 @@ void output_begin_destroy(struct sway_output *output) {
- 		return;
- 	}
- 	sway_log(SWAY_DEBUG, "Destroying output '%s'", output->wlr_output->name);
-+	wl_signal_emit(&output->node.events.destroy, &output->node);
- 
- 	output->node.destroying = true;
- 	node_set_dirty(&output->node);
-
-From d44f9f804407ed62edd6c5361173e146d32b6f5e Mon Sep 17 00:00:00 2001
+From 2f1292c9a45ab5d45fb3e6a0225785ac4e4c93d2 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Sun, 24 Oct 2021 16:18:49 -0700
-Subject: [PATCH 03/12] root: move the workspace matching code to its own file
+Subject: [PATCH 01/10] root: move the workspace matching code to its own file
 
 This removes the pid_workspace bits from tree/root before it gets
 too interesting.
@@ -169,7 +41,7 @@ index 0000000000..cb22eb9809
 +
 +#endif
 diff --git a/include/sway/tree/root.h b/include/sway/tree/root.h
-index e8f4d57385..492e39ca89 100644
+index 5d4a2f2dff..18c59249b9 100644
 --- a/include/sway/tree/root.h
 +++ b/include/sway/tree/root.h
 @@ -68,12 +68,6 @@ void root_scratchpad_show(struct sway_container *con);
@@ -412,7 +284,7 @@ index 0000000000..33eb4be1d7
 +	}
 +}
 diff --git a/sway/meson.build b/sway/meson.build
-index 1402db1542..2a1a1298d5 100644
+index 8eab31a221..348ae1ddbc 100644
 --- a/sway/meson.build
 +++ b/sway/meson.build
 @@ -19,6 +19,7 @@ sway_sources = files(
@@ -424,7 +296,7 @@ index 1402db1542..2a1a1298d5 100644
  	'input/input-manager.c',
  	'input/cursor.c',
 diff --git a/sway/tree/root.c b/sway/tree/root.c
-index dd4d8e33da..bc3d4bfbda 100644
+index 73f3993c08..0b821e5348 100644
 --- a/sway/tree/root.c
 +++ b/sway/tree/root.c
 @@ -183,172 +183,6 @@ void root_scratchpad_hide(struct sway_container *con) {
@@ -619,7 +491,7 @@ index dd4d8e33da..bc3d4bfbda 100644
 -	}
 -}
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index bd53a5c8f4..97205d3643 100644
+index 1318f5fb37..8df2d30fdf 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
 @@ -18,6 +18,7 @@
@@ -631,10 +503,10 @@ index bd53a5c8f4..97205d3643 100644
  #include "sway/ipc-server.h"
  #include "sway/output.h"
 
-From d6bdd96e516572789a89b34df91ad598e9adbf42 Mon Sep 17 00:00:00 2001
+From 5db755bf9f0d840151f534eed8a3170506c3454f Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 03:58:15 -0700
-Subject: [PATCH 04/12] node: prettify node type names
+Subject: [PATCH 02/10] node: prettify node type names
 
 ---
  sway/tree/node.c | 8 ++++----
@@ -663,10 +535,10 @@ index bc7e2aa59c..12361c75b4 100644
  	return "";
  }
 
-From 18268a02dcfee80789e03d28a1d82d896e4dafac Mon Sep 17 00:00:00 2001
+From 28f71d828562fca3ee8d333e950bd1d105f79e2b Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 18:12:30 -0700
-Subject: [PATCH 05/12] launcher: track workspaces by node
+Subject: [PATCH 03/10] launcher: track workspaces by node
 
 This removes the need to rename the pid_workspaces when a workspace
 is renamed.
@@ -912,10 +784,10 @@ index 33eb4be1d7..8dabc06158 100644
 -	}
 -}
 
-From 5078fa18d3a7785f6abcecf4a979b29a731d6ea3 Mon Sep 17 00:00:00 2001
+From df149a6369611b6ff26c4288d6408579de66c268 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 22:55:44 -0700
-Subject: [PATCH 06/12] launcher: use xdga tokens
+Subject: [PATCH 04/10] launcher: use xdga tokens
 
 This reuses wlroots token tracking for workspace matching. It doesn't
 export any xdga tokens for clients yet.
@@ -1004,10 +876,10 @@ index 8dabc06158..08ded1b71f 100644
  }
  
 
-From ee5cd95bfcf236e800f8af2885916a77ac75d49c Mon Sep 17 00:00:00 2001
+From efff6e9ad634d7745f3452ead2bbe9cd25534ca6 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:20:41 -0700
-Subject: [PATCH 07/12] launcher: rename pid_workspace to launcher_ctx
+Subject: [PATCH 05/10] launcher: rename pid_workspace to launcher_ctx
 
 Soon we will match views with more than just a pid.
 ---
@@ -1319,7 +1191,7 @@ index 08ded1b71f..c8b8877556 100644
 +	launcher_ctx_destroy(ctx);
  }
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index 97205d3643..fbdcd9546a 100644
+index 8df2d30fdf..e95bc0261d 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
 @@ -568,12 +568,12 @@ static struct sway_workspace *select_workspace(struct sway_view *view) {
@@ -1338,10 +1210,10 @@ index 97205d3643..fbdcd9546a 100644
  		return ws;
  	}
 
-From 1673e27c91d20fa9b533711e0d910e59b6b21c93 Mon Sep 17 00:00:00 2001
+From d65da21cc22c9cc854b9e00330da3ad89d205d71 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:29:20 -0700
-Subject: [PATCH 08/12] view: associate launch contexts with views
+Subject: [PATCH 06/10] view: associate launch contexts with views
 
 Views now maintain a reference to a launch context which, as a last
 resort, is populated at map time with a context associated with its pid.
@@ -1490,7 +1362,7 @@ index c8b8877556..8f59808dda 100644
 +	return token;
  }
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index fbdcd9546a..1840180093 100644
+index e95bc0261d..b7bbe7387d 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
 @@ -63,6 +63,8 @@ void view_destroy(struct sway_view *view) {
@@ -1561,10 +1433,10 @@ index fbdcd9546a..1840180093 100644
  	// to honor that request. Otherwise, fallback to assigns, pid mappings,
  	// focused workspace, etc
 
-From b28af4c52c8e9bc8aea57d690f5eb44910d6565d Mon Sep 17 00:00:00 2001
+From b764a53a093ffaa6582368e4cd7749a7d7da366f Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:34:42 -0700
-Subject: [PATCH 09/12] launcher: initialize launcher_ctxs once on startup
+Subject: [PATCH 07/10] launcher: initialize launcher_ctxs once on startup
 
 ---
  include/sway/desktop/launcher.h |  2 +-
@@ -1587,10 +1459,10 @@ index c64c895188..39084d3082 100644
  
  #endif
 diff --git a/include/sway/server.h b/include/sway/server.h
-index f99bbda679..fa5a1a54d0 100644
+index 0bd860b24c..9484875d31 100644
 --- a/include/sway/server.h
 +++ b/include/sway/server.h
-@@ -94,6 +94,8 @@ struct sway_server {
+@@ -98,6 +98,8 @@ struct sway_server {
  	struct wlr_xdg_activation_v1 *xdg_activation_v1;
  	struct wl_listener xdg_activation_v1_request_activate;
  
@@ -1686,10 +1558,10 @@ index 8f59808dda..ed4e0e6088 100644
  
  const char *launcher_ctx_get_name(struct launcher_ctx *ctx) {
 diff --git a/sway/server.c b/sway/server.c
-index b187fcd528..073d739031 100644
+index f50a0987de..9312b6c5a7 100644
 --- a/sway/server.c
 +++ b/sway/server.c
-@@ -190,6 +190,8 @@ bool server_init(struct sway_server *server) {
+@@ -208,6 +208,8 @@ bool server_init(struct sway_server *server) {
  	wl_signal_add(&server->xdg_activation_v1->events.request_activate,
  		&server->xdg_activation_v1_request_activate);
  
@@ -1699,10 +1571,10 @@ index b187fcd528..073d739031 100644
  	char name_candidate[16];
  	for (int i = 1; i <= 32; ++i) {
 
-From 3114a6ded9ce0df3d59066adae459f150386a874 Mon Sep 17 00:00:00 2001
+From d9da0d03b47bd9af5183571e1c4e52770e132fbb Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Tue, 26 Oct 2021 16:38:31 -0700
-Subject: [PATCH 10/12] launcher: fudge the interface a bit
+Subject: [PATCH 08/10] launcher: fudge the interface a bit
 
 We want to create a context before knowing the pid it will match with.
 ---
@@ -1779,10 +1651,10 @@ index ed4e0e6088..0835f1dfc5 100644
  	ctx->node_destroy.notify = ctx_handle_node_destroy;
  	wl_signal_add(&ctx->node->events.destroy, &ctx->node_destroy);
 
-From 07f39235c53bfaba178246484efaac93f799f1c2 Mon Sep 17 00:00:00 2001
+From dc030a8864f5e3a6d11b014cf189360772cfa3f3 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 23:02:34 -0700
-Subject: [PATCH 11/12] launcher: export xdga tokens and use them for workspace
+Subject: [PATCH 09/10] launcher: export xdga tokens and use them for workspace
  matching
 
 ---
@@ -1842,10 +1714,10 @@ index 6c70c78596..e1776e7dbc 100644
  	}
  
 
-From 7ae1a6a81479fda7f67a17adc820a7c3c5927a43 Mon Sep 17 00:00:00 2001
+From f0caebdf0d3bedf219ec10a237dcfd84bbd01eca Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Fri, 29 Oct 2021 15:56:47 -0700
-Subject: [PATCH 12/12] launcher: export X startup ids and use them for
+Subject: [PATCH 10/10] launcher: export X startup ids and use them for
  workspace matching
 
 ---
