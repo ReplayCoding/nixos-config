@@ -2,7 +2,7 @@
 
 {
   services.journald.extraConfig = ''
-    MaxRetentionSec=2d
+    MaxRetentionSec=1w
     SystemMaxFileSize=20M
   '';
 }
