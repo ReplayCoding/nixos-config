@@ -5,7 +5,7 @@
     enable = true;
     version = 2;
     gfxpayloadBios = "keep";
-    device = "/dev/nvme0n1";
+    device = "/dev/disk/by-id/nvme-eui.0025385711903f71";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_librem;
