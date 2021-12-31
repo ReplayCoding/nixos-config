@@ -48,6 +48,7 @@ in
         }
         {
           block = "battery";
+          driver = "upower";
           format = "{percentage} {time}";
         }
       ];
