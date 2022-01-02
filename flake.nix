@@ -48,6 +48,10 @@
           inherit specialArgs;
         };
       };
+
+      templates = {
+        "meson".path = ./templates/meson;
+      };
     } // flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages."${system}";
