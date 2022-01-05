@@ -8,5 +8,6 @@ _:
     ./misc.nix
     ./fish.nix
     ./documentation.nix
+    ./syncthing.nix
   ];
 }
