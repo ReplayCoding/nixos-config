@@ -8,13 +8,13 @@ let
     # This cannot be made into a static library, as lld crashes when linking with lto
     inherit stdenv;
   }).overrideAttrs (old: rec {
-    version = "b430f8ff21c72db72257d08812f09af5a0017448";
+    version = "633c63ed51b54a14c0fc547255b97f0e657e054d";
     src = super.fetchFromGitLab {
       domain = "code.videolan.org";
       owner = "videolan";
       repo = old.pname;
       rev = version;
-      sha256 = "sha256-sIsSCxBkKi29pMGzejptkiVqUvPEdM+D9RwJf0SG/HQ=";
+      sha256 = "sha256-P4bxFLWHvbNyyeR53j1FNohSU0ZgTRC1BxPQbCqaPeM=";
     };
 
     mesonBuildType = "release";
