@@ -14,7 +14,6 @@
     (import ./optimise-pipewire.nix)
 
     (self: super: {
-      aerc = super.callPackage ./aerc.nix { };
       astronaut = super.callPackage ./astronaut.nix { };
     })
   ];
