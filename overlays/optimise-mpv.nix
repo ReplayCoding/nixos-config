@@ -50,7 +50,15 @@ let
   mpv-unwrapped = (super.mpv-unwrapped.override {
     inherit stdenv ffmpeg libass;
     lua = super.luajit;
-  }).overrideAttrs (old: {
+  }).overrideAttrs (old: rec {
+    version = "57bc5ba6d6579d5f1e6897f6915a3a940b84bb73";
+    src = super.fetchFromGitHub {
+      owner = "mpv-player";
+      repo = "mpv";
+      rev = "${version}";
+      sha256 = "sha256-Zp5YsZsjRgF5QuwhxpFc6p/1veYVL6EVBkmWvxQNKGY=";
+    };
+
     hardeningDisable = [ "all" ];
     wafConfigureFlags = old.wafConfigureFlags ++ thinLtoConfFlags;
   });

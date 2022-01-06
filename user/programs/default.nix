@@ -54,7 +54,7 @@
     libreoffice
     restic
     yt-dlp
-    jellyfin-mpv-shim
+    jellyfin-media-player
     cmus
     picard
     age
