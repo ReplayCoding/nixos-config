@@ -13,6 +13,7 @@ let
     "fuzzel"
     "wlroots"
     "foot"
+    "cage"
   ];
 in
 super.lib.genAttrs pkgsToOptimise (name:
