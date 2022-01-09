@@ -5,6 +5,7 @@
     enable = true;
     version = 2;
     gfxpayloadBios = "keep";
+    gfxmodeBios = "1280x720";
     device = "/dev/disk/by-id/nvme-eui.0025385711903f71";
   };
 
