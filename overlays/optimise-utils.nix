@@ -5,7 +5,7 @@ let
     bootBintoolsNoLibc = null;
     bootBintools = null;
   };
-  stdenv = super.impureUseNativeOptimizations (super.overrideCC llvmPackages.stdenv (llvmPackages.stdenv.cc.override {
+  stdenv = (super.overrideCC llvmPackages.stdenv (llvmPackages.stdenv.cc.override {
     inherit (llvmPackages) bintools;
   }));
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
