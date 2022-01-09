@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ nixConfig, config, pkgs, lib, ... }:
 {
   nixpkgs.config = {
     allowUnfree = true;
@@ -8,16 +8,15 @@
   nix = {
     package = pkgs.nixUnstable;
     autoOptimiseStore = true;
-    binaryCaches = [ "https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org" ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-    ];
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-    '';
+    extraOptions =
+      builtins.concatStringsSep "\n"
+        (lib.mapAttrsToList (name: value: "${name} = ${builtins.toString value}") nixConfig)
+      + "\n" +
+      ''
+        accept-flake-config = true
+        keep-outputs = true
+        keep-derivations = true
+      '';
   };
 
   # This value determines the NixOS release from which the default

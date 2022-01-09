@@ -1,5 +1,14 @@
-{
+rec {
   description = "NixOS configuration flake";
+
+  nixConfig = {
+    extra-substituters = [ "https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+    ];
+    experimental-features = "nix-command flakes";
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
@@ -18,7 +27,10 @@
 
   outputs = { self, nixpkgs, ragenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs:
     let
-      specialArgs = { inherit (inputs) neovim-nightly-overlay nixpkgs-wayland; };
+      specialArgs = {
+        inherit (inputs) neovim-nightly-overlay nixpkgs-wayland;
+        inherit nixConfig;
+      };
       generic = [
         ({ lib, ... }: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
