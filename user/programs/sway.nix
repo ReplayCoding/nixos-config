@@ -52,8 +52,8 @@
           "XF86AudioMute" = "exec ${pamixer}/bin/pamixer --toggle-mute && " +
             "${pamixer}/bin/pamixer --get-mute && echo 0 > ${wobSock} || ${pamixer}/bin/pamixer --get-volume > ${wobSock}";
 
-          "XF86MonBrightnessDown" = "exec ${brightnessctl}/bin/brightnessctl set -e3 5%- | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
-          "XF86MonBrightnessUp" = "exec ${brightnessctl}/bin/brightnessctl set -e3 +5% | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
+          "XF86MonBrightnessDown" = "exec ${brightnessctl}/bin/brightnessctl set -e2 5%- | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
+          "XF86MonBrightnessUp" = "exec ${brightnessctl}/bin/brightnessctl set -e2 +5% | ${gnused}/bin/sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > ${wobSock}";
 
           "XF86AudioPlay" = "exec ${playerctl}/bin/playerctl play-pause";
           "XF86AudioNext" = "exec ${playerctl}/bin/playerctl next";
