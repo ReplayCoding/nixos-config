@@ -1,0 +1,13 @@
+[fuzzel]
+  src.git = "https://codeberg.org/dnkl/fuzzel"
+  fetch.git = "https://codeberg.org/dnkl/fuzzel"
+
+[dav1d]
+  src.git = "https://code.videolan.org/videolan/dav1d"
+  fetch.git = "https://code.videolan.org/videolan/dav1d"
+[libplacebo]
+  src.git = "https://code.videolan.org/videolan/libplacebo/"
+  fetch.git = "https://code.videolan.org/videolan/libplacebo/"
+[mpv]
+  src.git = "https://github.com/mpv-player/mpv"
+  fetch.github = "mpv-player/mpv"

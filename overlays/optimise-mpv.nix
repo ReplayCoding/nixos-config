@@ -2,7 +2,7 @@ self: super:
 
 let
   inherit (import ./optimise-utils.nix super) stdenv makeStatic;
-
+  sources = super.callPackage ./_sources/generated.nix { };
 
   thinLtoConfFlags = [ "LDFLAGS=-flto=thin" "CFLAGS=-flto=thin" ];
 
@@ -10,14 +10,7 @@ let
     # This cannot be made into a static library, as lld crashes when linking with lto
     inherit stdenv;
   }).overrideAttrs (old: rec {
-    version = "633c63ed51b54a14c0fc547255b97f0e657e054d";
-    src = super.fetchFromGitLab {
-      domain = "code.videolan.org";
-      owner = "videolan";
-      repo = old.pname;
-      rev = version;
-      sha256 = "sha256-P4bxFLWHvbNyyeR53j1FNohSU0ZgTRC1BxPQbCqaPeM=";
-    };
+    inherit (sources.dav1d) src version;
 
     mesonBuildType = "release";
     mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" ];
@@ -55,14 +48,7 @@ let
   libplacebo = (super.libplacebo.override {
     stdenv = makeStatic stdenv;
   }).overrideAttrs (old: rec {
-    version = "b26044055920ede23884b5bb2be0d97ea4d4bf9d";
-    src = super.fetchFromGitLab {
-      domain = "code.videolan.org";
-      owner = "videolan";
-      repo = old.pname;
-      rev = version;
-      sha256 = "sha256-FBDS+J9Rgj3EydPtwtTWaHCSNaQDJCiljSD+cyGl/qk=";
-    };
+    inherit (sources.libplacebo) src version;
 
     mesonBuildType = "release";
     mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" "-Db_lto_mode=thin" "-Dunwind=disabled" ];
@@ -73,17 +59,10 @@ let
     inherit stdenv ffmpeg libass libplacebo;
     lua = super.luajit;
   }).overrideAttrs (old: rec {
-    version = "57bc5ba6d6579d5f1e6897f6915a3a940b84bb73";
-    src = super.fetchFromGitHub {
-      owner = "mpv-player";
-      repo = "mpv";
-      rev = "${version}";
-      sha256 = "sha256-Zp5YsZsjRgF5QuwhxpFc6p/1veYVL6EVBkmWvxQNKGY=";
-    };
+    inherit (sources.mpv) src version;
 
     hardeningDisable = [ "all" ];
     wafConfigureFlags = old.wafConfigureFlags ++ thinLtoConfFlags;
   });
-
 in
 { inherit mpv-unwrapped; }

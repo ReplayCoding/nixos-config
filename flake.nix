@@ -77,7 +77,7 @@ rec {
       {
         devShell = pkgs.mkShell {
           inherit (pre-commit-check) shellHook;
-          packages = with pkgs; [ statix ragenix.defaultPackage."${system}" fnlfmt ];
+          packages = with pkgs; [ statix ragenix.defaultPackage."${system}" fnlfmt nvfetcher ];
         };
       });
 }
