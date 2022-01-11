@@ -7,7 +7,6 @@ _:
     ./kernel.nix
     ./ssd.nix
     ./power.nix
-    ./overlays
   ];
 
   home-manager.users.user = {

@@ -9,6 +9,7 @@
     (import ./fish.nix)
     (import ./bluez.nix)
     (import ./sway.nix)
+    (import ./kernel.nix)
     (import ./optimise-wayland.nix)
     (import ./optimise-mpv.nix)
     (import ./optimise-pipewire.nix)
