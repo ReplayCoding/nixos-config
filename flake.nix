@@ -27,17 +27,14 @@ rec {
 
   outputs = { self, nixpkgs, ragenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, flake-utils, pre-commit-hooks }@inputs:
     let
-      specialArgs = {
-        inherit (inputs) neovim-nightly-overlay nixpkgs-wayland;
-        inherit nixConfig;
-      };
+      specialArgs = { inherit nixConfig; };
       generic = [
         ({ lib, ... }: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
           nix.registry.nixpkgs.flake = nixpkgs;
           nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
+          nixpkgs.overlays = [ self.overlay ];
         })
-        ./overlays
         ./hosts/generic
         ./containers
         ragenix.nixosModules.age
@@ -60,6 +57,8 @@ rec {
           inherit specialArgs;
         };
       };
+
+      overlay = nixpkgs.lib.composeManyExtensions (import ./overlays inputs);
 
       templates = {
         "meson".path = ./templates/meson;
