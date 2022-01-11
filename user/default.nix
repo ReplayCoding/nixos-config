@@ -21,6 +21,7 @@
       ./theme.nix
     ];
 
+    systemd.user.startServices = "sd-switch";
     home.stateVersion = config.system.stateVersion;
   };
 }
