@@ -20,6 +20,7 @@
     ./mail.nix
     ./polkit.nix
     ./wlsunset.nix
+    ./cmus.nix
   ];
   programs = {
     fzf.enable = true;
@@ -55,7 +56,6 @@
     restic
     yt-dlp
     jellyfin-media-player
-    cmus
     picard
     age
     multimc
