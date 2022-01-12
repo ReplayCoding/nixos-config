@@ -6,5 +6,6 @@ in
 {
   fuzzel = super.fuzzel.overrideAttrs (old: {
     inherit (sources.fuzzel) src version;
+    patches = (old.patches or [ ]) ++ [ ./fuzzel-83.patch ];
   });
 }
