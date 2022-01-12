@@ -15,26 +15,26 @@
   };
   fuzzel = {
     pname = "fuzzel";
-    version = "e5a1367efb86c4132e1fff7acd14b1dea53b74dd";
+    version = "917c78501c9c139e40001eff4a5bf2f7939ddf89";
     src = fetchgit {
       url = "https://codeberg.org/dnkl/fuzzel";
-      rev = "e5a1367efb86c4132e1fff7acd14b1dea53b74dd";
+      rev = "917c78501c9c139e40001eff4a5bf2f7939ddf89";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "1wnbppxwl22sxamrd1x5ayzrkv1yi9pn6b4z57s08lznf5a7xibv";
+      sha256 = "0avfcmkl4514kisyanxs1kd9mnfr8zpfx2wbs8p8pxx6nrp91zgc";
     };
   };
   libplacebo = {
     pname = "libplacebo";
-    version = "784de11b119035ff244eb3f101dd80336d8dd3fd";
+    version = "164fc6ddde9231add4d654fd7837b0e7c3c7263c";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/libplacebo/";
-      rev = "784de11b119035ff244eb3f101dd80336d8dd3fd";
+      rev = "164fc6ddde9231add4d654fd7837b0e7c3c7263c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "0m6xknx5gz3nsnld198ynzl6xrkzn3ibb39qfb98a5q7qdxg5g4l";
+      sha256 = "03pib3qwg4amfbkq9fcv05r2qb5l3qrp4jy5sgz3iqc7gfqhdln2";
     };
   };
   mpv = {
