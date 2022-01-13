@@ -14,6 +14,7 @@ _:
     ./journal.nix
     ./bluetooth.nix
     ./opengl.nix
+    ./firmware.nix
   ];
 
   services.logind.killUserProcesses = true;
