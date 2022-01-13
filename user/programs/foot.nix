@@ -17,4 +17,7 @@ _:
       };
     };
   };
+  systemd.user.services.foot = {
+    Unit.X-RestartIfChanged = false;
+  };
 }
