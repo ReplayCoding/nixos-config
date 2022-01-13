@@ -1,7 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  programs.mako.enable = true;
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+  };
   systemd.user.services.mako = {
     Unit = {
       Description = "Notification daemon for Wayland";
