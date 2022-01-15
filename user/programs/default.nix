@@ -21,6 +21,7 @@
     ./polkit.nix
     ./wlsunset.nix
     ./cmus.nix
+    ./kdeconnect.nix
   ];
   programs = {
     fzf.enable = true;

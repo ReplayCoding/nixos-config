@@ -2,7 +2,7 @@
 {
   nixpkgs.config = {
     allowUnfree = true;
-    allowAliases = false;
+    # allowAliases = false;
   };
 
   nix = {
