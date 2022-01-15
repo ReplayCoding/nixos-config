@@ -1,7 +1,7 @@
 { nix-colors, config, pkgs, ... }:
 
 {
-  colorscheme = nix-colors.colorSchemes.solarized-dark;
+  colorscheme = nix-colors.colorSchemes.nord;
 
   gtk =
     let
