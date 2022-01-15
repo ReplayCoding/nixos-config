@@ -1,9 +1,16 @@
 { config, pkgs, lib, ... }:
 
+let
+  colors = config.colorscheme.colors;
+in
 {
   programs.mako = {
     enable = true;
     defaultTimeout = 5000;
+    backgroundColor = "#${colors.base00}";
+    textColor = "#${colors.base05}";
+    borderColor = "#${colors.base01}";
+    borderRadius = 3;
   };
   systemd.user.services.mako = {
     Unit = {

@@ -186,6 +186,21 @@
         "type": "github"
       }
     },
+    "nix-colors": {
+      "locked": {
+        "lastModified": 1641508823,
+        "narHash": "sha256-GmYZoYfu3iCjwwd9dqISlLkAsPE0/etea7fGLON9YBQ=",
+        "owner": "Misterio77",
+        "repo": "nix-colors",
+        "rev": "9b9e3ef54e1963a6174fb466bbaf37d4a87568d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Misterio77",
+        "repo": "nix-colors",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1641887635,
@@ -373,6 +388,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "pre-commit-hooks": "pre-commit-hooks",

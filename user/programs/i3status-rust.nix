@@ -57,7 +57,25 @@ in
         }
       ];
       icons = "awesome5";
-      theme = "slick";
+      settings.theme =
+        let
+          inherit (config.colorscheme) colors;
+        in
+        {
+          name = "slick";
+          overrides = {
+            idle_bg = "#${colors.base00}";
+            idle_fg = "#${colors.base05}";
+            info_bg = "#${colors.base0C}";
+            info_fg = "#${colors.base00}";
+            good_bg = "#${colors.base0B}";
+            good_fg = "#${colors.base00}";
+            warning_bg = "#${colors.base0A}";
+            warning_fg = "#${colors.base00}";
+            critical_bg = "#${colors.base08}";
+            critical_fg = "#${colors.base00}";
+          };
+        };
     };
   };
   xdg.configFile."i3status-rust/config-default.toml".onChange = config.xdg.configFile."sway/config".onChange;

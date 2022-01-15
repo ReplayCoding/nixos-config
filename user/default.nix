@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib, ... }:
 
 {
   imports = [
@@ -13,12 +13,17 @@
     extraGroups = [ "wheel" "video" "audio" ];
   };
 
-  home-manager.extraSpecialArgs = { inherit (config.age) secrets; };
+  home-manager.extraSpecialArgs = {
+    inherit (config.age) secrets;
+    inherit (inputs) nix-colors;
+  };
   home-manager.users.user = {
     imports = [
       ./programs
       ./xdg.nix
+
       ./theme.nix
+      inputs.nix-colors.homeManagerModule
     ];
 
     systemd.user.startServices = "sd-switch";
