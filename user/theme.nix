@@ -1,23 +1,23 @@
 { nix-colors, config, pkgs, ... }:
 
+let
+  nix-colors-lib = nix-colors.lib { inherit pkgs; };
+  inherit (nix-colors-lib) gtkThemeFromScheme;
+in
 {
   colorscheme = nix-colors.colorSchemes.catppuccin;
 
   gtk =
     let
       isDark = config.colorscheme.kind == "dark";
-      themeName =
-        if isDark
-        then "Adwaita-dark"
-        else "Adwaita";
+      themePackage = gtkThemeFromScheme { scheme = config.colorscheme; };
+      themeName = config.colorscheme.slug;
     in
     {
       enable = true;
-      /* theme.package = pkgs.dracula-theme; */
-      /* theme.name = "Dracula"; */
-      theme.package = pkgs.gnome.gnome-themes-extra;
+      theme.package = themePackage;
       theme.name = themeName;
-      iconTheme.package = pkgs.gnome.gnome-themes-extra;
+      iconTheme.package = themePackage;
       iconTheme.name = themeName;
       gtk2.extraConfig = "gtk-application-prefer-dark-theme = \"${if isDark then "true" else "false"}\"";
       gtk3.extraConfig = { gtk-application-prefer-dark-theme = isDark; };
