@@ -1,7 +1,7 @@
 { nix-colors, config, pkgs, ... }:
 
 {
-  colorscheme = nix-colors.colorSchemes.nord;
+  colorscheme = nix-colors.colorSchemes.catppuccin;
 
   gtk =
     let
