@@ -67,6 +67,7 @@
     btop
     aerc
     amfora
+    glow
     python39Packages.deemix
     /* sway */
     wl-clipboard
