@@ -10,7 +10,7 @@
     ./starship.nix
     ./rtorrent.nix
     ./i3status-rust.nix
-    ./evince.nix
+    ./zathura.nix
     ./sway.nix
     ./irssi.nix
     ./mako.nix
