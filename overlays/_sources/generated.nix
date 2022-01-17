@@ -3,50 +3,50 @@
 {
   dav1d = {
     pname = "dav1d";
-    version = "0a596b6fa1a030d7d35503fa0560bd5516f0ff4c";
+    version = "19326c40ca88f84016fc3638645221553367f449";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/dav1d";
-      rev = "0a596b6fa1a030d7d35503fa0560bd5516f0ff4c";
+      rev = "19326c40ca88f84016fc3638645221553367f449";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "1z5mn65f9r7qskz9ay4vq08sb0b7m9aqns03nx6jl8hqha0kx57s";
+      sha256 = "064mlzda0jv6v3d5vjf2c6qmv2ybgywkaz8msf9x6kfpxkm4lzym";
     };
   };
   fuzzel = {
     pname = "fuzzel";
-    version = "917c78501c9c139e40001eff4a5bf2f7939ddf89";
+    version = "b1a3cf99cc3613b1e987cebd034e6de46ca2d75f";
     src = fetchgit {
       url = "https://codeberg.org/dnkl/fuzzel";
-      rev = "917c78501c9c139e40001eff4a5bf2f7939ddf89";
+      rev = "b1a3cf99cc3613b1e987cebd034e6de46ca2d75f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "0avfcmkl4514kisyanxs1kd9mnfr8zpfx2wbs8p8pxx6nrp91zgc";
+      sha256 = "1rclyk69x2m0vhrwwin7c7c5cl02w4p82pxpgg6xw98nrkkmvhnv";
     };
   };
   libplacebo = {
     pname = "libplacebo";
-    version = "164fc6ddde9231add4d654fd7837b0e7c3c7263c";
+    version = "b1ee3cc9607c6ab6142f67b24029e54193ff979c";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/libplacebo/";
-      rev = "164fc6ddde9231add4d654fd7837b0e7c3c7263c";
+      rev = "b1ee3cc9607c6ab6142f67b24029e54193ff979c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "03pib3qwg4amfbkq9fcv05r2qb5l3qrp4jy5sgz3iqc7gfqhdln2";
+      sha256 = "0lipy00njvi6vmwjp5qf15hmwbnm3zp5vwjska8jy61mzcsqi8mm";
     };
   };
   mpv = {
     pname = "mpv";
-    version = "eca78ee9259bd477e6a8073165e3ebe22bc4423e";
+    version = "1ba0547bfbe08b6b0a84760730d4ddaeea9f1d0d";
     src = fetchgit {
       url = "https://github.com/mpv-player/mpv";
-      rev = "eca78ee9259bd477e6a8073165e3ebe22bc4423e";
+      rev = "1ba0547bfbe08b6b0a84760730d4ddaeea9f1d0d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "1rfx5q09kyrcx3gzc3bswk3yl9rakzmcd6qm27f63ir8fi8y456b";
+      sha256 = "1dkdw26v8swynqgd045vaimkcsyb3aiq9k8fncr4z78knrilqj4l";
     };
   };
 }
