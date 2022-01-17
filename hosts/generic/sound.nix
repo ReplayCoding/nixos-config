@@ -13,4 +13,7 @@
     media-session.enable = false;
     wireplumber.enable = true;
   };
+
+  # Useful to change audio output
+  environment.systemPackages = with pkgs; [ pulseaudio ];
 }
