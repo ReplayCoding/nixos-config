@@ -59,7 +59,7 @@
     jellyfin-media-player
     picard
     age
-    multimc
+    polymc
     tdesktop
     element-desktop
     signal-desktop
