@@ -32,7 +32,7 @@
     bat.enable = true;
     firefox = {
       enable = true;
-      package = pkgs.firefox.override { forceWayland = true; };
+      package = pkgs.firefox-bin.override { forceWayland = true; };
     };
 
     man = {
