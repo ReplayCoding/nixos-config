@@ -1,8 +1,9 @@
-{ neovim-nightly-overlay, nixpkgs-wayland, ... }:
+{ neovim-nightly-overlay, nixpkgs-wayland, polymc, ... }:
 
 [
   (self: super: (nixpkgs-wayland.overlay self super) // { inherit (super) i3status-rust; })
   (self: super: neovim-nightly-overlay.overlay self (super // { inherit (super.stdenv.buildPlatform) system; }))
+  polymc.overlay
 
   (import ./fuzzel.nix)
   (import ./fish.nix)

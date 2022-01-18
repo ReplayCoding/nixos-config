@@ -19,6 +19,7 @@ rec {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-colors.url = "github:Misterio77/nix-colors";
+    polymc.url = "github:PolyMC/PolyMC";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,7 +27,7 @@ rec {
     };
   };
 
-  outputs = { self, nixpkgs, ragenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, nix-colors, flake-utils, pre-commit-hooks }@inputs:
+  outputs = { self, nixpkgs, ragenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, nix-colors, polymc, flake-utils, pre-commit-hooks }@inputs:
     let
       specialArgs = { inherit nixConfig inputs; };
       generic = [
