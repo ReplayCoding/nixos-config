@@ -14,4 +14,5 @@
   (import ./optimise-wayland.nix)
   (import ./optimise-mpv.nix)
   (import ./optimise-pipewire.nix)
+  (import ./optimise-libarchive.nix)
 ]

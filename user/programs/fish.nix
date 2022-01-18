@@ -3,7 +3,10 @@ _:
 {
   programs.fish = {
     enable = true;
-    shellAliases.cat = "bat";
+    shellAliases = {
+      cat = "bat";
+      tar = "bsdtar";
+    };
     interactiveShellInit = ''
       set -g fish_greeting
     '';
