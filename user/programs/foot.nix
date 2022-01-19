@@ -20,4 +20,17 @@ _:
   systemd.user.services.foot = {
     Unit.X-RestartIfChanged = false;
   };
+
+  xdg.desktopEntries = {
+    "footclient" = {
+      exec = "";
+      name = "Foot Client";
+      settings.NoDisplay = "true";
+    };
+    "foot-server" = {
+      exec = "";
+      name = "Foot Server";
+      settings.NoDisplay = "true";
+    };
+  };
 }
