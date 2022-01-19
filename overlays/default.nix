@@ -11,6 +11,7 @@
   (import ./sway.nix)
   (import ./kernel.nix)
 
+  (import ./optimise-mesa.nix)
   (import ./optimise-wayland.nix)
   (import ./optimise-mpv.nix)
   (import ./optimise-pipewire.nix)

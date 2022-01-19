@@ -10,4 +10,4 @@ let
   }));
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
 in
-{ inherit stdenv makeStatic; }
+{ inherit stdenv llvmPackages makeStatic; }
