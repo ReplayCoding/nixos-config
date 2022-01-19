@@ -5,8 +5,6 @@ let
   inherit (nix-colors-lib) gtkThemeFromScheme;
 in
 {
-  colorscheme = nix-colors.colorSchemes.catppuccin;
-
   gtk =
     let
       isDark = config.colorscheme.kind == "dark";
@@ -22,8 +20,4 @@ in
       gtk2.extraConfig = "gtk-application-prefer-dark-theme = \"${if isDark then "true" else "false"}\"";
       gtk3.extraConfig = { gtk-application-prefer-dark-theme = isDark; };
     };
-
-  xsession.pointerCursor.package = pkgs.gnome.gnome-themes-extra;
-  xsession.pointerCursor.name = "Adwaita";
-  xsession.pointerCursor.size = 24;
 }

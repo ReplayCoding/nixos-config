@@ -17,16 +17,17 @@
     inherit (config.age) secrets;
     inherit (inputs) nix-colors;
   };
-  home-manager.users.user = {
-    imports = [
-      ./programs
-      ./xdg.nix
+  home-manager.users.user =
+    { nix-colors, ... }:
+    {
+      imports = [
+        ./programs
+        ./config
+        nix-colors.homeManagerModule
+      ];
 
-      ./theme.nix
-      inputs.nix-colors.homeManagerModule
-    ];
-
-    systemd.user.startServices = "sd-switch";
-    home.stateVersion = config.system.stateVersion;
-  };
+      colorscheme = nix-colors.colorSchemes.catppuccin;
+      systemd.user.startServices = "sd-switch";
+      home.stateVersion = config.system.stateVersion;
+    };
 }
