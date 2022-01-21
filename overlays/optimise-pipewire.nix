@@ -1,18 +1,16 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv genericOptions mesonOptions makeStatic;
 
   fdk_aac = (super.fdk_aac.override { stdenv = makeStatic stdenv; }).overrideAttrs (old: rec {
     makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
-    CFLAGS = "-flto -Ofast";
+    configureFlags = (old.configureFlags or [ ]) ++ [ "--with-pic" ];
+    CFLAGS = "-flto=thin -Ofast";
     CXXFLAGS = CFLAGS;
-  });
+  } // genericOptions old);
 in
 {
-  pipewire-optimised = (super.pipewire.override { inherit stdenv fdk_aac; }).overrideAttrs (old: {
-    mesonBuildType = "release";
-    mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" ];
-    ninjaFlags = [ "--verbose" ];
-  });
+  pipewire-optimised =
+    (super.pipewire.override { inherit stdenv fdk_aac; }).overrideAttrs mesonOptions;
 }

@@ -9,5 +9,20 @@ let
     inherit (llvmPackages) bintools;
   }));
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
+  genericOptions = old: {
+    hardeningDisable = [ "all" ];
+  };
+  mesonOptions = old: (genericOptions old) // {
+    mesonBuildType = "release";
+    mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
+    ninjaFlags = [ "--verbose" ];
+  };
 in
-{ inherit stdenv llvmPackages makeStatic; }
+{
+  inherit
+    stdenv
+    llvmPackages
+    genericOptions
+    mesonOptions
+    makeStatic;
+}

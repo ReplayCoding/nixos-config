@@ -1,12 +1,9 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv llvmPackages makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv mesonOptions llvmPackages makeStatic;
 in
 {
-  mesa-optimised = (super.mesa.overrideAttrs (old: {
-    mesonBuildType = "release";
-    mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
-    ninjaFlags = [ "--verbose" ];
-  })).override { inherit llvmPackages stdenv; };
+  mesa-optimised =
+    (super.mesa.overrideAttrs mesonOptions).override { inherit llvmPackages stdenv; };
 }
