@@ -20,6 +20,7 @@ rec {
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-colors.url = "github:Misterio77/nix-colors";
     polymc.url = "github:PolyMC/PolyMC";
+    nix-tree.url = "github:utdemir/nix-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -27,7 +28,19 @@ rec {
     };
   };
 
-  outputs = { self, nixpkgs, ragenix, home-manager, neovim-nightly-overlay, nixpkgs-wayland, nix-colors, polymc, flake-utils, pre-commit-hooks }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , ragenix
+    , home-manager
+    , neovim-nightly-overlay
+    , nixpkgs-wayland
+    , nix-colors
+    , polymc
+    , nix-tree
+    , flake-utils
+    , pre-commit-hooks
+    }@inputs:
     let
       specialArgs = { inherit nixConfig inputs; };
       generic = [
@@ -66,19 +79,19 @@ rec {
         "meson".path = ./templates/meson;
       };
     } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages."${system}";
-        pre-commit-check = pre-commit-hooks.lib."${system}".run {
-          src = ./.;
-          hooks = {
-            nixpkgs-fmt.enable = true;
-          };
+    let
+      pkgs = nixpkgs.legacyPackages."${system}";
+      pre-commit-check = pre-commit-hooks.lib."${system}".run {
+        src = ./.;
+        hooks = {
+          nixpkgs-fmt.enable = true;
         };
-      in
-      {
-        devShell = pkgs.mkShell {
-          inherit (pre-commit-check) shellHook;
-          packages = with pkgs; [ statix ragenix.defaultPackage."${system}" fnlfmt nvfetcher ];
-        };
-      });
+      };
+    in
+    {
+      devShell = pkgs.mkShell {
+        inherit (pre-commit-check) shellHook;
+        packages = with pkgs; [ statix ragenix.defaultPackage."${system}" fnlfmt nvfetcher ];
+      };
+    });
 }

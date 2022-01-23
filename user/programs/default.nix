@@ -68,6 +68,7 @@
     aerc
     amfora
     glow
+    nix-tree
     libarchive-optimised # bsdtar is amazing
     python39Packages.deemix
     /* sway */
