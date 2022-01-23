@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "schedutil";
   services.logind = rec {
     lidSwitch = "lock";
     lidSwitchDocked = lidSwitch;
