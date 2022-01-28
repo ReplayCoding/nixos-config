@@ -1,6 +1,9 @@
-{ neovim-nightly-overlay, nixpkgs-wayland, polymc, nix-tree, ... }:
+{ nixpkgs, neovim-nightly-overlay, nixpkgs-wayland, polymc, nix-tree, ... }:
 
-[
+nixosPassthru:
+
+nixpkgs.lib.composeManyExtensions [
+  (self: super: { inherit nixosPassthru; })
   (self: super: (nixpkgs-wayland.overlay self super) // { inherit (super) i3status-rust; })
   (self: super: neovim-nightly-overlay.overlay self (super // { inherit (super.stdenv.buildPlatform) system; }))
   polymc.overlay

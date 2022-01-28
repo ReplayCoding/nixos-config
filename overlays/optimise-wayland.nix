@@ -1,7 +1,7 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv mesonOptions makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv stdenvNoCache mesonOptions makeStatic;
 
   pkgsToOptimise = [
     "sway-unwrapped"
@@ -21,7 +21,10 @@ super.lib.genAttrs pkgsToOptimise (name:
     stdenv =
       if name == "wlroots"
       then makeStatic stdenv
-      else stdenv;
+      else
+        if name == "foot"
+        then stdenvNoCache
+        else stdenv;
     wayland = (old.wayland.override {
       stdenv = makeStatic stdenv;
     }).overrideAttrs (old:

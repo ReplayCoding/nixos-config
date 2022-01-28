@@ -5,9 +5,32 @@ let
     bootBintoolsNoLibc = null;
     bootBintools = null;
   };
-  stdenv = (super.overrideCC llvmPackages.stdenv (llvmPackages.stdenv.cc.override {
+  ccNoCache = llvmPackages.clang.override {
     inherit (llvmPackages) bintools;
-  }));
+  };
+  cc = (super.ccacheWrapper.override rec {
+    cc = ccNoCache;
+    extraConfig =
+      let
+        ccacheConfig = super.writeText "ccache-config" ''
+          cache_dir = ${super.nixosPassthru.ccacheDir}
+          umask = 002
+          compiler_check = string:${cc}
+          ignore_options = -frandom-seed=*
+          max_size = 50G
+        '';
+      in
+      ''
+        export CCACHE_CONFIGPATH=${ccacheConfig}
+        export CCACHE_BASEDIR=$NIX_BUILD_TOP
+        [ -d "${super.nixosPassthru.ccacheDir}" ] || exec ${cc}/bin/$(basename "$0") "$@"
+      '';
+  }).overrideAttrs (old: {
+    # https://github.com/NixOS/nixpkgs/issues/119779
+    installPhase = builtins.replaceStrings [ "use_response_file_by_default=1" ] [ "use_response_file_by_default=0" ] old.installPhase;
+  });
+  stdenvNoCache = (super.overrideCC llvmPackages.stdenv ccNoCache);
+  stdenv = (super.overrideCC llvmPackages.stdenv cc);
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
   genericOptions = old: {
     hardeningDisable = [ "all" ];
@@ -21,6 +44,7 @@ in
 {
   inherit
     stdenv
+    stdenvNoCache
     llvmPackages
     genericOptions
     mesonOptions

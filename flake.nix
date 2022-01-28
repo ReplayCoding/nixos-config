@@ -42,13 +42,14 @@ rec {
     , pre-commit-hooks
     }@inputs:
     let
-      specialArgs = { inherit nixConfig inputs; };
+      ccacheDir = "/var/cache/ccache";
+      specialArgs = { inherit nixConfig ccacheDir inputs; };
       generic = [
         ({ lib, ... }: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
           nix.registry.nixpkgs.flake = nixpkgs;
           nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
-          nixpkgs.overlays = [ self.overlay ];
+          nixpkgs.overlays = [ (self.overlay { inherit ccacheDir; }) ];
         })
         ./hosts/generic
         ./containers
@@ -73,7 +74,7 @@ rec {
         };
       };
 
-      overlay = nixpkgs.lib.composeManyExtensions (import ./overlays inputs);
+      overlay = import ./overlays inputs;
 
       templates = {
         "meson".path = ./templates/meson;
