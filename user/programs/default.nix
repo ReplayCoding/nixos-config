@@ -70,6 +70,7 @@
     glow
     nix-tree
     libarchive-optimised # bsdtar is amazing
+    ccache-stats
     python39Packages.deemix
     /* sway */
     wl-clipboard

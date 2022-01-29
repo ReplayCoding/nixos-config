@@ -8,18 +8,16 @@ let
   ccNoCache = llvmPackages.clang.override {
     inherit (llvmPackages) bintools;
   };
+  ccacheConfig = super.writeText "ccache-config" ''
+    cache_dir = ${super.nixosPassthru.ccacheDir}
+    umask = 002
+    compiler_check = string:${ccNoCache}
+    ignore_options = -frandom-seed=*
+    max_size = 50G
+  '';
   cc = (super.ccacheWrapper.override rec {
     cc = ccNoCache;
     extraConfig =
-      let
-        ccacheConfig = super.writeText "ccache-config" ''
-          cache_dir = ${super.nixosPassthru.ccacheDir}
-          umask = 002
-          compiler_check = string:${cc}
-          ignore_options = -frandom-seed=*
-          max_size = 50G
-        '';
-      in
       ''
         export CCACHE_CONFIGPATH=${ccacheConfig}
         export CCACHE_BASEDIR=$NIX_BUILD_TOP
@@ -49,4 +47,5 @@ in
     genericOptions
     mesonOptions
     makeStatic;
+  _ccacheConfig = ccacheConfig;
 }

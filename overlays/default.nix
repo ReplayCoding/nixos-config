@@ -14,6 +14,7 @@ nixpkgs.lib.composeManyExtensions [
   (import ./bluez.nix)
   (import ./sway.nix)
   (import ./kernel.nix)
+  (import ./ccache-stats.nix)
 
   (import ./optimise-mesa.nix)
   (import ./optimise-wayland.nix)
