@@ -16,6 +16,7 @@ let
   ffmpeg =
     (super.ffmpeg-full.overrideAttrs (old: {
       configureFlags = (builtins.filter (f: f != "--enable-shared") old.configureFlags) ++ [ "--extra-cflags=-flto=thin" ];
+      makeFlags = [ "V=1" ];
       # Disable tests :O
       checkPhase = null;
       runtimeCpuDetectBuild = false;
