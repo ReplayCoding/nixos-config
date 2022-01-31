@@ -15,6 +15,7 @@ rec {
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
     ragenix.url = "github:yaxitech/ragenix";
+    nvfetcher.url = "github:berberman/nvfetcher";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -32,6 +33,7 @@ rec {
     { self
     , nixpkgs
     , ragenix
+    , nvfetcher
     , home-manager
     , neovim-nightly-overlay
     , nixpkgs-wayland
@@ -92,7 +94,12 @@ rec {
     {
       devShell = pkgs.mkShell {
         inherit (pre-commit-check) shellHook;
-        packages = with pkgs; [ statix ragenix.defaultPackage."${system}" fnlfmt nvfetcher ];
+        packages = with pkgs; [
+          statix
+          ragenix.defaultPackage."${system}"
+          nvfetcher.defaultPackage."${system}"
+          fnlfmt
+        ];
       };
     });
 }
