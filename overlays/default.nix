@@ -16,9 +16,8 @@ nixpkgs.lib.composeManyExtensions [
   (import ./kernel.nix)
   (import ./ccache-stats.nix)
 
-  (import ./optimise-mesa.nix)
+  (import ./optimise-generic.nix)
   (import ./optimise-wayland.nix)
   (import ./optimise-mpv.nix)
   (import ./optimise-pipewire.nix)
-  (import ./optimise-libarchive.nix)
 ]

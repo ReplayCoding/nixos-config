@@ -1,7 +1,7 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv genericOptions makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv mesonOptions llvmPackages genericOptions makeStatic;
 in
 {
   libarchive-optimised =
@@ -13,4 +13,6 @@ in
       LDFLAGS = (old.LDFLAGS or "") + flags;
       makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
     } // genericOptions old)).override { inherit stdenv; };
+  mesa-optimised =
+    (super.mesa.overrideAttrs mesonOptions).override { inherit llvmPackages stdenv; };
 }
