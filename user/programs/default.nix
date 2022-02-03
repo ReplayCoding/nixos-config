@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./neovim
     ./fish.nix
     ./foot.nix
     ./git.nix
@@ -30,6 +29,7 @@
     ssh.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    neovim.enable = true;
     firefox = {
       enable = true;
       package = pkgs.firefox-bin.override { forceWayland = true; };
