@@ -21,6 +21,7 @@
     ./wlsunset.nix
     ./cmus.nix
     ./kdeconnect.nix
+    ./neovim
   ];
   programs = {
     fzf.enable = true;
@@ -29,7 +30,6 @@
     ssh.enable = true;
     dircolors.enable = true;
     bat.enable = true;
-    neovim.enable = true;
     firefox = {
       enable = true;
       package = pkgs.firefox-bin.override { forceWayland = true; };
