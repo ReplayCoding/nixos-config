@@ -14,3 +14,4 @@ require'nvim-treesitter.configs'.setup {
 }
 require'gitsigns'.setup()
 require'lualine'.setup()
+require'Comment'.setup()

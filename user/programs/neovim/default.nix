@@ -13,6 +13,7 @@
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       gitsigns-nvim
       lualine-nvim
+      comment-nvim
     ];
   };
   xdg.configFile."nvim/lua".source = ./lua;
