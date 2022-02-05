@@ -30,9 +30,14 @@ let
   stdenvNoCache = (super.overrideCC llvmPackages.stdenv ccNoCache);
   stdenv = (super.overrideCC llvmPackages.stdenv cc);
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
-  genericOptions = old: {
-    hardeningDisable = [ "all" ];
-  };
+  genericOptions =
+    old:
+    { hardeningDisable = [ "all" ]; }
+    // (
+      if (super.nixosPassthru ? arch) && (stdenv.hostPlatform == stdenv.buildPlatform)
+      then { NIX_CFLAGS_COMPILE = toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; }
+      else { }
+    );
   mesonOptions = old: (genericOptions old) // {
     mesonBuildType = "release";
     mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];

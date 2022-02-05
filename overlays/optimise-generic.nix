@@ -14,5 +14,8 @@ in
       makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
     } // genericOptions old)).override { inherit stdenv; };
   mesa-optimised =
-    (super.mesa.overrideAttrs mesonOptions).override { inherit llvmPackages stdenv; };
+    (super.mesa.overrideAttrs mesonOptions).override (
+      { inherit llvmPackages stdenv; }
+      // (super.nixosPassthru.mesaConfig or { })
+    );
 }

@@ -19,7 +19,6 @@ let
       makeFlags = [ "V=1" ];
       # Disable tests :O
       checkPhase = null;
-      runtimeCpuDetectBuild = false;
       safeBitstreamReaderBuild = false;
       postFixup = super.lib.optionalString stdenv.isLinux ''
         addOpenGLRunpath $out/lib/libavcodec.a

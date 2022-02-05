@@ -46,33 +46,44 @@ rec {
     let
       ccacheDir = "/var/cache/ccache";
       specialArgs = { inherit nixConfig ccacheDir inputs; };
-      generic = [
-        ({ lib, ... }: {
-          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          nix.registry.nixpkgs.flake = nixpkgs;
-          nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
-          nixpkgs.overlays = [ (self.overlay { inherit ccacheDir; }) ];
-        })
-        ./hosts/generic
-        ./containers
-        ragenix.nixosModules.age
-        home-manager.nixosModules.home-manager
-        { home-manager.useGlobalPkgs = true; }
-        ./user
-      ];
+      mkHost =
+        { system, modules, overlayConfig ? { } }:
+        nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ({ lib, ... }: {
+              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+              nix.registry.nixpkgs.flake = nixpkgs;
+              nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
+              nixpkgs.overlays = [ (self.overlay ({ inherit ccacheDir; } // overlayConfig)) ];
+            })
+            ./hosts/generic
+            ./containers
+            ragenix.nixosModules.age
+            home-manager.nixosModules.home-manager
+            { home-manager.useGlobalPkgs = true; }
+            ./user
+          ] ++ modules;
+        };
     in
     {
 
       nixosConfigurations = {
-        librem = nixpkgs.lib.nixosSystem {
+        librem = mkHost {
           system = "x86_64-linux";
-          modules = [ ./hosts/librem ] ++ generic;
-          inherit specialArgs;
+          modules = [ ./hosts/librem ];
+          overlayConfig.arch = "skylake";
         };
-        thinkpad = nixpkgs.lib.nixosSystem {
+        thinkpad = mkHost {
           system = "x86_64-linux";
-          modules = [ ./hosts/thinkpad ] ++ generic;
-          inherit specialArgs;
+          modules = [ ./hosts/thinkpad ];
+          overlayConfig = {
+            arch = "btver2";
+            mesaConfig = {
+              galliumDrivers = [ "radeonsi" "swrast" ];
+              driDrivers = [ ];
+            };
+          };
         };
       };
 
