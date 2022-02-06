@@ -9,7 +9,9 @@
 (set vim.opt.number true)
 (set vim.opt.signcolumn :yes)
 
-((. (require :nvim-treesitter.configs) :setup) { :highlight {:enable true} })
+((. (require :nvim-treesitter.configs) :setup) {
+  :highlight { :enable true }
+  :indent    { :enable true }})
 ((. (require :gitsigns) :setup))
 ((. (require :lualine) :setup))
 ((. (require :Comment) :setup))	
