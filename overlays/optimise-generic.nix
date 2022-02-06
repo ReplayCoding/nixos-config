@@ -18,4 +18,11 @@ in
       { inherit llvmPackages stdenv; }
       // (super.nixosPassthru.mesaConfig or { })
     );
+  tree-sitter-optimised-grammars =
+    builtins.map
+      (grammar: grammar.overrideAttrs (old: rec {
+        CFLAGS = [ "-I${old.src}/src" "-O3" "-flto" ];
+        CXXFLAGS = CFLAGS;
+      }))
+      super.tree-sitter.allGrammars;
 }
