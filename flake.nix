@@ -12,16 +12,43 @@ rec {
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    flake-utils.url = "github:numtide/flake-utils";
-    ragenix.url = "github:yaxitech/ragenix";
-    nvfetcher.url = "github:berberman/nvfetcher";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvfetcher = {
+      url = "github:berberman/nvfetcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nix-colors.url = "github:Misterio77/nix-colors";
-    polymc.url = "github:PolyMC/PolyMC";
-    nix-tree.url = "github:utdemir/nix-tree";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-colors = {
+      url = "github:Misterio77/nix-colors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    polymc = {
+      url = "github:PolyMC/PolyMC";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-tree = {
+      url = "github:utdemir/nix-tree";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
