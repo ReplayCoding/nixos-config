@@ -11,6 +11,7 @@
     extraConfig = "lua require('init')";
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
+      lightspeed-nvim
       gitsigns-nvim
       lualine-nvim
       comment-nvim
