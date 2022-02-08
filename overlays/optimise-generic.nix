@@ -2,13 +2,18 @@ self: super:
 
 let
   inherit (import ./optimise-utils.nix super) stdenv mesonOptions llvmPackages genericOptions makeStatic;
+  # FIXME: move autotools stuff to optimise-utils
+  flags = "-flto=thin -O3";
 in
 {
   libarchive-optimised =
-    let
-      flags = "-flto=thin -O3";
-    in
     (super.libarchive.overrideAttrs (old: rec {
+      CFLAGS = (old.CFLAGS or "") + flags;
+      LDFLAGS = (old.LDFLAGS or "") + flags;
+      makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
+    } // genericOptions old)).override { inherit stdenv; };
+  tmux =
+    (super.tmux.overrideAttrs (old: rec {
       CFLAGS = (old.CFLAGS or "") + flags;
       LDFLAGS = (old.LDFLAGS or "") + flags;
       makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
