@@ -25,4 +25,7 @@ in
         CXXFLAGS = CFLAGS;
       }))
       super.tree-sitter.allGrammars;
+  polymc =
+    (super.polymc.overrideAttrs genericOptions)
+    .override { mkDerivation = super.libsForQt5.mkDerivationWith stdenv.mkDerivation; };
 }
