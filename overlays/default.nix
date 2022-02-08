@@ -11,7 +11,6 @@ nixpkgs.lib.composeManyExtensions [
 
   (import ./fuzzel.nix)
   (import ./fish.nix)
-  (import ./bluez.nix)
   (import ./sway.nix)
   (import ./kernel.nix)
   (import ./ccache-stats.nix)

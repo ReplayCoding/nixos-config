@@ -8,17 +8,13 @@
 
   nix = {
     package = pkgs.nixUnstable;
-    autoOptimiseStore = true;
-    extraOptions =
-      builtins.concatStringsSep "\n"
-        (lib.mapAttrsToList (name: value: "${name} = ${builtins.toString value}") nixConfig)
-      + "\n" +
-      ''
-        extra-sandbox-paths = ${ccacheDir}
-        accept-flake-config = true
-        keep-outputs = true
-        keep-derivations = true
-      '';
+    settings = nixConfig // {
+      extra-sandbox-paths = [ ccacheDir ];
+      accept-flake-config = true;
+      auto-optimise-store = true;
+      keep-outputs = true;
+      keep-derivations = true;
+    };
   };
   systemd.tmpfiles.rules = [ "d ${ccacheDir} 0775 root nixbld -" ];
 
