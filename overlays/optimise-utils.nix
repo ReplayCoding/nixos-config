@@ -38,6 +38,15 @@ let
       then { NIX_CFLAGS_COMPILE = toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; }
       else { }
     );
+  autotoolsOptions =
+    let
+      flags = "-flto=thin -O3";
+    in
+    old: (genericOptions old) // {
+      CFLAGS = (old.CFLAGS or "") + flags;
+      LDFLAGS = (old.LDFLAGS or "") + flags;
+      makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
+    };
   mesonOptions = old: (genericOptions old) // {
     mesonBuildType = "release";
     mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
@@ -50,6 +59,7 @@ in
     stdenvNoCache
     llvmPackages
     genericOptions
+    autotoolsOptions
     mesonOptions
     makeStatic;
   _ccacheConfig = ccacheConfig;
