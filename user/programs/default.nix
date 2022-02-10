@@ -71,6 +71,7 @@
     nix-tree
     libarchive-optimised # bsdtar is amazing
     ccache-stats
+    wineWowPackages.unstableFull
     python39Packages.deemix
     /* sway */
     wl-clipboard
