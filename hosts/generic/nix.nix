@@ -7,7 +7,7 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.stable;
     settings = nixConfig // {
       extra-sandbox-paths = [ ccacheDir ];
       accept-flake-config = true;
