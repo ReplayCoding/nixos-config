@@ -8,27 +8,33 @@ let
   ccNoCache = llvmPackages.clang.override {
     inherit (llvmPackages) bintools;
   };
-  ccacheConfig = super.writeText "ccache-config" ''
-    cache_dir = ${super.nixosPassthru.ccacheDir}
-    umask = 002
-    compiler_check = string:${ccNoCache}
-    ignore_options = -frandom-seed=*
-    max_size = 50G
-  '';
-  cc = (super.ccacheWrapper.override rec {
-    cc = ccNoCache;
-    extraConfig =
-      ''
-        export CCACHE_CONFIGPATH=${ccacheConfig}
-        export CCACHE_BASEDIR=$NIX_BUILD_TOP
-        [ -d "${super.nixosPassthru.ccacheDir}" ] || exec ${cc}/bin/$(basename "$0") "$@"
+
+  mkCCacheWrapper = ccToWrap:
+    let
+      ccacheConfig = super.writeText "ccache-config" ''
+        cache_dir = ${super.nixosPassthru.ccacheDir}
+        umask = 002
+        compiler_check = string:${ccToWrap}
+        ignore_options = -frandom-seed=*
+        max_size = 50G
       '';
-  }).overrideAttrs (old: {
-    # https://github.com/NixOS/nixpkgs/issues/119779
-    installPhase = builtins.replaceStrings [ "use_response_file_by_default=1" ] [ "use_response_file_by_default=0" ] old.installPhase;
-  });
+    in
+    (super.ccacheWrapper.override rec {
+      cc = ccToWrap;
+      extraConfig =
+        ''
+          export CCACHE_CONFIGPATH=${ccacheConfig}
+          export CCACHE_BASEDIR=$NIX_BUILD_TOP
+          [ -d "${super.nixosPassthru.ccacheDir}" ] || exec ${cc}/bin/$(basename "$0") "$@"
+        '';
+    }).overrideAttrs (old: {
+      # https://github.com/NixOS/nixpkgs/issues/119779
+      installPhase = builtins.replaceStrings [ "use_response_file_by_default=1" ] [ "use_response_file_by_default=0" ] old.installPhase;
+      passthru = old.passthru // { inherit ccacheConfig; };
+    });
+
   stdenvNoCache = (super.overrideCC llvmPackages.stdenv ccNoCache);
-  stdenv = (super.overrideCC llvmPackages.stdenv cc);
+  stdenv = (super.overrideCC llvmPackages.stdenv (mkCCacheWrapper ccNoCache));
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
   genericOptions =
     old:
@@ -55,6 +61,7 @@ let
 in
 {
   inherit
+    mkCCacheWrapper
     stdenv
     stdenvNoCache
     llvmPackages
@@ -62,5 +69,4 @@ in
     autotoolsOptions
     mesonOptions
     makeStatic;
-  _ccacheConfig = ccacheConfig;
 }
