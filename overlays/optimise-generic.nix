@@ -22,4 +22,6 @@ in
       super.tree-sitter.allGrammars;
   polymc =
     (super.polymc.overrideAttrs genericOptions).override { mkDerivation = super.libsForQt5.mkDerivationWith stdenv.mkDerivation; };
+  rizin =
+    (super.rizin.overrideAttrs mesonOptions).override { inherit stdenv; };
 }
