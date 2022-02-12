@@ -15,6 +15,8 @@ nixpkgs.lib.composeManyExtensions [
   (import ./kernel.nix)
   (import ./ccache-stats.nix)
 
+  (self: super: { rz-ghidra = super.callPackage ./rz-ghidra.nix { }; })
+
   (import ./optimise-generic.nix)
   (import ./optimise-wayland.nix)
   (import ./optimise-mpv.nix)
