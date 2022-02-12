@@ -1,6 +1,6 @@
 final: prev: {
   myLinuxPackages =
-    prev.linuxKernel.packages.linux_5_15.extend (
+    prev.linuxKernel.packages.linux_xanmod.extend (
       self: super:
         let
           callPackage = final.newScope super;
