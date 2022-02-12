@@ -99,7 +99,13 @@ rec {
         librem = mkHost {
           system = "x86_64-linux";
           modules = [ ./hosts/librem ];
-          overlayConfig.arch = "skylake";
+          overlayConfig = {
+            arch = "skylake";
+            mesaConfig = {
+              galliumDrivers = [ "iris" "swrast" ];
+              driDrivers = [ ];
+            };
+          };
         };
         thinkpad = mkHost {
           system = "x86_64-linux";
