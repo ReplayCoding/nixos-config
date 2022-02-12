@@ -8,12 +8,12 @@
             "url": "https://codeberg.org/dnkl/fuzzel",
             "name": null,
             "type": "git",
-            "sha256": "sha256-7A8AuAZKC1sb25T4ZvT3LCdpSIoV1CEWPLr/KCIbNIU=",
-            "rev": "c703b99b9185d6e4bb04495abeb676a71e8fbe6f",
+            "sha256": "sha256-bSpUuRT9UaTJCftfkvJSba3Bt2PoeXRBkAqRnaqV08I=",
+            "rev": "8e09393463a00fd233b8d3b2ac316c2cfea6c791",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "c703b99b9185d6e4bb04495abeb676a71e8fbe6f",
+        "version": "8e09393463a00fd233b8d3b2ac316c2cfea6c791",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -27,12 +27,12 @@
             "url": "https://code.videolan.org/videolan/dav1d",
             "name": null,
             "type": "git",
-            "sha256": "sha256-yMMj9TNCfODI0Wf064T5AR+LFuPsPso1I1q9z9A5SuE=",
-            "rev": "1f09a9119fb794ab41b1e527d848c2a210ca43d4",
+            "sha256": "sha256-cHfqh39rmUHn4mXJWftigWITQVogChaaJQ5NM63dE+8=",
+            "rev": "94b1bf456e9062a2f966453b1daea3fd6a9e03cc",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "1f09a9119fb794ab41b1e527d848c2a210ca43d4",
+        "version": "94b1bf456e9062a2f966453b1daea3fd6a9e03cc",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -46,12 +46,12 @@
             "url": "https://code.videolan.org/videolan/libplacebo/",
             "name": null,
             "type": "git",
-            "sha256": "sha256-hciNlXKsshbYvcVNhl35xUTWMMExadzyqk5UhuVAXJQ=",
-            "rev": "aff39f522760376c7b532cde6a68560e5e987ff1",
+            "sha256": "sha256-XNz8cbxPcnaqfql/36oRtilFrzGbhre0IpoliPRk3is=",
+            "rev": "d74ea8b33badf7eef514b48f8b22a83771238dc1",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "aff39f522760376c7b532cde6a68560e5e987ff1",
+        "version": "d74ea8b33badf7eef514b48f8b22a83771238dc1",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -66,12 +66,12 @@
             "name": null,
             "repo": "mpv",
             "type": "github",
-            "sha256": "sha256-nZg8j1oSxn+w9utxmgM+3qxBzHdtLD+YoIV2FVvTDBg=",
-            "rev": "c72b897e9cb60a3dd4a4fd35442ba21ea7ef6163",
+            "sha256": "sha256-m1UpIZDlMAeIBsPwKeSGIpsIFfE9hV24NhqafJ5qH3I=",
+            "rev": "bc9805c71a67b2717c79533731608eff679cded1",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "c72b897e9cb60a3dd4a4fd35442ba21ea7ef6163",
+        "version": "bc9805c71a67b2717c79533731608eff679cded1",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
