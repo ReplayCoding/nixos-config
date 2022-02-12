@@ -33,7 +33,7 @@ in
         };
         "irc/dcc" = {
           dcc_autoget = "yes";
-          dcc_download_path = "~/Downloads/irc";
+          dcc_download_path = "~/Downloads";
         };
       };
     '';
