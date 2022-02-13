@@ -1,5 +1,6 @@
-final:
+final: prev:
 let
+  inherit (import ./optimise-utils.nix prev) mkCCacheWrapper;
   inherit (final) lib linuxKernel;
   inherit (lib.kernel) yes no;
 
@@ -21,7 +22,7 @@ let
           makeFlags = (platform.linux-kernel.makeFlags or [ ]) ++ [
             "LLVM=1"
             "LLVM_IAS=1"
-            "CC=${buildLLVM.clangUseLLVM}/bin/clang"
+            "CC=${mkCCacheWrapper buildLLVM.clangUseLLVM}/bin/clang"
             "LD=${buildLLVM.lld}/bin/ld.lld"
             "HOSTLD=${hostLLVM.lld}/bin/ld.lld"
             "AR=${buildLLVM.llvm}/bin/llvm-ar"
@@ -31,12 +32,12 @@ let
             "OBJCOPY=${buildLLVM.llvm}/bin/llvm-objcopy"
             "OBJDUMP=${buildLLVM.llvm}/bin/llvm-objdump"
             "READELF=${buildLLVM.llvm}/bin/llvm-readelf"
-            "HOSTCC=${hostLLVM.clangUseLLVM}/bin/clang"
-            "HOSTCXX=${hostLLVM.clangUseLLVM}/bin/clang++"
+            "HOSTCC=${mkCCacheWrapper hostLLVM.clangUseLLVM}/bin/clang"
+            "HOSTCXX=${mkCCacheWrapper hostLLVM.clangUseLLVM}/bin/clang++"
           ];
         };
       };
-      stdenvClangUseLLVM = final.overrideCC hostLLVM.stdenv hostLLVM.clangUseLLVM;
+      stdenvClangUseLLVM = final.overrideCC hostLLVM.stdenv (mkCCacheWrapper hostLLVM.clangUseLLVM);
       stdenvPlatformLLVM = stdenvClangUseLLVM.override (old: {
         hostPlatform = mkLLVMPlatform old.hostPlatform;
         buildPlatform = mkLLVMPlatform old.buildPlatform;
@@ -59,7 +60,7 @@ let
 
   inherit (linuxKernel) packagesFor;
 in
-_: {
+{
   myLinuxPackages =
     (packagesFor (applyLTO linuxKernel.kernels.linux_xanmod)).extend (
       self: super:
