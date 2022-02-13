@@ -16,7 +16,7 @@ let
         umask = 002
         compiler_check = string:${ccToWrap}
         ignore_options = -frandom-seed=*
-        max_size = 50G
+        max_size = 10G
       '';
     in
     (super.ccacheWrapper.override rec {
