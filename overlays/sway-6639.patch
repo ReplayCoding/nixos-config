@@ -1,7 +1,7 @@
-From 2f1292c9a45ab5d45fb3e6a0225785ac4e4c93d2 Mon Sep 17 00:00:00 2001
+From a8f253cddabde9a5093151127a115aa7ecf1dace Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Sun, 24 Oct 2021 16:18:49 -0700
-Subject: [PATCH 01/10] root: move the workspace matching code to its own file
+Subject: [PATCH 01/12] root: move the workspace matching code to its own file
 
 This removes the pid_workspace bits from tree/root before it gets
 too interesting.
@@ -90,7 +90,7 @@ index 3b855fdf7e..4656a41099 100644
  #include "sway/tree/root.h"
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
 new file mode 100644
-index 0000000000..33eb4be1d7
+index 0000000000..4e0d9dc1f4
 --- /dev/null
 +++ b/sway/desktop/launcher.c
 @@ -0,0 +1,189 @@
@@ -130,7 +130,7 @@ index 0000000000..33eb4be1d7
 +	FILE *stat = NULL;
 +	size_t buf_size = 0;
 +
-+	sprintf(file_name, "/proc/%d/stat", child);
++	snprintf(file_name, sizeof(file_name), "/proc/%d/stat", child);
 +
 +	if ((stat = fopen(file_name, "r"))) {
 +		if (getline(&buffer, &buf_size, stat) != -1) {
@@ -296,7 +296,7 @@ index 8eab31a221..348ae1ddbc 100644
  	'input/input-manager.c',
  	'input/cursor.c',
 diff --git a/sway/tree/root.c b/sway/tree/root.c
-index 73f3993c08..0b821e5348 100644
+index 8508e9eb99..0b821e5348 100644
 --- a/sway/tree/root.c
 +++ b/sway/tree/root.c
 @@ -183,172 +183,6 @@ void root_scratchpad_hide(struct sway_container *con) {
@@ -329,7 +329,7 @@ index 73f3993c08..0b821e5348 100644
 -	FILE *stat = NULL;
 -	size_t buf_size = 0;
 -
--	sprintf(file_name, "/proc/%d/stat", child);
+-	snprintf(file_name, sizeof(file_name), "/proc/%d/stat", child);
 -
 -	if ((stat = fopen(file_name, "r"))) {
 -		if (getline(&buffer, &buf_size, stat) != -1) {
@@ -491,10 +491,10 @@ index 73f3993c08..0b821e5348 100644
 -	}
 -}
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index 1318f5fb37..8df2d30fdf 100644
+index 7d9e038d26..c0571d7258 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -18,6 +18,7 @@
+@@ -19,6 +19,7 @@
  #include "sway/desktop.h"
  #include "sway/desktop/transaction.h"
  #include "sway/desktop/idle_inhibit_v1.h"
@@ -503,10 +503,10 @@ index 1318f5fb37..8df2d30fdf 100644
  #include "sway/ipc-server.h"
  #include "sway/output.h"
 
-From 5db755bf9f0d840151f534eed8a3170506c3454f Mon Sep 17 00:00:00 2001
+From da2a36cad0a03f36c4536fb228c0e80db8ea2b83 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 03:58:15 -0700
-Subject: [PATCH 02/10] node: prettify node type names
+Subject: [PATCH 02/12] node: prettify node type names
 
 ---
  sway/tree/node.c | 8 ++++----
@@ -535,10 +535,10 @@ index bc7e2aa59c..12361c75b4 100644
  	return "";
  }
 
-From 28f71d828562fca3ee8d333e950bd1d105f79e2b Mon Sep 17 00:00:00 2001
+From c6f189414069dba7a6c99c7bc104c0bdfbb41926 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 18:12:30 -0700
-Subject: [PATCH 03/10] launcher: track workspaces by node
+Subject: [PATCH 03/12] launcher: track workspaces by node
 
 This removes the need to rename the pid_workspaces when a workspace
 is renamed.
@@ -578,7 +578,7 @@ index 4656a41099..60a66d58ad 100644
  	workspace->name = new_name;
  
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index 33eb4be1d7..8dabc06158 100644
+index 4e0d9dc1f4..16f6d4a09c 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -4,19 +4,21 @@
@@ -784,10 +784,10 @@ index 33eb4be1d7..8dabc06158 100644
 -	}
 -}
 
-From df149a6369611b6ff26c4288d6408579de66c268 Mon Sep 17 00:00:00 2001
+From 4a7088519c3d9b89687bb01f3eee14015705ffa3 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 22:55:44 -0700
-Subject: [PATCH 04/10] launcher: use xdga tokens
+Subject: [PATCH 04/12] launcher: use xdga tokens
 
 This reuses wlroots token tracking for workspace matching. It doesn't
 export any xdga tokens for clients yet.
@@ -796,7 +796,7 @@ export any xdga tokens for clients yet.
  1 file changed, 19 insertions(+), 14 deletions(-)
 
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index 8dabc06158..08ded1b71f 100644
+index 16f6d4a09c..fde69db702 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -1,6 +1,7 @@
@@ -876,10 +876,10 @@ index 8dabc06158..08ded1b71f 100644
  }
  
 
-From efff6e9ad634d7745f3452ead2bbe9cd25534ca6 Mon Sep 17 00:00:00 2001
+From 70d9161575d578ac8148ce5ab0203a38be06b540 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:20:41 -0700
-Subject: [PATCH 05/10] launcher: rename pid_workspace to launcher_ctx
+Subject: [PATCH 05/12] launcher: rename pid_workspace to launcher_ctx
 
 Soon we will match views with more than just a pid.
 ---
@@ -921,7 +921,7 @@ index fab9a4028f..d67e416fa1 100644
  		return cmd_results_new(CMD_FAILURE, "Second fork() failed");
  	}
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index 08ded1b71f..c8b8877556 100644
+index fde69db702..9eaa47d287 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -11,9 +11,9 @@
@@ -1191,10 +1191,10 @@ index 08ded1b71f..c8b8877556 100644
 +	launcher_ctx_destroy(ctx);
  }
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index 8df2d30fdf..e95bc0261d 100644
+index c0571d7258..12e14a57d7 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -568,12 +568,12 @@ static struct sway_workspace *select_workspace(struct sway_view *view) {
+@@ -569,12 +569,12 @@ static struct sway_workspace *select_workspace(struct sway_view *view) {
  	}
  	list_free(criterias);
  	if (ws) {
@@ -1210,10 +1210,10 @@ index 8df2d30fdf..e95bc0261d 100644
  		return ws;
  	}
 
-From d65da21cc22c9cc854b9e00330da3ad89d205d71 Mon Sep 17 00:00:00 2001
+From 8bfe0ea9a8853fd619722388cfba84d4974ecb8c Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:29:20 -0700
-Subject: [PATCH 06/10] view: associate launch contexts with views
+Subject: [PATCH 06/12] view: associate launch contexts with views
 
 Views now maintain a reference to a launch context which, as a last
 resort, is populated at map time with a context associated with its pid.
@@ -1261,7 +1261,7 @@ index 7802bee15b..c64c895188 100644
  
  #endif
 diff --git a/include/sway/tree/view.h b/include/sway/tree/view.h
-index 008361f7b3..b61d612fd5 100644
+index 95708a049c..3f566aca97 100644
 --- a/include/sway/tree/view.h
 +++ b/include/sway/tree/view.h
 @@ -74,6 +74,7 @@ struct sway_view {
@@ -1272,7 +1272,7 @@ index 008361f7b3..b61d612fd5 100644
  
  	// The size the view would want to be if it weren't tiled.
  	// Used when changing a view from tiled to floating.
-@@ -370,4 +371,6 @@ void view_save_buffer(struct sway_view *view);
+@@ -371,4 +372,6 @@ void view_save_buffer(struct sway_view *view);
  
  bool view_is_transient_for(struct sway_view *child, struct sway_view *ancestor);
  
@@ -1280,7 +1280,7 @@ index 008361f7b3..b61d612fd5 100644
 +
  #endif
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index c8b8877556..8f59808dda 100644
+index 9eaa47d287..676cea08f6 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -13,18 +13,6 @@
@@ -1362,10 +1362,10 @@ index c8b8877556..8f59808dda 100644
 +	return token;
  }
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index e95bc0261d..b7bbe7387d 100644
+index 12e14a57d7..b1d316a2ee 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -63,6 +63,8 @@ void view_destroy(struct sway_view *view) {
+@@ -64,6 +64,8 @@ void view_destroy(struct sway_view *view) {
  	}
  	list_free(view->executed_criteria);
  
@@ -1374,7 +1374,7 @@ index e95bc0261d..b7bbe7387d 100644
  	free(view->title_format);
  
  	if (view->impl->destroy) {
-@@ -533,6 +535,26 @@ static void view_populate_pid(struct sway_view *view) {
+@@ -534,6 +536,26 @@ static void view_populate_pid(struct sway_view *view) {
  	view->pid = pid;
  }
  
@@ -1401,7 +1401,7 @@ index e95bc0261d..b7bbe7387d 100644
  static struct sway_workspace *select_workspace(struct sway_view *view) {
  	struct sway_seat *seat = input_manager_current_seat();
  
-@@ -568,13 +590,14 @@ static struct sway_workspace *select_workspace(struct sway_view *view) {
+@@ -569,13 +591,14 @@ static struct sway_workspace *select_workspace(struct sway_view *view) {
  	}
  	list_free(criterias);
  	if (ws) {
@@ -1418,7 +1418,7 @@ index e95bc0261d..b7bbe7387d 100644
  		return ws;
  	}
  
-@@ -717,6 +740,13 @@ void view_map(struct sway_view *view, struct wlr_surface *wlr_surface,
+@@ -718,6 +741,13 @@ void view_map(struct sway_view *view, struct wlr_surface *wlr_surface,
  	view_populate_pid(view);
  	view->container = container_create(view);
  
@@ -1433,10 +1433,10 @@ index e95bc0261d..b7bbe7387d 100644
  	// to honor that request. Otherwise, fallback to assigns, pid mappings,
  	// focused workspace, etc
 
-From b764a53a093ffaa6582368e4cd7749a7d7da366f Mon Sep 17 00:00:00 2001
+From ead85a53e18c9edde4d77f8a246acd5dd807f6fb Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:34:42 -0700
-Subject: [PATCH 07/10] launcher: initialize launcher_ctxs once on startup
+Subject: [PATCH 07/12] launcher: initialize launcher_ctxs once on startup
 
 ---
  include/sway/desktop/launcher.h |  2 +-
@@ -1496,7 +1496,7 @@ index d67e416fa1..dd8dc2f6b0 100644
  		return cmd_results_new(CMD_FAILURE, "Second fork() failed");
  	}
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index 8f59808dda..ed4e0e6088 100644
+index 676cea08f6..321f149c4e 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -11,8 +11,6 @@
@@ -1558,10 +1558,10 @@ index 8f59808dda..ed4e0e6088 100644
  
  const char *launcher_ctx_get_name(struct launcher_ctx *ctx) {
 diff --git a/sway/server.c b/sway/server.c
-index f50a0987de..9312b6c5a7 100644
+index 8de9f62942..2b76e0db70 100644
 --- a/sway/server.c
 +++ b/sway/server.c
-@@ -208,6 +208,8 @@ bool server_init(struct sway_server *server) {
+@@ -211,6 +211,8 @@ bool server_init(struct sway_server *server) {
  	wl_signal_add(&server->xdg_activation_v1->events.request_activate,
  		&server->xdg_activation_v1_request_activate);
  
@@ -1571,10 +1571,10 @@ index f50a0987de..9312b6c5a7 100644
  	char name_candidate[16];
  	for (int i = 1; i <= 32; ++i) {
 
-From d9da0d03b47bd9af5183571e1c4e52770e132fbb Mon Sep 17 00:00:00 2001
+From fbdfb0a227dfe5f0a9cb808bed0b529b5d1aadb7 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Tue, 26 Oct 2021 16:38:31 -0700
-Subject: [PATCH 08/10] launcher: fudge the interface a bit
+Subject: [PATCH 08/12] launcher: fudge the interface a bit
 
 We want to create a context before knowing the pid it will match with.
 ---
@@ -1623,7 +1623,7 @@ index dd8dc2f6b0..694f646c13 100644
  	}
  
 diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
-index ed4e0e6088..0835f1dfc5 100644
+index 321f149c4e..4cdf7bb976 100644
 --- a/sway/desktop/launcher.c
 +++ b/sway/desktop/launcher.c
 @@ -161,13 +161,11 @@ static void token_handle_destroy(struct wl_listener *listener, void *data) {
@@ -1651,10 +1651,10 @@ index ed4e0e6088..0835f1dfc5 100644
  	ctx->node_destroy.notify = ctx_handle_node_destroy;
  	wl_signal_add(&ctx->node->events.destroy, &ctx->node_destroy);
 
-From dc030a8864f5e3a6d11b014cf189360772cfa3f3 Mon Sep 17 00:00:00 2001
+From cf9d4b0151c12e6d791713928d4553d033a664f6 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 23:02:34 -0700
-Subject: [PATCH 09/10] launcher: export xdga tokens and use them for workspace
+Subject: [PATCH 09/12] launcher: export xdga tokens and use them for workspace
  matching
 
 ---
@@ -1714,10 +1714,10 @@ index 6c70c78596..e1776e7dbc 100644
  	}
  
 
-From f0caebdf0d3bedf219ec10a237dcfd84bbd01eca Mon Sep 17 00:00:00 2001
+From f4911bc64bc26c0436461cb0dfcded6100fe68ee Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Fri, 29 Oct 2021 15:56:47 -0700
-Subject: [PATCH 10/10] launcher: export X startup ids and use them for
+Subject: [PATCH 10/12] launcher: export X startup ids and use them for
  workspace matching
 
 ---
@@ -1727,7 +1727,7 @@ Subject: [PATCH 10/10] launcher: export X startup ids and use them for
  3 files changed, 39 insertions(+), 1 deletion(-)
 
 diff --git a/include/sway/tree/view.h b/include/sway/tree/view.h
-index b61d612fd5..1288a4988d 100644
+index 3f566aca97..3584952ff2 100644
 --- a/include/sway/tree/view.h
 +++ b/include/sway/tree/view.h
 @@ -155,6 +155,7 @@ struct sway_xwayland_view {
@@ -1772,7 +1772,7 @@ index e432c463bc..59a076685a 100644
  			sway_log_errno(SWAY_ERROR, "execlp failed");
  			_exit(1);
 diff --git a/sway/desktop/xwayland.c b/sway/desktop/xwayland.c
-index 40288f9738..815233e8b9 100644
+index 2f11b5fc4f..1563fd8a03 100644
 --- a/sway/desktop/xwayland.c
 +++ b/sway/desktop/xwayland.c
 @@ -5,6 +5,7 @@
@@ -1791,7 +1791,7 @@ index 40288f9738..815233e8b9 100644
  #include "sway/tree/view.h"
  #include "sway/tree/workspace.h"
  
-@@ -448,6 +450,7 @@ static void handle_destroy(struct wl_listener *listener, void *data) {
+@@ -465,6 +467,7 @@ static void handle_destroy(struct wl_listener *listener, void *data) {
  	wl_list_remove(&xwayland_view->set_title.link);
  	wl_list_remove(&xwayland_view->set_class.link);
  	wl_list_remove(&xwayland_view->set_role.link);
@@ -1799,7 +1799,7 @@ index 40288f9738..815233e8b9 100644
  	wl_list_remove(&xwayland_view->set_window_type.link);
  	wl_list_remove(&xwayland_view->set_hints.link);
  	wl_list_remove(&xwayland_view->set_decorations.link);
-@@ -647,6 +650,27 @@ static void handle_set_role(struct wl_listener *listener, void *data) {
+@@ -664,6 +667,27 @@ static void handle_set_role(struct wl_listener *listener, void *data) {
  	view_execute_criteria(view);
  }
  
@@ -1827,7 +1827,7 @@ index 40288f9738..815233e8b9 100644
  static void handle_set_window_type(struct wl_listener *listener, void *data) {
  	struct sway_xwayland_view *xwayland_view =
  		wl_container_of(listener, xwayland_view, set_window_type);
-@@ -731,6 +755,10 @@ struct sway_xwayland_view *create_xwayland_view(struct wlr_xwayland_surface *xsu
+@@ -748,6 +772,10 @@ struct sway_xwayland_view *create_xwayland_view(struct wlr_xwayland_surface *xsu
  	wl_signal_add(&xsurface->events.set_role, &xwayland_view->set_role);
  	xwayland_view->set_role.notify = handle_set_role;
  
@@ -1838,3 +1838,129 @@ index 40288f9738..815233e8b9 100644
  	wl_signal_add(&xsurface->events.set_window_type,
  			&xwayland_view->set_window_type);
  	xwayland_view->set_window_type.notify = handle_set_window_type;
+
+From 4c02fbd31da32e0d04003adfb617561ad5b699f7 Mon Sep 17 00:00:00 2001
+From: Ronan Pigott <rpigott@berkeley.edu>
+Date: Tue, 8 Feb 2022 16:38:34 -0700
+Subject: [PATCH 11/12] fixup: 8bfe0ea9
+
+Fix a crash when a client submits a valid token that has already been
+pid matched by another client.
+---
+ include/sway/desktop/launcher.h |  4 ++++
+ sway/desktop/launcher.c         | 16 ++++++++++++++++
+ sway/tree/view.c                |  8 +-------
+ sway/xdg_activation_v1.c        |  9 ++++++++-
+ 4 files changed, 29 insertions(+), 8 deletions(-)
+
+diff --git a/include/sway/desktop/launcher.h b/include/sway/desktop/launcher.h
+index 8b006ccaf7..2c5615d158 100644
+--- a/include/sway/desktop/launcher.h
++++ b/include/sway/desktop/launcher.h
+@@ -9,6 +9,8 @@ struct launcher_ctx {
+ 	struct wlr_xdg_activation_token_v1 *token;
+ 	struct wl_listener token_destroy;
+ 
++	bool activated;
++
+ 	struct sway_node *node;
+ 	struct wl_listener node_destroy;
+ 
+@@ -19,6 +21,8 @@ struct launcher_ctx *launcher_ctx_find_pid(pid_t pid);
+ 
+ struct sway_workspace *launcher_ctx_get_workspace(struct launcher_ctx *ctx);
+ 
++void launcher_ctx_consume(struct launcher_ctx *ctx);
++
+ void launcher_ctx_destroy(struct launcher_ctx *ctx);
+ 
+ const char *launcher_ctx_get_name(struct launcher_ctx *ctx);
+diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
+index 4cdf7bb976..769c38d584 100644
+--- a/sway/desktop/launcher.c
++++ b/sway/desktop/launcher.c
+@@ -45,6 +45,22 @@ static pid_t get_parent_pid(pid_t child) {
+ 	return -1;
+ }
+ 
++void launcher_ctx_consume(struct launcher_ctx *ctx) {
++	// The view is now responsible for destroying this ctx
++	wl_list_remove(&ctx->token_destroy.link);
++	wl_list_init(&ctx->token_destroy.link);
++
++	if (!ctx->activated) {
++		// An unactivated token hasn't been destroyed yet
++		wlr_xdg_activation_token_v1_destroy(ctx->token);
++	}
++	ctx->token = NULL;
++
++	// Prevent additional matches
++	wl_list_remove(&ctx->link);
++	wl_list_init(&ctx->link);
++}
++
+ void launcher_ctx_destroy(struct launcher_ctx *ctx) {
+ 	if (ctx == NULL) {
+ 		return;
+diff --git a/sway/tree/view.c b/sway/tree/view.c
+index b1d316a2ee..4909aad64e 100644
+--- a/sway/tree/view.c
++++ b/sway/tree/view.c
+@@ -545,13 +545,7 @@ void view_assign_ctx(struct sway_view *view, struct launcher_ctx *ctx) {
+ 	if (ctx == NULL) {
+ 		return;
+ 	}
+-	ctx->token = NULL; // token is consumed
+-	wl_list_remove(&ctx->link); // ctx is consumed
+-	wl_list_init(&ctx->link);
+-
+-	// View is now responsible for destroying this
+-	wl_list_remove(&ctx->token_destroy.link);
+-	wl_list_init(&ctx->token_destroy.link);
++	launcher_ctx_consume(ctx);
+ 
+ 	view->ctx = ctx;
+ }
+diff --git a/sway/xdg_activation_v1.c b/sway/xdg_activation_v1.c
+index e1776e7dbc..72138daa58 100644
+--- a/sway/xdg_activation_v1.c
++++ b/sway/xdg_activation_v1.c
+@@ -21,7 +21,14 @@ void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
+ 		// This is a startup notification. If we are tracking it, the data
+ 		// field is a launcher_ctx.
+ 		struct launcher_ctx *ctx = event->token->data;
+-		view_assign_ctx(view, ctx);
++		if (ctx->activated) {
++			// This ctx has already been activated and cannot be used again
++			// for a startup notification. It will be destroyed
++			return;
++		} else {
++			ctx->activated = true;
++			view_assign_ctx(view, ctx);
++		}
+ 		return;
+ 	}
+ 
+
+From ad5517b51807b9a5257f956e4c23b516af03a457 Mon Sep 17 00:00:00 2001
+From: Ronan Pigott <rpigott@berkeley.edu>
+Date: Tue, 8 Feb 2022 16:40:20 -0700
+Subject: [PATCH 12/12] fixup: 70d91615
+
+Fix leak of ctx->name string
+---
+ sway/desktop/launcher.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sway/desktop/launcher.c b/sway/desktop/launcher.c
+index 769c38d584..376e1bd845 100644
+--- a/sway/desktop/launcher.c
++++ b/sway/desktop/launcher.c
+@@ -148,6 +148,7 @@ static void ctx_handle_node_destroy(struct wl_listener *listener, void *data) {
+ 		wl_list_init(&ctx->node_destroy.link);
+ 		// We want to save this ws name to recreate later, hopefully on the
+ 		// same output
++		free(ctx->name);
+ 		ctx->name = strdup(ws->name);
+ 		if (!ws->output || ws->output->node.destroying) {
+ 			// If the output is being destroyed it would be pointless to track

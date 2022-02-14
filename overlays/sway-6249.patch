@@ -1,4 +1,4 @@
-From f65c7d9164ef18b21752259272ef6f43e1df4d2b Mon Sep 17 00:00:00 2001
+From 6f87a58c87e1da3d0a2071ee9ec15a35123a0c5b Mon Sep 17 00:00:00 2001
 From: Felix Weilbach <felix.weilbach@t-online.de>
 Date: Sun, 30 May 2021 20:45:01 +0200
 Subject: [PATCH 1/5] Tray: Implement dbusmenu
@@ -258,10 +258,10 @@ index 9feb3cd2d0..86abe93235 100644
  
  swaybar_deps = [
 diff --git a/swaybar/render.c b/swaybar/render.c
-index de468b4f19..e3133a422c 100644
+index dcde6b9e48..ecc10502ec 100644
 --- a/swaybar/render.c
 +++ b/swaybar/render.c
-@@ -158,8 +158,14 @@ static void render_sharp_line(cairo_t *cairo, uint32_t color,
+@@ -159,8 +159,14 @@ static void render_sharp_line(cairo_t *cairo, uint32_t color,
  }
  
  static enum hotspot_event_handling block_hotspot_callback(
@@ -278,7 +278,7 @@ index de468b4f19..e3133a422c 100644
  	struct i3bar_block *block = data;
  	struct status_line *status = output->bar->status;
  	return i3bar_block_send_click(status, block, x, y,
-@@ -294,7 +300,7 @@ static uint32_t render_status_block(struct render_context *ctx,
+@@ -297,7 +303,7 @@ static uint32_t render_status_block(struct render_context *ctx,
  	} else if (strncmp(block->align, "right", 5) == 0) {
  		offset = x_pos + width - text_width;
  	} else if (strncmp(block->align, "center", 6) == 0) {
@@ -287,7 +287,7 @@ index de468b4f19..e3133a422c 100644
  	}
  	double text_y = height / 2.0 - text_height / 2.0;
  	cairo_move_to(cairo, offset, (int)floor(text_y));
-@@ -322,7 +328,7 @@ static uint32_t render_status_block(struct render_context *ctx,
+@@ -327,7 +333,7 @@ static uint32_t render_status_block(struct render_context *ctx,
  		}
  		cairo_set_source_u32(cairo, color);
  		if (config->sep_symbol) {
@@ -296,7 +296,7 @@ index de468b4f19..e3133a422c 100644
  			double sep_y = height / 2.0 - sep_height / 2.0;
  			cairo_move_to(cairo, offset, (int)floor(sep_y));
  			choose_text_aa_mode(ctx, color);
-@@ -331,7 +337,7 @@ static uint32_t render_status_block(struct render_context *ctx,
+@@ -336,7 +342,7 @@ static uint32_t render_status_block(struct render_context *ctx,
  		} else {
  			cairo_set_operator(cairo, CAIRO_OPERATOR_SOURCE);
  			cairo_set_line_width(cairo, 1);
@@ -305,7 +305,7 @@ index de468b4f19..e3133a422c 100644
  			cairo_line_to(cairo, x_pos + sep_block_width / 2, height - margin);
  			cairo_stroke(cairo);
  		}
-@@ -593,8 +599,14 @@ static uint32_t render_binding_mode_indicator(struct render_context *ctx,
+@@ -598,8 +604,14 @@ static uint32_t render_binding_mode_indicator(struct render_context *ctx,
  }
  
  static enum hotspot_event_handling workspace_hotspot_callback(
@@ -322,7 +322,7 @@ index de468b4f19..e3133a422c 100644
  	if (button != BTN_LEFT) {
  		return HOTSPOT_PROCESS;
  	}
-@@ -659,7 +671,8 @@ static uint32_t render_workspace_button(struct render_context *ctx,
+@@ -664,7 +676,8 @@ static uint32_t render_workspace_button(struct render_context *ctx,
  
  	double text_y = height / 2.0 - text_height / 2.0;
  	cairo_set_source_u32(cairo, box_colors.text);
@@ -1684,7 +1684,7 @@ index 0000000000..e8c6480b2a
 +	return false;
 +}
 diff --git a/swaybar/tray/item.c b/swaybar/tray/item.c
-index 19f4beacaa..247eab33cc 100644
+index 0cb5ee9dfe..ae4b7ee2db 100644
 --- a/swaybar/tray/item.c
 +++ b/swaybar/tray/item.c
 @@ -16,6 +16,7 @@
@@ -1768,7 +1768,7 @@ index 19f4beacaa..247eab33cc 100644
  	} else {
  		sway_log(SWAY_DEBUG, "but it doesn't exist");
 
-From d3768e479c3f138aaa52ef7ef5994547a13df1c3 Mon Sep 17 00:00:00 2001
+From 5301928efd439c6dbf1a1cc7ab2e2433063f986b Mon Sep 17 00:00:00 2001
 From: Felix Weilbach <felix.weilbach@t-online.de>
 Date: Wed, 15 Sep 2021 21:55:34 +0200
 Subject: [PATCH 2/5] fixup! don't scroll workspaces
@@ -1829,7 +1829,7 @@ index e8c6480b2a..739cf4c5a9 100644
  		uint32_t serial, struct wl_surface *surface, wl_fixed_t surface_x,
  		wl_fixed_t surface_y) {
 
-From 44f947aa9bb1cf36ef384f64867fcdfc89258573 Mon Sep 17 00:00:00 2001
+From ceaec64ce5ab802e430dbde8edac2ee0a73e86b3 Mon Sep 17 00:00:00 2001
 From: Felix Weilbach <felix.weilbach@t-online.de>
 Date: Wed, 15 Sep 2021 22:44:28 +0200
 Subject: [PATCH 3/5] fixup! close submenus
@@ -1873,7 +1873,7 @@ index 739cf4c5a9..f8f31cf6b3 100644
  	} else if (in_hotspot && !item->submenu) {
  		close_child_menus(menu);
 
-From d1a87205af0830a31fa993e4e956623bb3e59340 Mon Sep 17 00:00:00 2001
+From 15a5a5a2eb46a6c7a6e3660500285e856b5c3645 Mon Sep 17 00:00:00 2001
 From: Felix Weilbach <felix.weilbach@t-online.de>
 Date: Wed, 15 Sep 2021 23:00:49 +0200
 Subject: [PATCH 4/5] fixup! Only set focused menu when pointer enters
@@ -1900,7 +1900,7 @@ index f8f31cf6b3..f389097a93 100644
  
  struct png_stream {
 
-From 5c7aa54af364850c03d6f7aee8b486e53572a682 Mon Sep 17 00:00:00 2001
+From a5bb9654acfdb3bf9fb1714f0f6f1aa5fcec8835 Mon Sep 17 00:00:00 2001
 From: Felix Weilbach <felix.weilbach@t-online.de>
 Date: Thu, 16 Sep 2021 19:42:46 +0200
 Subject: [PATCH 5/5] fixup! handle also pointer axis when using tray

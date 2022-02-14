@@ -6,13 +6,11 @@ self: super:
       [
         # Implement startup notifications for workspace matching
         # https://github.com/swaywm/sway/pull/6639
-        # Broken for Xwayland applications :|
-        # ./sway-6639.patch
+        ./sway-6639.patch
 
         # Tray D-Bus Menu
         # https://github.com/swaywm/sway/pull/6249
         ./sway-6249.patch
-        ./sway-fix-compilation-error-in-swaybar.patch
       ];
   });
 }
