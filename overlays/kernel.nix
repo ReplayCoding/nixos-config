@@ -61,12 +61,24 @@ let
   inherit (linuxKernel) packagesFor;
 in
 {
-  myLinuxPackages =
-    (packagesFor (applyLTO linuxKernel.kernels.linux_xanmod)).extend (
+  myLinuxPackages-librem =
+    (packagesFor
+      (applyCfg
+        { MSKYLAKE = yes; }
+        (applyLTO linuxKernel.kernels.linux_xanmod)
+      )
+    ).extend (
       self: super:
         let
           callPackage = final.newScope super;
         in
         { librem-ec-acpi-dkms = callPackage ./librem-ec-acpi-dkms.nix { }; }
+    );
+  myLinuxPackages-thinkpad =
+    (packagesFor
+      (applyCfg
+        { MJAGUAR = yes; }
+        (applyLTO linuxKernel.kernels.linux_xanmod)
+      )
     );
 }

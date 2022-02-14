@@ -5,7 +5,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.myLinuxPackages;
+  boot.kernelPackages = pkgs.myLinuxPackages-thinkpad;
   boot.blacklistedKernelModules = [ "wl" ];
   networking.enableB43Firmware = true;
 
