@@ -40,8 +40,13 @@ let
     old:
     { hardeningDisable = [ "all" ]; }
     // (
-      if (super.nixosPassthru ? arch) && (stdenv.hostPlatform == stdenv.buildPlatform)
-      then { NIX_CFLAGS_COMPILE = toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; }
+      if (super.nixosPassthru ? arch)
+      then {
+        NIX_CFLAGS_COMPILE =
+          toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
+        NIX_CFLAGS_COMPILE_FOR_TARGET =
+          toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+      }
       else { }
     );
   autotoolsOptions =
