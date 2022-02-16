@@ -21,7 +21,7 @@
     ./wlsunset.nix
     ./cmus.nix
     ./kdeconnect.nix
-    ./rizin.nix
+    ./reversing.nix
     ./neovim
   ];
   programs = {
