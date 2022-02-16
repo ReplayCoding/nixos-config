@@ -27,14 +27,14 @@
   };
   libplacebo = {
     pname = "libplacebo";
-    version = "d74ea8b33badf7eef514b48f8b22a83771238dc1";
+    version = "08140178a8fe3fa8905ba0dd87b5231c4a59e607";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/libplacebo/";
-      rev = "d74ea8b33badf7eef514b48f8b22a83771238dc1";
+      rev = "08140178a8fe3fa8905ba0dd87b5231c4a59e607";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-XNz8cbxPcnaqfql/36oRtilFrzGbhre0IpoliPRk3is=";
+      sha256 = "sha256-N4Qrk+u+brgpNK4UQowGW7Kt5gSaDuHvJSzRXFIP2Hk=";
     };
   };
   mpv = {

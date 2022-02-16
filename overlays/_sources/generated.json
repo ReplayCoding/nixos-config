@@ -46,12 +46,12 @@
             "url": "https://code.videolan.org/videolan/libplacebo/",
             "name": null,
             "type": "git",
-            "sha256": "sha256-XNz8cbxPcnaqfql/36oRtilFrzGbhre0IpoliPRk3is=",
-            "rev": "d74ea8b33badf7eef514b48f8b22a83771238dc1",
+            "sha256": "sha256-N4Qrk+u+brgpNK4UQowGW7Kt5gSaDuHvJSzRXFIP2Hk=",
+            "rev": "08140178a8fe3fa8905ba0dd87b5231c4a59e607",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "d74ea8b33badf7eef514b48f8b22a83771238dc1",
+        "version": "08140178a8fe3fa8905ba0dd87b5231c4a59e607",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
