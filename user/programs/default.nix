@@ -33,7 +33,8 @@
     bat.enable = true;
     firefox = {
       enable = true;
-      package = pkgs.firefox-bin.override { forceWayland = true; };
+      package =
+        pkgs.librewolf.override { forceWayland = true; };
     };
 
     man = {
