@@ -27,12 +27,12 @@
             "url": "https://code.videolan.org/videolan/dav1d",
             "name": null,
             "type": "git",
-            "sha256": "sha256-cHfqh39rmUHn4mXJWftigWITQVogChaaJQ5NM63dE+8=",
-            "rev": "94b1bf456e9062a2f966453b1daea3fd6a9e03cc",
+            "sha256": "sha256-eyerNV5nqL8BC/DT5J4TjTjpFaopTzjMubSGVV/DjnE=",
+            "rev": "8ccdf0f6b91e43b589c195151ec3bffb3db417f1",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "94b1bf456e9062a2f966453b1daea3fd6a9e03cc",
+        "version": "8ccdf0f6b91e43b589c195151ec3bffb3db417f1",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null

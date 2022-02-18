@@ -3,14 +3,14 @@
 {
   dav1d = {
     pname = "dav1d";
-    version = "94b1bf456e9062a2f966453b1daea3fd6a9e03cc";
+    version = "8ccdf0f6b91e43b589c195151ec3bffb3db417f1";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/dav1d";
-      rev = "94b1bf456e9062a2f966453b1daea3fd6a9e03cc";
+      rev = "8ccdf0f6b91e43b589c195151ec3bffb3db417f1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-cHfqh39rmUHn4mXJWftigWITQVogChaaJQ5NM63dE+8=";
+      sha256 = "sha256-eyerNV5nqL8BC/DT5J4TjTjpFaopTzjMubSGVV/DjnE=";
     };
   };
   fuzzel = {
