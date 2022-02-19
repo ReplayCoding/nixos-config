@@ -27,12 +27,12 @@
             "url": "https://code.videolan.org/videolan/dav1d",
             "name": null,
             "type": "git",
-            "sha256": "sha256-eyerNV5nqL8BC/DT5J4TjTjpFaopTzjMubSGVV/DjnE=",
-            "rev": "8ccdf0f6b91e43b589c195151ec3bffb3db417f1",
+            "sha256": "sha256-8UQicfMC82luUimf7uG8aEcQJSIdB90bKTUJb8iMO0I=",
+            "rev": "d821d88035aee149a3b6e4d1b1876f080ad8adab",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "8ccdf0f6b91e43b589c195151ec3bffb3db417f1",
+        "version": "d821d88035aee149a3b6e4d1b1876f080ad8adab",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -46,12 +46,12 @@
             "url": "https://code.videolan.org/videolan/libplacebo/",
             "name": null,
             "type": "git",
-            "sha256": "sha256-N4Qrk+u+brgpNK4UQowGW7Kt5gSaDuHvJSzRXFIP2Hk=",
-            "rev": "08140178a8fe3fa8905ba0dd87b5231c4a59e607",
+            "sha256": "sha256-+huMH1gxrkldAMTpVVxi/rVIseP9sZ41MK6diAz+Zv8=",
+            "rev": "9dd3b48f40dafbefd6f44d06c0bbd3778a4cbe10",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "08140178a8fe3fa8905ba0dd87b5231c4a59e607",
+        "version": "9dd3b48f40dafbefd6f44d06c0bbd3778a4cbe10",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -66,12 +66,12 @@
             "name": null,
             "repo": "mpv",
             "type": "github",
-            "sha256": "sha256-m1UpIZDlMAeIBsPwKeSGIpsIFfE9hV24NhqafJ5qH3I=",
-            "rev": "bc9805c71a67b2717c79533731608eff679cded1",
+            "sha256": "sha256-4NmWSp5XHOeqQls8RcyN8q+i96ggBaaxyNwjtsd36lc=",
+            "rev": "27c38eac1040cd781f39d977ce53adcd65ddcfb6",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "bc9805c71a67b2717c79533731608eff679cded1",
+        "version": "27c38eac1040cd781f39d977ce53adcd65ddcfb6",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
