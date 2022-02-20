@@ -36,33 +36,61 @@ let
   stdenvNoCache = (super.overrideCC llvmPackages.stdenv ccNoCache);
   stdenv = (super.overrideCC llvmPackages.stdenv (mkCCacheWrapper ccNoCache));
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
-  genericOptions =
-    old:
-    { hardeningDisable = [ "all" ]; }
-    // (
-      if (super.nixosPassthru ? arch)
-      then {
-        NIX_CFLAGS_COMPILE =
-          toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
-        NIX_CFLAGS_COMPILE_FOR_TARGET =
-          toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
-      }
-      else { }
-    );
-  autotoolsOptions =
+
+  fakeExtra = (_: { });
+  mkOptions =
+    { old_, options, extra, _extra ? fakeExtra }:
     let
-      flags = "-flto=thin -O3";
+      beforeExtra = old_ // (options old_);
+      _beforeExtra = beforeExtra // (extra beforeExtra);
     in
-    old: (genericOptions old) // {
-      CFLAGS = (old.CFLAGS or "") + flags;
-      LDFLAGS = (old.LDFLAGS or "") + flags;
-      makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
+    (options old_) // (extra beforeExtra) // (_extra _beforeExtra);
+  genericOptions =
+    extra: old':
+    mkOptions {
+      inherit extra;
+      old_ = old';
+      options = old:
+        { hardeningDisable = [ "all" ]; }
+        // (
+          if (super.nixosPassthru ? arch)
+          then {
+            NIX_CFLAGS_COMPILE =
+              toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
+            NIX_CFLAGS_COMPILE_FOR_TARGET =
+              toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+          }
+          else { }
+        );
     };
-  mesonOptions = old: (genericOptions old) // {
-    mesonBuildType = "release";
-    mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
-    ninjaFlags = [ "--verbose" ];
-  };
+  autotoolsOptions =
+    extra: old':
+    mkOptions {
+      inherit extra;
+      _extra = genericOptions fakeExtra;
+      old_ = old';
+      options = old:
+        let
+          flags = "-flto=thin -O3";
+        in
+        {
+          CFLAGS = (old.CFLAGS or "") + flags;
+          LDFLAGS = (old.LDFLAGS or "") + flags;
+          makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
+        };
+    };
+  mesonOptions =
+    extra: old':
+    mkOptions {
+      inherit extra;
+      _extra = genericOptions fakeExtra;
+      old_ = old';
+      options = old: {
+        mesonBuildType = "release";
+        mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
+        ninjaFlags = (old.ninjaFlags or [ ]) ++ [ "--verbose" ];
+      };
+    };
 in
 {
   inherit
@@ -70,6 +98,7 @@ in
     stdenv
     stdenvNoCache
     llvmPackages
+    fakeExtra
     genericOptions
     autotoolsOptions
     mesonOptions

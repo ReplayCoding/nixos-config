@@ -1,15 +1,15 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions mesonOptions llvmPackages genericOptions makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions mesonOptions llvmPackages genericOptions fakeExtra makeStatic;
 in
 {
   libarchive-optimised =
-    (super.libarchive.overrideAttrs autotoolsOptions).override { inherit stdenv; };
+    (super.libarchive.overrideAttrs (autotoolsOptions fakeExtra)).override { inherit stdenv; };
   tmux =
-    (super.tmux.overrideAttrs autotoolsOptions).override { inherit stdenv; };
+    (super.tmux.overrideAttrs (autotoolsOptions fakeExtra)).override { inherit stdenv; };
   mesa-optimised =
-    (super.mesa.overrideAttrs mesonOptions).override (
+    (super.mesa.overrideAttrs (mesonOptions fakeExtra)).override (
       { inherit llvmPackages stdenv; }
       // (super.nixosPassthru.mesaConfig or { })
     );
@@ -21,7 +21,7 @@ in
       }))
       super.tree-sitter.allGrammars;
   polymc =
-    (super.polymc.overrideAttrs genericOptions).override { mkDerivation = super.libsForQt5.mkDerivationWith stdenv.mkDerivation; };
+    (super.polymc.overrideAttrs (genericOptions fakeExtra)).override { mkDerivation = super.libsForQt5.mkDerivationWith stdenv.mkDerivation; };
   rizin =
-    (super.rizin.overrideAttrs mesonOptions).override { inherit stdenv; };
+    (super.rizin.overrideAttrs (mesonOptions fakeExtra)).override { inherit stdenv; };
 }

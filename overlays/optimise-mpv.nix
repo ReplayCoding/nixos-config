@@ -8,13 +8,12 @@ let
 
   dav1d =
     # This cannot be made into a static library, as lld crashes when linking with lto
-    (super.dav1d.override { inherit stdenv; }).overrideAttrs (
-      old: { inherit (sources.dav1d) src version; }
-        // mesonOptions old
+    (super.dav1d.override { inherit stdenv; }).overrideAttrs (mesonOptions
+      (old: { inherit (sources.dav1d) src version; })
     );
 
   ffmpeg =
-    (super.ffmpeg-full.overrideAttrs (old: {
+    (super.ffmpeg-full.overrideAttrs (genericOptions (old: {
       configureFlags = (builtins.filter (f: f != "--enable-shared") old.configureFlags) ++ [ "--extra-cflags=-flto=thin" ];
       makeFlags = [ "V=1" ];
       # Disable tests :O
@@ -24,7 +23,7 @@ let
         addOpenGLRunpath $out/lib/libavcodec.a
         addOpenGLRunpath $out/lib/libavutil.a
       '';
-    } // genericOptions old)).override {
+    }))).override {
       stdenv = makeStatic stdenv;
       inherit dav1d;
       # Building these programs takes a looooong time
@@ -35,25 +34,25 @@ let
     };
 
   libass =
-    (super.libass.override { stdenv = makeStatic stdenv; }).overrideAttrs (old: {
+    (super.libass.override { stdenv = makeStatic stdenv; }).overrideAttrs (genericOptions (old: {
       configureFlags = old.configureFlags ++ thinLtoConfFlags;
-    } // genericOptions old);
+    }));
 
   libplacebo =
-    (super.libplacebo.override { stdenv = makeStatic stdenv; }).overrideAttrs (old: (mesonOptions old) // {
+    (super.libplacebo.override { stdenv = makeStatic stdenv; }).overrideAttrs (mesonOptions (old: {
       inherit (sources.libplacebo) src version;
 
-      mesonFlags = old.mesonFlags ++ [ "-Db_lto=true" "-Db_lto_mode=thin" "-Dunwind=disabled" ];
-    });
+      mesonFlags = old.mesonFlags ++ [ "-Dunwind=disabled" ];
+    }));
 
   mpv-unwrapped =
     (super.mpv-unwrapped.override {
       inherit stdenv ffmpeg libass libplacebo;
       lua = super.luajit;
-    }).overrideAttrs (old: {
+    }).overrideAttrs (genericOptions (old: {
       inherit (sources.mpv) src version;
 
       wafConfigureFlags = old.wafConfigureFlags ++ thinLtoConfFlags;
-    } // genericOptions old);
+    }));
 in
 { inherit mpv-unwrapped; }
