@@ -17,7 +17,7 @@ nixpkgs.lib.composeManyExtensions [
 
   (self: super: { rz-ghidra = super.callPackage ./rz-ghidra.nix { }; })
 
-  (import ./optimise-generic.nix)
+  (import ./optimise-misc.nix)
   (import ./optimise-wayland.nix)
   (import ./optimise-mpv.nix)
   (import ./optimise-pipewire.nix)
