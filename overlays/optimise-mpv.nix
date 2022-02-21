@@ -1,7 +1,7 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv genericOptions mesonOptions makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic;
   sources = super.callPackage ./_sources/generated.nix { };
 
   thinLtoConfFlags = [ "LDFLAGS=-flto=thin" "CFLAGS=-flto=thin" ];
@@ -13,9 +13,10 @@ let
     );
 
   ffmpeg =
-    (super.ffmpeg-full.overrideAttrs (genericOptions (old: {
-      configureFlags = (builtins.filter (f: f != "--enable-shared") old.configureFlags) ++ [ "--extra-cflags=-flto=thin" ];
-      makeFlags = [ "V=1" ];
+    # While ffmpeg is not using autotools, its build system
+    # is close enough to be compatible with it.
+    (super.ffmpeg-full.overrideAttrs (autotoolsOptions (old: {
+      configureFlags = (builtins.filter (f: f != "--enable-shared") old.configureFlags);
       # Disable tests :O
       checkPhase = null;
       safeBitstreamReaderBuild = false;
