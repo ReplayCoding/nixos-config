@@ -52,7 +52,8 @@ let
     }).overrideAttrs (genericOptions (old: {
       inherit (sources.mpv) src version;
 
-      wafConfigureFlags = old.wafConfigureFlags ++ thinLtoConfFlags;
+      CFLAGS = (toString old.CFLAGS or "") + " -flto=thin";
+      LDFLAGS = (toString old.LDFLAGS or "") + " -flto=thin";
     }));
 in
 { inherit mpv-unwrapped; }
