@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+import os, re, subprocess
+
+def get_build_id_mappings():
+    pgo_packages =''' @pgoPackagesWithBuildId@ '''.strip().split("\n")
+    build_id_mappings = {}
+    pattern = re.compile(r'Build ID: ([a-fA-F0-9]+)')
+    for pgo_package in pgo_packages:
+        # print(pgo_package)
+        for root, dirs, files in os.walk(pgo_package):
+            for file in files:
+                fullpath = os.path.join(root, file)
+                llvm_output = subprocess.run(["@libllvm@/bin/llvm-readelf", "-n", fullpath], capture_output = True)
+                if llvm_output.returncode == 0:
+                    llvm_output = llvm_output.stdout.decode("utf-8")
+                else:
+                    continue
+                build_id = pattern.search(llvm_output)
+                if build_id != None:
+                    build_id = build_id.group(1)
+                    build_id_mappings[build_id] = [pgo_package, fullpath]
+                    # print("| {}: {}".format(fullpath[len(pgo_package):], build_id))
+    return build_id_mappings
+
+def get_profile_name_for_drv(drv):
+    path = os.path.join(drv, "nix-support/pgo-support-name")
+    profile_name = open(path, "r").read().strip()
+    return profile_name
+
+def get_profiles_with_ids(build_id_mappings):
+    pgo_dir = "@pgoDir@";
+    pattern = re.compile("Binary IDs: \n([a-fA-F0-9]+)", re.MULTILINE)
+    profile_groups = {}
+    for profile in os.scandir(pgo_dir):
+        llvm_output = subprocess.run(["@libllvm@/bin/llvm-profdata", "show" , "--binary-ids", profile.path], capture_output = True)
+        if llvm_output.returncode != 0:
+            print("WARNING: Profile {} could not be parsed".format(profile.name))
+            continue
+        llvm_output = llvm_output.stdout.decode("utf-8")
+        build_id = pattern.search(llvm_output)
+        if build_id == None:
+            print("WARNING: Profile {} does not contain a binary id".format(profile.name))
+            continue
+        if build_id.group(1) not in build_id_mappings:
+            print("Ignoring profile {}".format(profile.name))
+            continue
+        mapping = build_id_mappings[build_id.group(1)]
+        program_profile_name = get_profile_name_for_drv(mapping[0])
+        # print("{}: {}".format(profile.name, build_id.group(1)))
+        # print("|   {}".format(program_profile_name))
+        if program_profile_name in profile_groups:
+            profile_groups[program_profile_name].append(profile.path)
+        else:
+            profile_groups[program_profile_name] = [ profile.path ]
+    return profile_groups
+
+def merge_profiles(output_name, input_profiles):
+    # ${name'}-${super.nixosPassthru.hostname}.profdata
+    output_path = "{}-{}.profdata".format(output_name, "@hostname@")
+    llvm_output = subprocess.run(["@libllvm@/bin/llvm-profdata", "merge", "--output={}".format(output_path)] + input_profiles)
+    if llvm_output.returncode != 0:
+        print("Failed to merge profiles {}".format(", ".join(input_profiles)))
+
+if __name__ == "__main__":
+    print("Getting build IDs from programs")
+    build_id_mappings = get_build_id_mappings()
+    print("Creating profile -> program mappings")
+    profiles_to_ids = get_profiles_with_ids(build_id_mappings)
+    for program in profiles_to_ids:
+        print("Merging profiles to {}".format(program))
+        merge_profiles(program, profiles_to_ids[program])

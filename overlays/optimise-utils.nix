@@ -71,10 +71,11 @@ let
       old_ = old';
       options = old:
         let
-          flags = "-flto=thin -O3";
+          flags = " -flto=thin -O3";
         in
         {
           CFLAGS = (old.CFLAGS or "") + flags;
+          CXXFLAGS = (old.CXXFLAGS or "") + flags;
           LDFLAGS = (old.LDFLAGS or "") + flags;
           makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
         };
@@ -87,10 +88,94 @@ let
       old_ = old';
       options = old: {
         mesonBuildType = "release";
-        mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Db_lto=true" "-Db_lto_mode=thin" ];
+        mesonFlags = (old.mesonFlags or [ ]) ++ [
+          "-Db_lto=true"
+          "-Db_lto_mode=thin"
+        ];
         ninjaFlags = (old.ninjaFlags or [ ]) ++ [ "--verbose" ];
       };
     };
+
+  getProfilePath = name: (./pgo + "/${name}-${super.nixosPassthru.hostname}.profdata");
+  getDrvName =
+    old:
+    let
+      pname_version = "${old.pname}-${old.version}";
+    in
+    if (builtins.hasAttr "name" old) then old.name else pname_version;
+  fixPgoMode =
+    name: pgoMode: pgoProfile:
+    if ((pgoMode != "use") || (builtins.pathExists pgoProfile))
+    then pgoMode
+    else builtins.trace "Package ${name} has no PGO profile (${toString pgoProfile}), disabling" "off";
+
+  mesonOptions_pgo =
+    name: pgoMode: extra: old':
+    let
+      name' = if name != null then name else getDrvName old';
+      pgoProfile = getProfilePath name';
+      pgoMode' = fixPgoMode name' pgoMode pgoProfile;
+    in
+    mkOptions {
+      inherit extra;
+      _extra = mesonOptions fakeExtra;
+      old_ = old';
+      options = old: {
+        PGO_PROFILE_NAME = name';
+        mesonFlags = (old.mesonFlags or [ ]) ++ [
+          "-Db_pgo=${pgoMode'}"
+          "-Dwerror=false" # Fix for PGO
+          "-Dc_args=-Wno-ignored-optimization-argument"
+          "-Dcpp_args=-Wno-ignored-optimization-argument"
+          "-Dc_link_args=-Wl\\,--build-id=sha1"
+          "-Dcpp_link_args=-Wl\\,--build-id=sha1"
+        ];
+        postConfigure =
+          (
+            if pgoMode' == "use"
+            then
+              ''
+                cp ${pgoProfile} ./default.profdata
+              ''
+            else ""
+          ) + (old.postConfigure or "");
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
+      };
+    };
+  autotoolsOptions_pgo =
+    name: pgoMode: extra: old':
+    mkOptions {
+      inherit extra;
+      _extra = autotoolsOptions fakeExtra;
+      old_ = old';
+      options = old:
+        let
+          name' = if name != null then name else getDrvName old';
+          pgoProfile = getProfilePath name';
+          pgoMode' = fixPgoMode name' pgoMode pgoProfile;
+          flags =
+            if pgoMode' == "use"
+            then " -fprofile-use=${pgoProfile}"
+            else
+              if pgoMode' == "off"
+              then ""
+              else " -fprofile-${pgoMode'}";
+        in
+        {
+          PGO_PROFILE_NAME = name';
+          CFLAGS = (old.CFLAGS or "") + flags;
+          CXXFLAGS = (old.CXXFLAGS or "") + flags;
+          LDFLAGS = (old.LDFLAGS or "") + flags;
+          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
+        };
+    };
+  createWithBuildIdList =
+    super': mkEpkgs:
+    {
+      pkgsToExtractBuildId =
+        super'.pkgsToExtractBuildId
+        ++ (builtins.attrValues (mkEpkgs { pgoMode = "generate"; }));
+    } // mkEpkgs { };
 in
 {
   inherit
@@ -102,5 +187,9 @@ in
     genericOptions
     autotoolsOptions
     mesonOptions
-    makeStatic;
+    mesonOptions_pgo
+    autotoolsOptions_pgo
+    getDrvName
+    makeStatic
+    createWithBuildIdList;
 }

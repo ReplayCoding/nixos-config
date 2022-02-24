@@ -71,10 +71,12 @@ rec {
     , pre-commit-hooks
     }@inputs:
     let
-      ccacheDir = "/var/cache/ccache";
-      specialArgs = { inherit nixConfig ccacheDir inputs; };
       mkHost =
         { system, modules, overlayConfig ? { } }:
+        let
+          ccacheDir = "/var/cache/ccache";
+          specialArgs = { inherit overlayConfig nixConfig ccacheDir inputs; };
+        in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
           modules = [
@@ -101,6 +103,8 @@ rec {
           modules = [ ./hosts/librem ];
           overlayConfig = {
             arch = "skylake";
+            pgoMode = "generate";
+            hostname = "librem";
             mesaConfig = {
               galliumDrivers = [ "iris" "swrast" ];
               driDrivers = [ ];
@@ -112,6 +116,7 @@ rec {
           modules = [ ./hosts/thinkpad ];
           overlayConfig = {
             arch = "btver2";
+            hostname = "thinkpad";
             mesaConfig = {
               galliumDrivers = [ "radeonsi" "swrast" ];
               driDrivers = [ ];

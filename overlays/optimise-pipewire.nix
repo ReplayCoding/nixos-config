@@ -1,17 +1,18 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv genericOptions mesonOptions fakeExtra makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions_pgo mesonOptions_pgo fakeExtra makeStatic createWithBuildIdList getDrvName;
 
-  fdk_aac =
-    (super.fdk_aac.override { stdenv = makeStatic stdenv; }).overrideAttrs (genericOptions (old: rec {
-      makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
-      configureFlags = (old.configureFlags or [ ]) ++ [ "--with-pic" ];
-      CFLAGS = "-flto=thin -Ofast";
-      CXXFLAGS = CFLAGS;
-    }));
+  mkOptimisedPipewire =
+    { pgoMode ? (super.nixosPassthru.pgoMode or "off") }:
+    let
+      fdk_aac =
+        (super.fdk_aac.override { stdenv = makeStatic stdenv; }).overrideAttrs (autotoolsOptions_pgo (getDrvName pipewire-optimised) pgoMode (old: {
+          configureFlags = (old.configureFlags or [ ]) ++ [ "--with-pic" ];
+        }));
+      pipewire-optimised =
+        (super.pipewire.override { inherit stdenv fdk_aac; }).overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra);
+    in
+    { inherit pipewire-optimised; };
 in
-{
-  pipewire-optimised =
-    (super.pipewire.override { inherit stdenv fdk_aac; }).overrideAttrs (mesonOptions fakeExtra);
-}
+createWithBuildIdList super mkOptimisedPipewire

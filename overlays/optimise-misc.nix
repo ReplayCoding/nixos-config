@@ -8,11 +8,6 @@ in
     (super.libarchive.overrideAttrs (autotoolsOptions fakeExtra)).override { inherit stdenv; };
   tmux =
     (super.tmux.overrideAttrs (autotoolsOptions fakeExtra)).override { inherit stdenv; };
-  mesa-optimised =
-    (super.mesa.overrideAttrs (mesonOptions fakeExtra)).override (
-      { inherit llvmPackages stdenv; }
-      // (super.nixosPassthru.mesaConfig or { })
-    );
   tree-sitter-optimised-grammars =
     builtins.map
       (grammar: grammar.overrideAttrs (old: rec {
