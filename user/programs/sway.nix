@@ -133,6 +133,7 @@ in
             "${modifier}+Shift+s" = "exec ${slurp}/bin/slurp | ${grim}/bin/grim -g -";
             "${modifier}+p" = "exec ${systemd}/bin/loginctl lock-session";
           };
+        input."type:pointer".accel_profile = "flat";
         output = {
           "*" = {
             bg =
