@@ -103,7 +103,7 @@ rec {
           modules = [ ./hosts/librem ];
           overlayConfig = {
             arch = "skylake";
-            pgoMode = "generate";
+            pgoMode = "use";
             hostname = "librem";
             mesaConfig = {
               galliumDrivers = [ "iris" "swrast" ];
