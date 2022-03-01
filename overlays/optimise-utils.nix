@@ -96,6 +96,10 @@ let
       };
     };
 
+  fixProfile =
+    profile:
+    super.runCommand "fix-profile-${profile}" { }
+      ''${llvmPackages.libllvm}/bin/llvm-profdata merge --binary --output $out "${profile}"'';
   getProfilePath = name: (./pgo + "/${name}-${super.nixosPassthru.hostname}.profdata");
   getDrvName =
     old:
@@ -135,7 +139,7 @@ let
             if pgoMode' == "use"
             then
               ''
-                cp ${pgoProfile} ./default.profdata
+                cp ${fixProfile pgoProfile} ./default.profdata
               ''
             else ""
           ) + (old.postConfigure or "");
@@ -155,7 +159,7 @@ let
           pgoMode' = fixPgoMode name' pgoMode pgoProfile;
           flags =
             if pgoMode' == "use"
-            then " -fprofile-use=${pgoProfile}"
+            then " -fprofile-use=${fixProfile pgoProfile}"
             else
               if pgoMode' == "off"
               then ""

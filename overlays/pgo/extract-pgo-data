@@ -61,7 +61,7 @@ def get_profiles_with_ids(build_id_mappings):
 def merge_profiles(output_name, input_profiles):
     # ${name'}-${super.nixosPassthru.hostname}.profdata
     output_path = "{}-{}.profdata".format(output_name, "@hostname@")
-    cmd = ["@libllvm@/bin/llvm-profdata", "merge", "--output={}".format(output_path)] + input_profiles
+    cmd = ["@libllvm@/bin/llvm-profdata", "merge", "--text", "--output={}".format(output_path)] + input_profiles
     llvm_output = subprocess.run(cmd)
     if llvm_output.returncode != 0:
         print("Failed to merge profiles {}".format(", ".join(input_profiles)))
