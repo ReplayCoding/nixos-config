@@ -33,11 +33,11 @@ let
       passthru = old.passthru // { inherit ccacheConfig; };
     });
 
-  stdenvNoCache = (super.overrideCC llvmPackages.stdenv ccNoCache);
-  stdenv = (super.overrideCC llvmPackages.stdenv (mkCCacheWrapper ccNoCache));
+  stdenvNoCache = super.overrideCC llvmPackages.stdenv ccNoCache;
+  stdenv = super.overrideCC llvmPackages.stdenv (mkCCacheWrapper ccNoCache);
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
 
-  fakeExtra = (_: { });
+  fakeExtra = _: { };
   mkOptions =
     { old_, options, extra, _extra ? fakeExtra }:
     let

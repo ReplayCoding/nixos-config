@@ -7,8 +7,8 @@
 }:
 
 let
-  pkgsWithAllOutputs = pkgs: builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs) pkgs;
-  pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map (e: toString e) (pkgsWithAllOutputs pkgsToExtractBuildId));
+  pkgsWithAllOutputs = builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs);
+  pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map toString (pkgsWithAllOutputs pkgsToExtractBuildId));
 in
 stdenv.mkDerivation {
   name = "pgo-script";

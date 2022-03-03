@@ -16,7 +16,7 @@ let
     # While ffmpeg is not using autotools, its build system
     # is close enough to be compatible with it.
     (super.ffmpeg-full.overrideAttrs (autotoolsOptions (old: {
-      configureFlags = (builtins.filter (f: f != "--enable-shared") old.configureFlags);
+      configureFlags = builtins.filter (f: f != "--enable-shared") old.configureFlags;
       # Disable tests :O
       checkPhase = null;
       safeBitstreamReaderBuild = false;

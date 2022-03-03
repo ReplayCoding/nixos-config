@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  colors = config.colorscheme.colors;
+  inherit (config.colorscheme) colors;
 in
 {
   programs.zathura = {

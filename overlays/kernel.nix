@@ -75,10 +75,9 @@ in
         { librem-ec-acpi-dkms = callPackage ./librem-ec-acpi-dkms.nix { }; }
     );
   myLinuxPackages-thinkpad =
-    (packagesFor
+    packagesFor
       (applyCfg
         { MJAGUAR = yes; }
         (applyLTO linuxKernel.kernels.linux_xanmod)
-      )
-    );
+      );
 }

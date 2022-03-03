@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  colors = config.colorscheme.colors;
+  inherit (config.colorscheme) colors;
 in
 {
   programs.mako = {

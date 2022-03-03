@@ -2,7 +2,7 @@
 
 let
   nix-colors-lib = inputs.nix-colors.lib { inherit pkgs; };
-  colorscheme = config.home-manager.users.user.colorscheme;
+  inherit (config.home-manager.users.user) colorscheme;
   inherit (colorscheme) colors;
   inherit (nix-colors-lib) nixWallpaperFromScheme;
 in

@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = kernel.makeFlags;
+  inherit (kernel) makeFlags;
   buildFlags = [ "all" ];
 
   installFlags = [ "DEPMOD=true" ];

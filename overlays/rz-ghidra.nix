@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Deep ghidra decompiler and sleigh disassembler integration for rizin";
-    homepage = src.meta.homepage;
+    inherit (src.meta) homepage;
     license = licenses.lgpl3;
     maintainers = with maintainers; [ ];
   };

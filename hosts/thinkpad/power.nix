@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   powerManagement.cpuFreqGovernor = "schedutil";

@@ -40,12 +40,12 @@
   mpv = {
     pname = "mpv";
     version = "b1fb4b783bd604ffb763e88a7cee2ad9d9c2c209";
-    src = fetchFromGitHub ({
+    src = fetchFromGitHub {
       owner = "mpv-player";
       repo = "mpv";
       rev = "b1fb4b783bd604ffb763e88a7cee2ad9d9c2c209";
       fetchSubmodules = false;
       sha256 = "sha256-/c3xE2+mZrHFVdk0nwqmomF2pqkHXlsbL+Q8F8MKGRE=";
-    });
+    };
   };
 }
