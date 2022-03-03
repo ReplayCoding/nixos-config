@@ -15,6 +15,7 @@
       gitsigns-nvim
       lualine-nvim
       comment-nvim
+      catppuccin-nvim
     ];
   };
   xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl { };

@@ -15,3 +15,7 @@
 ((. (require :gitsigns) :setup))
 ((. (require :lualine) :setup))
 ((. (require :Comment) :setup))	
+
+
+((. (require :catppuccin) :setup))	
+(vim.cmd "colorscheme catppuccin")
