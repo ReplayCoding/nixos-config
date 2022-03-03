@@ -1,10 +1,8 @@
 self: super:
 
 let
-  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic;
+  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic fakeExtra;
   sources = super.callPackage ./_sources/generated.nix { };
-
-  thinLtoConfFlags = [ "LDFLAGS=-flto=thin" "CFLAGS=-flto=thin" ];
 
   dav1d =
     # This cannot be made into a static library, as lld crashes when linking with lto
@@ -35,9 +33,7 @@ let
     };
 
   libass =
-    (super.libass.override { stdenv = makeStatic stdenv; }).overrideAttrs (genericOptions (old: {
-      configureFlags = old.configureFlags ++ thinLtoConfFlags;
-    }));
+    (super.libass.override { stdenv = makeStatic stdenv; }).overrideAttrs (autotoolsOptions fakeExtra);
 
   libplacebo =
     (super.libplacebo.override { stdenv = makeStatic stdenv; }).overrideAttrs (mesonOptions (old: {
@@ -50,11 +46,8 @@ let
     (super.mpv-unwrapped.override {
       inherit stdenv ffmpeg libass libplacebo;
       lua = super.luajit;
-    }).overrideAttrs (genericOptions (old: {
+    }).overrideAttrs (autotoolsOptions (old: {
       inherit (sources.mpv) src version;
-
-      CFLAGS = (toString old.CFLAGS or "") + " -flto=thin";
-      LDFLAGS = (toString old.LDFLAGS or "") + " -flto=thin";
     }));
 in
 { inherit mpv-unwrapped; }
