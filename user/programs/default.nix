@@ -74,6 +74,7 @@
     libarchive-optimised # bsdtar is amazing
     ccache-stats
     wineWowPackages.unstableFull
+    bitwarden-cli
     python39Packages.deemix
     /* sway */
     wl-clipboard
