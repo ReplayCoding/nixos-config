@@ -3,14 +3,14 @@
 {
   dav1d = {
     pname = "dav1d";
-    version = "b53ff29d80a21180e5ad9bbe39a02541151f4f53";
+    version = "4124eded3b316f457ce8616fecd6f5c1734952b3";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/dav1d";
-      rev = "b53ff29d80a21180e5ad9bbe39a02541151f4f53";
+      rev = "4124eded3b316f457ce8616fecd6f5c1734952b3";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-rv9FXw2ndM6+vvkkRQLcqjNGKQCl57WfwIzRphlEjkc=";
+      sha256 = "sha256-UUKYhVpQ0PIM8m3iHaTkGcezgMc96GYz6QABwpXsFIs=";
     };
   };
   fuzzel = {
@@ -27,25 +27,25 @@
   };
   libplacebo = {
     pname = "libplacebo";
-    version = "f911efb9374a80e2ec4098baca94b3aff2929b3b";
+    version = "e3198b1e04caa817e177f0a0981f33363ff35a14";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/libplacebo/";
-      rev = "f911efb9374a80e2ec4098baca94b3aff2929b3b";
+      rev = "e3198b1e04caa817e177f0a0981f33363ff35a14";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-ZPk7Gn0XBuBVOY0dg/d7o2Gw2y7lGWxIKdPEHf2zpeI=";
+      sha256 = "sha256-Xo3iaI3nu4sZSUSHBjlrTs2jYMqqXj9Ynvs602McDgY=";
     };
   };
   mpv = {
     pname = "mpv";
-    version = "b1fb4b783bd604ffb763e88a7cee2ad9d9c2c209";
-    src = fetchFromGitHub {
+    version = "1c49d5735dc5231b9bebcdcab5b182a7e62771d4";
+    src = fetchFromGitHub ({
       owner = "mpv-player";
       repo = "mpv";
-      rev = "b1fb4b783bd604ffb763e88a7cee2ad9d9c2c209";
+      rev = "1c49d5735dc5231b9bebcdcab5b182a7e62771d4";
       fetchSubmodules = false;
-      sha256 = "sha256-/c3xE2+mZrHFVdk0nwqmomF2pqkHXlsbL+Q8F8MKGRE=";
-    };
+      sha256 = "sha256-O/bZGns6WaZTO+pcwnCWNlR30P9bGWV4iCg0ek8Q32Q=";
+    });
   };
 }
