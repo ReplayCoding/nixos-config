@@ -1,7 +1,7 @@
 super:
 
 let
-  llvmPackages = super.llvmPackages_13.override {
+  llvmPackages = super.llvmPackages_14.override {
     bootBintoolsNoLibc = null;
     bootBintools = null;
   };
