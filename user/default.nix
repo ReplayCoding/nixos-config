@@ -11,6 +11,7 @@
     home = "/home/user";
     shell = pkgs.fish;
     extraGroups = [ "wheel" "video" "audio" ];
+    openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 
   home-manager.extraSpecialArgs = {
