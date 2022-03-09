@@ -19,7 +19,10 @@ nixpkgs.lib.composeManyExtensions [
   (import ./kernel.nix)
   (import ./ccache-stats.nix)
 
-  (self: super: { rz-ghidra = super.callPackage ./rz-ghidra.nix { }; })
+  (self: super: {
+    rz-ghidra = super.callPackage ./rz-ghidra.nix { };
+    iwd = super.callPackage ./iwd.nix { };
+  })
 
   (import ./unoptimise-foot.nix)
   (import ./optimise-misc.nix)
