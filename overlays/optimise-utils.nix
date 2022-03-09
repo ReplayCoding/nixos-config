@@ -39,61 +39,73 @@ let
 
   fakeExtra = _: { };
   mkOptions =
-    { old_, options, extra, _extra ? fakeExtra }:
-    let
-      beforeExtra = old_ // (options old_);
-      _beforeExtra = beforeExtra // (extra beforeExtra);
-    in
-    (options old_) // (extra beforeExtra) // (_extra _beforeExtra);
+    { old, layers }:
+    builtins.foldl'
+      (prevLayer: curLayer: prevLayer // (curLayer (old // prevLayer)))
+      { }
+      layers;
   genericOptions =
     extra: old':
     mkOptions {
-      inherit extra;
-      old_ = old';
-      options = old:
-        { hardeningDisable = [ "all" ]; }
-        // (
-          if (super.nixosPassthru ? arch)
-          then {
-            NIX_CFLAGS_COMPILE =
-              toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
-            NIX_CFLAGS_COMPILE_FOR_TARGET =
-              toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
-          }
-          else { }
-        );
+      old = old';
+      layers = [
+        extra
+        (
+          old:
+          { hardeningDisable = [ "all" ]; }
+          // (
+            if (super.nixosPassthru ? arch)
+            then {
+              NIX_CFLAGS_COMPILE =
+                toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
+              NIX_CFLAGS_COMPILE_FOR_TARGET =
+                toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+            }
+            else { }
+          )
+        )
+      ];
     };
   autotoolsOptions =
     extra: old':
     mkOptions {
-      inherit extra;
-      _extra = genericOptions fakeExtra;
-      old_ = old';
-      options = old:
-        let
-          flags = " -flto=thin -O3";
-        in
-        {
-          CFLAGS = (old.CFLAGS or "") + flags;
-          CXXFLAGS = (old.CXXFLAGS or "") + flags;
-          LDFLAGS = (old.LDFLAGS or "") + flags;
-          makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
-        };
+      old = old';
+      layers = [
+        extra
+        (genericOptions fakeExtra)
+        (
+          old:
+          let
+            flags = " -flto=thin -O3";
+          in
+          {
+            CFLAGS = (old.CFLAGS or "") + flags;
+            CXXFLAGS = (old.CXXFLAGS or "") + flags;
+            LDFLAGS = (old.LDFLAGS or "") + flags;
+            makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
+          }
+        )
+      ];
     };
   mesonOptions =
     extra: old':
     mkOptions {
-      inherit extra;
-      _extra = genericOptions fakeExtra;
-      old_ = old';
-      options = old: {
-        mesonBuildType = "release";
-        mesonFlags = (old.mesonFlags or [ ]) ++ [
-          "-Db_lto=true"
-          "-Db_lto_mode=thin"
-        ];
-        ninjaFlags = (old.ninjaFlags or [ ]) ++ [ "--verbose" ];
-      };
+      old = old';
+      layers = [
+        extra
+        (genericOptions fakeExtra)
+        (
+          old:
+          {
+            mesonBuildType = "release";
+            mesonFlags = (old.mesonFlags or [ ]) ++ [
+              "-Db_lto=true"
+              "-Db_lto_mode=thin"
+            ];
+            ninjaFlags = (old.ninjaFlags or [ ]) ++ [ "--verbose" ];
+          }
+        )
+      ];
     };
 
   fixProfile =
@@ -121,57 +133,65 @@ let
       pgoMode' = fixPgoMode name' pgoMode pgoProfile;
     in
     mkOptions {
-      inherit extra;
-      _extra = mesonOptions fakeExtra;
-      old_ = old';
-      options = old: {
-        PGO_PROFILE_NAME = name';
-        mesonFlags = (old.mesonFlags or [ ]) ++ [
-          "-Db_pgo=${pgoMode'}"
-          "-Dwerror=false" # Fix for PGO
-          "-Dc_args=-Wno-ignored-optimization-argument"
-          "-Dcpp_args=-Wno-ignored-optimization-argument"
-          "-Dc_link_args=-Wl\\,--build-id=sha1"
-          "-Dcpp_link_args=-Wl\\,--build-id=sha1"
-        ];
-        postConfigure =
-          (
-            if pgoMode' == "use"
-            then
-              ''
-                cp ${fixProfile pgoProfile} ./default.profdata
-              ''
-            else ""
-          ) + (old.postConfigure or "");
-        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
-      };
+      old = old';
+      layers = [
+        extra
+        (mesonOptions fakeExtra)
+        (
+          old: {
+            PGO_PROFILE_NAME = name';
+            mesonFlags = (old.mesonFlags or [ ]) ++ [
+              "-Db_pgo=${pgoMode'}"
+              "-Dwerror=false" # Fix for PGO
+              "-Dc_args=-Wno-ignored-optimization-argument"
+              "-Dcpp_args=-Wno-ignored-optimization-argument"
+              "-Dc_link_args=-Wl\\,--build-id=sha1"
+              "-Dcpp_link_args=-Wl\\,--build-id=sha1"
+            ];
+            postConfigure =
+              (
+                if pgoMode' == "use"
+                then
+                  ''
+                    cp ${fixProfile pgoProfile} ./default.profdata
+                  ''
+                else ""
+              ) + (old.postConfigure or "");
+            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
+          }
+        )
+      ];
     };
   autotoolsOptions_pgo =
     name: pgoMode: extra: old':
     mkOptions {
-      inherit extra;
-      _extra = autotoolsOptions fakeExtra;
-      old_ = old';
-      options = old:
-        let
-          name' = if name != null then name else getDrvName old';
-          pgoProfile = getProfilePath name';
-          pgoMode' = fixPgoMode name' pgoMode pgoProfile;
-          flags =
-            if pgoMode' == "use"
-            then " -fprofile-use=${fixProfile pgoProfile}"
-            else
-              if pgoMode' == "off"
-              then ""
-              else " -fprofile-${pgoMode'}";
-        in
-        {
-          PGO_PROFILE_NAME = name';
-          CFLAGS = (old.CFLAGS or "") + flags;
-          CXXFLAGS = (old.CXXFLAGS or "") + flags;
-          LDFLAGS = (old.LDFLAGS or "") + flags;
-          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
-        };
+      old = old';
+      layers = [
+        extra
+        (autotoolsOptions fakeExtra)
+        (
+          old:
+          let
+            name' = if name != null then name else getDrvName old';
+            pgoProfile = getProfilePath name';
+            pgoMode' = fixPgoMode name' pgoMode pgoProfile;
+            flags =
+              if pgoMode' == "use"
+              then " -fprofile-use=${fixProfile pgoProfile}"
+              else
+                if pgoMode' == "off"
+                then ""
+                else " -fprofile-${pgoMode'}";
+          in
+          {
+            PGO_PROFILE_NAME = name';
+            CFLAGS = (old.CFLAGS or "") + flags;
+            CXXFLAGS = (old.CXXFLAGS or "") + flags;
+            LDFLAGS = (old.LDFLAGS or "") + flags;
+            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
+          }
+        )
+      ];
     };
   createWithBuildIdList =
     super': mkEpkgs:
