@@ -23,7 +23,7 @@ let
       separateDebugInfo = false;
     }));
   mkOptimisedPackages =
-    { pgoMode ? (super.nixosPassthru.pgoMode or "off") }:
+    pgoMode:
     super.lib.genAttrs pkgsToOptimise (name:
     (super.${name}.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (old: {
       stdenv =

@@ -71,11 +71,11 @@ rec {
     , pre-commit-hooks
     }@inputs:
     let
+      allowedSystems = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
       mkHost =
         { system, modules, overlayConfig ? { } }:
         let
-          ccacheDir = "/var/cache/ccache";
-          specialArgs = { inherit overlayConfig nixConfig ccacheDir inputs; };
+          specialArgs = { inherit nixConfig inputs; };
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
@@ -84,7 +84,7 @@ rec {
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
               nix.registry.nixpkgs.flake = nixpkgs;
               nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
-              nixpkgs.overlays = [ (self.overlay ({ inherit ccacheDir; } // overlayConfig)) ];
+              nixpkgs.overlays = [ (self.mkOverlay overlayConfig) ];
             })
             ./hosts/generic
             ./containers
@@ -125,8 +125,9 @@ rec {
         };
       };
 
-      overlay = import ./overlays inputs;
-    } // flake-utils.lib.eachDefaultSystem (system:
+    }
+    // (import ./overlays inputs)
+    // flake-utils.lib.eachSystem allowedSystems (system:
     let
       pkgs = nixpkgs.legacyPackages."${system}";
       pre-commit-check = pre-commit-hooks.lib."${system}".run {

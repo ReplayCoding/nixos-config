@@ -4,7 +4,7 @@ let
   inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions_pgo mesonOptions_pgo fakeExtra makeStatic createWithBuildIdList getDrvName;
 
   mkOptimisedPipewire =
-    { pgoMode ? (super.nixosPassthru.pgoMode or "off") }:
+    pgoMode:
     let
       fdk_aac =
         (super.fdk_aac.override { stdenv = makeStatic stdenv; }).overrideAttrs (autotoolsOptions_pgo (getDrvName pipewire-optimised) pgoMode (old: {

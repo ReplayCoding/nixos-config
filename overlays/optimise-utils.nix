@@ -198,8 +198,8 @@ let
     {
       pkgsToExtractBuildId =
         super'.pkgsToExtractBuildId
-        ++ (builtins.attrValues (mkEpkgs { pgoMode = "generate"; }));
-    } // mkEpkgs { };
+        ++ (builtins.attrValues (mkEpkgs "generate"));
+    } // mkEpkgs super.nixosPassthru.pgoMode;
 in
 {
   inherit

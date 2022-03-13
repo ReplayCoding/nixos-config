@@ -1,4 +1,4 @@
-{ nixConfig, ccacheDir, config, pkgs, lib, ... }:
+{ nixConfig, config, pkgs, lib, ... }:
 
 {
   nixpkgs.config = {
@@ -9,14 +9,14 @@
   nix = {
     package = pkgs.nixVersions.stable;
     settings = nixConfig // {
-      extra-sandbox-paths = [ ccacheDir ];
+      extra-sandbox-paths = [ pkgs.nixosPassthru.ccacheDir ];
       accept-flake-config = true;
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
     };
   };
-  systemd.tmpfiles.rules = [ "d ${ccacheDir} 0775 root nixbld -" ];
+  systemd.tmpfiles.rules = [ "d ${pkgs.nixosPassthru.ccacheDir} 0775 root nixbld -" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
