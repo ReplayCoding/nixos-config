@@ -214,15 +214,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1646364779,
-        "narHash": "sha256-481vkO9b3h++bHzLbGDDhgpBoXQ0Wlo4lm4h5/EJMO4=",
-        "owner": "nix-community",
+        "lastModified": 1647123262,
+        "narHash": "sha256-F99pKYhO+tZk119hkDJrN9YsVtwXvpPSRE5+Ewj0+G8=",
+        "owner": "ReplayCoding",
         "repo": "home-manager",
-        "rev": "d119cea3763977801ad66330668c1ab4346cb7f7",
+        "rev": "d6ad79a297fd110dc6a263eda6b40c8987db221c",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "ReplayCoding",
+        "ref": "fix/irssi-syntax-error",
         "repo": "home-manager",
         "type": "github"
       }

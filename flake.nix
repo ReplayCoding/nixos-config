@@ -51,7 +51,7 @@ rec {
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:ReplayCoding/home-manager/fix/irssi-syntax-error";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
