@@ -71,6 +71,7 @@
     amfora
     glow
     nix-tree
+    qbittorrent
     libarchive-optimised # bsdtar is amazing
     ccache-stats
     wineWowPackages.unstableFull
