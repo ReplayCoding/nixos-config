@@ -134,6 +134,12 @@ rec {
         src = ./.;
         hooks = {
           nixpkgs-fmt.enable = true;
+          nix-flake-check = {
+            enable = true;
+            name = "nix: flake check";
+            entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
+            pass_filenames = false;
+          };
         };
       };
     in
