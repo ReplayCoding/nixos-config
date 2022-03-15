@@ -22,6 +22,7 @@ let
           makeFlags = (platform.linux-kernel.makeFlags or [ ]) ++ [
             "LLVM=1"
             "LLVM_IAS=1"
+            "KBUILD_VERBOSE=1"
             "CC=${mkCCacheWrapper buildLLVM.clangUseLLVM}/bin/clang"
             "LD=${buildLLVM.lld}/bin/ld.lld"
             "HOSTLD=${hostLLVM.lld}/bin/ld.lld"
