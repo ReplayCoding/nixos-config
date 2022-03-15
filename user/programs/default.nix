@@ -58,7 +58,6 @@
     libreoffice
     restic
     yt-dlp
-    jellyfin-media-player
     picard
     age
     polymc
