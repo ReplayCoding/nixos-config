@@ -73,7 +73,7 @@
     qbittorrent
     libarchive-optimised # bsdtar is amazing
     ccache-stats
-    wineWowPackages.unstableFull
+    lutris
     bitwarden-cli
     python39Packages.deemix
     /* sway */

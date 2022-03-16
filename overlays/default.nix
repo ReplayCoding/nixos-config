@@ -31,6 +31,7 @@ let
       (self: super: {
         rz-ghidra = super.callPackage ./rz-ghidra.nix { };
         iwd = super.callPackage ./iwd.nix { };
+        lutris-unwrapped = super.lutris-unwrapped.override { wine = super.wineWowPackages.stagingFull; };
       })
 
       (import ./unoptimise-foot.nix)
