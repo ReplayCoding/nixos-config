@@ -48,6 +48,7 @@ let
       lua = super.luajit;
     }).overrideAttrs (autotoolsOptions (old: {
       inherit (sources.mpv) src version;
+      wafFlags = (old.wafFlags or [ ]) ++ [ "--verbose" ];
     }));
 in
 { inherit mpv-unwrapped; }
