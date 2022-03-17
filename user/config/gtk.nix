@@ -19,5 +19,10 @@ in
       iconTheme.name = themeName;
       gtk2.extraConfig = "gtk-application-prefer-dark-theme = \"${if isDark then "true" else "false"}\"";
       gtk3.extraConfig = { gtk-application-prefer-dark-theme = isDark; };
+      cursorTheme = {
+        package = pkgs.gnome.gnome-themes-extra;
+        name = "Adwaita";
+        size = 24;
+      };
     };
 }
