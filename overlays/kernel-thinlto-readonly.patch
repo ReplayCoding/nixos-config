@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index ed6e7ec60eff..9fe9e5ab2ba6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -935,7 +935,6 @@ endif
+ ifdef CONFIG_LTO_CLANG
+ ifdef CONFIG_LTO_CLANG_THIN
+ CC_FLAGS_LTO	:= -flto=thin -fsplit-lto-unit
+-KBUILD_LDFLAGS	+= --thinlto-cache-dir=$(extmod_prefix).thinlto-cache
+ else
+ CC_FLAGS_LTO	:= -flto
+ endif

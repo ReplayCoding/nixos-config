@@ -48,13 +48,16 @@ let
     kernel.override {
       inherit stdenv;
       buildPackages = final.buildPackages // { inherit stdenv; };
-      argsOverride.kernelPatches = kernel.kernelPatches;
+      argsOverride.kernelPatches = kernel.kernelPatches ++ [{
+        name = "kernel-thinlto-readonly";
+        patch = ./kernel-thinlto-readonly.patch;
+      }];
       argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
     };
 
   applyLTO = kernel:
     applyCfg
-      { LTO_NONE = no; LTO_CLANG_FULL = yes; }
+      { LTO_NONE = no; LTO_CLANG_THIN = yes; }
       (applyLLVM kernel);
 
   inherit (linuxKernel) packagesFor;
