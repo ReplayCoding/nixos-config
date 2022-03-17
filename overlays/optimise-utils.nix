@@ -79,9 +79,9 @@ let
             flags = " -flto=thin -O3";
           in
           {
-            CFLAGS = (old.CFLAGS or "") + flags;
-            CXXFLAGS = (old.CXXFLAGS or "") + flags;
-            LDFLAGS = (old.LDFLAGS or "") + flags;
+            CFLAGS = (toString old.CFLAGS or "") + flags;
+            CXXFLAGS = (toString old.CXXFLAGS or "") + flags;
+            LDFLAGS = (toString old.LDFLAGS or "") + flags;
             makeFlags = (old.makeFlags or [ ]) ++ [ "V=1" ];
           }
         )
@@ -175,7 +175,7 @@ let
             name' = if name != null then name else getDrvName old';
             pgoProfile = getProfilePath name';
             pgoMode' = fixPgoMode name' pgoMode pgoProfile;
-            flags =
+            pgoFlags =
               if pgoMode' == "use"
               then " -fprofile-use=${fixProfile pgoProfile}"
               else
@@ -185,9 +185,9 @@ let
           in
           {
             PGO_PROFILE_NAME = name';
-            CFLAGS = (old.CFLAGS or "") + flags;
-            CXXFLAGS = (old.CXXFLAGS or "") + flags;
-            LDFLAGS = (old.LDFLAGS or "") + flags;
+            CFLAGS = (toString old.CFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
+            CXXFLAGS = (toString old.CXXFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
+            LDFLAGS = (toString old.LDFLAGS or "") + pgoFlags + " -Wl,--build-id=sha1";
             nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ ./pgo-hook.sh ];
           }
         )
