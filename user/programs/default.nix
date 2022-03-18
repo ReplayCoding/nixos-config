@@ -31,6 +31,10 @@
     ssh.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    mangohud = {
+      enable = true;
+      enableSessionWide = true;
+    };
     firefox = {
       enable = true;
       package =
