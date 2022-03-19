@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   imports = [
     ./sound.nix
     ./console.nix

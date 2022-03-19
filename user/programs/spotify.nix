@@ -1,6 +1,9 @@
-{ secrets, config, pkgs, ... }:
-
 {
+  secrets,
+  config,
+  pkgs,
+  ...
+}: {
   programs.ncspot = {
     enable = true;
     settings = {

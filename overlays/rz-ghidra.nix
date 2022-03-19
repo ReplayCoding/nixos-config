@@ -1,12 +1,12 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, rizin
-, cmake
-, meson
-, pkg-config
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  rizin,
+  cmake,
+  meson,
+  pkg-config,
 }:
-
 stdenv.mkDerivation rec {
   pname = "rz-ghidra";
   inherit (rizin) version;
@@ -25,12 +25,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ rizin ] ++ rizin.buildInputs;
+    [rizin] ++ rizin.buildInputs;
 
   meta = with lib; {
     description = "Deep ghidra decompiler and sleigh disassembler integration for rizin";
     inherit (src.meta) homepage;
     license = licenses.lgpl3;
-    maintainers = with maintainers; [ ];
+    maintainers = with maintainers; [];
   };
 }

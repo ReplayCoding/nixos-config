@@ -1,6 +1,4 @@
-self: super:
-
-let
+self: super: let
   inherit (import ./optimise-utils.nix super) stdenv stdenvNoCache mesonOptions_pgo fakeExtra makeStatic createWithBuildIdList getDrvName;
 
   pkgsToOptimise = [
@@ -15,33 +13,35 @@ let
     "foot"
     "cage"
   ];
-  mkWayland =
-    wayland: pgoMode: name:
+  mkWayland = wayland: pgoMode: name:
     (wayland.override {
       stdenv = makeStatic stdenv;
-    }).overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode (_: {
+    })
+    .overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode (_: {
       separateDebugInfo = false;
     }));
-  mkOptimisedPackages =
-    pgoMode:
-    super.lib.genAttrs pkgsToOptimise (name:
-    (super.${name}.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (old: {
-      stdenv =
-        if name == "foot"
-        then stdenvNoCache
-        else stdenv;
-      wayland = mkWayland old.wayland pgoMode name;
-    } // (
-      if builtins.elem name [ "cage" "sway-unwrapped" ]
-      then {
-        wlroots =
-          (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old': {
-            stdenv = makeStatic stdenv;
-            wayland = mkWayland old'.wayland pgoMode name;
-          });
-      }
-      else { }
-    ))
+  mkOptimisedPackages = pgoMode:
+    super.lib.genAttrs pkgsToOptimise (
+      name:
+        (super.${name}.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (old:
+          {
+            stdenv =
+              if name == "foot"
+              then stdenvNoCache
+              else stdenv;
+            wayland = mkWayland old.wayland pgoMode name;
+          }
+          // (
+            if builtins.elem name ["cage" "sway-unwrapped"]
+            then {
+              wlroots =
+                (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old': {
+                  stdenv = makeStatic stdenv;
+                  wayland = mkWayland old'.wayland pgoMode name;
+                });
+            }
+            else {}
+          ))
     );
 in
-createWithBuildIdList super mkOptimisedPackages
+  createWithBuildIdList super mkOptimisedPackages

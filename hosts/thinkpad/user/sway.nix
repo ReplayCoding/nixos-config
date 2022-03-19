@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   wayland.windowManager.sway.config = {
     output = {
       "LVDS-1" = {

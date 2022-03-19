@@ -1,9 +1,7 @@
-_:
-
-{
+_: {
   boot.zfs = {
     enableUnstable = true;
     forceImportRoot = false;
   };
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = ["zfs"];
 }

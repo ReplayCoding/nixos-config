@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   networking = {
     useDHCP = false;
     dhcpcd.enable = false;
@@ -19,8 +17,8 @@
       # "2606:4700:4700::1001#cloudflare-dns.com"
     ];
 
-    firewall.allowedTCPPorts = [ ];
-    firewall.allowedUDPPorts = [ ];
+    firewall.allowedTCPPorts = [];
+    firewall.allowedUDPPorts = [];
     firewall.enable = true;
   };
 

@@ -1,6 +1,10 @@
-{ config, inputs, pkgs, lib, ... }:
-
 {
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./system
     ./secrets
@@ -10,7 +14,7 @@
     isNormalUser = true;
     home = "/home/user";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "video" "audio" ];
+    extraGroups = ["wheel" "video" "audio"];
     openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 
@@ -18,17 +22,15 @@
     inherit (config.age) secrets;
     inherit (inputs) nix-colors;
   };
-  home-manager.users.user =
-    { nix-colors, ... }:
-    {
-      imports = [
-        ./programs
-        ./config
-        nix-colors.homeManagerModule
-      ];
+  home-manager.users.user = {nix-colors, ...}: {
+    imports = [
+      ./programs
+      ./config
+      nix-colors.homeManagerModule
+    ];
 
-      colorscheme = nix-colors.colorSchemes.catppuccin;
-      systemd.user.startServices = "sd-switch";
-      home.stateVersion = config.system.stateVersion;
-    };
+    colorscheme = nix-colors.colorSchemes.catppuccin;
+    systemd.user.startServices = "sd-switch";
+    home.stateVersion = config.system.stateVersion;
+  };
 }

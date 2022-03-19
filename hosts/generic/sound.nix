@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
@@ -15,5 +19,5 @@
   };
 
   # Useful to change audio output
-  environment.systemPackages = with pkgs; [ pulseaudio ];
+  environment.systemPackages = with pkgs; [pulseaudio];
 }

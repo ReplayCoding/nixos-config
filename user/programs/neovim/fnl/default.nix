@@ -1,5 +1,7 @@
-{ stdenv, fennel }:
-
+{
+  stdenv,
+  fennel,
+}:
 stdenv.mkDerivation {
   name = "neovim-config";
   src = ./.;

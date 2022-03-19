@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   imports = [
     ./x11.nix
     ./wayland.nix

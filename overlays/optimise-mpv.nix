@@ -1,13 +1,12 @@
-self: super:
-
-let
+self: super: let
   inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic fakeExtra;
-  sources = super.callPackage ./_sources/generated.nix { };
+  sources = super.callPackage ./_sources/generated.nix {};
 
   dav1d =
     # This cannot be made into a static library, as lld crashes when linking with lto
-    (super.dav1d.override { inherit stdenv; }).overrideAttrs (mesonOptions
-      (old: { inherit (sources.dav1d) src version; })
+    (super.dav1d.override {inherit stdenv;}).overrideAttrs (
+      mesonOptions
+      (old: {inherit (sources.dav1d) src version;})
     );
 
   ffmpeg =
@@ -22,7 +21,8 @@ let
         addOpenGLRunpath $out/lib/libavcodec.a
         addOpenGLRunpath $out/lib/libavutil.a
       '';
-    }))).override {
+    })))
+    .override {
       stdenv = makeStatic stdenv;
       inherit dav1d;
       # Building these programs takes a looooong time
@@ -33,22 +33,22 @@ let
     };
 
   libass =
-    (super.libass.override { stdenv = makeStatic stdenv; }).overrideAttrs (autotoolsOptions fakeExtra);
+    (super.libass.override {stdenv = makeStatic stdenv;}).overrideAttrs (autotoolsOptions fakeExtra);
 
   libplacebo =
-    (super.libplacebo.override { stdenv = makeStatic stdenv; }).overrideAttrs (mesonOptions (old: {
+    (super.libplacebo.override {stdenv = makeStatic stdenv;}).overrideAttrs (mesonOptions (old: {
       inherit (sources.libplacebo) src version;
 
-      mesonFlags = old.mesonFlags ++ [ "-Dunwind=disabled" ];
+      mesonFlags = old.mesonFlags ++ ["-Dunwind=disabled"];
     }));
 
   mpv-unwrapped =
     (super.mpv-unwrapped.override {
       inherit stdenv ffmpeg libass libplacebo;
       lua = super.luajit;
-    }).overrideAttrs (autotoolsOptions (old: {
+    })
+    .overrideAttrs (autotoolsOptions (old: {
       inherit (sources.mpv) src version;
-      wafFlags = (old.wafFlags or [ ]) ++ [ "--verbose" ];
+      wafFlags = (old.wafFlags or []) ++ ["--verbose"];
     }));
-in
-{ inherit mpv-unwrapped; }
+in {inherit mpv-unwrapped;}

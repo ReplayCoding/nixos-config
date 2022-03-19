@@ -1,9 +1,8 @@
-self: super:
-
-{
+self: super: {
   sway-unwrapped = super.sway-unwrapped.overrideAttrs (old: {
-    patches = (old.patches or [ ]) ++
-      [
+    patches =
+      (old.patches or [])
+      ++ [
         # Implement startup notifications for workspace matching
         # https://github.com/swaywm/sway/pull/6639
         ./sway-6639.patch

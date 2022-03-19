@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.openssh = {
     enable = true;
     passwordAuthentication = false;

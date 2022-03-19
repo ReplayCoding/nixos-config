@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.kdeconnect.enable = true;
 
   # Hide all .desktop, except for org.kde.kdeconnect.settings

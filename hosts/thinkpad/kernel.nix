@@ -1,12 +1,15 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.myLinuxPackages-thinkpad;
-  boot.blacklistedKernelModules = [ "wl" ];
+  boot.blacklistedKernelModules = ["wl"];
   networking.enableB43Firmware = true;
 
   boot.initrd.luks.devices = {
@@ -19,7 +22,7 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
 
-    opengl.extraPackages = [ pkgs.vaapiVdpau ];
+    opengl.extraPackages = [pkgs.vaapiVdpau];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

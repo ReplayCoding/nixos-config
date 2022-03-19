@@ -1,7 +1,10 @@
-{ config, pkgs, lib, ... }:
-
 {
-  security.pam.services.swaylock = { };
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  security.pam.services.swaylock = {};
 
   xdg.portal = {
     enable = true;

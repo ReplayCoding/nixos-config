@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.starship = {
     enable = true;
     settings = {

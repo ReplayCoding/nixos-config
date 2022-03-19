@@ -1,5 +1,3 @@
-_:
-
-{
-  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+_: {
+  fileSystems."/".options = ["noatime" "nodiratime" "discard"];
 }

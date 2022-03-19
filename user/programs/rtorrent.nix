@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.rtorrent = {
     enable = true;
     settings = "

@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-
-let
-  inherit (config.colorscheme) colors;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (config.colorscheme) colors;
+in {
   programs.mako = {
     enable = true;
     defaultTimeout = 5000;
@@ -25,7 +27,7 @@ in
       Restart = "always";
     };
     Install = {
-      WantedBy = [ "sway-session.target" ];
+      WantedBy = ["sway-session.target"];
     };
   };
 }

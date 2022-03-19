@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   systemd.user = {
     services.wob = {
       Unit = {
@@ -14,14 +12,14 @@
         StandardInput = "socket";
         ExecStart = "${pkgs.wob}/bin/wob";
       };
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = ["graphical-session.target"];
     };
     sockets.wob = {
       Socket = {
         ListenFIFO = "%t/wob.sock";
         SocketMode = "0600";
       };
-      Install.WantedBy = [ "sockets.target" ];
+      Install.WantedBy = ["sockets.target"];
     };
   };
 }

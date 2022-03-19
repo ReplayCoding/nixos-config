@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
@@ -11,6 +9,6 @@ _:
   ];
 
   home-manager.users.user = {
-    imports = [ ./user ];
+    imports = [./user];
   };
 }

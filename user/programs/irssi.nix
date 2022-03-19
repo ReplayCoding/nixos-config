@@ -1,11 +1,8 @@
-_:
-
-let
+_: let
   username = "replaycoding";
   nick = username;
   realname = "ReplayCoding";
-in
-{
+in {
   programs.irssi = {
     enable = true;
     networks = {

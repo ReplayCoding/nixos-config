@@ -1,12 +1,15 @@
-{ lib, config, pkgs, inputs, ... }:
-
-let
-  nix-colors-lib = inputs.nix-colors.lib { inherit pkgs; };
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
+  nix-colors-lib = inputs.nix-colors.lib {inherit pkgs;};
   inherit (config.home-manager.users.user) colorscheme;
   inherit (colorscheme) colors;
   inherit (nix-colors-lib) nixWallpaperFromScheme;
-in
-{
+in {
   boot.loader.grub = {
     enable = true;
     version = 2;

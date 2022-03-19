@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
-
-let
-  inherit (config.colorscheme) colors;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (config.colorscheme) colors;
+in {
   programs.zathura = {
     enable = true;
     options = {

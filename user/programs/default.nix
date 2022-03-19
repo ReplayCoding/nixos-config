@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./fish.nix
     ./foot.nix
@@ -38,7 +36,7 @@
     firefox = {
       enable = true;
       package =
-        pkgs.librewolf.override { forceWayland = true; };
+        pkgs.librewolf.override {forceWayland = true;};
     };
 
     man = {
@@ -80,7 +78,9 @@
     lutris
     bitwarden-cli
     python39Packages.deemix
-    /* sway */
+    /*
+     sway
+     */
     wl-clipboard
     xdg-utils
   ];

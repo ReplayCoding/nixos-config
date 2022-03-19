@@ -1,6 +1,5 @@
 let
   inherit (import ../../lib/pubkeys.nix) all;
-in
-{
+in {
   "work-email-password.age".publicKeys = all;
 }

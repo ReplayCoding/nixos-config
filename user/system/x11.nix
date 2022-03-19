@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.xserver = {
     layout = "us";
     libinput.enable = true;

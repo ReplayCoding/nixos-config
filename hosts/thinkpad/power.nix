@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   powerManagement.cpuFreqGovernor = "schedutil";
   services.logind = rec {
     lidSwitch = "lock";

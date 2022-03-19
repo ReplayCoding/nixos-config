@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.foot = {
     enable = true;
     server.enable = true;

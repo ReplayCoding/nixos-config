@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.sessionVariables = rec {
     EDITOR = "nvim";
     VISUAL = EDITOR;
@@ -18,5 +16,5 @@
       catppuccin-nvim
     ];
   };
-  xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl { };
+  xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl {};
 }

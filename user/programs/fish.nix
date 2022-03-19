@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.fish = {
     enable = true;
     shellAliases = {

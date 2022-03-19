@@ -1,6 +1,9 @@
-{ config, pkgs, secrets, ... }:
-
 {
+  config,
+  pkgs,
+  secrets,
+  ...
+}: {
   accounts.email = {
     maildirBasePath = "${config.home.homeDirectory}/Mail";
     accounts = {

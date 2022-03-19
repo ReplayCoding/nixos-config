@@ -2,7 +2,7 @@ rec {
   description = "NixOS configuration flake";
 
   nixConfig = {
-    extra-substituters = [ "https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org" ];
+    extra-substituters = ["https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org"];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
@@ -56,83 +56,83 @@ rec {
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , ragenix
-    , nvfetcher
-    , home-manager
-    , neovim-nightly-overlay
-    , nixpkgs-wayland
-    , nix-colors
-    , polymc
-    , nix-tree
-    , flake-utils
-    , pre-commit-hooks
-    }@inputs:
-    let
-      allowedSystems = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
-      mkHost =
-        { system, modules, overlayConfig ? { } }:
-        let
-          specialArgs = { inherit nixConfig inputs; };
-        in
-        nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            ({ lib, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    ragenix,
+    nvfetcher,
+    home-manager,
+    neovim-nightly-overlay,
+    nixpkgs-wayland,
+    nix-colors,
+    polymc,
+    nix-tree,
+    flake-utils,
+    pre-commit-hooks,
+  } @ inputs: let
+    allowedSystems = ["x86_64-linux" "i686-linux" "aarch64-linux"];
+    mkHost = {
+      system,
+      modules,
+      overlayConfig ? {},
+    }: let
+      specialArgs = {inherit nixConfig inputs;};
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules =
+          [
+            ({lib, ...}: {
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
               nix.registry.nixpkgs.flake = nixpkgs;
-              nix.nixPath = lib.mkForce [ "nixpkgs=${nixpkgs}" ];
-              nixpkgs.overlays = [ (self.mkOverlay overlayConfig) ];
+              nix.nixPath = lib.mkForce ["nixpkgs=${nixpkgs}"];
+              nixpkgs.overlays = [(self.mkOverlay overlayConfig)];
             })
             ./hosts/generic
             ragenix.nixosModules.age
             home-manager.nixosModules.home-manager
-            { home-manager.useGlobalPkgs = true; }
+            {home-manager.useGlobalPkgs = true;}
             ./user
-          ] ++ modules;
-        };
-    in
+          ]
+          ++ modules;
+      };
+  in
     {
-
       nixosConfigurations = {
         librem = mkHost {
           system = "x86_64-linux";
-          modules = [ ./hosts/librem ];
+          modules = [./hosts/librem];
           overlayConfig = {
             arch = "skylake";
             pgoMode = "use";
             hostname = "librem";
             mesaConfig = {
-              galliumDrivers = [ "iris" "swrast" ];
-              driDrivers = [ ];
+              galliumDrivers = ["iris" "swrast"];
+              driDrivers = [];
             };
           };
         };
         thinkpad = mkHost {
           system = "x86_64-linux";
-          modules = [ ./hosts/thinkpad ];
+          modules = [./hosts/thinkpad];
           overlayConfig = {
             arch = "btver2";
             hostname = "thinkpad";
             mesaConfig = {
-              galliumDrivers = [ "radeonsi" "swrast" ];
-              driDrivers = [ ];
+              galliumDrivers = ["radeonsi" "swrast"];
+              driDrivers = [];
             };
           };
         };
       };
-
     }
     // (import ./overlays inputs)
-    // flake-utils.lib.eachSystem allowedSystems (system:
-    let
+    // flake-utils.lib.eachSystem allowedSystems (system: let
       pkgs = nixpkgs.legacyPackages."${system}";
       pre-commit-check = pre-commit-hooks.lib."${system}".run {
         src = ./.;
         hooks = {
-          nixpkgs-fmt.enable = true;
+          alejandra.enable = true;
           nix-flake-check = {
             enable = true;
             name = "nix: flake check";
@@ -141,8 +141,7 @@ rec {
           };
         };
       };
-    in
-    {
+    in {
       devShell = pkgs.mkShell {
         inherit (pre-commit-check) shellHook;
         packages = with pkgs; [

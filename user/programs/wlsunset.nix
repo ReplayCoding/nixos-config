@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.wlsunset = {
     enable = true;
     systemdTarget = "sway-session.target";
