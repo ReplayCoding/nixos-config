@@ -1,0 +1,163 @@
+From 2799fe4cdbe77e017544f2fe61ae9baef650dbe6 Mon Sep 17 00:00:00 2001
+From: pennae <github@quasiparticle.net>
+Date: Tue, 21 Dec 2021 19:34:40 +0100
+Subject: [PATCH 1/2] enable LTO in optimized builds
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+gives 2-5% performance improvement across a board of tests.
+LTO is broken when using clang; some libs link fine while others crash
+the linker with a segfault in the llvm linker plugin. 🙁
+---
+ Makefile                                |  3 ++-
+ Makefile.config.in                      |  1 +
+ configure.ac                            | 14 ++++++++++++++
+ doc/manual/src/release-notes/rl-next.md |  3 +++
+ mk/libraries.mk                         |  6 +++---
+ mk/programs.mk                          |  4 ++--
+ 6 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5040d288485..903787e1a21 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,8 @@ makefiles = \
+ OPTIMIZE = 1
+ 
+ ifeq ($(OPTIMIZE), 1)
+-  GLOBAL_CXXFLAGS += -O3
++  GLOBAL_CXXFLAGS += -O3 $(CXXLTO)
++  GLOBAL_LDFLAGS += $(CXXLTO)
+ else
+   GLOBAL_CXXFLAGS += -O0 -U_FORTIFY_SOURCE
+ endif
+diff --git a/Makefile.config.in b/Makefile.config.in
+index 3505f337e9a..d724853fa4c 100644
+--- a/Makefile.config.in
++++ b/Makefile.config.in
+@@ -7,6 +7,7 @@ CC = @CC@
+ CFLAGS = @CFLAGS@
+ CXX = @CXX@
+ CXXFLAGS = @CXXFLAGS@
++CXXLTO = @CXXLTO@
+ EDITLINE_LIBS = @EDITLINE_LIBS@
+ ENABLE_S3 = @ENABLE_S3@
+ GTEST_LIBS = @GTEST_LIBS@
+diff --git a/configure.ac b/configure.ac
+index 8a01c33ec71..a86d88fad99 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -147,6 +147,20 @@ if test "x$GCC_ATOMIC_BUILTINS_NEED_LIBATOMIC" = xyes; then
+     LDFLAGS="-latomic $LDFLAGS"
+ fi
+ 
++# LTO is currently broken with clang for unknown reasons; ld segfaults in the llvm plugin
++AC_ARG_ENABLE(lto, AS_HELP_STRING([--enable-lto],[Enable LTO (only supported with GCC) [default=no]]),
++  lto=$enableval, lto=no)
++if test "$lto" = yes; then
++    if $CXX --version | grep -q GCC; then
++        AC_SUBST(CXXLTO, [-flto=jobserver])
++    else
++        echo "error: LTO is only supported with GCC at the moment" >&2
++        exit 1
++    fi
++else
++    AC_SUBST(CXXLTO, [""])
++fi
++
+ PKG_PROG_PKG_CONFIG
+ 
+ AC_ARG_ENABLE(shared, AS_HELP_STRING([--enable-shared],[Build shared libraries for Nix [default=yes]]),
+diff --git a/doc/manual/src/release-notes/rl-next.md b/doc/manual/src/release-notes/rl-next.md
+index 7dd8387d8f1..d81e54e49f5 100644
+--- a/doc/manual/src/release-notes/rl-next.md
++++ b/doc/manual/src/release-notes/rl-next.md
+@@ -26,3 +26,6 @@
+ 
+ * Templates can now define a `welcomeText` attribute, which is printed out by
+   `nix flake {init,new} --template <template>`.
++
++* Nix can now be built with LTO by passing `--enable-lto` to `configure`.
++  LTO is currently only supported when building with GCC.
+diff --git a/mk/libraries.mk b/mk/libraries.mk
+index ffd7b5610b5..876148a559a 100644
+--- a/mk/libraries.mk
++++ b/mk/libraries.mk
+@@ -91,7 +91,7 @@ define build-library
+     $(1)_PATH := $$(_d)/$$($(1)_NAME).$(SO_EXT)
+ 
+     $$($(1)_PATH): $$($(1)_OBJS) $$(_libs) | $$(_d)/
+-	$$(trace-ld) $(CXX) -o $$(abspath $$@) -shared $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$($(1)_LDFLAGS_PROPAGATED) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE)) $$($(1)_LDFLAGS_UNINSTALLED)
++	+$$(trace-ld) $(CXX) -o $$(abspath $$@) -shared $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$($(1)_LDFLAGS_PROPAGATED) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE)) $$($(1)_LDFLAGS_UNINSTALLED)
+ 
+     ifndef HOST_DARWIN
+       $(1)_LDFLAGS_USE += -Wl,-rpath,$$(abspath $$(_d))
+@@ -105,7 +105,7 @@ define build-library
+     $$(eval $$(call create-dir, $$($(1)_INSTALL_DIR)))
+ 
+     $$($(1)_INSTALL_PATH): $$($(1)_OBJS) $$(_libs_final) | $(DESTDIR)$$($(1)_INSTALL_DIR)/
+-	$$(trace-ld) $(CXX) -o $$@ -shared $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$($(1)_LDFLAGS_PROPAGATED) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE_INSTALLED))
++	+$$(trace-ld) $(CXX) -o $$@ -shared $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$($(1)_LDFLAGS_PROPAGATED) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE_INSTALLED))
+ 
+     $(1)_LDFLAGS_USE_INSTALLED += -L$$(DESTDIR)$$($(1)_INSTALL_DIR) -l$$(patsubst lib%,%,$$(strip $$($(1)_NAME)))
+     ifndef HOST_DARWIN
+@@ -125,7 +125,7 @@ define build-library
+     $(1)_PATH := $$(_d)/$$($(1)_NAME).a
+ 
+     $$($(1)_PATH): $$($(1)_OBJS) | $$(_d)/
+-	$$(trace-ld) $(LD) -Ur -o $$(_d)/$$($(1)_NAME).o $$?
++	+$$(trace-ld) $(LD) -Ur -o $$(_d)/$$($(1)_NAME).o $$?
+ 	$$(trace-ar) $(AR) crs $$@ $$(_d)/$$($(1)_NAME).o
+ 
+     $(1)_LDFLAGS_USE += $$($(1)_PATH) $$($(1)_LDFLAGS)
+diff --git a/mk/programs.mk b/mk/programs.mk
+index d0cf5baf017..0fc1990f707 100644
+--- a/mk/programs.mk
++++ b/mk/programs.mk
+@@ -32,7 +32,7 @@ define build-program
+   $$(eval $$(call create-dir, $$(_d)))
+ 
+   $$($(1)_PATH): $$($(1)_OBJS) $$(_libs) | $$(_d)/
+-	$$(trace-ld) $(CXX) -o $$@ $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE))
++	+$$(trace-ld) $(CXX) -o $$@ $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE))
+ 
+   $(1)_INSTALL_DIR ?= $$(bindir)
+ 
+@@ -49,7 +49,7 @@ define build-program
+       _libs_final := $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_INSTALL_PATH))
+ 
+       $(DESTDIR)$$($(1)_INSTALL_PATH): $$($(1)_OBJS) $$(_libs_final) | $(DESTDIR)$$($(1)_INSTALL_DIR)/
+-	$$(trace-ld) $(CXX) -o $$@ $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE_INSTALLED))
++	+$$(trace-ld) $(CXX) -o $$@ $$(LDFLAGS) $$(GLOBAL_LDFLAGS) $$($(1)_OBJS) $$($(1)_LDFLAGS) $$(foreach lib, $$($(1)_LIBS), $$($$(lib)_LDFLAGS_USE_INSTALLED))
+ 
+     else
+ 
+
+From 417aaf4ff7ac1ca501c5a460775fa25d8e078c8a Mon Sep 17 00:00:00 2001
+From: regnat <rg@regnat.ovh>
+Date: Wed, 22 Dec 2021 11:31:14 +0100
+Subject: [PATCH 2/2] Correctly hijack the `file://` uri scheme with
+ `_NIX_FORCE_HTTP`
+
+Setting the `_NIX_FORCE_HTTP` environment variable is supposed to force `file://` store urls to use the `HttpBinaryCacheStore` implementation rather than the `LocalBinaryCacheStore` one (very useful for testing).
+However because of a name mismatch, the `LocalBinaryCacheStore` was still registering the `file` scheme when this variable was set, meaning that the actual store implementation picked up on `file://` uris was dependent on the registration order of the stores (itself dependent on the link order of the object files).
+
+Fix this by making the `LocalBinaryCacheStore` gracefully not register the `file` uri scheme when the variable is set.
+---
+ src/libstore/local-binary-cache-store.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libstore/local-binary-cache-store.cc b/src/libstore/local-binary-cache-store.cc
+index f754770f951..a3c3e48068d 100644
+--- a/src/libstore/local-binary-cache-store.cc
++++ b/src/libstore/local-binary-cache-store.cc
+@@ -107,7 +107,7 @@ bool LocalBinaryCacheStore::fileExists(const std::string & path)
+ 
+ std::set<std::string> LocalBinaryCacheStore::uriSchemes()
+ {
+-    if (getEnv("_NIX_FORCE_HTTP_BINARY_CACHE_STORE") == "1")
++    if (getEnv("_NIX_FORCE_HTTP") == "1")
+         return {};
+     else
+         return {"file"};

@@ -43,6 +43,7 @@
       (import ./optimise-mpv.nix)
       (import ./optimise-pipewire.nix)
       (import ./optimise-mesa.nix)
+      (import ./optimise-nix.nix)
 
       (self: super: {extract-pgo-data = super.callPackage ./pgo {};})
     ];

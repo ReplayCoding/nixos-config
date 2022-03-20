@@ -11,7 +11,7 @@
   };
 
   nix = {
-    package = pkgs.nixVersions.stable;
+    package = pkgs.nix-optimised;
     settings =
       nixConfig
       // {
