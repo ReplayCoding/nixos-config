@@ -89,6 +89,7 @@ rec {
               nixpkgs.overlays = [(self.mkOverlay overlayConfig)];
             })
             ./hosts/generic
+            ./containers
             ragenix.nixosModules.age
             home-manager.nixosModules.home-manager
             {home-manager.useGlobalPkgs = true;}
