@@ -11,6 +11,7 @@
       pgoMode = "off";
       mesaConfig = {};
       ccacheDir = "/var/cache/ccache";
+      llvmProfdataDir = "/var/cache/llvm-profdata";
     }
     // args;
   mkOverlay = nixosPassthru':

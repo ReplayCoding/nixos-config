@@ -4,14 +4,18 @@
   llvmPackages_13,
   pkgsToExtractBuildId,
   nixosPassthru,
-  pgoDir ? null, # Needs to be set
+  pgoDir ? nixosPassthru.llvmProfdataDir,
 }: let
   pkgsWithAllOutputs = builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs);
   pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map toString (pkgsWithAllOutputs pkgsToExtractBuildId));
 in
   stdenv.mkDerivation {
     name = "pgo-script";
-    src = ./.;
+    src = builtins.path {
+      path = ./.;
+      name = "pgo-script-src";
+      filter = path: _: builtins.elem (builtins.baseNameOf path) ["extract-pgo-data"];
+    };
     inherit (llvmPackages_13) libllvm;
     inherit pgoDir;
 
