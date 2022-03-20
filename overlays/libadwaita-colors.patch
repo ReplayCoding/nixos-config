@@ -1,0 +1,16 @@
+diff --git a/src/stylesheet/_defaults.scss b/src/stylesheet/_defaults.scss
+index 14355663..f41ddb9d 100644
+--- a/src/stylesheet/_defaults.scss
++++ b/src/stylesheet/_defaults.scss
+@@ -9,9 +9,9 @@
+ // define variables for them in _colors.scss
+ 
+ // The main accent color and the matching text value
+-@define-color accent_bg_color @blue_3;
++@define-color accent_bg_color @purple_3;
+ @define-color accent_fg_color white;
+-@define-color accent_color #{if($variant == 'dark', #78aeed, "@blue_4")};
++@define-color accent_color #{if($variant == 'dark', "@purple_2", "@purple_4")};
+ 
+ // destructive-action buttons
+ @define-color destructive_bg_color #{if($variant == 'dark', "@red_4", "@red_3")};
