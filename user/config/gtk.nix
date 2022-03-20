@@ -9,12 +9,9 @@
 in {
   gtk = let
     isDark = config.colorscheme.kind == "dark";
-    themePackage = gtkThemeFromScheme {scheme = config.colorscheme;};
-    themeName = config.colorscheme.slug;
   in {
     enable = true;
-    theme.package = themePackage;
-    theme.name = themeName;
+    theme.name = "Adwaita";
     iconTheme.package = pkgs.gnome.adwaita-icon-theme;
     iconTheme.name = "Adwaita";
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = \"${
