@@ -32,7 +32,7 @@ in
     enableParallelBuilding = true;
 
     patches = [
-      ./librem-ec-acpi-dkms.patch
+      ./patches/librem-ec-acpi-dkms.patch
     ];
 
     meta = with lib; {

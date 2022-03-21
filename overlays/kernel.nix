@@ -61,7 +61,7 @@ final: prev: let
         ++ [
           {
             name = "kernel-thinlto-readonly";
-            patch = ./kernel-thinlto-readonly.patch;
+            patch = ./patches/kernel-thinlto-readonly.patch;
           }
         ];
       argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
