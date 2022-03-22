@@ -30,8 +30,15 @@ def get_profile_name_for_drv(drv):
 def get_profiles_with_ids(build_id_mappings):
     pgo_dir = "@pgoDir@";
     pattern = re.compile("Binary IDs: \n([a-fA-F0-9]+)", re.MULTILINE)
+
     profile_groups = {}
     ungrouped_profiles = []
+    # Initialize profile groups
+    for pgo_package in build_id_mappings.values():
+        pgo_name = get_profile_name_for_drv(pgo_package[0])
+        print(pgo_name)
+        profile_groups[pgo_name] = []
+
     for profile in os.scandir(pgo_dir):
         llvm_output = subprocess.run(["@libllvm@/bin/llvm-profdata", "show" , "--binary-ids", profile.path], capture_output = True)
         if llvm_output.returncode != 0:
@@ -50,10 +57,7 @@ def get_profiles_with_ids(build_id_mappings):
         program_profile_name = get_profile_name_for_drv(mapping[0])
         # print("{}: {}".format(profile.name, build_id.group(1)))
         # print("|   {}".format(program_profile_name))
-        if program_profile_name in profile_groups:
-            profile_groups[program_profile_name].append(profile.path)
-        else:
-            profile_groups[program_profile_name] = [ profile.path ]
+        profile_groups[program_profile_name].append(profile.path)
     for profile_group in profile_groups:
         profile_groups[profile_group] = profile_groups[profile_group] + ungrouped_profiles
     return profile_groups
@@ -73,4 +77,8 @@ if __name__ == "__main__":
     profiles_to_ids = get_profiles_with_ids(build_id_mappings)
     for program in profiles_to_ids:
         print("Merging profiles to {}".format(program))
-        merge_profiles(program, profiles_to_ids[program])
+        input_profiles = profiles_to_ids[program]
+        if len(input_profiles) > 1:
+            merge_profiles(program, input_profiles)
+        else:
+            print("\tNo profiles for profile {}".format(program))

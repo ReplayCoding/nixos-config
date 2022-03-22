@@ -1,7 +1,7 @@
 {
   stdenv,
   python3,
-  llvmPackages_13,
+  llvmPackages_14,
   pkgsToExtractBuildId,
   nixosPassthru,
   pgoDir ? nixosPassthru.llvmProfdataDir,
@@ -16,7 +16,7 @@ in
       name = "pgo-script-src";
       filter = path: _: builtins.elem (builtins.baseNameOf path) ["extract-pgo-data"];
     };
-    inherit (llvmPackages_13) libllvm;
+    inherit (llvmPackages_14) libllvm;
     inherit pgoDir;
 
     buildInputs = [python3 pkgsToExtractBuildId];
