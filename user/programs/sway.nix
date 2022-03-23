@@ -12,6 +12,9 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     systemdIntegration = true;
+    extraSessionCommands = ''
+      export _JAVA_AWT_WM_NONREPARENTING=1
+    '';
     wrapperFeatures = {
       gtk = true;
       base = true;
@@ -197,10 +200,6 @@ in {
         }
       ];
     };
-  };
-
-  home.sessionVariables = {
-    "_JAVA_AWT_WM_NONREPARENTING" = 1;
   };
 
   systemd.user.services = {
