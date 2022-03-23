@@ -109,6 +109,7 @@ rec {
             hostname = "librem";
             mesaConfig = {
               galliumDrivers = ["iris" "swrast"];
+              vulkanDrivers = ["intel"];
               driDrivers = [];
             };
           };
