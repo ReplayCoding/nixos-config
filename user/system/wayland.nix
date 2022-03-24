@@ -15,4 +15,5 @@
       xdg-desktop-portal-wlr
     ];
   };
+  environment.systemPackages = [pkgs.qt5.qtwayland];
 }
