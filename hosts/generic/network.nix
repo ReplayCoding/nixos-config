@@ -1,12 +1,11 @@
 {pkgs, ...}: {
   networking = {
     useDHCP = false;
-    dhcpcd.enable = false;
-    useNetworkd = true;
-    wireless.iwd = {
+    networkmanager = {
       enable = true;
-      settings = {
-        General.AddressRandomization = "once";
+      wifi = {
+        backend = "iwd";
+        macAddress = "stable";
       };
     };
 
@@ -22,28 +21,5 @@
     firewall.enable = true;
   };
 
-  systemd = {
-    network.enable = true;
-    services.systemd-networkd-wait-online.enable = false;
-  };
-  services.resolved = {
-    enable = true;
-    extraConfig = ''
-      DNSOverTLS=opportunistic
-    '';
-  };
-
   programs.bandwhich.enable = true;
-  boot.kernel.sysctl."net.core.default_qdisc" = "fq_pie";
-
-  systemd.network.networks = {
-    "generic" = {
-      matchConfig.Name = "*";
-      DHCP = "yes";
-    };
-    "wireless" = {
-      matchConfig.Type = "wlan";
-      DHCP = "yes";
-    };
-  };
 }

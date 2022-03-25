@@ -14,7 +14,7 @@
     isNormalUser = true;
     home = "/home/user";
     shell = pkgs.fish;
-    extraGroups = ["wheel" "video" "audio"];
+    extraGroups = ["wheel" "video" "audio" "networkmanager"];
     openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 
