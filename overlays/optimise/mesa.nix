@@ -1,5 +1,5 @@
 self: super: let
-  inherit (import ./optimise-utils.nix super) stdenv makeStatic mesonOptions_pgo llvmPackages fakeExtra createWithBuildIdList getDrvName;
+  inherit (import ./utils.nix super) stdenv makeStatic mesonOptions_pgo llvmPackages fakeExtra createWithBuildIdList getDrvName;
   mkOptimisedMesa = pgoMode: let
     wayland-optimised =
       (super.wayland.override {stdenv = makeStatic stdenv;})
@@ -14,15 +14,14 @@ self: super: let
       })
       .overrideAttrs (mesonOptions_pgo (getDrvName self.mesa-optimised) pgoMode fakeExtra);
   in {
-    mesa-optimised =
-      (super.mesa.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (
-        {
-          inherit llvmPackages stdenv;
-          wayland = wayland-optimised;
-          libdrm = libdrm-optimised;
-        }
-        // super.nixosPassthru.mesaConfig
-      );
+    mesa-optimised = (super.mesa.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (
+      {
+        inherit llvmPackages stdenv;
+        wayland = wayland-optimised;
+        libdrm = libdrm-optimised;
+      }
+      // super.nixosPassthru.mesaConfig
+    );
   };
 in
   createWithBuildIdList super mkOptimisedMesa

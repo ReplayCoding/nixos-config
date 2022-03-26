@@ -1,5 +1,5 @@
 final: prev: let
-  inherit (import ./optimise-utils.nix prev) mkCCacheWrapper;
+  inherit (import ./optimise/utils.nix prev) mkCCacheWrapper;
   inherit (final) lib linuxKernel;
   inherit (lib.kernel) yes no;
 

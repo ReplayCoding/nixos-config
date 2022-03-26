@@ -153,7 +153,7 @@ super: let
                 else ""
               )
               + (old.postConfigure or "");
-            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo-hook.sh];
+            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
           }
         )
       ];
@@ -183,7 +183,7 @@ super: let
             CFLAGS = (toString old.CFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             CXXFLAGS = (toString old.CXXFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             LDFLAGS = (toString old.LDFLAGS or "") + pgoFlags + " -Wl,--build-id=sha1";
-            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo-hook.sh];
+            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
           }
         )
       ];

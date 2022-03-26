@@ -1,6 +1,6 @@
 self: super: let
-  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic fakeExtra;
-  sources = super.callPackage ./_sources/generated.nix {};
+  inherit (import ./utils.nix super) stdenv autotoolsOptions genericOptions mesonOptions makeStatic fakeExtra;
+  sources = super.callPackage ../_sources/generated.nix {};
 
   dav1d =
     # This cannot be made into a static library, as lld crashes when linking with lto
@@ -35,12 +35,11 @@ self: super: let
   libass =
     (super.libass.override {stdenv = makeStatic stdenv;}).overrideAttrs (autotoolsOptions fakeExtra);
 
-  libplacebo =
-    (super.libplacebo.override {stdenv = makeStatic stdenv;}).overrideAttrs (mesonOptions (old: {
-      inherit (sources.libplacebo) src version;
+  libplacebo = (super.libplacebo.override {stdenv = makeStatic stdenv;}).overrideAttrs (mesonOptions (old: {
+    inherit (sources.libplacebo) src version;
 
-      mesonFlags = old.mesonFlags ++ ["-Dunwind=disabled"];
-    }));
+    mesonFlags = old.mesonFlags ++ ["-Dunwind=disabled"];
+  }));
 
   mpv-unwrapped =
     (super.mpv-unwrapped.override {

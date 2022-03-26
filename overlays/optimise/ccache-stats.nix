@@ -1,5 +1,5 @@
 self: super: let
-  inherit (import ./optimise-utils.nix super) stdenv;
+  inherit (import ./utils.nix super) stdenv;
 in {
   ccache-stats = super.writeShellScriptBin "ccache-stats" ''
     export CCACHE_CONFIGPATH=${stdenv.cc.ccacheConfig}

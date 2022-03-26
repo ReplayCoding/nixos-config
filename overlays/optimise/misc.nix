@@ -1,5 +1,5 @@
 self: super: let
-  inherit (import ./optimise-utils.nix super) stdenv autotoolsOptions mesonOptions llvmPackages genericOptions fakeExtra makeStatic;
+  inherit (import ./utils.nix super) stdenv autotoolsOptions mesonOptions llvmPackages genericOptions fakeExtra makeStatic;
 in {
   libarchive-optimised =
     (super.libarchive.overrideAttrs (autotoolsOptions fakeExtra)).override {inherit stdenv;};

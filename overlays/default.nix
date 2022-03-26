@@ -30,7 +30,6 @@
       (import ./fish.nix)
       (import ./sway.nix)
       (import ./kernel.nix)
-      (import ./ccache-stats.nix)
       (import ./gtk.nix)
 
       (self: super: {
@@ -39,15 +38,15 @@
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
       })
 
-      (import ./unoptimise-foot.nix)
-      (import ./optimise-misc.nix)
-      (import ./optimise-wayland.nix)
-      (import ./optimise-mpv.nix)
-      (import ./optimise-pipewire.nix)
-      (import ./optimise-mesa.nix)
-      (import ./optimise-nix.nix)
-
-      (self: super: {extract-pgo-data = super.callPackage ./pgo {};})
+      (import ./optimise/ccache-stats.nix)
+      (import ./optimise/unoptimise-foot.nix)
+      (import ./optimise/misc.nix)
+      (import ./optimise/wayland.nix)
+      (import ./optimise/mpv.nix)
+      (import ./optimise/pipewire.nix)
+      (import ./optimise/mesa.nix)
+      (import ./optimise/nix.nix)
+      (self: super: {extract-pgo-data = super.callPackage ./optimise/pgo {};})
     ];
 in {
   inherit mkOverlay;

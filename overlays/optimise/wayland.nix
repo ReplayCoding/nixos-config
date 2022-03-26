@@ -1,5 +1,5 @@
 self: super: let
-  inherit (import ./optimise-utils.nix super) stdenv stdenvNoCache mesonOptions_pgo fakeExtra makeStatic createWithBuildIdList getDrvName;
+  inherit (import ./utils.nix super) stdenv stdenvNoCache mesonOptions_pgo fakeExtra makeStatic createWithBuildIdList getDrvName;
 
   pkgsToOptimise = [
     "sway-unwrapped"
@@ -34,11 +34,10 @@ self: super: let
           // (
             if builtins.elem name ["cage" "sway-unwrapped"]
             then {
-              wlroots =
-                (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old': {
-                  stdenv = makeStatic stdenv;
-                  wayland = mkWayland old'.wayland pgoMode name;
-                });
+              wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old': {
+                stdenv = makeStatic stdenv;
+                wayland = mkWayland old'.wayland pgoMode name;
+              });
             }
             else {}
           ))
