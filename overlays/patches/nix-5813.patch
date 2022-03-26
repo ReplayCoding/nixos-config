@@ -1,25 +1,5 @@
-From 2799fe4cdbe77e017544f2fe61ae9baef650dbe6 Mon Sep 17 00:00:00 2001
-From: pennae <github@quasiparticle.net>
-Date: Tue, 21 Dec 2021 19:34:40 +0100
-Subject: [PATCH 1/2] enable LTO in optimized builds
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-gives 2-5% performance improvement across a board of tests.
-LTO is broken when using clang; some libs link fine while others crash
-the linker with a segfault in the llvm linker plugin. 🙁
----
- Makefile                                |  3 ++-
- Makefile.config.in                      |  1 +
- configure.ac                            | 14 ++++++++++++++
- doc/manual/src/release-notes/rl-next.md |  3 +++
- mk/libraries.mk                         |  6 +++---
- mk/programs.mk                          |  4 ++--
- 6 files changed, 25 insertions(+), 6 deletions(-)
-
 diff --git a/Makefile b/Makefile
-index 5040d288485..903787e1a21 100644
+index 5040d2884..903787e1a 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -27,7 +27,8 @@ makefiles = \
@@ -33,7 +13,7 @@ index 5040d288485..903787e1a21 100644
    GLOBAL_CXXFLAGS += -O0 -U_FORTIFY_SOURCE
  endif
 diff --git a/Makefile.config.in b/Makefile.config.in
-index 3505f337e9a..d724853fa4c 100644
+index 3505f337e..d724853fa 100644
 --- a/Makefile.config.in
 +++ b/Makefile.config.in
 @@ -7,6 +7,7 @@ CC = @CC@
@@ -45,7 +25,7 @@ index 3505f337e9a..d724853fa4c 100644
  ENABLE_S3 = @ENABLE_S3@
  GTEST_LIBS = @GTEST_LIBS@
 diff --git a/configure.ac b/configure.ac
-index 8a01c33ec71..a86d88fad99 100644
+index 8a01c33ec..a86d88fad 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -147,6 +147,20 @@ if test "x$GCC_ATOMIC_BUILTINS_NEED_LIBATOMIC" = xyes; then
@@ -69,19 +49,8 @@ index 8a01c33ec71..a86d88fad99 100644
  PKG_PROG_PKG_CONFIG
  
  AC_ARG_ENABLE(shared, AS_HELP_STRING([--enable-shared],[Build shared libraries for Nix [default=yes]]),
-diff --git a/doc/manual/src/release-notes/rl-next.md b/doc/manual/src/release-notes/rl-next.md
-index 7dd8387d8f1..d81e54e49f5 100644
---- a/doc/manual/src/release-notes/rl-next.md
-+++ b/doc/manual/src/release-notes/rl-next.md
-@@ -26,3 +26,6 @@
- 
- * Templates can now define a `welcomeText` attribute, which is printed out by
-   `nix flake {init,new} --template <template>`.
-+
-+* Nix can now be built with LTO by passing `--enable-lto` to `configure`.
-+  LTO is currently only supported when building with GCC.
 diff --git a/mk/libraries.mk b/mk/libraries.mk
-index ffd7b5610b5..876148a559a 100644
+index ffd7b5610..876148a55 100644
 --- a/mk/libraries.mk
 +++ b/mk/libraries.mk
 @@ -91,7 +91,7 @@ define build-library
@@ -112,7 +81,7 @@ index ffd7b5610b5..876148a559a 100644
  
      $(1)_LDFLAGS_USE += $$($(1)_PATH) $$($(1)_LDFLAGS)
 diff --git a/mk/programs.mk b/mk/programs.mk
-index d0cf5baf017..0fc1990f707 100644
+index d0cf5baf0..0fc1990f7 100644
 --- a/mk/programs.mk
 +++ b/mk/programs.mk
 @@ -32,7 +32,7 @@ define build-program
@@ -133,23 +102,8 @@ index d0cf5baf017..0fc1990f707 100644
  
      else
  
-
-From 417aaf4ff7ac1ca501c5a460775fa25d8e078c8a Mon Sep 17 00:00:00 2001
-From: regnat <rg@regnat.ovh>
-Date: Wed, 22 Dec 2021 11:31:14 +0100
-Subject: [PATCH 2/2] Correctly hijack the `file://` uri scheme with
- `_NIX_FORCE_HTTP`
-
-Setting the `_NIX_FORCE_HTTP` environment variable is supposed to force `file://` store urls to use the `HttpBinaryCacheStore` implementation rather than the `LocalBinaryCacheStore` one (very useful for testing).
-However because of a name mismatch, the `LocalBinaryCacheStore` was still registering the `file` scheme when this variable was set, meaning that the actual store implementation picked up on `file://` uris was dependent on the registration order of the stores (itself dependent on the link order of the object files).
-
-Fix this by making the `LocalBinaryCacheStore` gracefully not register the `file` uri scheme when the variable is set.
----
- src/libstore/local-binary-cache-store.cc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/src/libstore/local-binary-cache-store.cc b/src/libstore/local-binary-cache-store.cc
-index f754770f951..a3c3e48068d 100644
+index f754770f9..a3c3e4806 100644
 --- a/src/libstore/local-binary-cache-store.cc
 +++ b/src/libstore/local-binary-cache-store.cc
 @@ -107,7 +107,7 @@ bool LocalBinaryCacheStore::fileExists(const std::string & path)

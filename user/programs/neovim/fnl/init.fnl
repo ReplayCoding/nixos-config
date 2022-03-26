@@ -10,7 +10,6 @@
 (set vim.opt.signcolumn :yes)
 
 ((. (require :nvim-treesitter.configs) :setup) {
-  :highlight { :enable true }
   :indent    { :enable true }})
 ((. (require :gitsigns) :setup))
 ((. (require :lualine) :setup))
