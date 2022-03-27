@@ -20,13 +20,13 @@
     ./kdeconnect.nix
     ./reversing.nix
     ./documentation.nix
+    ./ssh.nix
     ./neovim
   ];
   programs = {
     fzf.enable = true;
     lazygit.enable = true;
     taskwarrior.enable = true;
-    ssh.enable = true;
     dircolors.enable = true;
     bat.enable = true;
     mangohud = {
