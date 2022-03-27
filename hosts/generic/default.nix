@@ -16,6 +16,5 @@ _: {
     ./pgo.nix
   ];
 
-  services.logind.killUserProcesses = true;
   boot.cleanTmpDir = true;
 }
