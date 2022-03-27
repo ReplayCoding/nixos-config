@@ -1,10 +1,14 @@
 {config, ...}: let
-  username = config.users.users.user.name;
+  secrets = import ./secrets.nix;
 in {
-  age.secrets = {
-    user-ssh-key = {
-      file = ./user-ssh-key.age;
-      owner = username;
-    };
-  };
+  age.secrets = builtins.foldl' (a: b: a // b) {} (
+    builtins.map
+    (fname: {
+      "${builtins.replaceStrings [".age"] [""] fname}" = {
+        file = ./${fname};
+        owner = config.users.users.user.name;
+      };
+    })
+    (builtins.attrNames secrets)
+  );
 }
