@@ -1,6 +1,7 @@
 {
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  programs.dconf.enable = true;
-  programs.steam.enable = true;
+  programs = {
+    dconf.enable = true;
+    steam.enable = true;
+    fish.enable = true; # Without this, fish doesn't complete man pages
+  };
 }

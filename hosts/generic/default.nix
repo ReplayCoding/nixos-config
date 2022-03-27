@@ -12,9 +12,13 @@ _: {
     ./journal.nix
     ./bluetooth.nix
     ./opengl.nix
+    ./fonts.nix
+    ./documentation.nix
     ./firmware.nix
     ./pgo.nix
   ];
 
+  # misc. options
+  i18n.defaultLocale = "en_US.UTF-8";
   boot.cleanTmpDir = true;
 }
