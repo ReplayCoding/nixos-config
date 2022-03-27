@@ -20,6 +20,7 @@
     ./cmus.nix
     ./kdeconnect.nix
     ./reversing.nix
+    ./documentation.nix
     ./neovim
   ];
   programs = {
@@ -37,11 +38,6 @@
       enable = true;
       package =
         pkgs.librewolf.override {forceWayland = true;};
-    };
-
-    man = {
-      enable = true;
-      generateCaches = true;
     };
 
     direnv.enable = true;
