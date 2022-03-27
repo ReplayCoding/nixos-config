@@ -14,7 +14,6 @@
     ./mpv.nix
     ./spotify.nix
     ./wob.nix
-    ./mail.nix
     ./polkit.nix
     ./wlsunset.nix
     ./cmus.nix
@@ -64,7 +63,6 @@
     signal-desktop
     imv
     btop
-    aerc
     amfora
     glow
     nix-tree
