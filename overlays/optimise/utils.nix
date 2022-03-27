@@ -107,12 +107,10 @@ super: let
     super.runCommand "fix-profile-${profile}" {}
     ''${llvmPackages.libllvm}/bin/llvm-profdata merge --binary --output $out "${profile}"'';
   getProfilePath = name: (./pgo + "/${name}-${super.nixosPassthru.hostname}.profdata");
-  getDrvName = old: let
-    pname_version = "${old.pname}-${old.version}";
-  in
-    if (builtins.hasAttr "name" old)
-    then old.name
-    else pname_version;
+  getDrvName = old:
+    if (builtins.hasAttr "pname" old)
+    then "${old.pname}-${old.version}"
+    else old.name;
   fixPgoMode = name: pgoMode: pgoProfile:
     if ((pgoMode != "use") || (builtins.pathExists pgoProfile))
     then pgoMode

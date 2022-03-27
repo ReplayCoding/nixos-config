@@ -40,6 +40,18 @@
       sha256 = "sha256-hj/YoytN7gZwRmr3No8CirCyZ9cfrh7DYS5pkOnNR0E=";
     };
   };
+  mesa = {
+    pname = "mesa";
+    version = "ae710f33296c5bf673fbe4b4c6a720d5552b4554";
+    src = fetchgit {
+      url = "https://gitlab.freedesktop.org/mesa/mesa";
+      rev = "ae710f33296c5bf673fbe4b4c6a720d5552b4554";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-dgo8cPiOxViF7ofbT6RAkkfJ3N8OHx2uLt4uwEvOe8w=";
+    };
+  };
   mpv = {
     pname = "mpv";
     version = "84821dbcb6d9e16b8f11da2135208e4f3e66fcd0";

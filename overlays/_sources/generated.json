@@ -1,6 +1,25 @@
 {
-    "fuzzel": {
+    "mesa": {
         "pinned": false,
+        "cargoLock": null,
+        "name": "mesa",
+        "src": {
+            "deepClone": false,
+            "url": "https://gitlab.freedesktop.org/mesa/mesa",
+            "name": null,
+            "type": "git",
+            "sha256": "sha256-dgo8cPiOxViF7ofbT6RAkkfJ3N8OHx2uLt4uwEvOe8w=",
+            "rev": "ae710f33296c5bf673fbe4b4c6a720d5552b4554",
+            "leaveDotGit": false,
+            "fetchSubmodules": false
+        },
+        "version": "ae710f33296c5bf673fbe4b4c6a720d5552b4554",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "fuzzel": {
+        "pinned": true,
         "cargoLock": null,
         "name": "fuzzel",
         "src": {
@@ -19,7 +38,7 @@
         "rustGitDeps": null
     },
     "dav1d": {
-        "pinned": false,
+        "pinned": true,
         "cargoLock": null,
         "name": "dav1d",
         "src": {
@@ -38,7 +57,7 @@
         "rustGitDeps": null
     },
     "libplacebo": {
-        "pinned": false,
+        "pinned": true,
         "cargoLock": null,
         "name": "libplacebo",
         "src": {
@@ -57,7 +76,7 @@
         "rustGitDeps": null
     },
     "mpv": {
-        "pinned": false,
+        "pinned": true,
         "cargoLock": null,
         "name": "mpv",
         "src": {
