@@ -40,6 +40,7 @@
 
       (import ./optimise/ccache-stats.nix)
       (import ./optimise/unoptimise-foot.nix)
+      (import ./optimise/unsandbox-wob.nix)
       (import ./optimise/misc.nix)
       (import ./optimise/wayland.nix)
       (import ./optimise/mpv.nix)
