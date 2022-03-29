@@ -23,7 +23,7 @@ self: super: let
   mkOptimisedPackages = pgoMode:
     super.lib.genAttrs pkgsToOptimise (
       name:
-        (super.${name}.overrideAttrs (mesonOptions_pgo null pgoMode fakeExtra)).override (old:
+        (super.${name}.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old:
           {
             stdenv =
               if name == "foot"

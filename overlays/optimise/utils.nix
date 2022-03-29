@@ -1,8 +1,14 @@
 super: let
-  llvmPackages = super.llvmPackages_14.override {
+  llvmPackages_version = "llvmPackages_14";
+  llvmPackages = super.buildPackages."${llvmPackages_version}".override {
     bootBintoolsNoLibc = null;
     bootBintools = null;
   };
+  llvmPackages_host = super."${llvmPackages_version}".override {
+    bootBintoolsNoLibc = null;
+    bootBintools = null;
+  };
+
   ccNoCache = llvmPackages.clang.override {
     inherit (llvmPackages) bintools;
   };
@@ -16,7 +22,7 @@ super: let
       max_size = 10G
     '';
   in
-    (super.ccacheWrapper.override rec {
+    (super.pkgsBuildBuild.ccacheWrapper.override rec {
       cc = ccToWrap;
       extraConfig = ''
         export CCACHE_CONFIGPATH=${ccacheConfig}
@@ -30,8 +36,8 @@ super: let
       passthru = old.passthru // {inherit ccacheConfig;};
     });
 
-  stdenvNoCache = super.overrideCC llvmPackages.stdenv ccNoCache;
-  stdenv = super.overrideCC llvmPackages.stdenv (mkCCacheWrapper ccNoCache);
+  stdenvNoCache = super.overrideCC llvmPackages_host.stdenv ccNoCache;
+  stdenv = super.overrideCC llvmPackages_host.stdenv (mkCCacheWrapper ccNoCache);
   makeStatic = s: super.propagateBuildInputs (super.makeStaticLibraries s);
 
   fakeExtra = _: {};
@@ -117,12 +123,8 @@ super: let
     else builtins.trace "Package ${name} has no PGO profile (${toString pgoProfile}), disabling" "off";
 
   mesonOptions_pgo = name: pgoMode: extra: old': let
-    name' =
-      if name != null
-      then name
-      else getDrvName old';
-    pgoProfile = getProfilePath name';
-    pgoMode' = fixPgoMode name' pgoMode pgoProfile;
+    pgoProfile = getProfilePath name;
+    pgoMode' = fixPgoMode name pgoMode pgoProfile;
   in
     mkOptions {
       old = old';
@@ -131,7 +133,7 @@ super: let
         (mesonOptions fakeExtra)
         (
           old: {
-            PGO_PROFILE_NAME = name';
+            PGO_PROFILE_NAME = name;
             mesonFlags =
               (old.mesonFlags or [])
               ++ [
@@ -164,12 +166,8 @@ super: let
         (autotoolsOptions fakeExtra)
         (
           old: let
-            name' =
-              if name != null
-              then name
-              else getDrvName old';
-            pgoProfile = getProfilePath name';
-            pgoMode' = fixPgoMode name' pgoMode pgoProfile;
+            pgoProfile = getProfilePath name;
+            pgoMode' = fixPgoMode name pgoMode pgoProfile;
             pgoFlags =
               if pgoMode' == "use"
               then " -fprofile-use=${fixProfile pgoProfile}"
@@ -177,7 +175,7 @@ super: let
               then ""
               else " -fprofile-${pgoMode'}";
           in {
-            PGO_PROFILE_NAME = name';
+            PGO_PROFILE_NAME = name;
             CFLAGS = (toString old.CFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             CXXFLAGS = (toString old.CXXFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             LDFLAGS = (toString old.LDFLAGS or "") + pgoFlags + " -Wl,--build-id=sha1";
@@ -199,6 +197,7 @@ in {
     stdenv
     stdenvNoCache
     llvmPackages
+    llvmPackages_version
     fakeExtra
     genericOptions
     autotoolsOptions

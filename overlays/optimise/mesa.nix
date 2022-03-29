@@ -1,5 +1,5 @@
 self: super: let
-  inherit (import ./utils.nix super) stdenv makeStatic mesonOptions_pgo llvmPackages fakeExtra createWithBuildIdList getDrvName;
+  inherit (import ./utils.nix super) stdenv makeStatic mesonOptions_pgo fakeExtra createWithBuildIdList getDrvName llvmPackages_version;
   sources = super.callPackage ../_sources/generated.nix {};
   mkOptimisedMesa = pgoMode: let
     wayland-optimised =
@@ -21,7 +21,8 @@ self: super: let
       })))
       .override (
         {
-          inherit llvmPackages stdenv;
+          inherit stdenv;
+          llvmPackages = super."${llvmPackages_version}";
           wayland = wayland-optimised;
           libdrm = libdrm-optimised;
         }
