@@ -63,6 +63,10 @@ final: prev: let
             name = "kernel-thinlto-readonly";
             patch = ./patches/kernel-thinlto-readonly.patch;
           }
+          {
+            name = "kernel-fortify-clang";
+            patch = ./patches/kernel-fortify-clang.patch;
+          }
         ];
       argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
     };
