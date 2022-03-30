@@ -48,12 +48,11 @@ super: let
     builtins.foldl'
     (prevLayer: curLayer: prevLayer // (curLayer (old // prevLayer)))
     {}
-    layers;
+    (super.lib.flatten layers);
   genericOptions = extra: old':
     mkOptions {
       old = old';
       layers = [
-        extra
         (
           old:
             {hardeningDisable = ["all"];}
@@ -68,13 +67,13 @@ super: let
               else {}
             )
         )
+        extra
       ];
     };
   autotoolsOptions = extra: old':
     mkOptions {
       old = old';
       layers = [
-        extra
         (genericOptions fakeExtra)
         (
           old: let
@@ -86,13 +85,13 @@ super: let
             makeFlags = (old.makeFlags or []) ++ ["V=1"];
           }
         )
+        extra
       ];
     };
   mesonOptions = extra: old':
     mkOptions {
       old = old';
       layers = [
-        extra
         (genericOptions fakeExtra)
         (
           old: {
@@ -106,6 +105,7 @@ super: let
             ninjaFlags = (old.ninjaFlags or []) ++ ["--verbose"];
           }
         )
+        extra
       ];
     };
 
@@ -129,7 +129,6 @@ super: let
     mkOptions {
       old = old';
       layers = [
-        extra
         (mesonOptions fakeExtra)
         (
           old: {
@@ -156,13 +155,13 @@ super: let
             nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
           }
         )
+        extra
       ];
     };
   autotoolsOptions_pgo = name: pgoMode: extra: old':
     mkOptions {
       old = old';
       layers = [
-        extra
         (autotoolsOptions fakeExtra)
         (
           old: let
@@ -182,6 +181,7 @@ super: let
             nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
           }
         )
+        extra
       ];
     };
   createWithBuildIdList = super': mkEpkgs:
