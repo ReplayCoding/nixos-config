@@ -30,7 +30,6 @@
       (import ./fish.nix)
       (import ./sway.nix)
       (import ./kernel.nix)
-      (import ./gtk.nix)
 
       (self: super: {
         rz-ghidra = super.callPackage ./rz-ghidra.nix {};

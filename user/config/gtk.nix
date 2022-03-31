@@ -26,4 +26,8 @@ in {
       size = 24;
     };
   };
+  xdg.configFile."gtk-4.0/gtk.css".text = ''
+    @define-color accent_bg_color @purple_3;
+    @define-color accent_color #{if($variant == 'dark', "@purple_2", "@purple_4")};
+  '';
 }
