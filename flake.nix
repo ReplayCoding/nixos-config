@@ -24,10 +24,6 @@ rec {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -60,15 +56,10 @@ rec {
     self,
     nixpkgs,
     ragenix,
-    nvfetcher,
     home-manager,
-    neovim-nightly-overlay,
-    nixpkgs-wayland,
-    nix-colors,
-    polymc,
-    nix-tree,
     flake-utils,
     pre-commit-hooks,
+    ...
   } @ inputs: let
     allowedSystems = ["x86_64-linux" "i686-linux" "aarch64-linux"];
     mkHost = {
@@ -148,9 +139,9 @@ rec {
         inherit (pre-commit-check) shellHook;
         packages = with pkgs; [
           statix
-          ragenix.defaultPackage."${system}"
-          nvfetcher.defaultPackage."${system}"
+          nvfetcher
           fnlfmt
+          ragenix.defaultPackage."${system}"
         ];
       };
     });

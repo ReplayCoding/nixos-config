@@ -2,7 +2,6 @@
 {
   fetchgit,
   fetchurl,
-  fetchFromGitHub,
 }: {
   dav1d = {
     pname = "dav1d";
@@ -13,7 +12,7 @@
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-qRgiy6BdvG5iB/l4F4GE6yCC6NUuRKhz0Dz0hpxF2pQ=";
+      sha256 = "156s8nf8dx1ws1rshi1fspl8487bhj0ify7r0xi6xg2xl35j4659";
     };
   };
   fuzzel = {
@@ -25,42 +24,43 @@
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-zg5PPX9t2S4a5cxdoaF86kWUbR758M2gZ4L2DAMJMlE=";
+      sha256 = "0xmgx05w7b04gc6mkhza00b113qj876z73kxh9cs1y3hn5v7z69d";
     };
   };
   libplacebo = {
     pname = "libplacebo";
-    version = "1d69f7f738f2f529661a3dbeba53a955ba8598cc";
+    version = "cd696a888dc78918446b855133d8b5691749576f";
     src = fetchgit {
       url = "https://code.videolan.org/videolan/libplacebo/";
-      rev = "1d69f7f738f2f529661a3dbeba53a955ba8598cc";
+      rev = "cd696a888dc78918446b855133d8b5691749576f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-hj/YoytN7gZwRmr3No8CirCyZ9cfrh7DYS5pkOnNR0E=";
+      sha256 = "13gkx132cikb96fjiwhwd5kk7plly56wx55g0f28jrh5w2rf6i2k";
     };
   };
   mesa = {
     pname = "mesa";
-    version = "ae710f33296c5bf673fbe4b4c6a720d5552b4554";
+    version = "e8a63cf61ecdf7cd80e4fe84f740816978f1d17d";
     src = fetchgit {
       url = "https://gitlab.freedesktop.org/mesa/mesa";
-      rev = "ae710f33296c5bf673fbe4b4c6a720d5552b4554";
+      rev = "e8a63cf61ecdf7cd80e4fe84f740816978f1d17d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-dgo8cPiOxViF7ofbT6RAkkfJ3N8OHx2uLt4uwEvOe8w=";
+      sha256 = "0sr30cm5wwa206c1sa6rj4m5khrdc7ylqy7z3nz20br47y7vlpiw";
     };
   };
   mpv = {
     pname = "mpv";
-    version = "84821dbcb6d9e16b8f11da2135208e4f3e66fcd0";
-    src = fetchFromGitHub {
-      owner = "mpv-player";
-      repo = "mpv";
-      rev = "84821dbcb6d9e16b8f11da2135208e4f3e66fcd0";
+    version = "84dc9b1a02db896b972928d39ef6d621483afb3b";
+    src = fetchgit {
+      url = "https://github.com/mpv-player/mpv";
+      rev = "84dc9b1a02db896b972928d39ef6d621483afb3b";
       fetchSubmodules = false;
-      sha256 = "sha256-uuKxkjtIFiDJg1wVLvLgW2tTnjW/8ngpTjn+yFpXRHg=";
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "0jjw9n9l9j1i5y4f4185b5wh0nyh2r89vqwq136d3qd3qj0fnlgx";
     };
   };
 }
