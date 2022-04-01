@@ -16,6 +16,7 @@ _: {
     ./documentation.nix
     ./firmware.nix
     ./pgo.nix
+    ./containers
   ];
 
   # misc. options
