@@ -51,5 +51,5 @@
     ];
 in {
   inherit mkOverlay;
-  overlay = mkOverlay {};
+  overlays.default = mkOverlay {};
 }

@@ -16,10 +16,6 @@ rec {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,7 +53,6 @@ rec {
     nixpkgs,
     ragenix,
     home-manager,
-    flake-utils,
     pre-commit-hooks,
     ...
   } @ inputs: let
@@ -119,29 +114,31 @@ rec {
       };
     }
     // (import ./overlays inputs)
-    // flake-utils.lib.eachSystem allowedSystems (system: let
-      pkgs = nixpkgs.legacyPackages."${system}";
-      pre-commit-check = pre-commit-hooks.lib."${system}".run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          nix-flake-check = {
-            enable = true;
-            name = "nix: flake check";
-            entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
-            pass_filenames = false;
+    // {
+      devShells = nixpkgs.lib.genAttrs allowedSystems (system: let
+        pkgs = nixpkgs.legacyPackages."${system}";
+        pre-commit-check = pre-commit-hooks.lib."${system}".run {
+          src = ./.;
+          hooks = {
+            alejandra.enable = true;
+            nix-flake-check = {
+              enable = true;
+              name = "nix: flake check";
+              entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
+              pass_filenames = false;
+            };
           };
         };
-      };
-    in {
-      devShell = pkgs.mkShell {
-        inherit (pre-commit-check) shellHook;
-        packages = with pkgs; [
-          statix
-          nvfetcher
-          fnlfmt
-          ragenix.defaultPackage."${system}"
-        ];
-      };
-    });
+      in {
+        default = pkgs.mkShell {
+          inherit (pre-commit-check) shellHook;
+          packages = with pkgs; [
+            statix
+            nvfetcher
+            fnlfmt
+            ragenix.defaultPackage."${system}"
+          ];
+        };
+      });
+    };
 }
