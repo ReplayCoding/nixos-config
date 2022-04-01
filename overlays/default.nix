@@ -14,6 +14,7 @@
       llvmProfdataDir = "/var/cache/llvm-profdata";
     }
     // args;
+  fixSystemAlias = overlay: (self: super: let mkSystemAlias = pkgs: {inherit (pkgs.stdenv.hostPlatform) system;} // pkgs; in overlay (mkSystemAlias self) (mkSystemAlias super));
   mkOverlay = nixosPassthru':
     nixpkgs.lib.composeManyExtensions [
       (self: super: {
@@ -22,8 +23,8 @@
         pkgsToExtractBuildId = [];
       })
       (self: super: (nixpkgs-wayland.overlay self super) // {inherit (super) i3status-rust;})
-      (self: super: neovim-nightly-overlay.overlay self (super // {inherit (super.stdenv.buildPlatform) system;}))
-      polymc.overlay
+      (fixSystemAlias neovim-nightly-overlay.overlay)
+      (fixSystemAlias polymc.overlay)
       nix-tree.overlay
 
       (import ./fuzzel.nix)
