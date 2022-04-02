@@ -129,6 +129,7 @@ rec {
           hooks = {
             alejandra = {
               enable = true;
+              excludes = ["^hosts/generic/registry-flake.nix$"];
               raw.fail_fast = true;
             };
             nix-flake-check = {

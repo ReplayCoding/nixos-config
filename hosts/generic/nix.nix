@@ -6,7 +6,38 @@
   lib,
   ...
 }: let
-  filteredInputs = (builtins.removeAttrs inputs ["self"]) // {nixos = inputs.self;};
+  systemFlakeDrv = let
+    compatFile = pkgs.writeText "compat-default" ''
+      let
+        flake = builtins.getFlake (toString ./.);
+      in
+      # ugly hack to get around string interpolation
+      builtins.getAttr builtins.currentSystem flake.packages
+    '';
+  in
+    pkgs.stdenv.mkDerivation {
+      name = "system-flake-drv";
+
+      unpackPhase = ''
+        cp ${compatFile} default.nix
+        cp ${./registry-flake.nix} flake.nix
+        substituteInPlace flake.nix \
+          --subst-var-by NIXOS ${inputs.self} \
+          --subst-var-by NIXPKGS ${inputs.nixpkgs} \
+          --subst-var-by HOSTNAME ${pkgs.nixosPassthru.hostname}
+      '';
+      buildPhase = ''
+        NIX_STORE_DIR=$(mktemp -d) NIX_STATE_DIR=$(mktemp -d) ${pkgs.nixVersions.unstable}/bin/nix \
+          --extra-experimental-features nix-command \
+          --extra-experimental-features flakes \
+          flake lock flake.nix
+      '';
+      installPhase = ''
+        mkdir $out
+        cp default.nix flake.nix flake.lock $out
+      '';
+    };
+  filteredInputs = (builtins.removeAttrs inputs ["self"]) // {nixos = systemFlakeDrv;};
 in {
   nixpkgs.config = {
     allowUnfree = true;
