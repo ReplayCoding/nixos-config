@@ -50,6 +50,9 @@
       (self: super: {extract-pgo-data = super.callPackage ./optimise/pgo {};})
     ];
 in {
-  inherit mkOverlay;
+  lib = {
+    inherit mkOverlay;
+    fixOverlayConfig = fixNixosPassthru;
+  };
   overlays.default = mkOverlay {};
 }

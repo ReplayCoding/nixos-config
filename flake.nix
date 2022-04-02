@@ -61,17 +61,20 @@ rec {
     mkHost = {
       system,
       modules,
+      hostname,
       overlayConfig ? {},
     }: let
+      overlayConfig' = overlayConfig // {inherit hostname;};
       specialArgs = {inherit nixConfig inputs;};
-    in
-      nixpkgs.lib.nixosSystem {
+    in {
+      overlayConfig.${hostname} = self.lib.fixOverlayConfig overlayConfig';
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules =
           [
             ({lib, ...}: {
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-              nixpkgs.overlays = [(self.mkOverlay overlayConfig)];
+              nixpkgs.overlays = [(self.lib.mkOverlay overlayConfig')];
             })
             ./hosts/generic
             ragenix.nixosModules.age
@@ -81,37 +84,42 @@ rec {
           ]
           ++ modules;
       };
+    };
   in
-    {
-      nixosConfigurations = {
-        librem = mkHost {
-          system = "x86_64-linux";
-          modules = [./hosts/librem];
-          overlayConfig = {
-            arch = "skylake";
-            pgoMode = "use";
+    (
+      builtins.foldl'
+      nixpkgs.lib.recursiveUpdate {}
+      (
+        builtins.map mkHost [
+          {
+            system = "x86_64-linux";
             hostname = "librem";
-            mesaConfig = {
-              galliumDrivers = ["iris" "swrast"];
-              vulkanDrivers = ["intel"];
-              driDrivers = [];
+            modules = [./hosts/librem];
+            overlayConfig = {
+              arch = "skylake";
+              pgoMode = "use";
+              mesaConfig = {
+                galliumDrivers = ["iris" "swrast"];
+                vulkanDrivers = ["intel"];
+                driDrivers = [];
+              };
             };
-          };
-        };
-        thinkpad = mkHost {
-          system = "x86_64-linux";
-          modules = [./hosts/thinkpad];
-          overlayConfig = {
-            arch = "btver2";
+          }
+          {
+            system = "x86_64-linux";
             hostname = "thinkpad";
-            mesaConfig = {
-              galliumDrivers = ["radeonsi" "swrast"];
-              driDrivers = [];
+            modules = [./hosts/thinkpad];
+            overlayConfig = {
+              arch = "btver2";
+              mesaConfig = {
+                galliumDrivers = ["radeonsi" "swrast"];
+                driDrivers = [];
+              };
             };
-          };
-        };
-      };
-    }
+          }
+        ]
+      )
+    )
     // (import ./overlays inputs)
     // {
       devShells = nixpkgs.lib.genAttrs allowedSystems (system: let
