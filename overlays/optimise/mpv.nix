@@ -24,6 +24,7 @@ self: super: let
     })))
     .override {
       stdenv = makeStatic stdenv;
+      ffmpeg = super.ffmpeg_5;
       inherit dav1d;
       # Building these programs takes a looooong time
       ffmpegProgram = false;
