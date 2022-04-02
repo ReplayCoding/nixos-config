@@ -3,6 +3,7 @@ rec {
 
   nixConfig = {
     extra-substituters = ["https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org"];
+
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
@@ -120,7 +121,10 @@ rec {
         pre-commit-check = pre-commit-hooks.lib."${system}".run {
           src = ./.;
           hooks = {
-            alejandra.enable = true;
+            alejandra = {
+              enable = true;
+              raw.fail_fast = true;
+            };
             nix-flake-check = {
               enable = true;
               name = "nix: flake check";
