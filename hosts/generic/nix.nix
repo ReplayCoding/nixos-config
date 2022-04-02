@@ -1,10 +1,13 @@
 {
   nixConfig,
+  inputs,
   config,
   pkgs,
   lib,
   ...
-}: {
+}: let
+  filteredInputs = (builtins.removeAttrs inputs ["self"]) // {nixos = inputs.self;};
+in {
   nixpkgs.config = {
     allowUnfree = true;
     # allowAliases = false;
@@ -12,10 +15,25 @@
 
   nix = {
     package = pkgs.nix-optimised;
+    nixPath =
+      builtins.map
+      (name: "${name}=${filteredInputs.${name}}")
+      (builtins.attrNames filteredInputs);
+    registry =
+      builtins.mapAttrs
+      (_: value: {flake = value;})
+      filteredInputs;
     settings =
       nixConfig
       // {
         extra-sandbox-paths = [pkgs.nixosPassthru.ccacheDir];
+        flake-registry =
+          pkgs.writeText
+          "flake-registry"
+          (builtins.toJSON {
+            version = 2;
+            flakes = [];
+          });
         accept-flake-config = true;
         auto-optimise-store = true;
         keep-outputs = true;
