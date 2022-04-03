@@ -38,6 +38,7 @@
       (self: super: {
         rz-ghidra = super.callPackage ./rz-ghidra.nix {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
+        nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
       })
 
       (import ./optimise/ccache-stats.nix)
