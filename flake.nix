@@ -101,7 +101,6 @@ rec {
               mesaConfig = {
                 galliumDrivers = ["iris" "swrast"];
                 vulkanDrivers = ["intel"];
-                driDrivers = [];
               };
             };
           }
@@ -113,7 +112,6 @@ rec {
               arch = "btver2";
               mesaConfig = {
                 galliumDrivers = ["radeonsi" "swrast"];
-                driDrivers = [];
               };
             };
           }

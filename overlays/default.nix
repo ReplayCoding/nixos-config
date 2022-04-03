@@ -7,13 +7,16 @@
   ...
 }: let
   fixNixosPassthru = args:
+    nixpkgs.lib.recursiveUpdate
     {
       pgoMode = "off";
-      mesaConfig = {};
+      mesaConfig = {
+        driDrivers = [];
+      };
       ccacheDir = "/var/cache/ccache";
       llvmProfdataDir = "/var/cache/llvm-profdata";
     }
-    // args;
+    args;
   fixSystemAlias = overlay: (self: super: let mkSystemAlias = pkgs: {inherit (pkgs.stdenv.hostPlatform) system;} // pkgs; in overlay (mkSystemAlias self) (mkSystemAlias super));
   mkOverlay = nixosPassthru':
     nixpkgs.lib.composeManyExtensions [
