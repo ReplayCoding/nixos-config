@@ -14,7 +14,8 @@ self: super: let
       }));
     libdrm-optimised =
       (super.libdrm.override {
-        stdenv = makeStatic stdenv;
+        # Static builds cause a symbol conflict with mesa
+        inherit stdenv;
         # This breaks the build
         withValgrind = false;
       })
