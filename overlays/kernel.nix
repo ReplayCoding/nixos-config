@@ -8,6 +8,21 @@ final: prev: let
       argsOverride.kernelPatches = kernel.kernelPatches;
       argsOverride.structuredExtraConfig = kernel.structuredExtraConfig // config;
     };
+  applyPatches = patches: kernel:
+    kernel.override {
+      argsOverride.kernelPatches = kernel.kernelPatches ++ patches;
+      argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
+    };
+  genericPatches = [
+    {
+      name = "kernel-thinlto-readonly";
+      patch = ./patches/kernel-thinlto-readonly.patch;
+    }
+    {
+      name = "kernel-fortify-clang";
+      patch = ./patches/kernel-fortify-clang.patch;
+    }
+  ];
 
   applyLLVM = kernel: let
     llvmPackages = "llvmPackages_13";
@@ -52,24 +67,16 @@ final: prev: let
       buildPlatform = mkLLVMPlatform old.buildPlatform;
     });
     stdenv = stdenvPlatformLLVM;
-  in
-    kernel.override {
+  in (
+    applyPatches
+    genericPatches
+    (kernel.override {
       inherit stdenv;
       buildPackages = final.buildPackages // {inherit stdenv;};
-      argsOverride.kernelPatches =
-        kernel.kernelPatches
-        ++ [
-          {
-            name = "kernel-thinlto-readonly";
-            patch = ./patches/kernel-thinlto-readonly.patch;
-          }
-          {
-            name = "kernel-fortify-clang";
-            patch = ./patches/kernel-fortify-clang.patch;
-          }
-        ];
+      argsOverride.kernelPatches = kernel.kernelPatches;
       argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
-    };
+    })
+  );
 
   applyLTO = kernel:
     applyCfg
