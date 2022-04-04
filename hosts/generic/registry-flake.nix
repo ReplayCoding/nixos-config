@@ -13,5 +13,5 @@
         localSystem.system = system;
         overlays = [(nixos.lib.mkOverlay nixos.overlayConfig.@HOSTNAME@)];
       });
-    };
+    } // nixos;
 }
