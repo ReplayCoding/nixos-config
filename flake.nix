@@ -58,6 +58,7 @@ rec {
     ...
   } @ inputs: let
     allowedSystems = ["x86_64-linux" "i686-linux" "aarch64-linux"];
+    forSystems = nixpkgs.lib.genAttrs allowedSystems;
     mkHost = {
       system,
       modules,
@@ -118,9 +119,8 @@ rec {
         ]
       )
     )
-    // (import ./overlays inputs)
     // {
-      devShells = nixpkgs.lib.genAttrs allowedSystems (system: let
+      devShells = forSystems (system: let
         pkgs = nixpkgs.legacyPackages."${system}";
         pre-commit-check = pre-commit-hooks.lib."${system}".run {
           src = ./.;
@@ -149,5 +149,6 @@ rec {
           ];
         };
       });
-    };
+    }
+    // (import ./overlays inputs);
 }
