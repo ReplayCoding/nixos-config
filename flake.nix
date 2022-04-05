@@ -59,6 +59,7 @@ rec {
   } @ inputs: let
     allowedSystems = ["x86_64-linux" "i686-linux" "aarch64-linux"];
     forSystems = nixpkgs.lib.genAttrs allowedSystems;
+    recursiveMerge = l: builtins.foldl' (nixpkgs.lib.recursiveUpdate) {} l;
     mkHost = {
       system,
       modules,
@@ -66,7 +67,10 @@ rec {
       overlayConfig ? {},
     }: let
       overlayConfig' = overlayConfig // {inherit hostname;};
-      specialArgs = {inherit nixConfig inputs;};
+      specialArgs = {
+        flib = self.lib;
+        inherit nixConfig inputs;
+      };
     in {
       overlayConfig.${hostname} = self.lib.fixOverlayConfig overlayConfig';
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
@@ -87,68 +91,70 @@ rec {
       };
     };
   in
-    (
-      builtins.foldl'
-      nixpkgs.lib.recursiveUpdate {}
+    recursiveMerge [
       (
-        builtins.map mkHost [
-          {
-            system = "x86_64-linux";
-            hostname = "librem";
-            modules = [./hosts/librem];
-            overlayConfig = {
-              arch = "skylake";
-              pgoMode = "use";
-              mesaConfig = {
-                galliumDrivers = ["iris" "swrast"];
-                vulkanDrivers = ["intel"];
+        recursiveMerge
+        (
+          builtins.map mkHost [
+            {
+              system = "x86_64-linux";
+              hostname = "librem";
+              modules = [./hosts/librem];
+              overlayConfig = {
+                arch = "skylake";
+                pgoMode = "use";
+                mesaConfig = {
+                  galliumDrivers = ["iris" "swrast"];
+                  vulkanDrivers = ["intel"];
+                };
               };
-            };
-          }
-          {
-            system = "x86_64-linux";
-            hostname = "thinkpad";
-            modules = [./hosts/thinkpad];
-            overlayConfig = {
-              arch = "btver2";
-              mesaConfig = {
-                galliumDrivers = ["radeonsi" "swrast"];
+            }
+            {
+              system = "x86_64-linux";
+              hostname = "thinkpad";
+              modules = [./hosts/thinkpad];
+              overlayConfig = {
+                arch = "btver2";
+                mesaConfig = {
+                  galliumDrivers = ["radeonsi" "swrast"];
+                };
               };
-            };
-          }
-        ]
+            }
+          ]
+        )
       )
-    )
-    // {
-      devShells = forSystems (system: let
-        pkgs = nixpkgs.legacyPackages."${system}";
-        pre-commit-check = pre-commit-hooks.lib."${system}".run {
-          src = ./.;
-          hooks = {
-            alejandra = {
-              enable = true;
-              excludes = ["^hosts/generic/registry-flake.nix$"];
-              raw.fail_fast = true;
-            };
-            nix-flake-check = {
-              enable = true;
-              name = "nix: flake check";
-              entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
-              pass_filenames = false;
+      {
+        devShells = forSystems (system: let
+          pkgs = nixpkgs.legacyPackages."${system}";
+          pre-commit-check = pre-commit-hooks.lib."${system}".run {
+            src = ./.;
+            hooks = {
+              alejandra = {
+                enable = true;
+                excludes = ["^hosts/generic/registry-flake.nix$"];
+                raw.fail_fast = true;
+              };
+              nix-flake-check = {
+                enable = true;
+                name = "nix: flake check";
+                entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
+                pass_filenames = false;
+              };
             };
           };
-        };
-      in {
-        default = pkgs.mkShell {
-          inherit (pre-commit-check) shellHook;
-          packages = with pkgs; [
-            statix
-            nvfetcher
-            fnlfmt
-            ragenix.defaultPackage."${system}"
-          ];
-        };
-      });
-    }
-    // (import ./overlays inputs);
+        in {
+          default = pkgs.mkShell {
+            inherit (pre-commit-check) shellHook;
+            packages = with pkgs; [
+              statix
+              nvfetcher
+              fnlfmt
+              ragenix.defaultPackage."${system}"
+            ];
+          };
+        });
+      }
+      (import ./overlays inputs)
+      {lib = import ./lib;}
+    ];
 }
