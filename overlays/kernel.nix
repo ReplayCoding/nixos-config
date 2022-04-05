@@ -92,9 +92,16 @@ in {
     (
       packagesFor
       (
-        applyCfg
-        {MSKYLAKE = yes;}
-        (applyLTO linuxKernel.kernels.linux_xanmod)
+        applyPatches
+        [final.kernelPatches.ath_regd_optional]
+        (
+          applyCfg
+          {
+            MSKYLAKE = yes;
+            ATH_USER_REGD = yes;
+          }
+          (applyLTO linuxKernel.kernels.linux_xanmod)
+        )
       )
     )
     .extend (
