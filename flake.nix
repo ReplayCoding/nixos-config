@@ -104,7 +104,7 @@ rec {
                 arch = "skylake";
                 pgoMode = "use";
                 mesaConfig = {
-                  galliumDrivers = ["iris" "swrast"];
+                  galliumDrivers = ["iris" "zink" "swrast"];
                   vulkanDrivers = ["intel"];
                 };
               };

@@ -1,0 +1,12 @@
+diff --git a/loader/CMakeLists.txt b/loader/CMakeLists.txt
+index c33858d81..058ea66c7 100644
+--- a/loader/CMakeLists.txt
++++ b/loader/CMakeLists.txt
+@@ -254,6 +254,7 @@ else(UNIX AND NOT APPLE) # i.e.: Linux
+             message(WARNING "Assembly sources have been disabled\n${ASM_FAILURE_MSG}")
+         endif()
+         set(OPT_LOADER_SRCS ${OPT_LOADER_SRCS} unknown_ext_chain.c)
++        set_source_files_properties(${OPT_LOADER_SRCS} PROPERTIES COMPILE_FLAGS -O)
+         add_custom_target(loader_asm_gen_files)
+     endif()
+ endif()

@@ -20,10 +20,21 @@ self: super: let
         withValgrind = false;
       })
       .overrideAttrs (mesonOptions_pgo (getDrvName self.mesa-optimised) pgoMode fakeExtra);
+    vulkan-loader =
+      (super.vulkan-loader.overrideAttrs (old: {
+        cmakeBuildType = "plain";
+        cmakeFlags =
+          old.cmakeFlags
+          ++ ["-DCMAKE_VERBOSE_MAKEFILE=ON"]
+          ++ (super.lib.optionals (super.stdenv.hostPlatform != super.stdenv.buildPlatform) ["-DUSE_GAS=OFF"]);
+        patches = (old.patches or []) ++ [../patches/vulkan-fix-cross.patch];
+      }))
+      .override {inherit stdenv;};
   in {
     mesa-optimised =
-      (super.mesa.overrideAttrs (mesonOptions_pgo (getDrvName self.mesa-optimised) pgoMode (_: {
+      (super.mesa.overrideAttrs (mesonOptions_pgo (getDrvName self.mesa-optimised) pgoMode (old: {
         inherit (sources.mesa) pname version src;
+        buildInputs = old.buildInputs ++ [vulkan-loader];
       })))
       .override (
         {
