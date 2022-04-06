@@ -1,4 +1,8 @@
 self: super: {
+  wlroots = super.wlroots.overrideAttrs (old: {
+    # https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3500
+    patches = (old.patches or []) ++ [./patches/wlroots-3500.patch];
+  });
   sway-unwrapped = super.sway-unwrapped.overrideAttrs (old: {
     patches =
       (old.patches or [])
