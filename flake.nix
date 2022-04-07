@@ -143,7 +143,7 @@ rec {
             };
           };
         in {
-          default = pkgs.mkShell {
+          default = pkgs.mkShellNoCC {
             inherit (pre-commit-check) shellHook;
             packages = with pkgs; [
               statix
