@@ -7,7 +7,7 @@ rec {
   root_thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrpf2TTd7B3VWcBttr8qcM5LZwlFw2G4hgTC9M/VyJ1 root@thinkpad";
   roots = [root_thinkpad root_librem];
 
-  user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHn1NkYoDtEQTBRyrltqBQRN4XcuR8nae5l/cXXu3qmD";
+  user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHn1NkYoDtEQTBRyrltqBQRN4XcuR8nae5l/cXXu3qmD replaycoding@gmail.com";
   users = [user];
 
   all = systems ++ users ++ roots;

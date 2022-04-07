@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  flib,
   lib,
   ...
 }: {
@@ -21,6 +22,7 @@
   home-manager.extraSpecialArgs = {
     inherit (config.age) secrets;
     inherit (inputs) nix-colors;
+    inherit flib;
   };
   home-manager.users.user = {nix-colors, ...}: {
     imports = [
