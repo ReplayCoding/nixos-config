@@ -53,19 +53,17 @@ super: let
     mkOptions {
       old = old';
       layers = [
+        (old: {hardeningDisable = ["all"];})
         (
           old:
-            {hardeningDisable = ["all"];}
-            // (
-              if (super.nixosPassthru ? arch)
-              then {
-                NIX_CFLAGS_COMPILE =
-                  toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
-                NIX_CFLAGS_COMPILE_FOR_TARGET =
-                  toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
-              }
-              else {}
-            )
+            if (super.nixosPassthru ? arch)
+            then {
+              NIX_CFLAGS_COMPILE =
+                toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
+              NIX_CFLAGS_COMPILE_FOR_TARGET =
+                toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+            }
+            else {}
         )
         extra
       ];
@@ -109,22 +107,29 @@ super: let
       ];
     };
 
-  fixProfile = profile:
+  fixProfile = profile: pgoType:
     super.runCommand "fix-profile-${profile}" {}
-    ''${llvmPackages.libllvm}/bin/llvm-profdata merge --binary --output $out "${profile}"'';
-  getProfilePath = name: (./pgo + "/${name}-${super.nixosPassthru.hostname}.profdata");
+    ''${llvmPackages.libllvm}/bin/llvm-profdata merge --${pgoType} --binary --output $out "${profile}"'';
+  getProfilePath = name: (./pgo + "/${super.nixosPassthru.hostname}-${name}.profdata");
   getDrvName = old:
     if (builtins.hasAttr "pname" old)
-    then "${old.pname}-${old.version}"
-    else old.name;
-  fixPgoMode = name: pgoMode: pgoProfile:
-    if ((pgoMode != "use") || (builtins.pathExists pgoProfile))
-    then pgoMode
-    else builtins.trace "Package ${name} has no PGO profile (${toString pgoProfile}), disabling" "off";
+    then "${old.pname}-${old.version}-${old.stdenv.hostPlatform.system}"
+    else "${old.name}-${old.system}";
+  fixPgoMode = name: pgoMode: pgoType: pgoProfile:
+    if ((pgoMode == "use") && !(builtins.pathExists pgoProfile))
+    then builtins.trace "Package ${name} has no PGO profile (${toString pgoProfile}), disabling" "off"
+    else if (pgoType == "sample" && pgoMode == "generate")
+    then "off"
+    else pgoMode;
+  generatePgoSupportData = name: pgoType:
+    builtins.toJSON {
+      inherit name;
+      type = pgoType;
+    };
 
-  mesonOptions_pgo = name: pgoMode: extra: old': let
+  mesonOptions_pgo = name: pgoMode: pgoType: extra: old': let
     pgoProfile = getProfilePath name;
-    pgoMode' = fixPgoMode name pgoMode pgoProfile;
+    pgoMode' = fixPgoMode name pgoMode pgoType pgoProfile;
   in
     mkOptions {
       old = old';
@@ -132,7 +137,11 @@ super: let
         (mesonOptions fakeExtra)
         (
           old: {
-            PGO_PROFILE_NAME = name;
+            PGO_SUPPORT_DATA = generatePgoSupportData name pgoType;
+            NIX_CFLAGS_COMPILE =
+              if pgoType == "sample"
+              then (toString old.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
+              else old.NIX_CFLAGS_COMPILE;
             mesonFlags =
               (old.mesonFlags or [])
               ++ [
@@ -147,7 +156,7 @@ super: let
               (
                 if pgoMode' == "use"
                 then ''
-                  cp ${fixProfile pgoProfile} ./default.profdata
+                  cp ${fixProfile pgoProfile pgoType} ./default.profdata
                 ''
                 else ""
               )
@@ -155,10 +164,19 @@ super: let
             nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
           }
         )
+        (old:
+          if super.stdenv.isi686
+          then {
+            # Allow using perf for 32-bit mesa
+            dontStrip = true;
+            separateDebugInfo = false;
+            mesonFlags = old.mesonFlags ++ ["-Ddebug=true"];
+          }
+          else {})
         extra
       ];
     };
-  autotoolsOptions_pgo = name: pgoMode: extra: old':
+  autotoolsOptions_pgo = name: pgoMode: pgoType: extra: old':
     mkOptions {
       old = old';
       layers = [
@@ -166,15 +184,15 @@ super: let
         (
           old: let
             pgoProfile = getProfilePath name;
-            pgoMode' = fixPgoMode name pgoMode pgoProfile;
+            pgoMode' = fixPgoMode name pgoMode pgoType pgoProfile;
             pgoFlags =
               if pgoMode' == "use"
-              then " -fprofile-use=${fixProfile pgoProfile}"
+              then " -fprofile-${pgoType}-use=${fixProfile pgoProfile pgoType}"
               else if pgoMode' == "off"
               then ""
               else " -fprofile-${pgoMode'}";
           in {
-            PGO_PROFILE_NAME = name;
+            PGO_SUPPORT_DATA = generatePgoSupportData name pgoType;
             CFLAGS = (toString old.CFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             CXXFLAGS = (toString old.CXXFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             LDFLAGS = (toString old.LDFLAGS or "") + pgoFlags + " -Wl,--build-id=sha1";

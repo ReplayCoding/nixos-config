@@ -17,13 +17,13 @@ self: super: let
     (wayland.override {
       stdenv = makeStatic stdenv;
     })
-    .overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode (_: {
+    .overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" (_: {
       separateDebugInfo = false;
     }));
   mkOptimisedPackages = pgoMode:
     super.lib.genAttrs pkgsToOptimise (
       name:
-        (super.${name}.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old:
+        (super.${name}.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old:
           {
             stdenv =
               if name == "foot"
@@ -34,7 +34,7 @@ self: super: let
           // (
             if builtins.elem name ["cage" "sway-unwrapped"]
             then {
-              wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode fakeExtra)).override (old': {
+              wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
                 stdenv = makeStatic stdenv;
                 wayland = mkWayland old'.wayland pgoMode name;
               });

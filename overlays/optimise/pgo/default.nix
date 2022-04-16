@@ -1,7 +1,9 @@
 {
   stdenv,
   python3,
+  mypy,
   llvmPackages_14,
+  linuxPackages,
   pkgsToExtractBuildId,
   nixosPassthru,
   pgoDir ? nixosPassthru.llvmProfdataDir,
@@ -14,21 +16,26 @@ in
     src = builtins.path {
       path = ./.;
       name = "pgo-script-src";
-      filter = path: _: builtins.elem (builtins.baseNameOf path) ["extract-pgo-data"];
+      filter = path: _: builtins.elem (builtins.baseNameOf path) ["extract-pgo-data.py"];
     };
     inherit (llvmPackages_14) libllvm;
+    inherit (linuxPackages) perf;
     inherit pgoDir;
 
     buildInputs = [python3 pkgsToExtractBuildId];
     unpackPhase = "true";
+    buildPhase = "${mypy}/bin/mypy --no-color-output $src/extract-pgo-data.py";
     installPhase = ''
       mkdir -p $out/bin
-      cp $src/extract-pgo-data $out/bin
+      cp $src/extract-pgo-data.py $out/bin/extract-pgo-data
       substituteInPlace $out/bin/extract-pgo-data \
         --subst-var-by pgoPackagesWithBuildId "${pkgsToExtractBuildId'}" \
         --subst-var    libllvm \
+        --subst-var    perf \
         --subst-var    pgoDir \
+        --subst-var-by serialisedMappings "$out/serialised.json" \
         --subst-var-by hostname "${nixosPassthru.hostname}"
+      ${python3}/bin/python3 $out/bin/extract-pgo-data --generate > $out/serialised.json
       chmod +x $out/bin/extract-pgo-data
     '';
   }

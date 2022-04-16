@@ -129,6 +129,14 @@ rec {
           pre-commit-check = pre-commit-hooks.lib."${system}".run {
             src = ./.;
             hooks = {
+              black = {
+                enable = true;
+                raw.fail_fast = true;
+              };
+              shellcheck = {
+                enable = true;
+                raw.fail_fast = true;
+              };
               alejandra = {
                 enable = true;
                 excludes = ["^hosts/generic/registry-flake.nix$"];
