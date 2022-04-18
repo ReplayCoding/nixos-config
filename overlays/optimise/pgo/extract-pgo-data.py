@@ -224,10 +224,13 @@ class LLVMProfdataMerger:
         for program in profile_mappings:
             profile_group = profile_mappings[program]
             input_profiles = profile_group.profiles
-            if len(input_profiles) > 1:
+            if len(input_profiles) >= 1:
                 cls.llvm_merge_profiles_to_profdata(
                     program, input_profiles, profile_group.pgo_type
                 )
+                for profile in input_profiles:
+                    if profile.delete:
+                        os.unlink(profile.fname)
             else:
                 log("\tNo profiles for profile {}".format(program))
 
