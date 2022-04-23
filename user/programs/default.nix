@@ -72,6 +72,7 @@
     lutris
     bitwarden-cli
     python39Packages.deemix
+    baobab
     /*
      sway
      */
