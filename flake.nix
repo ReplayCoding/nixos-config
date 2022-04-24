@@ -57,7 +57,7 @@ rec {
     pre-commit-hooks,
     ...
   } @ inputs: let
-    allowedSystems = ["x86_64-linux" "i686-linux" "aarch64-linux"];
+    allowedSystems = ["x86_64-linux" "aarch64-linux"];
     forSystems = nixpkgs.lib.genAttrs allowedSystems;
     recursiveMerge = l: builtins.foldl' (nixpkgs.lib.recursiveUpdate) {} l;
     mkHost = {

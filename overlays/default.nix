@@ -10,9 +10,7 @@
     nixpkgs.lib.recursiveUpdate
     {
       pgoMode = "off";
-      mesaConfig = {
-        driDrivers = [];
-      };
+      mesaConfig = {};
       ccacheDir = "/var/cache/ccache";
       llvmProfdataDir = "/var/cache/llvm-profdata";
     }
@@ -32,7 +30,7 @@
 
       (import ./fuzzel.nix)
       (import ./fish.nix)
-      (import ./sway.nix)
+      (import ./patches.nix)
       (import ./kernel.nix)
 
       (self: super: {

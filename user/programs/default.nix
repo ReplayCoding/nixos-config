@@ -16,6 +16,7 @@
     ./wob.nix
     ./polkit.nix
     ./wlsunset.nix
+    ./fuzzel.nix
     ./cmus.nix
     ./kdeconnect.nix
     ./reversing.nix

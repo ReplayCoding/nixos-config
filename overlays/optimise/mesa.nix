@@ -2,7 +2,6 @@ self: super: let
   inherit (import ./utils.nix super) createWithBuildIdList;
   mkOptimisedMesaWithArch = super': pgoMode: let
     inherit (import ./utils.nix super') stdenv makeStatic mesonOptions mesonOptions_pgo fakeExtra getDrvName llvmPackages_version;
-    sources = super'.callPackage ../_sources/generated.nix {};
     inherit (super'.stdenv.hostPlatform) isi686;
     pgoType =
       if isi686
@@ -33,7 +32,6 @@ self: super: let
       .override {inherit stdenv;};
     mesa-optimised =
       (super'.mesa.overrideAttrs (mesonOptions_pgo (getDrvName mesa-optimised) pgoMode pgoType (old: {
-        inherit (sources.mesa) pname version src;
         buildInputs = old.buildInputs ++ [vulkan-loader];
       })))
       .override (

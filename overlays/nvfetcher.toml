@@ -11,7 +11,3 @@
 [mpv]
   src.git = "https://github.com/mpv-player/mpv"
   fetch.github = "mpv-player/mpv"
-
-[mesa]
-  src.git = "https://gitlab.freedesktop.org/mesa/mesa"
-  fetch.git = "https://gitlab.freedesktop.org/mesa/mesa"

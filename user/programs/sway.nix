@@ -30,7 +30,7 @@ in {
       terminal = "${config.programs.foot.package}/bin/footclient";
     in {
       inherit modifier terminal;
-      menu = "${pkgs.fuzzel}/bin/fuzzel -t ${colors.base05}ff -b ${colors.base00}ff -s ${colors.base03}ff -S ${colors.base05}ff -m ${colors.base0A}ff -r 3 -B 0 --launch-prefix=\"${pkgs.sway}/bin/swaymsg exec --\" -T ${terminal}";
+      menu = "${pkgs.fuzzel}/bin/fuzzel -T ${terminal}";
       gaps.inner = 0;
       window.border = 1;
       colors = {

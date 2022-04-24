@@ -100,7 +100,7 @@ in {
             MSKYLAKE = yes;
             ATH_USER_REGD = yes;
           }
-          (applyLTO linuxKernel.kernels.linux_xanmod)
+          (applyLTO linuxKernel.kernels.linux_xanmod_latest)
         )
       )
     )
@@ -115,7 +115,7 @@ in {
       (
         applyCfg
         {MJAGUAR = yes;}
-        (applyLTO linuxKernel.kernels.linux_xanmod)
+        (applyLTO linuxKernel.kernels.linux_xanmod_latest)
       )
     )
     .extend (

@@ -1,0 +1,12 @@
+diff --git a/input.c b/input.c
+index 961b73ba..e55bf1ec 100644
+--- a/input.c
++++ b/input.c
+@@ -2227,6 +2227,7 @@ wl_pointer_button(void *data, struct wl_pointer *wl_pointer,
+         break;
+ 
+     case TERM_SURF_GRID: {
++        term_damage_view(term);
+         search_cancel(term);
+         urls_reset(term);
+ 
