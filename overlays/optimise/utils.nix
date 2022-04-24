@@ -138,10 +138,6 @@ super: let
         (
           old: {
             PGO_SUPPORT_DATA = generatePgoSupportData name pgoType;
-            NIX_CFLAGS_COMPILE =
-              if pgoType == "sample"
-              then (toString old.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
-              else old.NIX_CFLAGS_COMPILE;
             mesonFlags =
               (old.mesonFlags or [])
               ++ [
@@ -165,9 +161,13 @@ super: let
           }
         )
         (old:
-          if super.stdenv.isi686
+          if pgoType == "sample"
           then {
-            # Allow using perf for 32-bit mesa
+            # Allow using perf for sampling pgo
+            NIX_CFLAGS_COMPILE =
+              if pgoType == "sample"
+              then (toString old.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
+              else old.NIX_CFLAGS_COMPILE;
             dontStrip = true;
             separateDebugInfo = false;
             mesonFlags = old.mesonFlags ++ ["-Ddebug=true"];
