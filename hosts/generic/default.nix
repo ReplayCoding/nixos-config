@@ -22,4 +22,5 @@ _: {
   # misc. options
   i18n.defaultLocale = "en_US.UTF-8";
   boot.cleanTmpDir = true;
+  boot.initrd.systemd.enable = true;
 }
