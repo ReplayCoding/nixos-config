@@ -1,0 +1,51 @@
+From cd23a43752773d5421a80f95580b09de2d2ec06a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Mon, 25 Apr 2022 19:55:00 +0200
+Subject: [PATCH] search: work around Sway sub-surface unmap bug
+
+Unmapping a sub-surface in Sway does not damage the underlying
+surface.
+
+As a result, "committing" a scrollback search will typically leave
+most of the foot window dimmed.
+
+It can be seen when "cancelling" a search as well, but there it's less
+obvious - only the margins are left dimmed. This is because cancelling
+a search damaged the current viewport (something that shouldn't be
+needed).
+
+Out of sway, river, weston and mutter, only Sway needs this
+workaround.
+
+This is a workaround for https://github.com/swaywm/sway/issues/6960
+---
+ search.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/search.c b/search.c
+index 73f831eb..f97d1ae7 100644
+--- a/search.c
++++ b/search.c
+@@ -120,6 +120,11 @@ search_cancel_keep_selection(struct terminal *term)
+ 
+     term_xcursor_update(term);
+     render_refresh(term);
++
++    /* Work around Sway bug - unmapping a sub-surface does not damage
++     * the underlying surface */
++    term_damage_margins(term);
++    term_damage_view(term);
+ }
+ 
+ void
+@@ -837,7 +842,6 @@ execute_binding(struct seat *seat, struct terminal *term,
+             grid->view = ensure_view_is_allocated(
+                 term, term->search.original_view);
+         }
+-        term_damage_view(term);
+         search_cancel(term);
+         return true;
+ 
+-- 
+2.30.2
+

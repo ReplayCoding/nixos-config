@@ -2,7 +2,7 @@ self: super: {
   foot = super.foot.overrideAttrs (old: {
     patches =
       (old.patches or [])
-      ++ [./patches/foot-input-damage-term-when-cancelling-search-using-mouse.patch];
+      ++ [./patches/foot-1044.patch];
   });
   sway-unwrapped = super.sway-unwrapped.overrideAttrs (old: {
     patches =
