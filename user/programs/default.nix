@@ -74,6 +74,7 @@
     bitwarden-cli
     python39Packages.deemix
     baobab
+    aseprite-unfree
     /*
      sway
      */
