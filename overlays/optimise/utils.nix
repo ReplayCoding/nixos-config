@@ -62,6 +62,8 @@ super: let
                 toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
               NIX_CFLAGS_COMPILE_FOR_TARGET =
                 toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+              dontStrip = true;
+              separateDebugInfo = false;
             }
             else {}
         )
@@ -75,7 +77,7 @@ super: let
         (genericOptions fakeExtra)
         (
           old: let
-            flags = " -flto=thin -O3";
+            flags = " -flto=thin -O3 -g";
           in {
             CFLAGS = (toString old.CFLAGS or "") + flags;
             CXXFLAGS = (toString old.CXXFLAGS or "") + flags;
@@ -99,6 +101,7 @@ super: let
               ++ [
                 "-Db_lto=true"
                 "-Db_lto_mode=thin"
+                "-Ddebug=true"
               ];
             ninjaFlags = (old.ninjaFlags or []) ++ ["--verbose"];
           }
@@ -168,9 +171,6 @@ super: let
               if pgoType == "sample"
               then (toString old.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
               else old.NIX_CFLAGS_COMPILE;
-            dontStrip = true;
-            separateDebugInfo = false;
-            mesonFlags = old.mesonFlags ++ ["-Ddebug=true"];
           }
           else {})
         extra
