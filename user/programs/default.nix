@@ -71,6 +71,7 @@
     libarchive-optimised # bsdtar is amazing
     ccache-stats
     lutris
+    wineWowPackages.unstableFull
     bitwarden-cli
     python39Packages.deemix
     baobab
