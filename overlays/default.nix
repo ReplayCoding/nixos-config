@@ -48,7 +48,7 @@
       (import ./optimise/pipewire.nix)
       (import ./optimise/mesa.nix)
       (import ./optimise/nix.nix)
-      (self: super: {extract-pgo-data = super.callPackage ./optimise/pgo {};})
+      (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];
 in {
   lib = {

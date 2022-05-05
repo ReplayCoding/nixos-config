@@ -113,7 +113,7 @@ super: let
   fixProfile = profile: pgoType:
     super.runCommand "fix-profile-${profile}" {}
     ''${llvmPackages.libllvm}/bin/llvm-profdata merge --${pgoType} --binary --output $out "${profile}"'';
-  getProfilePath = name: (./pgo + "/${super.nixosPassthru.hostname}-${name}.profdata");
+  getProfilePath = name: (./profiles + "/${super.nixosPassthru.hostname}-${name}.profdata");
   getDrvName = old:
     if (builtins.hasAttr "pname" old)
     then "${old.pname}-${old.version}-${old.stdenv.hostPlatform.system}"
@@ -160,7 +160,7 @@ super: let
                 else ""
               )
               + (old.postConfigure or "");
-            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
+            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo-hook.sh];
           }
         )
         (old:
@@ -196,7 +196,7 @@ super: let
             CFLAGS = (toString old.CFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             CXXFLAGS = (toString old.CXXFLAGS or "") + pgoFlags + " -Wno-ignored-optimization-argument";
             LDFLAGS = (toString old.LDFLAGS or "") + pgoFlags + " -Wl,--build-id=sha1";
-            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo/pgo-hook.sh];
+            nativeBuildInputs = (old.nativeBuildInputs or []) ++ [./pgo-hook.sh];
           }
         )
         extra
