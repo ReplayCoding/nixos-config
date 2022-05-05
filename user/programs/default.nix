@@ -76,6 +76,7 @@
     python39Packages.deemix
     baobab
     aseprite-unfree
+    (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     /*
      sway
      */
