@@ -71,11 +71,11 @@
     libarchive-optimised # bsdtar is amazing
     ccache-stats
     lutris
-    wineWowPackages.unstableFull
     bitwarden-cli
     python39Packages.deemix
     baobab
     aseprite-unfree
+    bottles
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     /*
      sway
