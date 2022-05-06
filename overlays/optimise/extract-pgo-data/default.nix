@@ -10,6 +10,7 @@
 }: let
   pkgsWithAllOutputs = builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs);
   pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map toString (pkgsWithAllOutputs pkgsToExtractBuildId));
+  pythonWithPkgs = python3.withPackages (p: with p; [rich]);
 in
   stdenv.mkDerivation {
     name = "pgo-script";
@@ -22,7 +23,8 @@ in
     inherit (linuxPackages) perf;
     inherit pgoDir;
 
-    buildInputs = [python3 pkgsToExtractBuildId];
+    buildInputs = [pythonWithPkgs pkgsToExtractBuildId];
+    nativeBuildInputs = [pythonWithPkgs];
     unpackPhase = "true";
     buildPhase = "${mypy}/bin/mypy --no-color-output $src/extract-pgo-data.py";
     installPhase = ''
@@ -35,7 +37,7 @@ in
         --subst-var    pgoDir \
         --subst-var-by serialisedMappings "$out/serialised.json" \
         --subst-var-by hostname "${nixosPassthru.hostname}"
-      ${python3}/bin/python3 $out/bin/extract-pgo-data --generate > $out/serialised.json
+      python $out/bin/extract-pgo-data --generate $out/serialised.json
       chmod +x $out/bin/extract-pgo-data
     '';
   }
