@@ -70,7 +70,6 @@
     qbittorrent
     libarchive-optimised # bsdtar is amazing
     ccache-stats
-    lutris
     bitwarden-cli
     python39Packages.deemix
     baobab
