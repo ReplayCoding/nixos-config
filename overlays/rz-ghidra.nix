@@ -3,8 +3,9 @@
   lib,
   fetchFromGitHub,
   rizin,
+  pugixml,
+  openssl,
   cmake,
-  meson,
   pkg-config,
 }:
 stdenv.mkDerivation rec {
@@ -24,8 +25,15 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs =
-    [rizin] ++ rizin.buildInputs;
+  buildInputs = [
+    rizin
+    openssl # required by rizin
+    pugixml
+  ];
+
+  cmakeFlags = [
+    "-DUSE_SYSTEM_PUGIXML=ON"
+  ];
 
   meta = with lib; {
     description = "Deep ghidra decompiler and sleigh disassembler integration for rizin";
