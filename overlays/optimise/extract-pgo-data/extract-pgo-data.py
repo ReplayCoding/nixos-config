@@ -46,16 +46,46 @@ class Extractor:
         return self.serialised_data["pgo_support"][drv]
 
     @staticmethod
-    def generate_data_cache(console):
+    def process_file(fullpath):
+        pattern = re.compile(r"Build ID: ([a-fA-F0-9]+)")
+        is_file_elf = False
+        build_id = None
+
+        llvm_readelf_headers_output = subprocess.run(
+            ["@libllvm@/bin/llvm-readelf", "-h", fullpath],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        if llvm_readelf_headers_output.returncode == 0:
+            is_file_elf = True
+
+        if is_file_elf:
+            llvm_binary_id_output = subprocess.run(
+                ["@libllvm@/bin/llvm-readelf", "-n", fullpath],
+                capture_output=True,
+            )
+            if llvm_binary_id_output.returncode == 0:
+                llvm_binary_id_output = llvm_binary_id_output.stdout.decode("utf-8")
+                build_id = pattern.search(llvm_binary_id_output)
+                if build_id != None:
+                    build_id = build_id.group(1)
+        return is_file_elf, build_id
+
+    @classmethod
+    def generate_data_cache(cls, console, max_workers=1):
         pgo_packages = """ @pgoPackagesWithBuildId@ """.strip().split("\n")
         build_id_mappings = {}
         pgo_support_data = {}
         files_that_are_elf = {}
-        pattern = re.compile(r"Build ID: ([a-fA-F0-9]+)")
-        with Progress(transient=True, console=console) as progress:
-            for pgo_package in progress.track(
-                pgo_packages, description="Processing packages..."
-            ):
+        with Progress(
+            transient=True, console=console
+        ) as progress, concurrent.futures.ThreadPoolExecutor(
+            max_workers=max_workers
+        ) as executor:
+            jobs = {}
+
+            task = progress.add_task("Getting files in packages...", start=False)
+            for pgo_package in pgo_packages:
                 files_that_are_elf[pgo_package] = []
                 pgo_support_path_for_drv = os.path.join(
                     pgo_package, "nix-support/pgo-support"
@@ -65,35 +95,31 @@ class Extractor:
                     pgo_support_data[pgo_package] = pgo_support
 
                 for root, dirs, files in os.walk(pgo_package):
-                    filetask = progress.add_task("Processing files in package...")
-                    for file in progress.track(files, task_id=filetask):
+                    for file in files:
                         fullpath = os.path.join(root, file)
                         if os.path.islink(fullpath):
                             continue
-                        llvm_readelf_headers_output = subprocess.run(
-                            ["@libllvm@/bin/llvm-readelf", "-h", fullpath],
-                            stdout=subprocess.DEVNULL,
-                            stderr=subprocess.DEVNULL,
-                        )
-                        if llvm_readelf_headers_output.returncode == 0:
-                            files_that_are_elf[pgo_package] += [fullpath]
-                        else:
-                            continue
-                        llvm_binary_id_output = subprocess.run(
-                            ["@libllvm@/bin/llvm-readelf", "-n", fullpath],
-                            capture_output=True,
-                        )
-                        if llvm_binary_id_output.returncode == 0:
-                            llvm_binary_id_output = llvm_binary_id_output.stdout.decode(
-                                "utf-8"
-                            )
-                        else:
-                            continue
-                        build_id = pattern.search(llvm_binary_id_output)
-                        if build_id != None:
-                            build_id = build_id.group(1)
-                            build_id_mappings[build_id] = pgo_package
-                    progress.remove_task(filetask)
+                        job = executor.submit(cls.process_file, fullpath)
+                        jobs[job] = (fullpath, pgo_package)
+            progress.remove_task(task)
+
+            task = progress.add_task("Processing files in packages...", total=len(jobs))
+            for job in concurrent.futures.as_completed(jobs):
+                is_file_elf, build_id = job.result()
+                fullpath, pgo_package = jobs[job]
+                progress.update(task, advance=1)
+                if is_file_elf:
+                    files_that_are_elf[pgo_package] += [fullpath]
+                if build_id != None:
+                    build_id_mappings[build_id] = pgo_package
+
+            # Make generated data deterministic
+            for pgo_package in files_that_are_elf:
+                files_that_are_elf[pgo_package] = sorted(
+                    files_that_are_elf[pgo_package]
+                )
+            progress.remove_task(task)
+
         return {
             "build_ids": build_id_mappings,
             "elf_files": files_that_are_elf,
@@ -330,7 +356,11 @@ if __name__ == "__main__":
     console = Console(stderr=True)
     if args.generate != None:
         with open(args.generate, "w") as generate_file:
-            json.dump(Extractor.generate_data_cache(console), generate_file)
+            json.dump(
+                Extractor.generate_data_cache(console, max_workers=args.jobs),
+                generate_file,
+                sort_keys=True,
+            )
     else:
         all_profiles: ProfileMappings = {}
         if args.sampling_profiles != None:

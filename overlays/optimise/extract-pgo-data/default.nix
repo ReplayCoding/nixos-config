@@ -37,7 +37,7 @@ in
         --subst-var    pgoDir \
         --subst-var-by serialisedMappings "$out/serialised.json" \
         --subst-var-by hostname "${nixosPassthru.hostname}"
-      python $out/bin/extract-pgo-data --generate $out/serialised.json
+      python $out/bin/extract-pgo-data --generate $out/serialised.json -j $NIX_BUILD_CORES
       chmod +x $out/bin/extract-pgo-data
     '';
   }
