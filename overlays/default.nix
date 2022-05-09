@@ -23,7 +23,7 @@
         # This will be used to correlate the pgo results with the derivation it comes from
         pkgsToExtractBuildId = [];
       })
-      (self: super: (nixpkgs-wayland.overlay self super) // {inherit (super) i3status-rust;})
+      (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
       (fixSystemAlias neovim-nightly-overlay.overlay)
       (fixSystemAlias polymc.overlay)
       nix-tree.overlay

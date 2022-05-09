@@ -36,7 +36,7 @@ self: super: let
             then {
               wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
                 stdenv = makeStatic stdenv;
-                wayland = mkWayland old'.wayland pgoMode name;
+                wayland = mkWayland super.wayland pgoMode name;
               });
             }
             else {}

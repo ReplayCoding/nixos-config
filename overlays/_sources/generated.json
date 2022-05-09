@@ -1,0 +1,75 @@
+{
+    "dav1d": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "dav1d",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "9833c92807715d5b6ca0f88d13081e25744d65e0",
+            "sha256": "sha256-C0c/P6pmbHdLDRaJFW/Fo7Mq3oFHyJuTZeHxmK4Mx4w=",
+            "type": "git",
+            "url": "https://code.videolan.org/videolan/dav1d"
+        },
+        "version": "9833c92807715d5b6ca0f88d13081e25744d65e0"
+    },
+    "fuzzel": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "fuzzel",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "e661458d795e42733df2cb439d951bcde62fde8f",
+            "sha256": "sha256-+eKA72LKfaktW0c3VMJSgjEW+DexrI6K3S4/LE7M8L8=",
+            "type": "git",
+            "url": "https://codeberg.org/dnkl/fuzzel"
+        },
+        "version": "e661458d795e42733df2cb439d951bcde62fde8f"
+    },
+    "libplacebo": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "libplacebo",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "cc59ed790da26282ec7787ca81499339bdc86280",
+            "sha256": "sha256-uHl1dzd5Kye5GnWJ98ihDS8IGyNXDy5kU+nsFIt/+Og=",
+            "type": "git",
+            "url": "https://code.videolan.org/videolan/libplacebo/"
+        },
+        "version": "cc59ed790da26282ec7787ca81499339bdc86280"
+    },
+    "mpv": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "mpv",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mpv-player",
+            "repo": "mpv",
+            "rev": "3458651010a68c2384a19ba485e81e22c825782f",
+            "sha256": "sha256-Idk3Qj0k+GJ4eT2BgJdiVcr7qEY9LviHoHuARpNW+Ck=",
+            "type": "github"
+        },
+        "version": "3458651010a68c2384a19ba485e81e22c825782f"
+    }
+}

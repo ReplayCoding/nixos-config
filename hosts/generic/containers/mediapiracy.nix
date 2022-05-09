@@ -21,6 +21,7 @@ in {
         group = "mediapiracy";
         openPeerPorts = true;
       };
+      system.stateVersion = "22.05";
     };
     bindMounts = {
       "/var/lib/sonarr" = {
