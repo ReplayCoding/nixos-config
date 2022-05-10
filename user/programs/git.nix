@@ -14,7 +14,6 @@
     userEmail = "replaycoding@gmail.com";
     extraConfig = {
       rebase.autoSquash = true;
-      log.showsignature = true;
       commit.gpgsign = true;
       gpg.format = "ssh"; # Great name don't you think?
       user.signingkey = "key::${flib.pubkeys.user}";
