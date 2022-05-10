@@ -157,13 +157,13 @@ class LLVMPerfdataExtractor(Extractor):
                 profiles_for_drvs[pgo_support_data["name"]] = OutputProfileGroup(
                     pgo_support_data["type"]
                 )
-        for profile in self.profiles:
-            with Progress(
-                SpinnerColumn(),
-                *Progress.get_default_columns(),
-                transient=True,
-                console=self.console,
-            ) as progress:
+        with Progress(
+            SpinnerColumn(),
+            *Progress.get_default_columns(),
+            transient=True,
+            console=self.console,
+        ) as progress:
+            for profile in self.profiles:
                 with tempfile.NamedTemporaryFile() as script_file:
                     perf_script_task = progress.add_task(
                         description="Converting perf.data to perf script...",
