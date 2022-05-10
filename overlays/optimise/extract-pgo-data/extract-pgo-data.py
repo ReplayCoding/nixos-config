@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 import sys, os, re, subprocess, json, tempfile, concurrent.futures
 from typing import Dict
+from dataclasses import dataclass
 from rich.console import Console  # type: ignore
 from rich.progress import Progress, SpinnerColumn  # type: ignore
 
 
+@dataclass
 class OutputProfileWrapper:
-    def __init__(self, fname, delete=False):
-        self.fname = fname
-        self.delete = delete
-
-    def __repr__(self):
-        return f"<OutputProfileWrapper fname={self.fname} delete={self.delete}>"
+    fname: str
+    delete: bool = False
 
 
 class OutputProfileGroup:

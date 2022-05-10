@@ -1,6 +1,6 @@
 {
   stdenv,
-  python3,
+  python310,
   mypy,
   llvmPackages_14,
   linuxPackages,
@@ -10,7 +10,7 @@
 }: let
   pkgsWithAllOutputs = builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs);
   pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map toString (pkgsWithAllOutputs pkgsToExtractBuildId));
-  pythonWithPkgs = python3.withPackages (p: with p; [rich]);
+  pythonWithPkgs = python310.withPackages (p: with p; [rich]);
 in
   stdenv.mkDerivation {
     name = "pgo-script";
