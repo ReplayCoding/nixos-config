@@ -21,6 +21,10 @@ rec {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvfetcher = {
+      url = "github:berberman/nvfetcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -53,6 +57,7 @@ rec {
     self,
     nixpkgs,
     ragenix,
+    nvfetcher,
     home-manager,
     pre-commit-hooks,
     ...
@@ -155,9 +160,9 @@ rec {
             inherit (pre-commit-check) shellHook;
             packages = with pkgs; [
               statix
-              nvfetcher
               fnlfmt
               ragenix.defaultPackage."${system}"
+              nvfetcher.defaultPackage."${system}"
             ];
           };
         });
