@@ -76,9 +76,6 @@
     aseprite-unfree
     bottles
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
-    /*
-     sway
-     */
     wl-clipboard
     xdg-utils
   ];
