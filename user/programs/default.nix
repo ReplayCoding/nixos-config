@@ -75,6 +75,7 @@
     baobab
     aseprite-unfree
     bottles
+    gnome.nautilus
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     wl-clipboard
     xdg-utils
