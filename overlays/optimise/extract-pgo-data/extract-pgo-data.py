@@ -2,8 +2,8 @@
 import os, re, subprocess, json, tempfile, concurrent.futures
 from typing import Dict
 from dataclasses import dataclass
-from rich.console import Console  # type: ignore
-from rich.progress import Progress, SpinnerColumn  # type: ignore
+from rich.console import Console
+from rich.progress import Progress, SpinnerColumn
 
 
 @dataclass

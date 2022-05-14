@@ -1,7 +1,6 @@
 {
   stdenv,
   python310,
-  mypy,
   llvmPackages_14,
   linuxPackages,
   pkgsToExtractBuildId,
@@ -10,7 +9,7 @@
 }: let
   pkgsWithAllOutputs = builtins.concatMap (pkg: builtins.map (output: pkg.${output}) pkg.outputs);
   pkgsToExtractBuildId' = builtins.concatStringsSep "\n" (builtins.map toString (pkgsWithAllOutputs pkgsToExtractBuildId));
-  pythonWithPkgs = python310.withPackages (p: with p; [rich]);
+  pythonWithPkgs = python310.withPackages (p: with p; [mypy rich]);
 in
   stdenv.mkDerivation {
     name = "pgo-script";
@@ -22,11 +21,11 @@ in
     inherit (llvmPackages_14) libllvm;
     inherit (linuxPackages) perf;
     inherit pgoDir;
+    passthru = {pythonEnv = pythonWithPkgs;};
 
     buildInputs = [pythonWithPkgs pkgsToExtractBuildId];
-    nativeBuildInputs = [pythonWithPkgs];
     unpackPhase = "true";
-    buildPhase = "${mypy}/bin/mypy --no-color-output $src/extract-pgo-data.py";
+    buildPhase = "${pythonWithPkgs}/bin/mypy --no-color-output $src/extract-pgo-data.py";
     installPhase = ''
       mkdir -p $out/bin
       cp $src/extract-pgo-data.py $out/bin/extract-pgo-data
