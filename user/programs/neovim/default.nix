@@ -7,8 +7,12 @@
   programs.neovim = {
     enable = true;
     extraConfig = "lua require('init')";
+    extraPackages = with pkgs; [
+      pyright
+    ];
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
+      nvim-lspconfig
       lightspeed-nvim
       gitsigns-nvim
       lualine-nvim

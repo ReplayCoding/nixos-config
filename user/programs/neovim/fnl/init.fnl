@@ -9,13 +9,13 @@
 (set vim.opt.number true)
 (set vim.opt.signcolumn :yes)
 
-((. (require :nvim-treesitter.configs) :setup) {
-  :highlight { :enable true }
-  :indent    { :enable true }})
+((. (require :nvim-treesitter.configs) :setup) {:highlight {:enable true}
+                                                :indent {:enable true}})
+((. (. (require :lspconfig) :pyright) :setup) {})
+
 ((. (require :gitsigns) :setup))
 ((. (require :lualine) :setup))
-((. (require :Comment) :setup))	
+((. (require :Comment) :setup))
 
-
-((. (require :catppuccin) :setup))	
+((. (require :catppuccin) :setup))
 (vim.cmd "colorscheme catppuccin")

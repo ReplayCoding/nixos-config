@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, os, re, subprocess, json, tempfile, concurrent.futures
+import os, re, subprocess, json, tempfile, concurrent.futures
 from typing import Dict
 from dataclasses import dataclass
 from rich.console import Console  # type: ignore
@@ -21,7 +21,7 @@ class OutputProfileGroup:
         self.profiles += profiles
 
     def __repr__(self):
-        return f"<OutputProfileGroup groups={profiles}>"
+        return f"<OutputProfileGroup groups={self.profiles}>"
 
 
 ProfileMappings = Dict[str, OutputProfileGroup]
@@ -92,7 +92,7 @@ class Extractor:
                     pgo_support = json.load(pgo_support_file)
                     pgo_support_data[pgo_package] = pgo_support
 
-                for root, dirs, files in os.walk(pgo_package):
+                for root, _, files in os.walk(pgo_package):
                     for file in files:
                         fullpath = os.path.join(root, file)
                         if os.path.islink(fullpath):
@@ -193,7 +193,6 @@ class LLVMPerfdataExtractor(Extractor):
                         max_workers=self.max_workers
                     ) as executor:
                         profile_to_drv: Dict = {}
-                        convert_progress_total = 0
                         for drv in self.elf_files_in_drvs:
                             pgo_name = self.get_pgo_support_data(drv)["name"]
                             if pgo_name not in profiles_for_drvs:
