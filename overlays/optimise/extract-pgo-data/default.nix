@@ -25,7 +25,7 @@ in
 
     buildInputs = [pythonWithPkgs pkgsToExtractBuildId];
     unpackPhase = "true";
-    buildPhase = "${pythonWithPkgs}/bin/mypy --no-color-output $src/extract-pgo-data.py";
+    buildPhase = "${pythonWithPkgs}/bin/mypy --strict --no-color-output $src/extract-pgo-data.py";
     installPhase = ''
       mkdir -p $out/bin
       cp $src/extract-pgo-data.py $out/bin/extract-pgo-data

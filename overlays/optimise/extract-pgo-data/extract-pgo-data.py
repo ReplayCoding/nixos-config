@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+# TODO: Use python 3.11
+from __future__ import annotations
 import os, re, subprocess, json, tempfile, concurrent.futures
-from typing import Dict
+from typing import Dict, TypedDict, Optional, Any
 from dataclasses import dataclass
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn
@@ -12,15 +14,26 @@ class OutputProfileWrapper:
     delete: bool = False
 
 
+class PgoSupportData(TypedDict):
+    name: str
+    type: str
+
+
+class DataCache(TypedDict):
+    build_ids: Dict[str, str]
+    elf_files: Dict[str, list[str]]
+    pgo_support: Dict[str, PgoSupportData]
+
+
 class OutputProfileGroup:
-    def __init__(self, pgo_type: str):
+    def __init__(self, pgo_type: str) -> None:
         self.profiles: list[OutputProfileWrapper] = []
         self.pgo_type = pgo_type
 
-    def add_profiles(self, profiles: list[OutputProfileWrapper]):
+    def add_profiles(self, profiles: list[OutputProfileWrapper]) -> None:
         self.profiles += profiles
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<OutputProfileGroup groups={self.profiles}>"
 
 
@@ -28,26 +41,26 @@ ProfileMappings = Dict[str, OutputProfileGroup]
 
 
 class Extractor:
-    def __init__(self):
+    def __init__(self) -> None:
         with open("@serialisedMappings@", "r") as serialised_data_file:
-            self.serialised_data = json.load(serialised_data_file)
+            self.serialised_data: DataCache = json.load(serialised_data_file)
 
     @property
-    def build_id_mappings(self):
+    def build_id_mappings(self) -> Dict[str, str]:
         return self.serialised_data["build_ids"]
 
     @property
-    def elf_files_in_drvs(self):
+    def elf_files_in_drvs(self) -> Dict[str, list[str]]:
         return self.serialised_data["elf_files"]
 
-    def get_pgo_support_data(self, drv):
+    def get_pgo_support_data(self, drv: str) -> PgoSupportData:
         return self.serialised_data["pgo_support"][drv]
 
     @staticmethod
-    def process_file(fullpath):
+    def process_file(fullpath: str) -> tuple[bool, Optional[str]]:
         pattern = re.compile(r"Build ID: ([a-fA-F0-9]+)")
         is_file_elf = False
-        build_id = None
+        build_id: Optional[str] = None
 
         llvm_readelf_headers_output = subprocess.run(
             ["@libllvm@/bin/llvm-readelf", "-h", fullpath],
@@ -58,23 +71,24 @@ class Extractor:
             is_file_elf = True
 
         if is_file_elf:
-            llvm_binary_id_output = subprocess.run(
+            llvm_binary_id_cmd = subprocess.run(
                 ["@libllvm@/bin/llvm-readelf", "-n", fullpath],
                 capture_output=True,
             )
-            if llvm_binary_id_output.returncode == 0:
-                llvm_binary_id_output = llvm_binary_id_output.stdout.decode("utf-8")
-                build_id = pattern.search(llvm_binary_id_output)
-                if build_id != None:
-                    build_id = build_id.group(1)
+            if llvm_binary_id_cmd.returncode == 0:
+                llvm_binary_id_output = llvm_binary_id_cmd.stdout.decode("utf-8")
+                build_id_re = pattern.search(llvm_binary_id_output)
+                if build_id_re != None:
+                    assert build_id_re is not None  # Ugly hack to get mypy to behave
+                    build_id = build_id_re.group(1)
         return is_file_elf, build_id
 
     @classmethod
-    def generate_data_cache(cls, console, max_workers=1):
+    def generate_data_cache(cls, console: Console, max_workers: int = 1) -> DataCache:
         pgo_packages = """ @pgoPackagesWithBuildId@ """.strip().split("\n")
         build_id_mappings = {}
         pgo_support_data = {}
-        files_that_are_elf = {}
+        files_that_are_elf: Dict[str, list[str]] = {}
         with Progress(
             transient=True, console=console
         ) as progress, concurrent.futures.ThreadPoolExecutor(
@@ -109,6 +123,7 @@ class Extractor:
                 if is_file_elf:
                     files_that_are_elf[pgo_package] += [fullpath]
                 if build_id != None:
+                    assert build_id is not None  # Ugly hack to get mypy to behave
                     build_id_mappings[build_id] = pgo_package
 
             # Make generated data deterministic
@@ -126,14 +141,16 @@ class Extractor:
 
 
 class LLVMPerfdataExtractor(Extractor):
-    def __init__(self, profiles, console, max_workers=1):
+    def __init__(self, profiles: list[str], console: Console, max_workers: int = 1):
         super().__init__()
         self.console = console
         self.profiles = profiles
         self.max_workers = max_workers
 
     @staticmethod
-    def _process_elf_file(script_file, elf: str):
+    def _process_elf_file(
+        script_file: tempfile._TemporaryFileWrapper[Any], elf: str
+    ) -> Optional[tempfile._TemporaryFileWrapper[Any]]:
         with tempfile.NamedTemporaryFile(delete=False) as output_profile:
             profgen_cmd = subprocess.run(
                 [
@@ -192,7 +209,7 @@ class LLVMPerfdataExtractor(Extractor):
                     with concurrent.futures.ThreadPoolExecutor(
                         max_workers=self.max_workers
                     ) as executor:
-                        profile_to_drv: Dict = {}
+                        profile_to_drv: Dict[concurrent.futures.Future[Any], str] = {}
                         for drv in self.elf_files_in_drvs:
                             pgo_name = self.get_pgo_support_data(drv)["name"]
                             if pgo_name not in profiles_for_drvs:
@@ -208,11 +225,15 @@ class LLVMPerfdataExtractor(Extractor):
                             total=len(profile_to_drv),
                         )
                         for future in concurrent.futures.as_completed(profile_to_drv):
-                            profile = future.result()
+                            profile_result = future.result()
                             pgo_name = profile_to_drv[future]
-                            if profile != None:
+                            if profile_result != None:
                                 profiles_for_drvs[pgo_name].add_profiles(
-                                    [OutputProfileWrapper(profile.name, delete=True)]
+                                    [
+                                        OutputProfileWrapper(
+                                            profile_result.name, delete=True
+                                        )
+                                    ]
                                 )
                             progress.update(convert_profiles_task, advance=1)
                         progress.remove_task(convert_profiles_task)
@@ -220,7 +241,7 @@ class LLVMPerfdataExtractor(Extractor):
 
 
 class LLVMProfdataExtractor(Extractor):
-    def __init__(self, pgo_dir, console):
+    def __init__(self, pgo_dir: str, console: Console):
         super().__init__()
         self.console = console
         self.pgo_dir = pgo_dir
@@ -289,10 +310,10 @@ class LLVMProfdataExtractor(Extractor):
 
 
 class LLVMProfdataMerger:
-    def __init__(self, console):
+    def __init__(self, console: Console):
         self.console = console
 
-    def merge_all_profiles(self, profile_mappings: ProfileMappings):
+    def merge_all_profiles(self, profile_mappings: ProfileMappings) -> None:
         with Progress(
             SpinnerColumn(),
             *Progress.get_default_columns(),
@@ -320,7 +341,7 @@ class LLVMProfdataMerger:
         input_profiles: list[OutputProfileWrapper],
         pgo_type: str,
         progress: Progress,
-    ):
+    ) -> None:
         # getProfilePath = name: (./pgo + "/${super.nixosPassthru.hostname}-${name}.profdata");
         output_path = "{}-{}.profdata".format("@hostname@", output_name)
         profile_fnames = list(map(lambda p: p.fname, input_profiles))
