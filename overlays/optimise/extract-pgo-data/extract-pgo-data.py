@@ -352,7 +352,11 @@ class LLVMProfdataMerger:
             "--text",
             "--output={}".format(output_path),
         ] + profile_fnames
-        llvm_output = subprocess.run(cmd)
+        llvm_output = subprocess.run(
+            cmd,
+            stderr=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+        )
         if llvm_output.returncode != 0:
             progress.print(
                 "Failed to merge profiles {}".format(", ".join(profile_fnames))
