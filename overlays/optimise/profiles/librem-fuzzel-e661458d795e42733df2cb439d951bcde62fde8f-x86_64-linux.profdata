@@ -19,20 +19,20 @@
 15
 # Counter Values:
 0
-104
+32
 0
-104
-1066
+32
+328
 0
 0
-104
+32
 0
-104
+32
 0
-104
-104
-104
-1066
+32
+32
+32
+328
 
 ../config.c:parse_section_border
 # Func Hash:
@@ -41,8 +41,8 @@
 3
 # Counter Values:
 0
-13
-13
+4
+4
 
 ../config.c:parse_section_colors
 # Func Hash:
@@ -50,12 +50,12 @@
 # Num Counters:
 7
 # Counter Values:
-13
-13
-13
-13
+4
+4
+4
+4
 0
-13
+4
 0
 
 ../config.c:parse_section_dmenu
@@ -90,7 +90,7 @@
 0
 0
 0
-13
+4
 0
 0
 0
@@ -107,10 +107,10 @@
 # Num Counters:
 5
 # Counter Values:
-91
-91
-91
-91
+28
+28
+28
+28
 0
 
 ../config.c:value_to_bool
@@ -134,7 +134,7 @@
 3
 # Counter Values:
 0
-65
+20
 0
 
 ../config.c:value_to_enum
@@ -173,7 +173,7 @@
 # Num Counters:
 2
 # Counter Values:
-26
+8
 0
 
 ../cursor/wayland-cursor.c:load_callback
@@ -182,14 +182,14 @@
 # Num Counters:
 12
 # Counter Values:
-38130
-38130
-2390
-2390
+7626
+7626
+478
+478
 0
-620
-620
-620
+124
+124
+124
 0
 0
 0
@@ -201,7 +201,7 @@
 # NumValueSites:
 1
 1
-513:2390
+513:478
 
 ../cursor/wayland-cursor.c:shm_pool_allocate
 # Func Hash:
@@ -209,11 +209,11 @@
 # Num Counters:
 5
 # Counter Values:
-2390
-2390
-40
-40
-40
+478
+478
+8
+8
+8
 
 ../cursor/xcursor.c:XcursorFileLoadImages
 # Func Hash:
@@ -222,74 +222,74 @@
 75
 # Counter Values:
 0
-53100
-55490
-11950
-55490
-53100
-0
-11950
-11330
-11330
-620
+10620
+11098
 2390
-2390
-620
-2390
-620
-2390
+11098
+10620
 0
 2390
-2390
-620
-620
-2390
-2390
-2390
-2390
-620
-620
-620
-620
+2266
+2266
+124
+478
+478
+124
+478
+124
+478
 0
-2390
-2390
-2390
-2390
-11950
+478
+478
+124
+124
+478
+478
+478
+478
+124
+124
+124
+124
 0
-620
-620
-0
-2390
-2390
-2390
-2390
-620
-620
-2390
-2390
+478
+478
+478
+478
 2390
 0
-1376640
-620
-2390
-620
-620
+124
+124
 0
-2390
+478
+478
+478
+478
+124
+124
+478
+478
+478
 0
-2390
+275328
+124
+478
+124
+124
 0
+478
 0
-0
-2390
-2390
+478
 0
 0
 0
-620
-9560
+478
+478
+0
+0
+0
+124
+1912
 0
 0
 0
@@ -304,40 +304,40 @@
 19
 0
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:620
+../cursor/xcursor.c:_XcursorStdioFileRead:124
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:620
+../cursor/xcursor.c:_XcursorStdioFileRead:124
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:620
+../cursor/xcursor.c:_XcursorStdioFileRead:124
 0
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:11950
-1
-../cursor/xcursor.c:_XcursorStdioFileRead:11950
-1
-../cursor/xcursor.c:_XcursorStdioFileRead:11950
-1
-../cursor/xcursor.c:_XcursorStdioFileSeek:2390
-1
 ../cursor/xcursor.c:_XcursorStdioFileRead:2390
 1
 ../cursor/xcursor.c:_XcursorStdioFileRead:2390
 1
 ../cursor/xcursor.c:_XcursorStdioFileRead:2390
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileSeek:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileRead:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileRead:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileRead:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileRead:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:2390
+../cursor/xcursor.c:_XcursorStdioFileRead:478
 1
-../cursor/xcursor.c:_XcursorStdioFileRead:1376640
+../cursor/xcursor.c:_XcursorStdioFileRead:478
+1
+../cursor/xcursor.c:_XcursorStdioFileRead:478
+1
+../cursor/xcursor.c:_XcursorStdioFileRead:478
+1
+../cursor/xcursor.c:_XcursorStdioFileRead:478
+1
+../cursor/xcursor.c:_XcursorStdioFileRead:275328
 
 ../cursor/xcursor.c:XcursorImagesSetName
 # Func Hash:
@@ -345,9 +345,9 @@
 # Num Counters:
 4
 # Counter Values:
-620
-620
-620
+124
+124
+124
 0
 
 ../cursor/xcursor.c:XcursorLibraryPath
@@ -356,7 +356,7 @@
 # Num Counters:
 3
 # Counter Values:
-10
+2
 0
 0
 
@@ -386,12 +386,12 @@
 # Num Counters:
 6
 # Counter Values:
-3015
-1005
-2875
-1530
-1870
-2595
+603
+201
+575
+306
+374
+519
 
 ../cursor/xcursor.c:_XcursorBuildFullname
 # Func Hash:
@@ -399,9 +399,9 @@
 # Num Counters:
 3
 # Counter Values:
-865
-865
-865
+173
+173
+173
 
 ../cursor/xcursor.c:_XcursorBuildThemeDir
 # Func Hash:
@@ -409,12 +409,12 @@
 # Num Counters:
 8
 # Counter Values:
-140
-140
+28
+28
 0
-140
-10
-140
+28
+2
+28
 0
 0
 
@@ -424,7 +424,7 @@
 # Num Counters:
 1
 # Counter Values:
-1436480
+287296
 
 ../cursor/xcursor.c:_XcursorStdioFileSeek
 # Func Hash:
@@ -432,7 +432,7 @@
 # Num Counters:
 1
 # Counter Values:
-2390
+478
 
 ../cursor/xcursor.c:_XcursorStdioFileWrite
 # Func Hash:
@@ -456,22 +456,22 @@
 0
 0
 0
-5
+1
 0
-5
-5
+1
+1
 0
 0
-19055
-35
-5
-5
-5
-5
-105
+3811
+7
+1
+1
+1
+1
+21
 0
-105
-10
+21
+2
 
 ../fdm.c:event_modify
 # Func Hash:
@@ -489,20 +489,20 @@
 # Num Counters:
 16
 # Counter Values:
-39
-39
-39
-39
-39
+12
+12
+12
+12
+12
 0
 0
-13
+4
 0
 0
 0
-39
-13
-39
+12
+4
+12
 0
 0
 
@@ -512,63 +512,63 @@
 # Num Counters:
 59
 # Counter Values:
-110656
-138216
-133588
-121342
-1027
-884
-110812
-754
-858
-156
-728
-67496
-4628
-59059
-4628
-0
-54912
-12584
-8437
-78
-0
-0
-8437
-8424
-65
-0
-0
-13
-13
-0
-13
-0
-1040
-13
-65
-0
-13
-13
-0
-65
-0
+36676
+44964
+43540
+39260
+308
+272
+36728
+228
+264
 52
-52
+220
+15576
+1424
+12980
+1424
+0
+12672
+2904
+2596
+28
+0
+0
+2596
+2592
+24
+0
+0
+4
+4
+0
+4
+0
+328
+4
+24
+0
+4
+4
+0
+24
+0
+20
+20
 0
 0
 0
-949
+296
 0
-13
-26
-13
-13
-13
-14976
-39936
-2600
-9984
+4
+8
+4
+4
+4
+3456
+9216
+600
+2304
 0
 0
 
@@ -578,10 +578,10 @@
 # Num Counters:
 7
 # Counter Values:
-45
-45
-45
-45
+13
+13
+13
+13
 0
 0
 0
@@ -592,8 +592,8 @@
 # Num Counters:
 3
 # Counter Values:
-45
-45
+13
+13
 0
 
 ../main.c:fdm_apps_populated
@@ -602,11 +602,11 @@
 # Num Counters:
 6
 # Counter Values:
-25
-25
+8
+8
 0
 0
-13
+4
 0
 
 ../main.c:font_reloaded
@@ -615,8 +615,8 @@
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 ../main.c:populate_apps
 # Func Hash:
@@ -625,11 +625,11 @@
 7
 # Counter Values:
 0
-13
-13
-13
-13
-13
+4
+4
+4
+4
+4
 0
 
 ../main.c:pt_or_px_from_string
@@ -653,18 +653,18 @@
 # Num Counters:
 15
 # Counter Values:
-403
-403
-494
+156
+156
+128
 0
-494
-494
-13
+128
+128
+4
 0
-13
+4
 0
 0
-13
+4
 0
 0
 0
@@ -675,7 +675,7 @@
 # Num Counters:
 2
 # Counter Values:
-26
+8
 0
 
 ../main.c:write_cache
@@ -684,13 +684,13 @@
 # Num Counters:
 10
 # Counter Values:
-640
-304
-304
-304
-304
+246
+96
+96
+96
+96
 0
-8
+3
 0
 0
 0
@@ -701,12 +701,12 @@
 # Num Counters:
 6
 # Counter Values:
-55209
-1992
-53217
-360
-5050
-4816
+12351
+725
+11626
+149
+1250
+1156
 
 ../match.c:match_compar
 # Func Hash:
@@ -714,12 +714,12 @@
 # Num Counters:
 6
 # Counter Values:
-303
-1067
-4339
-324
-1090
-2968
+100
+404
+1280
+118
+410
+828
 
 ../match.c:match_levenshtein
 # Func Hash:
@@ -727,29 +727,29 @@
 # Num Counters:
 24
 # Counter Values:
-127825
-1003
-12920
-10067
-12746
-10067
-40104
-10070
-12746
-4964
-3
-5103
-4690
-4690
-2679
-1889
-141
-85
-1777
-123405
-8336
-2811
-2811
+32842
+682
+4122
+2586
+3167
+2586
+8804
+2587
+3167
+1165
+1
+1421
+1101
+1101
+581
+363
+45
+32
+426
+31498
+3526
+775
+775
 1
 
 ../png.c:png_warning_cb
@@ -792,7 +792,7 @@
 2
 # Counter Values:
 0
-10410
+3527
 
 ../render.c:render_svg
 # Func Hash:
@@ -800,10 +800,10 @@
 # Num Counters:
 4
 # Counter Values:
-190
-186
-94
-186
+57
+56
+35
+56
 
 ../shm.c:buffer_release
 # Func Hash:
@@ -811,7 +811,7 @@
 # Num Counters:
 1
 # Counter Values:
-86
+25
 
 ../src/compiler/glsl/ast_function.cpp:_ZL15function_existsP22_mesa_glsl_parse_stateP17glsl_symbol_tablePKc
 # Func Hash:
@@ -35782,35 +35782,35 @@
 # Num Counters:
 29
 # Counter Values:
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-270
-784
+82
+217
 0
-136
-294
-1630
-1989
-1630
-1630
-1521
-91
+39
+83
+470
+573
+470
+470
+437
+28
 0
 0
 0
-988
+286
 
 ../src/connection.c:close_fds
 # Func Hash:
@@ -35818,11 +35818,11 @@
 # Num Counters:
 6
 # Counter Values:
-18
-182
-18
+5
+54
+5
 0
-18
+5
 0
 # Num Value Kinds:
 1
@@ -35831,7 +35831,7 @@
 # NumValueSites:
 3
 1
-4:18
+4:5
 0
 0
 
@@ -35841,30 +35841,30 @@
 # Num Counters:
 25
 # Counter Values:
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-294
-1989
-1630
-1630
-1630
-18
+83
+573
+470
+470
+470
+5
 0
-18
+5
 0
-988
+286
 0
 # Num Value Kinds:
 1
@@ -35882,7 +35882,7 @@
 3
 # Counter Values:
 0
-1001
+290
 0
 # Num Value Kinds:
 1
@@ -35891,13 +35891,13 @@
 # NumValueSites:
 3
 7
-9:375
-8:271
-17:189
-33:65
-16:44
-32:44
-4:13
+9:107
+8:80
+17:53
+33:20
+16:13
+32:13
+4:4
 0
 0
 
@@ -35907,39 +35907,39 @@
 # Num Counters:
 35
 # Counter Values:
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-294
-1989
-1630
-1630
-1630
-1612
+83
+573
+470
+470
+470
+465
 0
-270
-784
+82
+217
 0
-136
-331
-988
-123
-91
+39
+99
+286
+35
+28
 0
-91
+28
 0
-988
+286
 0
 0
 # Num Value Kinds:
@@ -35949,10 +35949,10 @@
 # NumValueSites:
 2
 4
-9:39
-17:26
-7:13
-8:13
+9:12
+17:8
+7:4
+8:4
 0
 
 ../src/connection.c:wl_closure_init
@@ -35961,32 +35961,32 @@
 # Num Counters:
 27
 # Counter Values:
-992
-2634
-10
-703
-174
-331
-14
-992
-2634
-10
-703
-174
-331
-14
-359
-5339
-4889
-3350
-14
-4889
-4889
-31
+281
+793
+2
+216
+49
+99
+4
+281
+793
+2
+216
+49
+99
+4
+103
+1584
+1453
+1011
+4
+1453
+1453
+9
 0
-2499
-988
-988
+742
+286
+286
 0
 # Num Value Kinds:
 1
@@ -35995,12 +35995,12 @@
 # NumValueSites:
 1
 6
-8:375
-0:271
-32:175
-17:110
-33:31
-16:26
+8:107
+0:80
+32:51
+17:31
+33:9
+16:8
 
 ../src/gallium/auxiliary/cso_cache/cso_cache.c:cso_delete_all
 # Func Hash:
@@ -162755,10 +162755,10 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-3259
-38
-38
-1511
+983
+10
+10
+456
 
 ../src/wayland-client.c:dispatch_event
 # Func Hash:
@@ -162766,16 +162766,16 @@ iris_is_format_supported:452
 # Num Counters:
 11
 # Counter Values:
-3256
-37
-37
+983
+10
+10
 0
 0
 0
 0
-1510
+456
 0
-1502
+454
 0
 
 ../src/wayland-client.c:display_handle_delete_id
@@ -162784,8 +162784,8 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-13
-124
+4
+37
 0
 
 ../src/wayland-client.c:display_handle_error
@@ -162810,8 +162810,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-207
-194
+62
+58
 
 ../src/wayland-client.c:id_from_object
 # Func Hash:
@@ -162828,8 +162828,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-331
-331
+99
+99
 
 ../src/wayland-client.c:sync_callback
 # Func Hash:
@@ -162837,7 +162837,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-39
+12
 
 ../src/wayland-client.c:wl_display_poll
 # Func Hash:
@@ -162847,7 +162847,7 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-39
+12
 
 ../src/wayland-client.c:wl_event_queue_release
 # Func Hash:
@@ -162855,8 +162855,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-1
-26
+0
+8
 
 ../src/wayland-client.c:wl_proxy_destroy_caller_locks
 # Func Hash:
@@ -162864,14 +162864,14 @@ iris_is_format_supported:452
 # Num Counters:
 9
 # Counter Values:
-977
-501
-13
-13
-13
+300
+153
+4
+4
+4
 0
-124
-207
+37
+62
 0
 
 ../src/wayland-client.c:wl_proxy_unref
@@ -162880,8 +162880,8 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-1880
-331
+565
+99
 0
 0
 
@@ -162910,7 +162910,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-87
+25
 
 ../wayland.c:execute_selected
 # Func Hash:
@@ -162918,12 +162918,12 @@ iris_is_format_supported:452
 # Num Counters:
 6
 # Counter Values:
-8
-8
+3
+3
 0
-8
-8
-8
+3
+3
+3
 
 ../wayland.c:fdm_handler
 # Func Hash:
@@ -162931,10 +162931,10 @@ iris_is_format_supported:452
 # Num Counters:
 6
 # Counter Values:
-244
-245
-1
-244
+70
+70
+0
+70
 0
 0
 
@@ -162956,8 +162956,8 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-85
-10
+25
+4
 0
 
 ../wayland.c:handle_global
@@ -162966,35 +162966,35 @@ iris_is_format_supported:452
 # Num Counters:
 32
 # Counter Values:
-13
-13
+4
+4
 0
-13
-13
-13
-481
-13
-0
-0
-13
-13
-13
+4
+4
+4
+148
+4
 0
 0
-13
-13
+4
+4
+4
 0
 0
-0
-13
-0
-13
+4
+4
 0
 0
 0
-13
+4
 0
-13
+4
+0
+0
+0
+4
+0
+4
 0
 0
 0
@@ -163030,7 +163030,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-14
+4
 
 ../wayland.c:keyboard_key
 # Func Hash:
@@ -163041,100 +163041,100 @@ iris_is_format_supported:452
 0
 0
 0
-6
+2
 0
 0
-61
-11
-61
-61
-61
-61
+17
 4
-0
-61
-0
-0
-4
-61
-61
-0
-3
-58
-58
-58
-0
-58
-58
-58
-0
-58
-0
-0
-0
-0
-0
-0
-0
-0
-58
-0
-58
-0
-58
-58
-0
-58
-43
-58
-0
-0
-7
-51
-7
-0
-51
-0
-0
-0
-0
-8
-0
-43
-43
-43
-43
-0
-43
-43
-3
-0
-0
-0
-3
+17
+17
+17
+17
 1
 0
+17
+0
+0
 1
+17
+17
+0
+1
+16
+16
+16
+0
+16
+16
+16
+0
+16
 0
 0
 0
 0
+0
+0
+0
+0
+16
+0
+16
+0
+16
+16
+0
+16
+13
+16
+0
+0
+0
+16
+0
+0
+16
 0
 0
 0
 0
 3
 0
+13
+13
+13
+13
+0
+13
+13
+1
+0
 0
 0
 1
 0
-7
+0
+0
+0
+0
+0
+0
+0
+0
+0
 0
 1
 0
-1
-8
+0
+0
+0
+0
+0
+0
+0
+0
+0
+3
 0
 
 ../wayland.c:keyboard_keymap
@@ -163143,14 +163143,14 @@ iris_is_format_supported:452
 # Num Counters:
 9
 # Counter Values:
-13
+4
 0
 0
 0
 0
 0
-13
-13
+4
+4
 0
 
 ../wayland.c:keyboard_leave
@@ -163159,7 +163159,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+0
 
 ../wayland.c:keyboard_modifiers
 # Func Hash:
@@ -163167,7 +163167,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-25
+8
 
 ../wayland.c:keyboard_repeat_info
 # Func Hash:
@@ -163175,7 +163175,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 ../wayland.c:layer_surface_closed
 # Func Hash:
@@ -163191,10 +163191,10 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-39
-39
+12
+12
 0
-39
+12
 
 ../wayland.c:monitor_destroy
 # Func Hash:
@@ -163202,9 +163202,9 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-13
-13
-13
+4
+4
+4
 
 ../wayland.c:output_done
 # Func Hash:
@@ -163212,7 +163212,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-26
+8
 
 ../wayland.c:output_geometry
 # Func Hash:
@@ -163220,9 +163220,9 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-13
-13
-13
+4
+4
+4
 
 ../wayland.c:output_mode
 # Func Hash:
@@ -163230,8 +163230,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 ../wayland.c:output_scale
 # Func Hash:
@@ -163239,7 +163239,7 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-13
+4
 0
 0
 0
@@ -163253,9 +163253,9 @@ iris_is_format_supported:452
 0
 0
 0
-39
-39
-39
+12
+12
+12
 0
 
 ../wayland.c:seat_destroy
@@ -163264,19 +163264,19 @@ iris_is_format_supported:452
 # Num Counters:
 13
 # Counter Values:
-13
-13
-13
-13
-13
-13
-13
-13
-13
-5
-13
-13
-13
+4
+4
+4
+4
+4
+4
+4
+4
+4
+1
+4
+4
+4
 
 ../wayland.c:seat_handle_capabilities
 # Func Hash:
@@ -163284,14 +163284,14 @@ iris_is_format_supported:452
 # Num Counters:
 9
 # Counter Values:
-13
+4
 0
-13
+4
 0
 0
-13
+4
 0
-13
+4
 0
 
 ../wayland.c:seat_handle_name
@@ -163300,7 +163300,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 ../wayland.c:shm_format
 # Func Hash:
@@ -163308,7 +163308,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-208
+64
 
 ../wayland.c:surface_enter
 # Func Hash:
@@ -163318,12 +163318,12 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-13
-13
-13
+4
+4
+4
 0
-13
-13
+4
+4
 
 ../wayland.c:surface_leave
 # Func Hash:
@@ -163339,35 +163339,35 @@ iris_is_format_supported:452
 # Num Counters:
 30
 # Counter Values:
-13
+4
 0
-13
-13
-13
-13
-0
-0
-0
-13
-13
-26
-0
-13
-13
-13
-13
-13
-13
-13
-0
-13
-13
+4
+4
+4
+4
 0
 0
 0
-13
-13
-13
+4
+4
+8
+0
+4
+4
+4
+4
+4
+4
+4
+0
+4
+4
+0
+0
+0
+4
+4
+4
 0
 # Num Value Kinds:
 1
@@ -163376,7 +163376,7 @@ iris_is_format_supported:452
 # NumValueSites:
 1
 1
-../main.c:font_reloaded:13
+../main.c:font_reloaded:4
 
 ../wayland.c:wl_pointer_axis
 # Func Hash:
@@ -163424,17 +163424,17 @@ iris_is_format_supported:452
 # Num Counters:
 11
 # Counter Values:
-5
+1
 0
-5
+1
 0
-5
-5
-5
+1
+1
+1
 0
-5
+1
 0
-5
+1
 
 ../wayland.c:wl_pointer_frame
 # Func Hash:
@@ -163466,8 +163466,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 ../wayland.c:xdg_output_handle_done
 # Func Hash:
@@ -163475,7 +163475,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 ../wayland.c:xdg_output_handle_logical_position
 # Func Hash:
@@ -163483,7 +163483,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 ../wayland.c:xdg_output_handle_logical_size
 # Func Hash:
@@ -163491,7 +163491,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 ../wayland.c:xdg_output_handle_name
 # Func Hash:
@@ -163499,11 +163499,11 @@ iris_is_format_supported:452
 # Num Counters:
 5
 # Counter Values:
-13
-13
+4
+4
 0
 0
-13
+4
 
 ../xdg.c:new_id
 # Func Hash:
@@ -163511,8 +163511,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-78
-1079
+24
+340
 
 ../xdg.c:scan_dir
 # Func Hash:
@@ -163522,54 +163522,54 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-1430
+448
 0
 0
-1326
-1222
+416
+384
 0
-45136
-44044
-1170
-65
+14556
+14212
+368
+20
+0
+16
+0
+0
+348
+348
+96
+368
+304
+0
+32
+0
+348
 0
 52
 0
+328
+12716
+12252
 0
-1105
-1105
-299
-1170
-975
+72
 0
-104
-0
-1105
-0
-169
-0
-1040
-37232
-35776
-0
-221
-0
-1027
-1027
-1235
-26
-1326
+324
+324
+392
+8
+432
 0
 0
-13
+4
 0
 0
 0
-1092
+344
 0
-1326
-1781
-1105
+432
+568
+348
 0
 0
 0
@@ -163578,59 +163578,59 @@ iris_is_format_supported:452
 0
 0
 0
-1079
-1079
-1781
-1105
-1105
-130
+352
+352
+568
+348
+348
+44
 0
 0
 0
 0
 0
-1170
-1170
-169
-247
-1105
-1105
-1105
-130
-1040
+376
+376
+52
+80
+348
+348
+348
+44
+328
 0
 0
 0
-611
-130
-39
-325
+192
+44
+12
+100
 0
-598
+184
 0
-247
-611
-0
-0
+80
+192
 0
 0
 0
 0
 0
-28977
-130
 0
 0
-28977
-962
-28457
-494
-624
-26
-1105
+10116
+44
 0
-35776
-130
+0
+10116
+300
+9948
+160
+196
+8
+348
+0
+12252
+44
 
 ../xdg.c:sort_application_by_title
 # Func Hash:
@@ -163638,7 +163638,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-5070
+1612
 
 SHA1Final
 # Func Hash:
@@ -163705,10 +163705,10 @@ XcursorImagesDestroy
 # Num Counters:
 4
 # Counter Values:
-2390
-620
-620
-620
+478
+124
+124
+124
 
 XcursorLibraryLoadImages
 # Func Hash:
@@ -305147,11 +305147,11 @@ ambstoc32
 # Counter Values:
 0
 0
-129571
-6175
-6175
+40624
+1960
+1960
 0
-6175
+1960
 
 application_execute
 # Func Hash:
@@ -305160,35 +305160,18 @@ application_execute
 62
 # Counter Values:
 0
-32
+12
 0
-32
-0
-0
-89
-32
-32
-32
-32
-32
-8
+12
 0
 0
-0
-0
-0
-0
-0
-0
-0
-8
-0
-0
-8
-0
-0
-8
-8
+35
+12
+12
+12
+12
+12
+3
 0
 0
 0
@@ -305198,10 +305181,25 @@ application_execute
 0
 0
 0
+3
 0
-8
+0
+3
 0
 0
+3
+3
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+3
 0
 0
 0
@@ -305215,9 +305213,11 @@ application_execute
 0
 0
 0
-8
-8
-8
+0
+0
+3
+3
+3
 0
 0
 0
@@ -305237,22 +305237,22 @@ applications_destroy
 # Counter Values:
 0
 0
-1326
-1781
+432
+568
 0
 0
-1079
-1170
-1040
-247
-611
+352
+376
+328
+80
+192
 0
-221
-741
-167
-90
-13
-13
+76
+224
+63
+34
+4
+4
 
 applications_flush_text_run_cache
 # Func Hash:
@@ -305261,7 +305261,7 @@ applications_flush_text_run_cache
 2
 # Counter Values:
 0
-13
+4
 
 applications_init
 # Func Hash:
@@ -305269,7 +305269,7 @@ applications_init
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 arg_count_for_signature
 # Func Hash:
@@ -305277,16 +305277,16 @@ arg_count_for_signature
 # Num Counters:
 10
 # Counter Values:
-1143
-10099
-105
-2642
-294
-331
-69
-15299
-14766
-6875
+349
+3041
+28
+812
+84
+99
+20
+4622
+4458
+2076
 
 batch_ptr_add_usage
 # Func Hash:
@@ -312298,7 +312298,7 @@ c32cmp
 # Num Counters:
 1
 # Counter Values:
-5967
+1896
 
 c32cpy
 # Func Hash:
@@ -312314,7 +312314,7 @@ c32dup
 # Num Counters:
 1
 # Counter Values:
-1114
+349
 
 c32len
 # Func Hash:
@@ -312322,7 +312322,7 @@ c32len
 # Num Counters:
 1
 # Counter Values:
-20373
+5022
 
 c32ntombs
 # Func Hash:
@@ -312330,15 +312330,15 @@ c32ntombs
 # Num Counters:
 9
 # Counter Values:
-4808
-4808
-9616
-9616
-8992
-624
+1354
+1354
+2708
+2708
+2510
+198
 0
-4808
-9616
+1354
+2708
 
 c32tombs
 # Func Hash:
@@ -312346,7 +312346,7 @@ c32tombs
 # Num Counters:
 1
 # Counter Values:
-624
+198
 
 conf_hex_to_rgba
 # Func Hash:
@@ -312362,7 +312362,7 @@ config_free
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 config_load
 # Func Hash:
@@ -312370,69 +312370,67 @@ config_load
 # Num Counters:
 81
 # Counter Values:
-104
-26
+32
+8
 0
-26
+8
 0
-3133
-0
-0
-0
-0
-169
-0
-78
-39
-0
-0
-143
-104
-0
-0
-0
-13
+964
 0
 0
 0
 0
-13
-13
-13
+52
+0
+24
+12
 0
 0
-13
-0
-104
-0
-13
-0
-0
-13
-0
-13
-0
-13
-0
-13
+44
+32
 0
 0
 0
-13
+4
 0
 0
+0
+0
+4
+4
+4
+0
+0
+4
+0
+32
+0
+4
+0
+0
+4
+0
+4
+0
+4
+0
+4
+0
+0
+0
+4
 0
 0
 0
 0
 0
-39
+0
+0
+12
 0
 0
 0
-234
-0
-0
+72
 0
 0
 0
@@ -312442,10 +312440,12 @@ config_load
 0
 0
 0
-104
-104
-104
-104
+0
+0
+32
+32
+32
+32
 0
 0
 0
@@ -312458,9 +312458,9 @@ config_load
 # NumValueSites:
 2
 3
-../config.c:parse_section_colors:65
-../config.c:parse_section_border:26
-../config.c:parse_section_main:13
+../config.c:parse_section_colors:20
+../config.c:parse_section_border:8
+../config.c:parse_section_main:4
 0
 
 create_ivci
@@ -319053,11 +319053,11 @@ fdm_add
 # Num Counters:
 8
 # Counter Values:
-39
-26
-26
+12
+8
+8
 0
-13
+4
 0
 0
 0
@@ -319068,7 +319068,7 @@ fdm_del
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 fdm_del_no_close
 # Func Hash:
@@ -319076,7 +319076,7 @@ fdm_del_no_close
 # Num Counters:
 1
 # Counter Values:
-26
+8
 
 fdm_destroy
 # Func Hash:
@@ -319088,8 +319088,8 @@ fdm_destroy
 0
 0
 0
-13
-13
+4
+4
 0
 0
 0
@@ -319126,7 +319126,7 @@ fdm_init
 # Num Counters:
 2
 # Counter Values:
-13
+4
 0
 
 fdm_poll
@@ -319135,21 +319135,21 @@ fdm_poll
 # Num Counters:
 15
 # Counter Values:
-257
-270
-257
+74
+78
+74
 0
 0
 0
 0
-270
+78
 0
-266
+77
 0
 0
 0
-257
-257
+74
+74
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -319157,8 +319157,8 @@ fdm_poll
 # NumValueSites:
 1
 2
-../wayland.c:fdm_handler:245
-../main.c:fdm_apps_populated:25
+../wayland.c:fdm_handler:70
+../main.c:fdm_apps_populated:8
 
 foz_destroy
 # Func Hash:
@@ -319363,16 +319363,16 @@ get_next_argument
 # Num Counters:
 11
 # Counter Values:
-1143
-10099
-105
-2642
-294
-331
-69
-403
-13
-14766
+349
+3041
+28
+812
+84
+99
+20
+124
+4
+4458
 0
 
 get_tes_output_prim
@@ -323045,8 +323045,8 @@ icon_from_png
 # Num Counters:
 2
 # Counter Values:
-167
-167
+63
+63
 
 icon_from_svg
 # Func Hash:
@@ -323054,8 +323054,8 @@ icon_from_svg
 # Num Counters:
 2
 # Counter Values:
-94
-90
+35
+34
 
 icon_load_theme
 # Func Hash:
@@ -323063,70 +323063,70 @@ icon_load_theme
 # Num Counters:
 64
 # Counter Values:
-5475613
+1684804
 0
-8424
-5475613
-5467176
-8437
-8437
-0
-0
-0
-13
-8437
-8424
-8424
-8424
-0
-13
-0
-13
-0
-0
-49465
-8450
-8450
-0
-13
-8450
-104
-0
-8437
-8437
-13
-13
-91
-0
-1573
-13
-13
-0
-0
-1573
-0
-13
-4056
-8476
-8437
-0
-8437
+2592
+1684804
+1682208
+2596
+2596
 0
 0
 0
-13
+4
+2596
+2592
+2592
+2592
 0
-8437
-13
-6864
+4
 0
-13
-1560
-1560
+4
 0
-13
-13
-13
+0
+15220
+2600
+2600
+0
+4
+2600
+24
+0
+2596
+2596
+4
+4
+20
+0
+484
+4
+4
+0
+0
+484
+0
+4
+1248
+2608
+2596
+0
+2596
+0
+0
+0
+4
+0
+2596
+4
+2112
+0
+4
+480
+480
+0
+4
+4
+4
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -323134,9 +323134,9 @@ icon_load_theme
 # NumValueSites:
 1
 3
-17:4550
-9:2834
-16:1066
+17:1400
+9:872
+16:328
 
 icon_lookup_application_icons
 # Func Hash:
@@ -323144,7 +323144,7 @@ icon_lookup_application_icons
 # Num Counters:
 1
 # Counter Values:
-26
+8
 
 icon_themes_destroy
 # Func Hash:
@@ -323152,17 +323152,17 @@ icon_themes_destroy
 # Num Counters:
 11
 # Counter Values:
-8437
+2596
 0
-8424
-8424
-13
+2592
+2592
+4
 0
 0
-13
-13
-13
-13
+4
+4
+4
+4
 
 intel_aux_map_add_mapping
 # Func Hash:
@@ -335235,8 +335235,8 @@ log_deinit
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 log_errno
 # Func Hash:
@@ -335276,10 +335276,10 @@ log_init
 # Num Counters:
 4
 # Counter Values:
-13
-13
+4
+4
 0
-13
+4
 
 log_level_from_string
 # Func Hash:
@@ -335309,7 +335309,7 @@ log_msg
 # Num Counters:
 1
 # Counter Values:
-45
+13
 
 log_msg_va
 # Func Hash:
@@ -342239,7 +342239,7 @@ main
 # Num Counters:
 163
 # Counter Values:
-13
+4
 0
 0
 0
@@ -342250,13 +342250,13 @@ main
 0
 0
 0
-253
-13
+73
+4
 0
 0
 0
-13
-13
+4
+4
 0
 0
 0
@@ -342269,7 +342269,7 @@ main
 0
 0
 0
-13
+4
 0
 0
 0
@@ -342279,7 +342279,7 @@ main
 0
 0
 0
-13
+4
 0
 0
 0
@@ -342300,7 +342300,7 @@ main
 0
 0
 0
-13
+4
 0
 0
 0
@@ -342308,7 +342308,7 @@ main
 0
 0
 0
-13
+4
 0
 0
 0
@@ -342344,20 +342344,20 @@ main
 0
 0
 0
-13
+4
 0
-13
-13
-13
+4
+4
+4
 0
-13
-13
-13
-13
-13
-13
+4
+4
+4
+4
+4
+4
 0
-13
+4
 0
 0
 0
@@ -342379,29 +342379,29 @@ main
 0
 0
 0
-13
+4
 0
 0
 0
-13
+4
 0
 0
 0
-13
+4
 0
 0
 0
-13
+4
 0
 0
-13
-8
+4
+3
 0
 0
-13
+4
 0
 0
-13
+4
 
 matches_destroy
 # Func Hash:
@@ -342409,9 +342409,9 @@ matches_destroy
 # Num Counters:
 3
 # Counter Values:
-1040
-13
-13
+328
+4
+4
 
 matches_get
 # Func Hash:
@@ -342419,11 +342419,11 @@ matches_get
 # Num Counters:
 6
 # Counter Values:
-744
-744
+262
+262
 0
 0
-159
+82
 0
 
 matches_get_count
@@ -342432,12 +342432,12 @@ matches_get_count
 # Num Counters:
 6
 # Counter Values:
-88
-73
+25
+21
 0
-34
+9
 0
-1
+0
 
 matches_get_match
 # Func Hash:
@@ -342445,8 +342445,8 @@ matches_get_match
 # Num Counters:
 2
 # Counter Values:
-8
-8
+3
+3
 
 matches_get_match_index
 # Func Hash:
@@ -342454,8 +342454,8 @@ matches_get_match_index
 # Num Counters:
 2
 # Counter Values:
-88
-88
+25
+25
 
 matches_get_page
 # Func Hash:
@@ -342481,7 +342481,7 @@ matches_init
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 matches_max_matches_per_page
 # Func Hash:
@@ -342497,7 +342497,7 @@ matches_max_matches_per_page_set
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 matches_selected_next
 # Func Hash:
@@ -342550,7 +342550,7 @@ matches_set_applications
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 matches_update
 # Func Hash:
@@ -342566,57 +342566,57 @@ matches_update
 0
 0
 0
-2276
-501
-1906
-1872
+611
+194
+451
+446
 0
 0
 0
 0
-285
-370
-1906
-868
+128
+160
+451
+188
 0
 0
 0
 0
-154
-370
-1991
-1886
-813
+41
+160
+483
+448
+170
 0
 0
-3840
-6
-2256
-1200
-481
-705
+1066
 0
-63
-48
-48
-15
+611
+328
+194
+188
 0
-15
+17
+13
+13
+4
 0
-1
-1906
-370
-1872
-404
-771
-501
+4
 0
-501
 0
-501
-501
-15
-1775
+451
+160
+446
+165
+159
+194
+0
+194
+0
+194
+194
+0
+417
 
 mbsntoc32
 # Func Hash:
@@ -342626,13 +342626,13 @@ mbsntoc32
 # Counter Values:
 0
 0
-41114
-40126
-3284
+11634
+11378
+978
 0
-21705
-42305
-20063
+6178
+12008
+5689
 
 mbstoc32
 # Func Hash:
@@ -342640,7 +342640,7 @@ mbstoc32
 # Num Counters:
 1
 # Counter Values:
-988
+256
 
 mesa_log
 # Func Hash:
@@ -355685,7 +355685,7 @@ os_create_anonymous_file
 7
 # Counter Values:
 0
-5
+1
 0
 0
 0
@@ -355835,7 +355835,7 @@ os_resize_anonymous_file
 4
 # Counter Values:
 0
-45
+9
 0
 0
 
@@ -356376,22 +356376,22 @@ png_load
 18
 # Counter Values:
 0
-167
-167
-167
-167
-5536
+63
+63
+63
+63
+2112
 0
-167
-167
+63
+63
 0
 0
-167
+63
 0
-21
+12
 0
-146
-9
+51
+8
 0
 
 pp_blit
@@ -357045,7 +357045,7 @@ prompt_cursor
 # Num Counters:
 1
 # Counter Values:
-330
+91
 
 prompt_cursor_end
 # Func Hash:
@@ -357107,8 +357107,8 @@ prompt_destroy
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 prompt_erase_after_cursor
 # Func Hash:
@@ -357156,16 +357156,15 @@ prompt_erase_prev_char
 # Num Counters:
 2
 # Counter Values:
-7
-7
+0
+0
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
 1
 # NumValueSites:
 1
-1
-4:7
+0
 
 prompt_erase_prev_word
 # Func Hash:
@@ -357189,7 +357188,7 @@ prompt_init
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 prompt_insert_chars
 # Func Hash:
@@ -357197,8 +357196,8 @@ prompt_insert_chars
 # Num Counters:
 2
 # Counter Values:
-43
-43
+13
+13
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -357206,7 +357205,7 @@ prompt_insert_chars
 # NumValueSites:
 1
 1
-4:43
+4:13
 
 prompt_prompt
 # Func Hash:
@@ -357214,7 +357213,7 @@ prompt_prompt
 # Num Counters:
 1
 # Counter Values:
-88
+25
 
 prompt_text
 # Func Hash:
@@ -357222,7 +357221,7 @@ prompt_text
 # Num Counters:
 1
 # Counter Values:
-159
+45
 
 ra_add_node
 # Func Hash:
@@ -358739,10 +358738,10 @@ render_background
 # Num Counters:
 4
 # Counter Values:
-88
+25
 0
-88
-88
+25
+25
 
 render_destroy
 # Func Hash:
@@ -358750,8 +358749,8 @@ render_destroy
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 render_init
 # Func Hash:
@@ -358759,7 +358758,7 @@ render_init
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 render_match_list
 # Func Hash:
@@ -358767,54 +358766,54 @@ render_match_list
 # Num Counters:
 48
 # Counter Values:
-4081
-3539
-3539
-2924
-10035
+1835
+1515
+1515
+1570
+3435
 0
-45
-10035
-45
-0
-0
+1
+3435
+1
 0
 0
-744
-744
-744
-744
-744
-73
-669
-0
-744
-0
-744
-276
 0
 0
-276
-68
-366
-181
-366
-16
-88
-167
-9
-167
-88
-88
-167
-83
+262
+262
+262
+262
+262
+21
+247
 0
-73
-73
-167
+262
 0
-73
-9493
+262
+99
+0
+0
+99
+20
+144
+57
+144
+0
+25
+63
+0
+63
+25
+25
+63
+24
+0
+21
+21
+63
+0
+21
+3115
 
 render_prompt
 # Func Hash:
@@ -358822,18 +358821,18 @@ render_prompt
 # Num Counters:
 12
 # Counter Values:
-330
-154
-176
-88
-154
+91
+41
+50
+25
+41
 0
-154
+41
 0
-154
-88
-88
-88
+41
+25
+25
+25
 
 render_set_font
 # Func Hash:
@@ -358841,21 +358840,21 @@ render_set_font
 # Num Counters:
 15
 # Counter Values:
-13
-13
-13
+4
+4
+4
 0
 0
-13
+4
 0
 0
-13
+4
 0
-13
+4
 0
 0
 0
-13
+4
 
 render_set_subpixel
 # Func Hash:
@@ -358863,7 +358862,7 @@ render_set_subpixel
 # Num Counters:
 1
 # Counter Values:
-88
+25
 
 repeat_start
 # Func Hash:
@@ -358871,9 +358870,9 @@ repeat_start
 # Num Counters:
 6
 # Counter Values:
-61
-61
-61
+17
+17
+17
 0
 0
 0
@@ -358884,9 +358883,9 @@ repeat_stop
 # Num Counters:
 4
 # Counter Values:
-30
-62
-61
+9
+17
+17
 0
 
 reralloc_array_size
@@ -368284,10 +368283,10 @@ shm_fini
 # Counter Values:
 0
 0
-13
-13
-13
-13
+4
+4
+4
+4
 
 shm_get_buffer
 # Func Hash:
@@ -368297,10 +368296,10 @@ shm_get_buffer
 # Counter Values:
 0
 0
-75
-75
-88
-75
+21
+21
+25
+21
 0
 0
 0
@@ -368308,7 +368307,7 @@ shm_get_buffer
 0
 0
 0
-75
+21
 0
 0
 0
@@ -368317,11 +368316,11 @@ shm_get_buffer
 0
 0
 0
-13
+4
 0
 0
 0
-13
+4
 
 slab_alloc
 # Func Hash:
@@ -403941,7 +403940,7 @@ toc32lower
 # Num Counters:
 1
 # Counter Values:
-110418
+24702
 
 toc32upper
 # Func Hash:
@@ -434268,31 +434267,31 @@ wayl_destroy
 # Num Counters:
 25
 # Counter Values:
-13
-13
-13
-13
-13
+4
+4
+4
+4
+4
 0
 0
 0
 0
-13
-13
-2
-13
-13
-13
-13
-13
-13
-13
-13
-13
-13
-13
-13
-13
+4
+4
+0
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
 
 wayl_exit_code
 # Func Hash:
@@ -434300,7 +434299,7 @@ wayl_exit_code
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wayl_flush
 # Func Hash:
@@ -434308,7 +434307,7 @@ wayl_flush
 # Num Counters:
 1
 # Counter Values:
-266
+77
 
 wayl_init
 # Func Hash:
@@ -434316,43 +434315,43 @@ wayl_init
 # Num Counters:
 37
 # Counter Values:
-13
-13
+4
+4
 0
 0
-13
-13
-13
-0
-0
-0
-13
-0
-13
-0
-13
-13
-0
-0
-13
+4
+4
+4
 0
 0
 0
+4
+0
+4
+0
+4
+4
 0
 0
-13
+4
 0
 0
 0
 0
 0
+4
 0
-13
-13
-13
 0
-13
-13
+0
+0
+0
+0
+4
+4
+4
+0
+4
+4
 
 wayl_refresh
 # Func Hash:
@@ -434360,10 +434359,10 @@ wayl_refresh
 # Num Counters:
 4
 # Counter Values:
-11
+4
 0
-88
-77
+25
+21
 
 wayl_update_cache
 # Func Hash:
@@ -434371,7 +434370,7 @@ wayl_update_cache
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wl_abort
 # Func Hash:
@@ -434394,34 +434393,34 @@ wl_argument_from_va_list
 # Num Counters:
 28
 # Counter Values:
-784
-270
+217
+82
 0
-91
-136
-331
+28
+39
+99
 0
-988
-359
-1630
-1630
-224
-560
-148
-122
-0
-0
-0
-91
-92
-44
-253
-78
+286
+103
+470
+470
+60
+157
+45
+37
 0
 0
 0
-18
-988
+28
+26
+13
+75
+24
+0
+0
+0
+5
+286
 
 wl_array_add
 # Func Hash:
@@ -434429,12 +434428,12 @@ wl_array_add
 # Num Counters:
 6
 # Counter Values:
-52
-239
-52
-65
-13
-13
+16
+73
+16
+20
+4
+4
 
 wl_array_copy
 # Func Hash:
@@ -434476,20 +434475,20 @@ wl_closure_destroy
 # Num Counters:
 14
 # Counter Values:
-992
-2634
-10
-703
-174
-331
-14
-359
-4889
-4889
-31
+281
+793
+2
+216
+49
+99
+4
+103
+1453
+1453
+9
 0
-2499
-2499
+742
+742
 
 wl_closure_dispatch
 # Func Hash:
@@ -434523,46 +434522,46 @@ wl_closure_invoke
 # Num Counters:
 41
 # Counter Values:
-208
-2363
-10
-611
-33
+64
+711
+2
+188
+9
 0
-14
-208
-2363
-10
-611
-33
+4
+64
+711
+2
+188
+9
 0
-14
-208
-2363
-10
-611
-33
+4
+64
+711
+2
+188
+9
 0
-14
-65
-65
-3252
-3343
-3252
-3252
-3252
-13
-208
-2363
-10
-611
-33
-14
-13
+4
+20
+20
+982
+1010
+982
+982
+982
+4
+64
+711
+2
+188
+9
+4
+4
 0
 0
 0
-1502
+454
 0
 
 wl_closure_lookup_objects
@@ -434571,31 +434570,31 @@ wl_closure_lookup_objects
 # Num Counters:
 27
 # Counter Values:
-208
-2364
+64
+711
+2
+188
 10
-612
-38
 0
-14
-208
-2364
+4
+64
+711
+2
+188
 10
-612
-38
 0
-14
+4
 0
-65
-3350
-3259
-3259
-3259
-38
-38
-38
-37
-1511
+20
+1011
+983
+983
+983
+10
+10
+10
+10
+456
 0
 0
 
@@ -434605,37 +434604,37 @@ wl_closure_marshal
 # Num Counters:
 31
 # Counter Values:
-784
-270
+217
+82
 0
-91
-136
-331
-0
-0
-270
-294
-110
+28
+39
+99
 0
 0
-1630
-1630
-91
-136
-331
+82
+83
+31
 0
 0
-331
-18
-988
-331
-91
-26
-0
-988
+470
+470
+28
+39
+99
 0
 0
-331
+99
+5
+286
+99
+28
+8
+0
+286
+0
+0
+99
 
 wl_closure_print
 # Func Hash:
@@ -434696,9 +434695,9 @@ wl_closure_send
 # Num Counters:
 4
 # Counter Values:
-988
-988
-988
+286
+286
+286
 0
 
 wl_closure_vmarshal
@@ -434731,7 +434730,7 @@ wl_connection_copy
 # Num Counters:
 2
 # Counter Values:
-1511
+456
 0
 # Num Value Kinds:
 1
@@ -434740,7 +434739,7 @@ wl_connection_copy
 # NumValueSites:
 3
 1
-8:1511
+8:456
 0
 0
 
@@ -434750,8 +434749,8 @@ wl_connection_create
 # Num Counters:
 2
 # Counter Values:
-13
-13
+4
+4
 
 wl_connection_demarshal
 # Func Hash:
@@ -434759,43 +434758,43 @@ wl_connection_demarshal
 # Num Counters:
 38
 # Counter Values:
-208
-2364
-10
-612
-38
-0
-14
-65
-0
-3259
-0
-38
-2364
-208
+64
+711
+2
+188
 10
 0
+4
+20
 0
-14
-612
+983
 0
-13
-0
-0
-0
-1511
-0
-0
+10
+711
+64
+2
 0
 0
+4
+188
+0
+4
+0
+0
+0
+456
 0
 0
 0
 0
 0
-3246
-612
-38
+0
+0
+0
+0
+979
+188
+10
 0
 # Num Value Kinds:
 1
@@ -434804,14 +434803,14 @@ wl_connection_demarshal
 # NumValueSites:
 5
 8
-9:512
-33:469
-17:283
-8:129
-16:53
-32:26
-65:26
-64:13
+9:155
+33:144
+17:83
+8:38
+16:16
+32:8
+65:8
+64:4
 0
 0
 0
@@ -434823,7 +434822,7 @@ wl_connection_destroy
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wl_connection_flush
 # Func Hash:
@@ -434831,17 +434830,17 @@ wl_connection_flush
 # Num Counters:
 11
 # Counter Values:
-1
-567
-156
-157
-18
+0
+164
+46
+46
+5
 0
 0
 0
-156
-157
-18
+46
+46
+5
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -434849,7 +434848,7 @@ wl_connection_flush
 # NumValueSites:
 3
 1
-4:18
+4:5
 0
 0
 
@@ -434887,22 +434886,22 @@ wl_connection_read
 # Counter Values:
 0
 0
-13
+4
 0
-13
-13
+4
+4
 0
-13
-0
-0
-284
-284
+4
 0
 0
-271
-284
-13
-13
+82
+82
+0
+0
+78
+82
+4
+4
 0
 0
 
@@ -434913,9 +434912,9 @@ wl_connection_write
 4
 # Counter Values:
 0
-988
+286
 0
-988
+286
 
 wl_cursor_frame
 # Func Hash:
@@ -434948,8 +434947,8 @@ wl_cursor_image_get_buffer
 # Num Counters:
 2
 # Counter Values:
-5
-5
+1
+1
 
 wl_cursor_theme_destroy
 # Func Hash:
@@ -434957,10 +434956,10 @@ wl_cursor_theme_destroy
 # Num Counters:
 4
 # Counter Values:
-2390
-5
-620
-5
+478
+1
+124
+1
 
 wl_cursor_theme_get_cursor
 # Func Hash:
@@ -434968,9 +434967,9 @@ wl_cursor_theme_get_cursor
 # Num Counters:
 3
 # Counter Values:
-75
-70
-5
+15
+14
+1
 
 wl_cursor_theme_load
 # Func Hash:
@@ -434981,14 +434980,14 @@ wl_cursor_theme_load
 0
 0
 0
-5
+1
 0
-5
-0
-0
+1
 0
 0
-5
+0
+0
+1
 0
 0
 0
@@ -435018,23 +435017,23 @@ wl_display_connect
 18
 # Counter Values:
 0
-13
+4
 0
-13
-0
-0
-13
-0
-13
+4
 0
 0
+4
+0
+4
 0
 0
 0
 0
 0
 0
-13
+0
+0
+4
 
 wl_display_connect_to_fd
 # Func Hash:
@@ -435043,7 +435042,7 @@ wl_display_connect_to_fd
 6
 # Counter Values:
 0
-13
+4
 0
 0
 0
@@ -435064,7 +435063,7 @@ wl_display_disconnect
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wl_display_dispatch
 # Func Hash:
@@ -435080,7 +435079,7 @@ wl_display_dispatch_pending
 # Num Counters:
 1
 # Counter Values:
-244
+70
 
 wl_display_dispatch_queue
 # Func Hash:
@@ -435091,10 +435090,10 @@ wl_display_dispatch_queue
 0
 0
 0
-39
+12
 0
 0
-39
+12
 0
 0
 
@@ -435104,11 +435103,11 @@ wl_display_dispatch_queue_pending
 # Num Counters:
 6
 # Counter Values:
-137
-137
-1373
-1373
-283
+41
+41
+415
+415
+82
 0
 
 wl_display_flush
@@ -435119,8 +435118,8 @@ wl_display_flush
 # Counter Values:
 0
 0
-567
-1
+164
+0
 0
 0
 0
@@ -435139,7 +435138,7 @@ wl_display_get_fd
 # Num Counters:
 1
 # Counter Values:
-26
+8
 
 wl_display_get_protocol_error
 # Func Hash:
@@ -435157,7 +435156,7 @@ wl_display_prepare_read
 # Num Counters:
 1
 # Counter Values:
-502
+144
 
 wl_display_prepare_read_queue
 # Func Hash:
@@ -435165,8 +435164,8 @@ wl_display_prepare_read_queue
 # Num Counters:
 2
 # Counter Values:
-297
-244
+86
+70
 
 wl_display_read_events
 # Func Hash:
@@ -435176,38 +435175,38 @@ wl_display_read_events
 # Counter Values:
 0
 0
-3259
-1511
-1511
+983
+456
+456
 0
 0
-3259
+983
 0
 0
-1511
-0
-0
-0
-38
-0
-0
-38
-0
-0
-1511
-0
-284
+456
 0
 0
 0
+10
+0
+0
+10
+0
+0
+456
+0
+82
 0
 0
 0
 0
 0
 0
-1373
-138
+0
+0
+0
+415
+41
 0
 0
 0
@@ -435218,7 +435217,7 @@ wl_display_roundtrip
 # Num Counters:
 1
 # Counter Values:
-39
+12
 
 wl_display_roundtrip_queue
 # Func Hash:
@@ -435226,15 +435225,15 @@ wl_display_roundtrip_queue
 # Num Counters:
 9
 # Counter Values:
-39
-39
-39
-39
+12
+12
+12
+12
 0
 0
 0
-39
-39
+12
+12
 
 wl_event_queue_destroy
 # Func Hash:
@@ -435250,7 +435249,7 @@ wl_interface_equal
 # Num Counters:
 2
 # Counter Values:
-37
+10
 0
 
 wl_list_empty
@@ -435259,7 +435258,7 @@ wl_list_empty
 # Num Counters:
 1
 # Counter Values:
-2644
+784
 
 wl_list_init
 # Func Hash:
@@ -435267,7 +435266,7 @@ wl_list_init
 # Num Counters:
 1
 # Counter Values:
-26
+8
 
 wl_list_insert
 # Func Hash:
@@ -435275,7 +435274,7 @@ wl_list_insert
 # Num Counters:
 1
 # Counter Values:
-1511
+456
 
 wl_list_insert_list
 # Func Hash:
@@ -435301,7 +435300,7 @@ wl_list_remove
 # Num Counters:
 1
 # Counter Values:
-1511
+456
 
 wl_log
 # Func Hash:
@@ -435332,14 +435331,14 @@ wl_map_for_each
 # Num Counters:
 8
 # Counter Values:
-239
-239
-207
+73
+73
+62
 0
 0
 0
-13
-13
+4
+4
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -435347,7 +435346,7 @@ wl_map_for_each
 # NumValueSites:
 2
 1
-../src/wayland-client.c:free_zombies:207
+../src/wayland-client.c:free_zombies:62
 0
 
 wl_map_init
@@ -435356,7 +435355,7 @@ wl_map_init
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wl_map_insert_at
 # Func Hash:
@@ -435364,11 +435363,11 @@ wl_map_insert_at
 # Num Counters:
 5
 # Counter Values:
-207
-207
+62
+62
 0
-207
-207
+62
+62
 
 wl_map_insert_new
 # Func Hash:
@@ -435376,11 +435375,11 @@ wl_map_insert_new
 # Num Counters:
 5
 # Counter Values:
-118
-239
-239
-357
-357
+34
+73
+73
+107
+107
 
 wl_map_lookup
 # Func Hash:
@@ -435388,11 +435387,11 @@ wl_map_lookup
 # Num Counters:
 5
 # Counter Values:
-1686
-1686
-1686
-1686
-1686
+507
+507
+507
+507
+507
 
 wl_map_lookup_flags
 # Func Hash:
@@ -435400,11 +435399,11 @@ wl_map_lookup_flags
 # Num Counters:
 5
 # Counter Values:
-1686
-1686
-1686
-1686
-1686
+507
+507
+507
+507
+507
 
 wl_map_release
 # Func Hash:
@@ -435412,7 +435411,7 @@ wl_map_release
 # Num Counters:
 1
 # Counter Values:
-13
+4
 
 wl_map_remove
 # Func Hash:
@@ -435420,9 +435419,9 @@ wl_map_remove
 # Num Counters:
 4
 # Counter Values:
-137
+41
 0
-137
+41
 0
 
 wl_map_reserve_new
@@ -435464,8 +435463,8 @@ wl_object_is_zombie
 # Num Counters:
 2
 # Counter Values:
-1648
-1648
+497
+497
 
 wl_os_accept_cloexec
 # Func Hash:
@@ -435483,7 +435482,7 @@ wl_os_dupfd_cloexec
 # Num Counters:
 3
 # Counter Values:
-18
+5
 0
 0
 
@@ -435522,7 +435521,7 @@ wl_os_recvmsg_cloexec
 # Counter Values:
 0
 0
-284
+82
 0
 0
 0
@@ -435541,7 +435540,7 @@ wl_os_socket_cloexec
 # Num Counters:
 3
 # Counter Values:
-13
+4
 0
 0
 
@@ -435573,8 +435572,8 @@ wl_proxy_add_listener
 # Counter Values:
 0
 0
-256
-256
+77
+77
 
 wl_proxy_create
 # Func Hash:
@@ -435590,8 +435589,8 @@ wl_proxy_create_wrapper
 # Num Counters:
 2
 # Counter Values:
-39
-39
+12
+12
 
 wl_proxy_destroy
 # Func Hash:
@@ -435599,7 +435598,7 @@ wl_proxy_destroy
 # Num Counters:
 1
 # Counter Values:
-126
+37
 
 wl_proxy_get_class
 # Func Hash:
@@ -435647,7 +435646,7 @@ wl_proxy_get_version
 # Num Counters:
 1
 # Counter Values:
-871
+250
 
 wl_proxy_marshal
 # Func Hash:
@@ -435688,13 +435687,13 @@ wl_proxy_marshal_array_flags
 15
 # Counter Values:
 0
-756
-331
-331
-988
-331
-166
-988
+226
+99
+99
+286
+99
+50
+286
 0
 0
 0
@@ -435725,7 +435724,7 @@ wl_proxy_marshal_flags
 # Num Counters:
 1
 # Counter Values:
-988
+286
 
 wl_proxy_set_queue
 # Func Hash:
@@ -435759,7 +435758,7 @@ wl_proxy_wrapper_destroy
 # Num Counters:
 3
 # Counter Values:
-39
+12
 0
 0
 
@@ -436117,24 +436116,24 @@ xcursor_load_theme
 19
 # Counter Values:
 0
-285
-10
-630
-620
-620
+57
+2
+126
+124
+124
 0
-140
-5
-140
-140
-5
-105
-105
-10
-5
+28
+1
+28
+28
+1
+21
+21
+2
+1
 0
-10
-5
+2
+1
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -436142,7 +436141,7 @@ xcursor_load_theme
 # NumValueSites:
 1
 1
-../cursor/wayland-cursor.c:load_callback:620
+../cursor/wayland-cursor.c:load_callback:124
 
 xdg_cache_dir
 # Func Hash:
@@ -436150,9 +436149,9 @@ xdg_cache_dir
 # Num Counters:
 3
 # Counter Values:
-21
+7
 0
-21
+7
 
 xdg_data_dirs
 # Func Hash:
@@ -436160,20 +436159,15 @@ xdg_data_dirs
 # Num Counters:
 30
 # Counter Values:
-520
-364
-364
-364
+128
+80
+80
+80
 0
 0
 0
 0
-52
-0
-0
-0
-0
-0
+16
 0
 0
 0
@@ -436183,7 +436177,12 @@ xdg_data_dirs
 0
 0
 0
-52
+0
+0
+0
+0
+0
+16
 0
 0
 0
@@ -436197,12 +436196,12 @@ xdg_data_dirs_destroy
 # Num Counters:
 6
 # Counter Values:
-364
-364
-416
-52
-52
-52
+80
+80
+96
+16
+16
+16
 
 xdg_find_programs
 # Func Hash:
@@ -436210,18 +436209,18 @@ xdg_find_programs
 # Num Counters:
 13
 # Counter Values:
-104
-52
-91
-1027
-1027
+24
+16
+20
+324
+324
 0
-1040
-13
+328
+4
 0
-13
-13
-13
+4
+4
+4
 0
 
 zink_batch_descriptor_deinit

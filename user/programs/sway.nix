@@ -107,7 +107,7 @@ in {
           };
           statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
           fonts = {
-            names = ["JetBrains Mono NL" "Font Awesome 5 Free"];
+            names = ["JetBrains Mono NL" "Font Awesome 6 Free"];
             size = 10.0;
           };
         }

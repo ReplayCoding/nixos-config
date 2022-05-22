@@ -9,10 +9,10 @@
 0
 0
 0
-2
+1
 0
 0
-2
+1
 
 ../config.c:apply_style_option
 # Func Hash:
@@ -20,51 +20,51 @@
 # Num Counters:
 66
 # Counter Values:
-2
-2
-2
-2
-2
+1
+1
+1
+1
+1
 0
-2
-2
-2
-2
-2
-2
-2
-2
-0
-0
-0
-2
-0
-2
-0
-2
-0
-2
-0
-2
+1
+1
+1
+1
+1
+1
+1
+1
 0
 0
 0
+1
 0
+1
 0
+1
 0
-2
-2
-2
+1
 0
-2
-2
-2
+1
 0
 0
 0
 0
 0
-2
+0
+1
+1
+1
+0
+1
+1
+1
+0
+0
+0
+0
+0
+1
 0
 0
 0
@@ -93,14 +93,14 @@
 # Num Counters:
 10
 # Counter Values:
-4
+2
+1
+1
 2
 2
-4
-4
-2
-2
-2
+1
+1
+1
 0
 0
 
@@ -255,17 +255,17 @@
 0
 0
 0
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
 
 ../dbus/xdg.c:handle_get_server_information
 # Func Hash:
@@ -162185,8 +162185,8 @@ iris_is_format_supported:452
 0
 0
 0
-2
-2
+1
+1
 
 ../wayland.c:frame_handle_done
 # Func Hash:
@@ -162203,9 +162203,9 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-4
-4
 2
+2
+1
 
 ../wayland.c:handle_global
 # Func Hash:
@@ -162215,15 +162215,15 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-2
-2
-2
-2
-2
-71
-2
-2
-2
+1
+1
+1
+1
+1
+36
+1
+1
+1
 0
 0
 
@@ -162265,7 +162265,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-16
+8
 
 ../wayland.c:output_handle_geometry
 # Func Hash:
@@ -162273,7 +162273,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 ../wayland.c:output_handle_scale
 # Func Hash:
@@ -162281,7 +162281,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 ../wayland.c:pointer_handle_button
 # Func Hash:
@@ -162345,10 +162345,10 @@ iris_is_format_supported:452
 # Num Counters:
 5
 # Counter Values:
-2
+1
 0
 0
-2
+1
 0
 
 ../wayland.c:send_frame
@@ -162433,7 +162433,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 SHA1Final
 # Func Hash:
@@ -304027,30 +304027,30 @@ apply_superset_style
 # Num Counters:
 24
 # Counter Values:
-18
-12
-8
-8
+9
 6
-6
-2
-2
-2
+4
+4
+3
+3
+1
+1
+1
 0
 0
 0
 0
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
 
 batch_ptr_add_usage
 # Func Hash:
@@ -311103,7 +311103,7 @@ create_criteria
 # Num Counters:
 2
 # Counter Values:
-16
+8
 0
 
 create_criteria_from_notification
@@ -312850,7 +312850,7 @@ destroy_criteria
 # Num Counters:
 1
 # Counter Values:
-16
+8
 
 destroy_icon
 # Func Hash:
@@ -317809,8 +317809,8 @@ finish_config
 # Num Counters:
 2
 # Counter Values:
-8
-2
+4
+1
 
 finish_dbus
 # Func Hash:
@@ -317818,7 +317818,7 @@ finish_dbus
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 finish_event_loop
 # Func Hash:
@@ -317827,7 +317827,7 @@ finish_event_loop
 2
 # Counter Values:
 0
-2
+1
 
 finish_style
 # Func Hash:
@@ -317835,7 +317835,7 @@ finish_style
 # Num Counters:
 1
 # Counter Values:
-20
+10
 
 finish_wayland
 # Func Hash:
@@ -317844,12 +317844,12 @@ finish_wayland
 8
 # Counter Values:
 0
-2
-2
-2
-2
-2
-2
+1
+1
+1
+1
+1
+1
 0
 
 format_hidden_text
@@ -321872,7 +321872,7 @@ init_dbus
 # Num Counters:
 6
 # Counter Values:
-2
+1
 0
 0
 0
@@ -321885,7 +321885,7 @@ init_dbus_mako
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 init_dbus_xdg
 # Func Hash:
@@ -321893,7 +321893,7 @@ init_dbus_xdg
 # Num Counters:
 1
 # Counter Values:
-2
+1
 
 init_default_config
 # Func Hash:
@@ -321901,7 +321901,7 @@ init_default_config
 # Num Counters:
 1
 # Counter Values:
-4
+2
 
 init_default_style
 # Func Hash:
@@ -321909,7 +321909,7 @@ init_default_style
 # Num Counters:
 1
 # Counter Values:
-4
+2
 
 init_empty_style
 # Func Hash:
@@ -321925,8 +321925,8 @@ init_event_loop
 # Num Counters:
 4
 # Counter Values:
-2
-2
+1
+1
 0
 0
 
@@ -321936,22 +321936,22 @@ init_wayland
 # Num Counters:
 16
 # Counter Values:
-2
+1
 0
 0
-2
-2
-2
-2
-2
-0
-0
-0
+1
+1
+1
+1
+1
 0
 0
 0
 0
-2
+0
+0
+0
+1
 
 insert_notification
 # Func Hash:
@@ -333983,27 +333983,27 @@ load_config_file
 22
 # Counter Values:
 0
-12
+6
 0
-12
-44
-44
+6
+22
+22
 0
-2
+1
 0
-2
+1
 0
-2
-2
-2
-0
-0
+1
+1
+1
 0
 0
 0
 0
-2
-2
+0
+0
+1
+1
 
 loader_get_driver_for_fd
 # Func Hash:
@@ -340987,7 +340987,7 @@ main
 0
 0
 0
-2
+1
 
 mako_asprintf
 # Func Hash:
@@ -341005,23 +341005,23 @@ mako_criteria_spec_any
 # Num Counters:
 17
 # Counter Values:
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
 
 match_criteria
 # Func Hash:
@@ -354372,7 +354372,7 @@ parse_anchor
 # Num Counters:
 10
 # Counter Values:
-2
+1
 0
 0
 0
@@ -354389,11 +354389,11 @@ parse_boolean
 # Num Counters:
 5
 # Counter Values:
-2
-6
-2
+1
+3
+1
 0
-2
+1
 
 parse_color
 # Func Hash:
@@ -354401,13 +354401,13 @@ parse_color
 # Num Counters:
 7
 # Counter Values:
-2
-8
-8
-8
-8
-8
-6
+1
+4
+4
+4
+4
+4
+3
 
 parse_config_arguments
 # Func Hash:
@@ -354415,11 +354415,9 @@ parse_config_arguments
 # Num Counters:
 16
 # Counter Values:
-2
+1
 0
-2
-0
-0
+1
 0
 0
 0
@@ -354427,9 +354425,11 @@ parse_config_arguments
 0
 0
 0
-2
-2
-2
+0
+0
+1
+1
+1
 0
 
 parse_criteria
@@ -354510,13 +354510,13 @@ parse_directional
 9
 # Counter Values:
 0
-4
-4
-4
+2
+2
+2
 0
 0
 0
-4
+2
 0
 
 parse_format
@@ -354526,16 +354526,16 @@ parse_format
 11
 # Counter Values:
 0
-4
-0
 2
 0
+1
 0
+0
+1
 2
-4
-16
-2
-2
+8
+1
+1
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -354543,7 +354543,7 @@ parse_format
 # NumValueSites:
 1
 1
-9:2
+9:1
 
 parse_int
 # Func Hash:
@@ -354551,9 +354551,9 @@ parse_int
 # Num Counters:
 3
 # Counter Values:
-18
-18
-18
+9
+9
+9
 
 parse_int_ge
 # Func Hash:
@@ -354561,9 +354561,9 @@ parse_int_ge
 # Num Counters:
 3
 # Counter Values:
-12
-12
-12
+6
+6
+6
 
 parse_mako_color
 # Func Hash:
@@ -354572,7 +354572,7 @@ parse_mako_color
 5
 # Counter Values:
 0
-2
+1
 0
 0
 0
@@ -357202,10 +357202,10 @@ reload_config
 6
 # Counter Values:
 0
-8
+4
 0
 0
-2
+1
 0
 
 render
@@ -357339,31 +357339,31 @@ run_event_loop
 26
 # Counter Values:
 0
-2
-4
-0
-10
-4
-4
-2
-2
-2
+1
 2
 0
-0
-0
-0
-0
+5
 2
-0
-0
-0
-0
-0
-0
-0
-0
 2
+1
+1
+1
+1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+0
+0
+0
+0
+0
+1
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -427167,29 +427167,29 @@ validate_criteria
 # Num Counters:
 23
 # Counter Values:
-2
-2
+1
+1
 0
 0
-2
-2
+1
+1
 0
-2
-2
+1
+1
 0
-2
-0
-0
-2
+1
 0
 0
+1
 0
 0
-2
 0
 0
-2
-2
+1
+0
+0
+1
+1
 
 vbo_copy_vertices
 # Func Hash:

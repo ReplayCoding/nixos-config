@@ -54,7 +54,7 @@ in {
           format = "{percentage} {time}";
         }
       ];
-      icons = "awesome5";
+      icons = "awesome6";
       settings.theme = let
         inherit (config.colorscheme) colors;
       in {

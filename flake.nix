@@ -42,10 +42,6 @@ rec {
       url = "github:PolyMC/PolyMC";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-tree = {
-      url = "github:utdemir/nix-tree";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager";

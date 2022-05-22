@@ -3,7 +3,6 @@
   neovim-nightly-overlay,
   nixpkgs-wayland,
   polymc,
-  nix-tree,
   ...
 }: let
   fixNixosPassthru = args:
@@ -26,7 +25,6 @@
       (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
       (fixSystemAlias neovim-nightly-overlay.overlay)
       (fixSystemAlias polymc.overlay)
-      nix-tree.overlay
 
       (import ./fuzzel.nix)
       (import ./fish.nix)
