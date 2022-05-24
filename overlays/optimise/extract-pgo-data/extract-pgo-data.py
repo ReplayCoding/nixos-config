@@ -389,7 +389,8 @@ if __name__ == "__main__":
             all_profiles |= LLVMPerfdataExtractor(
                 args.sampling_profiles, console, max_workers=args.jobs
             ).get_profiles()
-        all_profiles |= LLVMProfdataExtractor(
-            args.instr_profiles_dir, console
-        ).get_profiles()
+        else:
+            all_profiles |= LLVMProfdataExtractor(
+                args.instr_profiles_dir, console
+            ).get_profiles()
         LLVMProfdataMerger(console).merge_all_profiles(all_profiles)
