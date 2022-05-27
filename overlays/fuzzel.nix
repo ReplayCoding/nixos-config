@@ -1,5 +1,5 @@
 self: super: let
-  sources = super.callPackages ./_sources/generated.nix {};
+  sources = (import ../lib).sources super;
 in {
   fuzzel = super.fuzzel.overrideAttrs (old: {
     inherit (sources.fuzzel) src version;

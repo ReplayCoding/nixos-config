@@ -71,5 +71,24 @@
             "type": "github"
         },
         "version": "9022b1b51dc1204760f9d495e7b3b5550f501bf3"
+    },
+    "spellsitter": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "spellsitter",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "lewis6991",
+            "repo": "spellsitter.nvim",
+            "rev": "f84e7a31c516f2a9cb857a02e4b551b009a81afb",
+            "sha256": "sha256-lYyTA9hvxljNy0n3xZCCwC1e+W1mBBwdGDKXiWY1x4E=",
+            "type": "github"
+        },
+        "version": "f84e7a31c516f2a9cb857a02e4b551b009a81afb"
     }
 }

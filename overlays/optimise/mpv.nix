@@ -1,6 +1,6 @@
 self: super: let
   inherit (import ./utils.nix super) stdenv autotoolsOptions_pgo mesonOptions_pgo makeStatic fakeExtra getDrvName createWithBuildIdList;
-  sources = super.callPackage ../_sources/generated.nix {};
+  sources = (import ../../lib).sources super;
   pgoName = getDrvName self.mpv-unwrapped;
 
   mkOptimisedMpv = pgoMode: let

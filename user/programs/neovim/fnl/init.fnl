@@ -4,8 +4,8 @@
 (set vim.opt.shiftwidth 0)
 (set vim.opt.tabstop 2)
 
-(set vim.opt.termguicolors true)
 (set vim.opt.wrap false)
+(set vim.opt.spell true)
 
 (set vim.opt.number true)
 (set vim.opt.cursorline true)
@@ -56,6 +56,8 @@
 ((. (require :lualine) :setup))
 ((. (require :Comment) :setup))
 ((. (require :fidget) :setup))
+((. (require :spellsitter) :setup))
 
 (set vim.g.tokyonight_style :night)
+(set vim.opt.termguicolors true)
 (vim.cmd "colorscheme tokyonight")
