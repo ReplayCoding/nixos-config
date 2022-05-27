@@ -159,6 +159,14 @@ rec {
               fnlfmt
               ragenix.defaultPackage."${system}"
               nvfetcher.defaultPackage."${system}"
+              (callPackage ./overlays/optimise/extract-pgo-data {
+                nixosPassthru = {
+                  hostname = "fake";
+                  pgoDir = "fake";
+                };
+                pkgsToExtractBuildId = null;
+              })
+              .pythonEnv
             ];
           };
         });
