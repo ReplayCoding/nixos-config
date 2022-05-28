@@ -32,7 +32,7 @@
 (fn map [mode buffer lhs rhs]
   (vim.keymap.set mode lhs rhs {:noremap true :silent true : buffer}))
 
-(let [servers [:pyright :rnix :rust_analyzer]
+(let [servers [:pyright :rnix :rust_analyzer :clangd]
       capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))
       on_attach (fn [client bufnr]
                   (map :n bufnr :gD "<cmd>lua vim.lsp.buf.declaration()<CR>")

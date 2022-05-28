@@ -11,11 +11,15 @@
   programs.neovim = {
     enable = true;
     extraConfig = "lua require('init')";
-    extraPackages = with pkgs; [
-      pyright
-      rnix-lsp
-      rust-analyzer
-    ];
+    extraPackages = let
+      clangd = pkgs.clang-tools.override {llvmPackages = pkgs.llvmPackages_14;};
+    in
+      with pkgs; [
+        pyright
+        rnix-lsp
+        rust-analyzer
+        clangd
+      ];
     plugins = let
       sources = flib.sources pkgs;
       spellsitter = pkgs.vimUtils.buildVimPlugin {
