@@ -6,7 +6,7 @@
   };
   outputs = {self, nixos, nixpkgs}:
     let
-      systems = nixpkgs.lib.systems.supported.hydra;
+      systems = nixpkgs.lib.systems.flakeExposed;
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
     in {
       packages = forAllSystems (system: import nixpkgs {
