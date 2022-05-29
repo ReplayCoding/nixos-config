@@ -10,12 +10,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a8d1a85a1b78308157e3b6c83c886280604d4f31",
-            "sha256": "sha256-5cr6gW/lssrJw1B5rLe1Dw8QD+D0HsDQwu9vXt1JEl4=",
+            "rev": "ebeaac6d60df0fdc8772f84d43a310eeed877185",
+            "sha256": "sha256-qIFDldc7FiBgmQUNSwrNyDC0XBbNJI9ub9S868lnMno=",
             "type": "git",
             "url": "https://code.videolan.org/videolan/dav1d"
         },
-        "version": "a8d1a85a1b78308157e3b6c83c886280604d4f31"
+        "version": "ebeaac6d60df0fdc8772f84d43a310eeed877185"
     },
     "fuzzel": {
         "cargoLocks": null,
@@ -46,12 +46,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "1956dbb57354c99c165d8d2ee7fc4eb4437b0ae2",
-            "sha256": "sha256-/IuctoYJFk46sBeAnkoqnQPcP1t5FVbmGGWyj3Bto2I=",
+            "rev": "b4867541d4ba4fe7a2243d00a77d0bd348714bd8",
+            "sha256": "sha256-m+4brYk+9Str0hKUik54UaFOrYFcaLF1yq8Bp9Ab388=",
             "type": "git",
             "url": "https://code.videolan.org/videolan/libplacebo/"
         },
-        "version": "1956dbb57354c99c165d8d2ee7fc4eb4437b0ae2"
+        "version": "b4867541d4ba4fe7a2243d00a77d0bd348714bd8"
     },
     "mpv": {
         "cargoLocks": null,
@@ -66,11 +66,11 @@
             "name": null,
             "owner": "mpv-player",
             "repo": "mpv",
-            "rev": "9022b1b51dc1204760f9d495e7b3b5550f501bf3",
-            "sha256": "sha256-/ovRPS5FPv3Le1PmX/izUtnFnQa2RAaPzkmJSHWWADw=",
+            "rev": "afe29026edcb3104cd64764f79fe8630e3d37242",
+            "sha256": "sha256-ZoEFecJl6puSRCvMkkIr9XUl9iLFEF8Rh91r3uEHCWo=",
             "type": "github"
         },
-        "version": "9022b1b51dc1204760f9d495e7b3b5550f501bf3"
+        "version": "afe29026edcb3104cd64764f79fe8630e3d37242"
     },
     "spellsitter": {
         "cargoLocks": null,

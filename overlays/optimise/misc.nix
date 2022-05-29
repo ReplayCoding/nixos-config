@@ -13,8 +13,6 @@ in {
         CXXFLAGS = CFLAGS;
       }))
     super.tree-sitter.allGrammars;
-  polymc =
-    (super.polymc.overrideAttrs (genericOptions fakeExtra)).override {mkDerivation = super.libsForQt5.mkDerivationWith stdenv.mkDerivation;};
   rizin =
     (super.rizin.overrideAttrs (mesonOptions fakeExtra)).override {inherit stdenv;};
 }

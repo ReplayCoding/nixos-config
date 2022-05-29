@@ -81,7 +81,7 @@
 0
 0
 5
-1
+2
 0
 
 ../main.c:enable_timeouts
@@ -91,9 +91,9 @@
 4
 # Counter Values:
 0
-2
+3
 0
-2
+3
 
 ../main.c:get_logind_idle_inhibit
 # Func Hash:
@@ -101,9 +101,9 @@
 # Num Counters:
 3
 # Counter Values:
-2
+3
 0
-2
+3
 
 ../main.c:handle_global
 # Func Hash:
@@ -111,9 +111,9 @@
 # Num Counters:
 3
 # Counter Values:
-82
-2
-2
+123
+3
+3
 
 ../main.c:handle_global_remove
 # Func Hash:
@@ -213,8 +213,8 @@
 # Num Counters:
 3
 # Counter Values:
-2
-2
+3
+3
 0
 
 ../main.c:parse_resume
@@ -287,7 +287,7 @@
 # Num Counters:
 1
 # Counter Values:
-2
+3
 
 ../main.c:seat_handle_name
 # Func Hash:
@@ -295,7 +295,7 @@
 # Num Counters:
 1
 # Counter Values:
-2
+3
 
 ../main.c:set_idle_hint
 # Func Hash:
@@ -313,7 +313,7 @@
 2
 # Counter Values:
 0
-1
+2
 
 ../src/compiler/glsl/ast_function.cpp:_ZL15function_existsP22_mesa_glsl_parse_stateP17glsl_symbol_tablePKc
 # Func Hash:
@@ -1716,7 +1716,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/compiler/glsl/builtin_functions.cpp:_ZL10gs_streamsPK22_mesa_glsl_parse_state
 # Func Hash:
@@ -4168,8 +4168,8 @@
 # Num Counters:
 3
 # Counter Values:
-1
-1
+2
+2
 0
 
 ../src/compiler/glsl/builtin_types.cpp:_GLOBAL__sub_I_builtin_types.cpp
@@ -4178,7 +4178,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/compiler/glsl/builtin_variables.cpp:_ZN12_GLOBAL__N_122per_vertex_accumulator9add_fieldEiPK9glsl_typeiPKc16glsl_interp_mode
 # Func Hash:
@@ -16639,7 +16639,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/compiler/glsl_types.cpp:_ZL23glsl_base_type_bit_size14glsl_base_type
 # Func Hash:
@@ -35285,34 +35285,34 @@
 29
 # Counter Values:
 0
-8
+12
 0
-4
+6
+0
+18
+0
+0
+12
+0
+6
+0
+18
 0
 12
 0
 0
-8
-0
-4
-0
-12
-0
-8
 0
 0
-0
-0
-24
-24
-24
-24
-20
-4
+36
+36
+36
+36
+30
+6
 0
 0
 0
-12
+18
 
 ../src/connection.c:close_fds
 # Func Hash:
@@ -35321,7 +35321,7 @@
 6
 # Counter Values:
 0
-8
+13
 0
 0
 0
@@ -35343,29 +35343,29 @@
 25
 # Counter Values:
 0
-8
+12
 0
-4
+6
+0
+18
+0
 0
 12
 0
+6
 0
-8
-0
-4
-0
-12
+18
 0
 0
-24
-24
-24
-24
+36
+36
+36
+36
 0
 0
 0
 0
-12
+18
 0
 # Num Value Kinds:
 1
@@ -35383,7 +35383,7 @@
 3
 # Counter Values:
 0
-12
+18
 0
 # Num Value Kinds:
 1
@@ -35392,9 +35392,9 @@
 # NumValueSites:
 3
 3
-9:8
-33:2
-32:2
+9:12
+32:3
+33:3
 0
 0
 
@@ -35405,38 +35405,38 @@
 35
 # Counter Values:
 0
-8
+12
 0
-4
+6
+0
+18
+0
+0
+12
+0
+6
+0
+18
+0
+0
+36
+36
+36
+36
+36
 0
 12
 0
 0
-8
 0
-4
+18
+18
 0
-12
+6
 0
+6
 0
-24
-24
-24
-24
-24
-0
-8
-0
-0
-0
-12
-12
-0
-4
-0
-4
-0
-12
+18
 0
 0
 # Num Value Kinds:
@@ -35446,8 +35446,8 @@
 # NumValueSites:
 2
 2
-17:2
-8:2
+8:3
+17:3
 0
 
 ../src/connection.c:wl_closure_init
@@ -35457,31 +35457,31 @@
 27
 # Counter Values:
 0
-190
+285
 0
-90
+135
 0
-12
-0
-0
-190
-0
-90
-0
-12
-0
-2
-294
-292
-270
-0
-292
-292
+18
 0
 0
-112
-12
-12
+285
+0
+135
+0
+18
+0
+3
+441
+438
+405
+0
+438
+438
+0
+0
+168
+18
+18
 0
 # Num Value Kinds:
 1
@@ -35490,8 +35490,8 @@
 # NumValueSites:
 1
 2
-8:8
-32:4
+8:12
+32:6
 
 ../src/event-loop.c:add_source
 # Func Hash:
@@ -35499,9 +35499,9 @@
 # Num Counters:
 5
 # Counter Values:
-10
+15
 0
-10
+15
 0
 0
 
@@ -35546,7 +35546,7 @@
 # Num Counters:
 1
 # Counter Values:
-17
+18
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -35555,7 +35555,7 @@
 1
 2
 ../main.c:dbus_event:11
-../main.c:display_event:6
+../main.c:display_event:7
 
 ../src/event-loop.c:wl_event_source_signal_dispatch
 # Func Hash:
@@ -48627,7 +48627,7 @@
 # Num Counters:
 2
 # Counter Values:
-1
+2
 0
 
 ../src/gallium/auxiliary/gallivm/lp_bld_misc.cpp:_ZL19init_native_targetsv
@@ -56142,7 +56142,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -56150,7 +56150,7 @@
 # NumValueSites:
 1
 1
-../src/gallium/targets/dri/target.c:pipe_iris_create_screen:1
+../src/gallium/targets/dri/target.c:pipe_iris_create_screen:2
 
 ../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_get_driconf
 # Func Hash:
@@ -56158,7 +56158,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_probe_fd_nodup
 # Func Hash:
@@ -56166,16 +56166,16 @@
 # Num Counters:
 12
 # Counter Values:
+4
 2
-1
 0
 0
-1
-1
-1
+2
+2
+2
 0
-1
-1
+2
+2
 0
 0
 
@@ -67630,9 +67630,9 @@
 0
 0
 0
-2
+4
 0
-2
+4
 0
 0
 0
@@ -67669,23 +67669,23 @@
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
-1
+2
+2
 0
 0
 0
 0
 0
 0
-1
-1
-1
+2
+2
+2
 0
 
 ../src/gallium/drivers/iris/iris_bufmgr.c:bo_close
@@ -67735,11 +67735,11 @@
 # Num Counters:
 5
 # Counter Values:
-1
+2
 0
 0
 0
-1
+2
 
 ../src/gallium/drivers/iris/iris_bufmgr.c:find_and_ref_external_bo
 # Func Hash:
@@ -67761,8 +67761,8 @@
 0
 0
 0
-2
-2
+4
+4
 
 ../src/gallium/drivers/iris/iris_bufmgr.c:init_cache_buckets
 # Func Hash:
@@ -67770,22 +67770,22 @@
 # Num Counters:
 23
 # Counter Values:
-13
-13
-13
-13
-13
-13
-13
-13
-13
-1
-1
-1
-1
-1
-1
-1
+26
+26
+26
+26
+26
+26
+26
+26
+26
+2
+2
+2
+2
+2
+2
+2
 0
 0
 0
@@ -67852,7 +67852,7 @@
 0
 0
 0
-1
+2
 0
 0
 0
@@ -71202,7 +71202,7 @@
 # Num Counters:
 1
 # Counter Values:
-24
+48
 
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param
 # Func Hash:
@@ -71210,34 +71210,34 @@
 # Num Counters:
 34
 # Counter Values:
-4
+8
 0
 0
 0
-20
+40
+16
+0
+0
+0
+0
+8
+8
 8
 0
 0
 0
 0
-4
-4
-4
 0
 0
 0
 0
+8
+8
 0
 0
 0
 0
-4
-4
-0
-0
-0
-0
-4
+8
 0
 0
 0
@@ -71267,7 +71267,7 @@
 # Num Counters:
 1
 # Counter Values:
-4
+8
 
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_driver_uuid
 # Func Hash:
@@ -71291,157 +71291,157 @@
 # Num Counters:
 155
 # Counter Values:
-5
-4
-4
-4
-4
-4
-4
-4
-4
-4
-0
-4
-4
-4
-4
-0
-0
-0
-4
-4
-4
-0
-4
-4
-4
-4
-4
-4
-8
-4
-8
-4
-4
-4
-4
-4
-4
-4
-0
-4
-0
-4
-4
-4
-4
-4
-0
-0
-0
-4
-4
-0
-4
-8
-4
-0
-8
-4
-1
-8
-4
-4
-0
-4
-4
-4
-4
-4
-4
-0
-4
-4
-4
-0
-4
-0
-4
-0
-0
-4
-4
-4
-28
-4
-4
-4
-4
-0
-0
-4
-4
-4
-8
-4
-4
-0
-8
-1
-8
-4
-4
-0
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-858
-28
+10
 8
 8
-4
-4
 8
-4
-4
-4
 8
-12
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
 8
-4
-4
+8
+8
+8
+8
+0
+8
+8
+8
+8
+0
+0
+0
+8
+8
+8
+0
+8
+8
+8
+8
+8
+8
+16
+8
+16
+8
+8
+8
+8
+8
+8
+8
+0
+8
+0
+8
+8
+8
+8
 8
 0
 0
 0
-4
-1
+8
+8
+0
+8
+16
+8
+0
+16
+8
+2
+16
+8
+8
+0
+8
+8
+8
+8
+8
+8
+0
+8
+8
+8
+0
+8
+0
+8
+0
+0
+8
+8
+8
+56
+8
+8
+8
+8
+0
+0
+8
+8
+8
+16
+8
+8
+0
+16
+2
+16
+8
+8
+0
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+1716
+56
+16
+16
+8
+8
+16
+8
+8
+8
+16
+24
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+16
+8
+8
+16
+0
+0
+0
+8
+2
 0
 0
 0
 0
-4
-302
+8
+604
 0
 0
 0
@@ -71453,21 +71453,21 @@
 # Num Counters:
 16
 # Counter Values:
-4
-4
 8
-4
-4
-4
-4
-4
-72
-12
+8
+16
 8
 8
 8
-4
 8
+8
+144
+24
+16
+16
+16
+8
+16
 0
 
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param
@@ -71483,45 +71483,45 @@
 0
 0
 0
-48
-24
-24
-48
-24
-24
-24
-24
-24
-28
-0
-24
-0
-780
-24
-168
 96
-52
-76
-0
-24
-32
 48
-24
-28
-24
-24
-24
-24
-8
-28
-24
-28
-1
+48
+96
+48
+48
+48
+48
+48
+56
 0
-4
+48
+0
+1560
+48
+336
+192
+104
+152
+0
+48
+64
+96
+48
+56
+48
+48
+48
+48
 16
+56
+48
+56
+2
+0
 8
-8
+32
+16
+16
 
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_timestamp
 # Func Hash:
@@ -71545,8 +71545,8 @@
 # Num Counters:
 2
 # Counter Values:
-1
-1
+2
+2
 
 ../src/gallium/drivers/iris/iris_screen.c:iris_query_memory_info
 # Func Hash:
@@ -98196,18 +98196,18 @@
 # Num Counters:
 12
 # Counter Values:
-1
+2
 0
-1
-1
+2
+2
 0
-1
-1
+2
+2
 0
-1
-1
-1
-1
+2
+2
+2
+2
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -98215,7 +98215,7 @@
 # NumValueSites:
 1
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 
 ../src/gallium/frontends/dri/dri2.c:dri2_init_screen_extensions
 # Func Hash:
@@ -98223,15 +98223,15 @@
 # Num Counters:
 9
 # Counter Values:
-1
-1
-1
-1
+2
+2
+2
+2
 0
-1
-1
-1
-1
+2
+2
+2
+2
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -98239,9 +98239,9 @@
 # NumValueSites:
 2
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 
 ../src/gallium/frontends/dri/dri2.c:dri2_interop_export_object
 # Func Hash:
@@ -98980,12 +98980,12 @@
 # Num Counters:
 7
 # Counter Values:
-2
-2
+4
+4
 0
-2
+4
 0
-2
+4
 0
 # Num Value Kinds:
 1
@@ -98994,7 +98994,7 @@
 # NumValueSites:
 2
 1
-** External Symbol **:2
+** External Symbol **:4
 0
 
 ../src/gallium/frontends/dri/dri_screen.c:dri_set_background_context
@@ -99232,25 +99232,25 @@
 21
 # Counter Values:
 0
-5
-4
-1
-1
-1
+10
+8
+2
+2
+2
 0
-1
-1
-0
-0
-1
-1
-1
-1
-1
+2
+2
 0
 0
+2
+2
+2
+2
+2
 0
-1
+0
+0
+2
 0
 # Num Value Kinds:
 1
@@ -99259,7 +99259,7 @@
 # NumValueSites:
 1
 1
-../src/gallium/frontends/dri/dri2.c:dri2_init_screen:1
+../src/gallium/frontends/dri/dri2.c:dri2_init_screen:2
 
 ../src/gallium/frontends/dri/dri_util.c:driDestroyContext
 # Func Hash:
@@ -99324,7 +99324,7 @@
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/gallium/frontends/dri/dri_util.c:driSWRastCreateNewScreen
 # Func Hash:
@@ -99712,15 +99712,15 @@
 # Num Counters:
 11
 # Counter Values:
-1
-1
-5
-4
-1
-1
-1
-1
-1
+2
+2
+10
+8
+2
+2
+2
+2
+2
 0
 0
 # Num Value Kinds:
@@ -99730,7 +99730,7 @@
 # NumValueSites:
 1
 1
-__driDriverGetExtensions_iris:1
+__driDriverGetExtensions_iris:2
 
 ../src/gallium/targets/dri/megadriver_stub.c:stub_error_init_screen
 # Func Hash:
@@ -99770,8 +99770,8 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 3
 # Counter Values:
-1
-1
+2
+2
 0
 
 ../src/gallium/targets/dri/target.c:pipe_kmsro_create_screen
@@ -102097,9 +102097,9 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 11
 # Counter Values:
-2
+4
 0
-2
+4
 0
 0
 0
@@ -105368,7 +105368,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_bank_conflicts.cpp:_ZN12_GLOBAL__N_125is_conflict_optimized_outEPK17intel_device_infoPK7fs_inst
 # Func Hash:
@@ -105401,7 +105401,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_cmod_propagation.cpp:_ZL15regions_overlapRK6fs_regjS1_j
 # Func Hash:
@@ -105440,7 +105440,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_combine_constants.cpp:_ZL16must_promote_immPK17intel_device_infoPK7fs_inst
 # Func Hash:
@@ -105470,7 +105470,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_copy_propagation.cpp:_ZL15regions_overlapRK6fs_regjS1_j
 # Func Hash:
@@ -105785,7 +105785,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_cse.cpp:_ZL14operands_matchPK7fs_instS1_Pb
 # Func Hash:
@@ -105932,7 +105932,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_dead_code_eliminate.cpp:_ZL13can_eliminatePK17intel_device_infoPK7fs_instPj
 # Func Hash:
@@ -105951,7 +105951,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_generator.cpp:_ZL10element_sz7brw_reg
 # Func Hash:
@@ -106291,7 +106291,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_lower_pack.cpp:_GLOBAL__sub_I_brw_fs_lower_pack.cpp
 # Func Hash:
@@ -106299,7 +106299,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_lower_regioning.cpp:_GLOBAL__sub_I_brw_fs_lower_regioning.cpp
 # Func Hash:
@@ -106307,7 +106307,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_lower_regioning.cpp:_ZL13get_exec_typePK7fs_inst
 # Func Hash:
@@ -107499,7 +107499,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_nir.cpp:_ZL10emit_fenceRKN3brw10fs_builderE6opcodehbh
 # Func Hash:
@@ -107861,7 +107861,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_reg_allocate.cpp:_ZL17brw_alloc_reg_setP12brw_compileri
 # Func Hash:
@@ -107869,23 +107869,23 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 17
 # Counter Values:
-16
+32
 0
-1928
-16
-16
-16
-16
-0
-1
-2
-1
+3856
+32
+32
+32
+32
 0
 2
-1
+4
+2
+0
+4
+2
 0
 0
-1
+2
 
 ../src/intel/compiler/brw_fs_reg_allocate.cpp:_ZL9component6fs_regj
 # Func Hash:
@@ -107957,7 +107957,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_register_coalesce.cpp:_ZL15regions_overlapRK6fs_regjS1_j
 # Func Hash:
@@ -107996,7 +107996,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_saturate_propagation.cpp:_ZL15regions_overlapRK6fs_regjS1_j
 # Func Hash:
@@ -108035,8 +108035,8 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 2
 # Counter Values:
-3
-1
+6
+2
 
 ../src/intel/compiler/brw_fs_scoreboard.cpp:_ZN12_GLOBAL__N_110scoreboard3depERK6fs_reg
 # Func Hash:
@@ -108633,7 +108633,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_validate.cpp:_GLOBAL__sub_I_brw_fs_validate.cpp
 # Func Hash:
@@ -108641,7 +108641,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_visitor.cpp:_GLOBAL__sub_I_brw_fs_visitor.cpp
 # Func Hash:
@@ -108649,7 +108649,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_fs_visitor.cpp:_ZL12horiz_offsetRK6fs_regj
 # Func Hash:
@@ -108721,7 +108721,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_ir_performance.cpp:_ZN12_GLOBAL__N_113issue_fs_instERNS_5stateEPK17intel_device_infoPK19backend_instruction
 # Func Hash:
@@ -109672,7 +109672,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_mesh.cpp:_ZL19get_mesh_urb_handleRKN3brw10fs_builderE16nir_intrinsic_op
 # Func Hash:
@@ -110540,7 +110540,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_shader.cpp:_GLOBAL__sub_I_brw_shader.cpp
 # Func Hash:
@@ -110548,7 +110548,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_vec4.cpp:_GLOBAL__sub_I_brw_vec4.cpp
 # Func Hash:
@@ -110556,7 +110556,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_vec4.cpp:_ZN3brwL10is_uniformERKNS_7src_regE
 # Func Hash:
@@ -111338,7 +111338,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_vec4_nir.cpp:_ZN3brwL19dst_reg_for_nir_regEPNS_12vec4_visitorEP12nir_registerjP7nir_src
 # Func Hash:
@@ -111635,7 +111635,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/compiler/brw_vec4_visitor.cpp:_ZN3brwL15type_size_xvec4EPK9glsl_typebb
 # Func Hash:
@@ -111693,7 +111693,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/dev/intel_debug.c:brw_process_intel_debug_variable_once
 # Func Hash:
@@ -111701,7 +111701,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/dev/intel_device_info.c:fixup_chv_device_info
 # Func Hash:
@@ -111729,8 +111729,8 @@ __driDriverGetExtensions_iris:1
 0
 0
 0
-2
-2
+4
+4
 
 ../src/intel/dev/intel_device_info.c:getparam_topology
 # Func Hash:
@@ -111770,13 +111770,13 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 9
 # Counter Values:
-3
-1
-3
-1
-1
-1
-1
+6
+2
+6
+2
+2
+2
+2
 0
 0
 
@@ -111786,7 +111786,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-2
+4
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -111794,13 +111794,13 @@ __driDriverGetExtensions_iris:1
 # NumValueSites:
 3
 1
+1:4
+2
 1:2
+3:2
 2
-1:1
-3:1
-2
-3:1
-9:1
+3:2
+9:2
 
 ../src/intel/dev/intel_device_info.c:update_l3_banks
 # Func Hash:
@@ -111808,7 +111808,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 7
 # Counter Values:
-2
+4
 0
 0
 0
@@ -111828,7 +111828,7 @@ __driDriverGetExtensions_iris:1
 0
 0
 0
-2
+4
 0
 0
 0
@@ -111840,10 +111840,10 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 4
 # Counter Values:
-2
 4
-2
-2
+8
+4
+4
 
 ../src/intel/ds/intel_driver_ds.cc:_ZL25intel_driver_ds_init_oncev
 # Func Hash:
@@ -111851,7 +111851,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/intel/isl/isl.c:_3DSTATE_CPSIZE_CONTROL_BUFFER_SurfacePitch_bits
 # Func Hash:
@@ -111897,12 +111897,12 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 12
 # Counter Values:
-3
+6
 0
 0
 0
 0
-3
+6
 0
 0
 0
@@ -111917,7 +111917,7 @@ __driDriverGetExtensions_iris:1
 12
 # Counter Values:
 0
-2
+4
 0
 0
 0
@@ -111925,7 +111925,7 @@ __driDriverGetExtensions_iris:1
 0
 0
 0
-2
+4
 0
 0
 
@@ -111935,13 +111935,13 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 7
 # Counter Values:
-1052
-1020
-1020
-1020
-1020
-1020
-1020
+2104
+2040
+2040
+2040
+2040
+2040
+2040
 
 ../src/intel/isl/isl_format.c:pack_channel
 # Func Hash:
@@ -112784,7 +112784,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 2
 # Counter Values:
-3
+6
 0
 
 ../src/loader/loader.c:loader_get_kernel_driver_name
@@ -112793,7 +112793,7 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 3
 # Counter Values:
-2
+4
 0
 0
 # Num Value Kinds:
@@ -112804,7 +112804,7 @@ __driDriverGetExtensions_iris:1
 2
 0
 1
-../src/loader/loader.c:default_logger:2
+../src/loader/loader.c:default_logger:4
 
 ../src/loader/loader.c:loader_get_linux_pci_field
 # Func Hash:
@@ -112812,8 +112812,8 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 2
 # Counter Values:
-4
-4
+8
+8
 
 ../src/mesa/main/accum.c:accum
 # Func Hash:
@@ -148470,15 +148470,15 @@ __driDriverGetExtensions_iris:1
 # Num Counters:
 9
 # Counter Values:
-16
-592
-452
-232
-132
-140
-120
-24
-24
+32
+1184
+904
+464
+264
+280
+240
+48
+48
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -148486,7 +148486,7 @@ __driDriverGetExtensions_iris:1
 # NumValueSites:
 1
 1
-iris_is_format_supported:452
+iris_is_format_supported:904
 
 ../src/mesa/state_tracker/st_format.c:st_QuerySamplesForFormat
 # Func Hash:
@@ -148725,7 +148725,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/mesa/state_tracker/st_glsl_to_tgsi.cpp:_ZL11var_destroyP10hash_entry
 # Func Hash:
@@ -149101,7 +149101,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/mesa/state_tracker/st_glsl_to_tgsi_array_merge.cpp:_ZL17num_inst_src_regsPK24glsl_to_tgsi_instruction
 # Func Hash:
@@ -149354,8 +149354,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-4
-4
+8
+8
 
 ../src/mesa/state_tracker/st_manager.c:st_api_create_context
 # Func Hash:
@@ -149460,7 +149460,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/mesa/state_tracker/st_manager.c:st_context_copy
 # Func Hash:
@@ -160201,16 +160201,16 @@ iris_is_format_supported:452
 11
 # Counter Values:
 0
-1
-1
-7
-1
-11
-1
-34
-34
-1
-1
+2
+2
+14
+2
+22
+2
+68
+68
+2
+2
 
 ../src/util/disk_cache.c:cache_put
 # Func Hash:
@@ -160308,10 +160308,10 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-1
-1
-1
-1
+2
+2
+2
+2
 
 ../src/util/disk_cache_os.c:create_cache_item_header_and_blob
 # Func Hash:
@@ -160372,7 +160372,7 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-2
+4
 0
 0
 0
@@ -161659,13 +161659,13 @@ iris_is_format_supported:452
 8
 # Counter Values:
 0
-85
-85
-19
-19
+170
+170
+34
+34
 0
-14
-19
+28
+34
 
 ../src/util/ralloc.c:unsafe_free
 # Func Hash:
@@ -161673,8 +161673,8 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-320
-834
+640
+1668
 0
 # Num Value Kinds:
 1
@@ -161864,29 +161864,26 @@ iris_is_format_supported:452
 0
 0
 0
-1
+2
 0
 0
-1
-1
-1
-1
-1
+2
+2
+2
+2
+2
 0
 0
-1
-1
-1
-0
-0
-0
-1
-0
-1
-1
+2
+2
+2
 0
 0
 0
+2
+0
+2
+2
 0
 0
 0
@@ -161899,17 +161896,20 @@ iris_is_format_supported:452
 0
 0
 0
-1
 0
-1
-1
-1
-1
-1
-1
-1
-1
-1
+0
+0
+2
+0
+2
+2
+2
+2
+2
+2
+2
+2
+2
 0
 0
 0
@@ -161953,7 +161953,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/util/u_queue.c:atexit_handler
 # Func Hash:
@@ -161961,8 +161961,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
+4
 2
-1
 
 ../src/util/u_queue.c:do_futex_fence_wait
 # Func Hash:
@@ -161986,7 +161986,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 ../src/util/u_queue.c:impl_thrd_routine
 # Func Hash:
@@ -161994,7 +161994,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-10
+20
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -162002,7 +162002,7 @@ iris_is_format_supported:452
 # NumValueSites:
 1
 1
-../src/util/u_queue.c:util_queue_thread_func:10
+../src/util/u_queue.c:util_queue_thread_func:20
 
 ../src/util/u_queue.c:util_queue_create_thread
 # Func Hash:
@@ -162010,12 +162010,12 @@ iris_is_format_supported:452
 # Num Counters:
 6
 # Counter Values:
-10
-10
+20
+20
 0
 0
-1
-10
+2
+20
 
 ../src/util/u_queue.c:util_queue_finish_execute
 # Func Hash:
@@ -162032,11 +162032,11 @@ iris_is_format_supported:452
 # Num Counters:
 10
 # Counter Values:
-10
-2
+20
+4
 0
-2
-2
+4
+4
 0
 0
 0
@@ -162049,25 +162049,25 @@ iris_is_format_supported:452
 # Num Counters:
 21
 # Counter Values:
-10
-10
-10
-320
+20
+20
+20
+640
 0
 0
-320
-0
-0
-0
+640
 0
 0
 0
 0
-10
-10
-10
-1
-10
+0
+0
+0
+20
+20
+20
+2
+20
 0
 0
 # Num Value Kinds:
@@ -162091,7 +162091,7 @@ iris_is_format_supported:452
 5
 # Counter Values:
 0
-1
+2
 0
 0
 0
@@ -162102,7 +162102,7 @@ iris_is_format_supported:452
 # Num Counters:
 3
 # Counter Values:
-6
+12
 0
 0
 
@@ -162112,10 +162112,10 @@ iris_is_format_supported:452
 # Num Counters:
 5
 # Counter Values:
-4050
-4326
-1518
-2808
+8100
+8652
+3036
+5616
 0
 
 ../src/util/xmlconfig.c:findOption
@@ -162124,11 +162124,11 @@ iris_is_format_supported:452
 # Num Counters:
 5
 # Counter Values:
-2338
-139
-79
-33
-106
+4676
+278
+158
+66
+212
 
 ../src/util/xmlconfig.c:optConfEndElem
 # Func Hash:
@@ -162136,14 +162136,14 @@ iris_is_format_supported:452
 # Num Counters:
 8
 # Counter Values:
-621
-104
-1404
-21
-3
-520
-756
-17
+1242
+208
+2808
+42
+6
+1040
+1512
+34
 
 ../src/util/xmlconfig.c:optConfStartElem
 # Func Hash:
@@ -162155,56 +162155,56 @@ iris_is_format_supported:452
 0
 0
 0
-1034
+2068
+12
+0
+36
+0
+0
+0
+1022
 6
 0
-18
+42
+1242
+6
+1512
+6
 0
 0
 0
-511
-3
-0
-21
-621
-3
-756
-3
-0
-0
-0
-3
-3
+6
+6
 0
 0
 0
 0
 0
 0
-3
+6
 0
 0
-21
+42
 0
-517
+1034
 0
-3
+6
 0
-616
+1232
 0
-3
+6
 0
-21
-3
+42
+6
 0
-18
-511
+36
+1022
 0
-17
-511
+34
+1022
 0
 0
-3
+6
 0
 0
 0
@@ -162212,24 +162212,24 @@ iris_is_format_supported:452
 0
 0
 0
-3
+6
 0
 0
 0
 0
 0
-3
+6
 0
-3
-0
-0
+6
 0
 0
-3
-3
 0
 0
-3
+6
+6
+0
+0
+6
 0
 0
 0
@@ -162242,13 +162242,13 @@ iris_is_format_supported:452
 0
 0
 0
-3
+6
 0
 0
 0
-3
+6
 0
-3
+6
 0
 
 ../src/util/xmlconfig.c:parseOneConfigFile
@@ -162258,12 +162258,12 @@ iris_is_format_supported:452
 7
 # Counter Values:
 0
-39
+78
 0
 0
-3
 6
-3
+12
+6
 
 ../src/util/xmlconfig.c:parseRange
 # Func Hash:
@@ -162271,11 +162271,11 @@ iris_is_format_supported:452
 # Num Counters:
 9
 # Counter Values:
-3
+6
 0
 0
-3
-3
+6
+6
 0
 0
 0
@@ -162294,9 +162294,9 @@ iris_is_format_supported:452
 0
 0
 0
-6
-6
-6
+12
+12
+12
 0
 0
 0
@@ -162315,11 +162315,11 @@ iris_is_format_supported:452
 # Num Counters:
 5
 # Counter Values:
-3
-0
 6
-9
-3
+0
+12
+18
+6
 
 ../src/util/xmlconfig.c:strToI
 # Func Hash:
@@ -162328,20 +162328,20 @@ iris_is_format_supported:452
 19
 # Counter Values:
 0
-6
+12
+24
+0
+0
+0
+12
 12
 0
 0
-0
-6
 6
 0
-0
-3
-0
-6
-6
-6
+12
+12
+12
 0
 0
 0
@@ -162353,10 +162353,10 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-268
+402
 0
 0
-100
+150
 
 ../src/wayland-client.c:dispatch_event
 # Func Hash:
@@ -162364,16 +162364,16 @@ iris_is_format_supported:452
 # Num Counters:
 11
 # Counter Values:
-268
+402
 0
 0
 0
 0
 0
 0
-100
+150
 0
-100
+150
 0
 
 ../src/wayland-client.c:display_handle_delete_id
@@ -162383,7 +162383,7 @@ iris_is_format_supported:452
 3
 # Counter Values:
 0
-6
+9
 0
 
 ../src/wayland-client.c:display_handle_error
@@ -162408,7 +162408,7 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-4
+8
 0
 
 ../src/wayland-client.c:id_from_object
@@ -162426,8 +162426,8 @@ iris_is_format_supported:452
 # Num Counters:
 2
 # Counter Values:
-12
-12
+18
+18
 
 ../src/wayland-client.c:sync_callback
 # Func Hash:
@@ -162435,7 +162435,7 @@ iris_is_format_supported:452
 # Num Counters:
 1
 # Counter Values:
-6
+9
 
 ../src/wayland-client.c:wl_display_poll
 # Func Hash:
@@ -162445,7 +162445,7 @@ iris_is_format_supported:452
 # Counter Values:
 0
 0
-6
+9
 
 ../src/wayland-client.c:wl_event_queue_release
 # Func Hash:
@@ -162454,7 +162454,7 @@ iris_is_format_supported:452
 2
 # Counter Values:
 0
-2
+4
 
 ../src/wayland-client.c:wl_proxy_destroy_caller_locks
 # Func Hash:
@@ -162468,7 +162468,7 @@ iris_is_format_supported:452
 0
 0
 0
-6
+9
 0
 0
 
@@ -162478,8 +162478,8 @@ iris_is_format_supported:452
 # Num Counters:
 4
 # Counter Values:
-106
-6
+159
+9
 0
 0
 
@@ -162508,8 +162508,8 @@ SHA1Final
 # Num Counters:
 2
 # Counter Values:
-20
-1
+40
+2
 
 SHA1Init
 # Func Hash:
@@ -162517,7 +162517,7 @@ SHA1Init
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 SHA1Pad
 # Func Hash:
@@ -162525,9 +162525,9 @@ SHA1Pad
 # Num Counters:
 3
 # Counter Values:
-8
-57
-1
+16
+114
+2
 
 SHA1Transform
 # Func Hash:
@@ -162535,7 +162535,7 @@ SHA1Transform
 # Num Counters:
 1
 # Counter Values:
-23
+46
 
 SHA1Update
 # Func Hash:
@@ -162543,9 +162543,9 @@ SHA1Update
 # Num Counters:
 3
 # Counter Values:
-20
-60
-3
+40
+120
+6
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -162553,13 +162553,13 @@ SHA1Update
 # NumValueSites:
 2
 3
-64:1
-1:1
-8:1
+1:2
+8:2
+64:2
 3
-1:57
-0:2
-33:1
+1:114
+0:4
+33:2
 
 _Z10can_inlineP7ir_call
 # Func Hash:
@@ -186199,7 +186199,7 @@ _ZN10st_dst_regC2E16gl_register_filei14glsl_base_type
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 _ZN10st_dst_regC2E16gl_register_filei14glsl_base_typei
 # Func Hash:
@@ -186207,7 +186207,7 @@ _ZN10st_dst_regC2E16gl_register_filei14glsl_base_typei
 # Num Counters:
 1
 # Counter Values:
-3
+6
 
 _ZN10st_dst_regC2ERKS_
 # Func Hash:
@@ -186271,7 +186271,7 @@ _ZN10st_src_regC2E16gl_register_filei14glsl_base_type
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 _ZN10st_src_regC2E16gl_register_filei14glsl_base_typei
 # Func Hash:
@@ -205506,7 +205506,7 @@ _ZN6fs_regC2Ev
 # Num Counters:
 1
 # Counter Values:
-26
+52
 
 _ZN6linker18get_matching_inputEPvPK11ir_variableP10hash_tableS5_PPS1_
 # Func Hash:
@@ -206552,8 +206552,8 @@ _ZN9glsl_typeC2EPK17glsl_struct_fieldjPKcbj
 # Num Counters:
 3
 # Counter Values:
-37
-8
+74
+16
 0
 
 _ZN9glsl_typeC2EPKS_jj
@@ -206572,7 +206572,7 @@ _ZN9glsl_typeC2Ej14glsl_base_typejjPKcjbj
 # Num Counters:
 5
 # Counter Values:
-114
+228
 0
 0
 0
@@ -206584,7 +206584,7 @@ _ZN9glsl_typeD2Ev
 # Num Counters:
 2
 # Counter Values:
-272
+544
 0
 
 _ZN9ir_demote6acceptEP10ir_visitor
@@ -212291,7 +212291,7 @@ __driDriverGetExtensions_iris
 # Num Counters:
 1
 # Counter Values:
-2
+4
 
 __driDriverGetExtensions_kms_swrast
 # Func Hash:
@@ -246108,9 +246108,9 @@ _mesa_fill_supported_spirv_extensions
 # Num Counters:
 3
 # Counter Values:
-36
-20
-4
+72
+40
+8
 
 _mesa_find_free_register
 # Func Hash:
@@ -247847,23 +247847,19 @@ _mesa_get_format_bits
 # Num Counters:
 35
 # Counter Values:
-20
+40
 0
 0
 0
-20
+40
 0
 0
 0
-20
+40
 0
 0
 0
-20
-0
-0
-0
-0
+40
 0
 0
 0
@@ -247871,11 +247867,15 @@ _mesa_get_format_bits
 0
 0
 0
-80
-20
-20
-20
-20
+0
+0
+0
+0
+160
+40
+40
+40
+40
 0
 0
 0
@@ -247917,7 +247917,7 @@ _mesa_get_format_datatype
 # Num Counters:
 2
 # Counter Values:
-20
+40
 0
 
 _mesa_get_format_layout
@@ -248846,230 +248846,230 @@ _mesa_get_version
 0
 0
 0
+8
+0
+4
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
 4
 0
-2
-1
-1
-2
-2
-2
-2
+0
+0
+0
+4
+4
 2
 2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
 2
 2
 2
+4
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+2
+2
+4
+4
+4
+4
+2
+4
+2
+2
+4
+4
+4
+4
+4
+4
+4
+2
+2
+4
+4
+4
+2
+0
+4
+2
+4
+4
+4
+4
+4
+4
+4
+2
+4
+2
+4
+4
+4
+2
+0
+4
+2
+4
+4
+4
+4
+4
+4
+4
+2
+4
+4
+4
+2
+4
+2
+4
+4
+4
+4
+4
+4
+4
+2
+4
+4
+4
+2
+4
+2
+4
+4
+4
+4
+4
+4
+4
+2
+4
+4
+4
+2
+2
+4
+4
+4
+4
+4
+2
+0
+4
+4
+4
+2
+2
+4
+4
+4
+4
+2
+4
+4
+2
+2
+4
+4
+2
+4
+4
+2
+2
+4
+2
+4
+4
+2
+2
+2
+4
+4
+2
+2
+4
+4
+2
+2
+4
+4
+2
+2
+4
+4
+2
+2
+4
+4
+2
+2
+4
 2
 2
 2
 2
 0
-0
-0
-0
 2
-2
-1
-1
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-1
-1
-1
-2
-1
-1
-1
-2
-2
-2
-2
-2
-2
-2
-1
-1
-2
-2
-2
-2
-1
-2
-1
-1
-2
-2
-2
-2
-2
-2
-2
-1
-1
-2
-2
-2
-1
-0
-2
-1
-2
-2
-2
-2
-2
-2
-2
-1
-2
-1
-2
-2
-2
-1
-0
-2
-1
-2
-2
-2
-2
-2
-2
-2
-1
-2
-2
-2
-1
-2
-1
-2
-2
-2
-2
-2
-2
-2
-1
-2
-2
-2
-1
-2
-1
-2
-2
-2
-2
-2
-2
-2
-1
-2
-2
-2
-1
-1
-2
-2
-2
-2
-2
-1
-0
-2
-2
-2
-1
-1
-2
-2
-2
-2
-1
-2
-2
-1
-1
-2
-2
-1
-2
-2
-1
-1
-2
-1
-2
-2
-1
-1
-1
-2
-2
-1
-1
-2
-2
-1
-1
-2
-2
-1
-1
-2
-2
-1
-1
-2
-2
-1
-1
-2
-1
-1
-1
-1
-0
-1
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
-2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
 0
 0
 0
@@ -249120,12 +249120,12 @@ _mesa_get_version
 0
 0
 0
-1
+2
 0
 0
 0
-1
-1
+2
+2
 0
 
 _mesa_get_viewport_xform
@@ -250602,7 +250602,7 @@ _mesa_hash_pointer
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 _mesa_hash_string
 # Func Hash:
@@ -250685,8 +250685,8 @@ _mesa_hash_table_create
 # Num Counters:
 3
 # Counter Values:
-2
-2
+4
+4
 0
 
 _mesa_hash_table_create_u32_keys
@@ -251042,16 +251042,16 @@ _mesa_init_constants
 # Num Counters:
 10
 # Counter Values:
-4
-4
+8
+8
+48
 24
-12
-4
-4
-4
-4
-1
-1
+8
+8
+8
+8
+2
+2
 
 _mesa_init_debug
 # Func Hash:
@@ -251135,8 +251135,8 @@ _mesa_init_extensions
 # Num Counters:
 2
 # Counter Values:
-984
-4
+1968
+8
 
 _mesa_init_feedback
 # Func Hash:
@@ -254426,7 +254426,7 @@ _mesa_is_format_srgb
 # Num Counters:
 2
 # Counter Values:
-20
+40
 0
 
 _mesa_is_format_unsigned
@@ -277179,12 +277179,13 @@ _mesa_override_gl_version_contextless
 # Counter Values:
 0
 0
+12
+0
+10
+0
+0
 6
 0
-5
-0
-0
-3
 0
 0
 0
@@ -277195,8 +277196,7 @@ _mesa_override_gl_version_contextless
 0
 0
 0
-0
-3
+6
 0
 
 _mesa_override_glsl_version
@@ -277205,7 +277205,7 @@ _mesa_override_glsl_version
 # Num Counters:
 3
 # Counter Values:
-4
+8
 0
 0
 
@@ -281124,7 +281124,7 @@ _mesa_sha1_compute
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 _mesa_sha1_format
 # Func Hash:
@@ -281132,8 +281132,8 @@ _mesa_sha1_format
 # Num Counters:
 2
 # Counter Values:
-20
-1
+40
+2
 
 _mesa_sha1_hex_to_sha1
 # Func Hash:
@@ -303844,7 +303844,7 @@ _swayidle_log
 # Num Counters:
 4
 # Counter Values:
-20
+25
 0
 0
 0
@@ -303978,15 +303978,15 @@ arg_count_for_signature
 10
 # Counter Values:
 0
-736
-0
-348
-0
-12
-0
 1104
-1096
-412
+0
+522
+0
+18
+0
+1656
+1644
+618
 
 batch_ptr_add_usage
 # Func Hash:
@@ -306500,27 +306500,27 @@ brw_compiler_create
 # Num Counters:
 22
 # Counter Values:
-1
-1
-1
-15
-8
-15
-15
-15
+2
+2
+2
+30
+16
+30
+30
+30
+4
+0
+2
+24
+2
 2
 0
-1
-12
-1
-1
 0
+2
+30
+30
 0
-1
-15
-15
-0
-1
+2
 0
 
 brw_compute_tess_vue_map
@@ -307190,7 +307190,7 @@ brw_fs_alloc_reg_sets
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 brw_get_compiler_config_value
 # Func Hash:
@@ -307198,8 +307198,8 @@ brw_get_compiler_config_value
 # Num Counters:
 2
 # Counter Values:
-10
-1
+20
+2
 
 brw_get_default_access_mode
 # Func Hash:
@@ -308682,7 +308682,7 @@ brw_process_intel_debug_variable
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 brw_prog_data_size
 # Func Hash:
@@ -310920,12 +310920,12 @@ brw_vec4_alloc_reg_set
 # Num Counters:
 6
 # Counter Values:
-1672
-16
-16
-1
-1
-1
+3344
+32
+32
+2
+2
+2
 
 brw_vec4_generate_assembly
 # Func Hash:
@@ -310963,7 +310963,7 @@ build_id_data
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 build_id_find_nhdr_for_addr
 # Func Hash:
@@ -310971,9 +310971,9 @@ build_id_find_nhdr_for_addr
 # Num Counters:
 4
 # Counter Values:
-1
-1
-1
+2
+2
+2
 0
 
 build_id_length
@@ -312395,7 +312395,7 @@ ddebug_screen_create
 0
 0
 0
-1
+2
 0
 0
 0
@@ -312438,9 +312438,9 @@ debug_get_bool_option
 # Num Counters:
 9
 # Counter Values:
-5
+10
 0
-1
+2
 0
 0
 0
@@ -312497,9 +312497,9 @@ debug_get_option
 # Num Counters:
 3
 # Counter Values:
-2
+4
 0
-2
+4
 
 decode_type_from_blob
 # Func Hash:
@@ -312699,22 +312699,22 @@ disk_cache_create
 0
 0
 0
-1
+2
 0
-1
+2
 0
-1
-1
-1
-1
+2
+2
+2
+2
 0
-1
+2
 0
-1
+2
 0
 0
 0
-1
+2
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -312722,9 +312722,9 @@ disk_cache_create
 # NumValueSites:
 2
 1
-33:1
+33:2
 1
-9:1
+9:2
 
 disk_cache_destroy
 # Func Hash:
@@ -312751,8 +312751,8 @@ disk_cache_enabled
 # Num Counters:
 2
 # Counter Values:
-1
-1
+2
+2
 
 disk_cache_evict_item
 # Func Hash:
@@ -312786,18 +312786,18 @@ disk_cache_generate_cache_dir
 0
 0
 0
-1
+2
 0
 0
-1
-1
+2
+2
 0
 0
-1
-1
+2
+2
 0
 0
-1
+2
 0
 0
 0
@@ -312893,13 +312893,13 @@ disk_cache_mmap_cache_index
 8
 # Counter Values:
 0
-1
-1
-1
-1
-1
+2
+2
+2
+2
+2
 0
-1
+2
 
 disk_cache_put
 # Func Hash:
@@ -316735,8 +316735,8 @@ driCheckOption
 # Num Counters:
 2
 # Counter Values:
-1
-1
+2
+2
 
 driConcatConfigs
 # Func Hash:
@@ -316744,15 +316744,15 @@ driConcatConfigs
 # Num Counters:
 9
 # Counter Values:
-6720
-696
-6720
-696
-20
-19
-19
-19
-19
+13440
+1392
+13440
+1392
+40
+38
+38
+38
+38
 
 driCreateConfigs
 # Func Hash:
@@ -316761,32 +316761,32 @@ driCreateConfigs
 27
 # Counter Values:
 0
-720
+1440
 0
+960
 480
-240
 0
-600
-240
-2
-2
-0
-0
-80
-20
-20
+1200
+480
 4
 4
 0
 0
-2
-2
-2
-2
+160
+40
+40
+8
+8
 0
-2
 0
-10
+4
+4
+4
+4
+0
+4
+0
+20
 
 driDestroyOptionCache
 # Func Hash:
@@ -316794,10 +316794,10 @@ driDestroyOptionCache
 # Num Counters:
 4
 # Counter Values:
-256
+512
+8
 4
-2
-2
+4
 
 driDestroyOptionInfo
 # Func Hash:
@@ -316805,10 +316805,10 @@ driDestroyOptionInfo
 # Num Counters:
 4
 # Counter Values:
-128
+256
+4
 2
-1
-1
+2
 
 driGLFormatToImageFormat
 # Func Hash:
@@ -316889,20 +316889,20 @@ driParseConfigFiles
 # Num Counters:
 14
 # Counter Values:
-384
-9
-3
+768
+18
+6
 0
 0
 0
-3
-3
-3
-3
+6
+6
+6
+6
 0
 0
-3
-3
+6
+6
 # Num Value Kinds:
 1
 # ValueKind = IPVK_MemOPSize:
@@ -316910,7 +316910,7 @@ driParseConfigFiles
 # NumValueSites:
 1
 1
-513:3
+513:6
 
 driParseOptionInfo
 # Func Hash:
@@ -316918,22 +316918,22 @@ driParseOptionInfo
 # Num Counters:
 23
 # Counter Values:
-4
+8
 0
 0
-69
-60
-0
-0
-0
-10
-9
-41
+138
+120
 0
 0
 0
+20
+18
+82
 0
-3
+0
+0
+0
+6
 0
 0
 0
@@ -316948,7 +316948,7 @@ driQueryOptionb
 # Num Counters:
 1
 # Counter Values:
-33
+66
 
 driQueryOptionf
 # Func Hash:
@@ -316964,7 +316964,7 @@ driQueryOptioni
 # Num Counters:
 1
 # Counter Values:
-8
+16
 
 driQueryOptionstr
 # Func Hash:
@@ -316972,7 +316972,7 @@ driQueryOptionstr
 # Num Counters:
 1
 # Counter Values:
-4
+8
 
 driQueryRendererIntegerCommon
 # Func Hash:
@@ -317305,7 +317305,7 @@ dri_init_options
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 dri_init_screen_helper
 # Func Hash:
@@ -317313,32 +317313,32 @@ dri_init_screen_helper
 # Num Counters:
 26
 # Counter Values:
-320
-6
-15
-50
-11
-11
-11
-10
-1
-10
+640
+12
+30
+100
+22
+22
+22
+20
+2
+20
 0
-1
-10
-1
-1
-1
-0
-0
-1
-0
-1
-1
-15
+2
+20
+2
+2
+2
 0
 0
-310
+2
+0
+2
+2
+30
+0
+0
+620
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -317346,27 +317346,27 @@ dri_init_screen_helper
 # NumValueSites:
 11
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 1
-../src/mesa/state_tracker/st_manager.c:st_api_query_versions:1
+../src/mesa/state_tracker/st_manager.c:st_api_query_versions:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-iris_is_format_supported:1
+iris_is_format_supported:2
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 1
-iris_is_format_supported:11
+iris_is_format_supported:22
 1
-iris_is_format_supported:320
+iris_is_format_supported:640
 
 dri_make_current
 # Func Hash:
@@ -317516,7 +317516,7 @@ env_var_as_boolean
 # Num Counters:
 9
 # Counter Values:
-8
+16
 0
 0
 0
@@ -317730,15 +317730,15 @@ get_next_argument
 11
 # Counter Values:
 0
-736
+1104
 0
-348
+522
+0
+18
 0
 12
 0
-8
-0
-1096
+1644
 0
 
 get_tes_output_prim
@@ -318135,7 +318135,7 @@ gfx9_init_screen_state
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 gfx9_init_state
 # Func Hash:
@@ -320766,7 +320766,7 @@ glsl_type_singleton_init_or_ref
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 glsl_type_wrap_in_arrays
 # Func Hash:
@@ -321542,9 +321542,9 @@ intel_debug_write_identifiers
 # Num Counters:
 3
 # Counter Values:
-1
-1
-1
+2
+2
+2
 
 intel_disassemble
 # Func Hash:
@@ -321571,7 +321571,7 @@ intel_driver_ds_init
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 intel_ds_device_add_queue
 # Func Hash:
@@ -321676,16 +321676,16 @@ intel_gem_supports_syncobj_wait
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
-1
-1
+2
+2
 0
-1
+2
 
 intel_get_default_l3_weights
 # Func Hash:
@@ -321693,9 +321693,9 @@ intel_get_default_l3_weights
 # Num Counters:
 6
 # Counter Values:
-16
-16
-2
+32
+32
+4
 0
 0
 0
@@ -321739,49 +321739,49 @@ intel_get_device_info_from_fd
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
-1
-1
+2
+2
+2
 0
 0
-1
+2
 0
 0
-1
-1
-1
-1
-1
-0
-0
-0
-1
-0
-1
-0
-0
-1
+2
+2
+2
+2
+2
 0
 0
 0
-1
+2
+0
+2
+0
+0
+2
 0
 0
 0
-0
-1
-1
+2
 0
 0
 0
 0
-1
+2
+2
+0
+0
+0
+0
+2
 0
 
 intel_get_device_info_from_pci_id
@@ -321793,10 +321793,10 @@ intel_get_device_info_from_pci_id
 0
 0
 0
-1
-1
-1
-1
+2
+2
+2
+2
 0
 0
 0
@@ -322003,7 +322003,7 @@ intel_get_device_info_from_pci_id
 0
 0
 0
-1
+2
 0
 0
 0
@@ -322306,7 +322306,7 @@ intel_get_device_info_from_pci_id
 0
 0
 0
-1
+2
 0
 0
 0
@@ -322411,7 +322411,7 @@ intel_get_device_info_from_pci_id
 0
 0
 0
-1
+2
 
 intel_get_l3_config
 # Func Hash:
@@ -322419,18 +322419,18 @@ intel_get_l3_config
 # Num Counters:
 12
 # Counter Values:
-11
-88
+22
+176
+32
+22
+22
+4
 16
-11
-11
-2
-8
-11
-11
+22
+22
 0
-2
-2
+4
+4
 
 intel_get_l3_config_urb_size
 # Func Hash:
@@ -322456,10 +322456,10 @@ intel_get_l3_config_weights
 # Num Counters:
 5
 # Counter Values:
-128
-128
-128
-16
+256
+256
+256
+32
 0
 
 intel_get_urb_config
@@ -322600,10 +322600,10 @@ intel_measure_init
 26
 # Counter Values:
 0
-1
+2
 0
 0
-1
+2
 0
 0
 0
@@ -327240,31 +327240,27 @@ iris_bo_alloc
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
-1
+2
 0
-1
-1
-0
-0
-1
+2
+2
 0
 0
-0
-0
-0
-0
-1
+2
 0
 0
 0
 0
+0
+0
+2
 0
 0
 0
@@ -327280,20 +327276,24 @@ iris_bo_alloc
 0
 0
 0
-1
-0
-1
 0
 0
 0
 0
+2
+0
+2
 0
 0
 0
 0
 0
-1
-1
+0
+0
+0
+0
+2
+2
 0
 0
 # Num Value Kinds:
@@ -327467,27 +327467,27 @@ iris_bo_map
 # Counter Values:
 0
 0
-1
+2
 0
 0
 0
 0
-1
+2
 0
-1
-1
-0
-0
-0
-0
-1
-1
-0
-1
+2
+2
 0
 0
 0
-1
+0
+2
+2
+0
+2
+0
+0
+0
+2
 0
 0
 0
@@ -327574,10 +327574,10 @@ iris_bo_wait
 0
 0
 0
-1
-1
+2
+2
 0
-1
+2
 
 iris_bo_wait_rendering
 # Func Hash:
@@ -327617,7 +327617,7 @@ iris_bufmgr_create_screen_id
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_bufmgr_get_aux_map_context
 # Func Hash:
@@ -327641,7 +327641,7 @@ iris_bufmgr_get_fd
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_bufmgr_get_for_fd
 # Func Hash:
@@ -327659,43 +327659,43 @@ iris_bufmgr_get_for_fd
 0
 0
 0
-1
-1
+2
+2
 0
-1
+2
 0
-3
-1
-0
-0
-1
-1
-1
-1
-1
-0
-1
-1
-0
-1
+6
+2
 0
 0
-1
+2
+2
+2
+2
+2
+0
+2
+2
+0
+2
 0
 0
+2
 0
 0
-0
-0
-1
-1
-1
 0
 0
 0
 0
 2
-1
+2
+2
+0
+0
+0
+0
+4
+2
 
 iris_bufmgr_unref
 # Func Hash:
@@ -328082,7 +328082,7 @@ iris_disk_cache_init
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_disk_cache_retrieve
 # Func Hash:
@@ -328191,8 +328191,8 @@ iris_drm_screen_create
 # Num Counters:
 2
 # Counter Values:
-1
-1
+2
+2
 
 iris_emit_buffer_barrier_for
 # Func Hash:
@@ -328783,7 +328783,7 @@ iris_init_screen_fence_functions
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_init_screen_measure
 # Func Hash:
@@ -328791,7 +328791,7 @@ iris_init_screen_measure
 # Num Counters:
 2
 # Counter Values:
-1
+2
 0
 
 iris_init_screen_program_functions
@@ -328800,7 +328800,7 @@ iris_init_screen_program_functions
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_init_screen_resource_functions
 # Func Hash:
@@ -328808,7 +328808,7 @@ iris_init_screen_resource_functions
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 iris_is_format_supported
 # Func Hash:
@@ -328816,44 +328816,44 @@ iris_is_format_supported
 # Num Counters:
 38
 # Counter Values:
-1
 2
-8
+4
+16
 0
 0
 0
-1153
-643
-639
-639
-631
-536
-516
-88
+2306
+1286
+1278
+1278
+1262
+1072
+1032
+176
+24
+328
+80
+776
+80
+0
+1056
+328
+752
+328
+296
+712
+0
+288
+0
+248
+752
+328
+2
+228
+56
 12
-164
-40
-388
-40
 0
-528
-164
-376
-164
-148
-356
-0
-144
-0
-124
-376
-164
-1
-114
-28
-6
-0
-536
+1072
 
 iris_kernel_context_get_priority
 # Func Hash:
@@ -329286,20 +329286,20 @@ iris_screen_create
 # Num Counters:
 21
 # Counter Values:
-1
+2
 0
 0
-1
-1
-1
-1
-1
-1
-1
+2
+2
+2
+2
+2
+2
+2
 0
 0
 0
-1
+2
 0
 0
 0
@@ -329610,8 +329610,8 @@ is_kernel_i915
 # Num Counters:
 2
 # Counter Values:
-1
-1
+2
+2
 
 isl_aux_op_to_name
 # Func Hash:
@@ -329887,7 +329887,7 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
@@ -329895,7 +329895,7 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
@@ -329903,25 +329903,25 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
+2
 0
 0
 0
@@ -329929,7 +329929,7 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
@@ -329945,38 +329945,38 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
+2
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
-1
+2
 0
 0
 0
@@ -330001,14 +330001,14 @@ isl_device_init
 0
 0
 0
-1
+2
 0
 0
 0
 0
 0
 0
-1
+2
 0
 0
 0
@@ -330081,7 +330081,7 @@ isl_format_for_pipe_format
 # Num Counters:
 1
 # Counter Values:
-631
+1262
 
 isl_format_get_aux_map_encoding
 # Func Hash:
@@ -330198,7 +330198,7 @@ isl_format_has_sint_channel
 # Num Counters:
 1
 # Counter Values:
-516
+1032
 
 isl_format_has_snorm_channel
 # Func Hash:
@@ -330214,7 +330214,7 @@ isl_format_has_uint_channel
 # Num Counters:
 1
 # Counter Values:
-536
+1072
 
 isl_format_is_valid
 # Func Hash:
@@ -330261,7 +330261,7 @@ isl_format_rgbx_to_rgba
 # Num Counters:
 11
 # Counter Values:
-6
+12
 0
 0
 0
@@ -330271,7 +330271,7 @@ isl_format_rgbx_to_rgba
 0
 0
 0
-6
+12
 
 isl_format_srgb_to_linear
 # Func Hash:
@@ -330322,9 +330322,9 @@ isl_format_supports_alpha_blending
 # Num Counters:
 3
 # Counter Values:
-148
-148
-148
+296
+296
+296
 
 isl_format_supports_ccs_d
 # Func Hash:
@@ -330359,10 +330359,10 @@ isl_format_supports_filtering
 # Num Counters:
 4
 # Counter Values:
-356
-356
-188
-168
+712
+712
+376
+336
 
 isl_format_supports_multisampling
 # Func Hash:
@@ -330372,11 +330372,11 @@ isl_format_supports_multisampling
 # Counter Values:
 0
 0
-88
+176
 0
 0
 0
-88
+176
 
 isl_format_supports_rendering
 # Func Hash:
@@ -330384,9 +330384,9 @@ isl_format_supports_rendering
 # Num Counters:
 3
 # Counter Values:
-192
-192
-192
+384
+384
+384
 
 isl_format_supports_sampling
 # Func Hash:
@@ -330398,11 +330398,11 @@ isl_format_supports_sampling
 0
 0
 0
-576
-576
-576
-576
-576
+1152
+1152
+1152
+1152
+1152
 0
 0
 
@@ -330412,9 +330412,9 @@ isl_format_supports_typed_writes
 # Num Counters:
 3
 # Counter Values:
-40
-40
-40
+80
+80
+80
 
 isl_format_supports_vertex_fetch
 # Func Hash:
@@ -330422,10 +330422,10 @@ isl_format_supports_vertex_fetch
 # Num Counters:
 4
 # Counter Values:
-40
-40
+80
+80
 0
-40
+80
 
 isl_formats_are_ccs_e_compatible
 # Func Hash:
@@ -331583,7 +331583,7 @@ isl_has_matching_typed_storage_image_format
 # Num Counters:
 3
 # Counter Values:
-40
+80
 0
 0
 
@@ -333415,20 +333415,20 @@ loader_get_driver_for_fd
 16
 # Counter Values:
 0
-108
-1
-1
+216
 2
-1
+2
+4
+2
 0
-3
+6
 0
-1
-1
-1
+2
+2
+2
 0
 0
-1
+2
 0
 # Num Value Kinds:
 1
@@ -333438,7 +333438,7 @@ loader_get_driver_for_fd
 2
 0
 1
-../src/loader/loader.c:default_logger:1
+../src/loader/loader.c:default_logger:2
 
 loader_get_pci_id_for_fd
 # Func Hash:
@@ -333448,10 +333448,10 @@ loader_get_pci_id_for_fd
 # Counter Values:
 0
 0
-2
+4
 0
 0
-2
+4
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -340386,36 +340386,17 @@ main
 0
 0
 0
-8
-2
-2
+12
+3
+3
 0
 0
 0
 0
 0
-2
+3
 0
-2
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-2
-0
-2
-2
-2
+3
 0
 0
 0
@@ -340428,7 +340409,13 @@ main
 0
 0
 0
-2
+0
+0
+3
+0
+3
+3
+3
 0
 0
 0
@@ -340439,7 +340426,20 @@ main
 0
 0
 0
-2
+0
+0
+3
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+3
 0
 0
 
@@ -353452,9 +353452,9 @@ noop_screen_create
 # Num Counters:
 6
 # Counter Values:
-1
+2
 0
-1
+2
 0
 0
 0
@@ -353485,7 +353485,7 @@ os_dupfd_cloexec
 # Num Counters:
 6
 # Counter Values:
-3
+6
 0
 0
 0
@@ -353527,7 +353527,7 @@ os_get_option
 # Num Counters:
 1
 # Counter Values:
-10
+20
 
 os_get_page_size
 # Func Hash:
@@ -353598,22 +353598,22 @@ os_read_file
 17
 # Counter Values:
 0
+16
+0
+8
 8
 0
-4
-4
+0
+8
+8
+0
+8
 0
 0
-4
-4
+8
+8
 0
-4
-0
-0
-4
-4
-0
-4
+8
 
 os_same_file_description
 # Func Hash:
@@ -353685,12 +353685,12 @@ parse_debug_string
 8
 # Counter Values:
 0
-1
+2
 0
 0
 0
 0
-1
+2
 0
 
 pb_cache_add_buffer
@@ -353860,10 +353860,10 @@ pb_slabs_init
 # Num Counters:
 4
 # Counter Values:
-78
-3
-3
-3
+156
+6
+6
+6
 
 pb_slabs_reclaim
 # Func Hash:
@@ -353971,7 +353971,7 @@ pipe_loader_config_options
 # Num Counters:
 2
 # Counter Values:
-1
+2
 0
 
 pipe_loader_create_screen
@@ -353980,7 +353980,7 @@ pipe_loader_create_screen
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 pipe_loader_create_screen_vk
 # Func Hash:
@@ -353988,9 +353988,9 @@ pipe_loader_create_screen_vk
 # Num Counters:
 3
 # Counter Values:
-1
-1
-1
+2
+2
+2
 # Num Value Kinds:
 2
 # ValueKind = IPVK_IndirectCallTarget:
@@ -353998,15 +353998,15 @@ pipe_loader_create_screen_vk
 # NumValueSites:
 2
 1
-../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_get_driconf:1
+../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_get_driconf:2
 1
-../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_create_screen:1
+../src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c:pipe_loader_drm_create_screen:2
 # ValueKind = IPVK_MemOPSize:
 1
 # NumValueSites:
 1
 1
-513:1
+513:2
 
 pipe_loader_drm_get_driconf_by_name
 # Func Hash:
@@ -354032,9 +354032,9 @@ pipe_loader_drm_probe_fd
 # Num Counters:
 4
 # Counter Values:
-1
-1
-1
+2
+2
+2
 0
 
 pipe_loader_get_driinfo_xml
@@ -354817,7 +354817,7 @@ ra_alloc_contig_reg_class
 # Num Counters:
 1
 # Counter Values:
-32
+64
 
 ra_alloc_interference_graph
 # Func Hash:
@@ -354833,7 +354833,7 @@ ra_alloc_reg_class
 # Num Counters:
 1
 # Counter Values:
-32
+64
 
 ra_alloc_reg_set
 # Func Hash:
@@ -354841,11 +354841,11 @@ ra_alloc_reg_set
 # Num Counters:
 8
 # Counter Values:
-240
+480
 0
 0
 0
-2
+4
 0
 0
 0
@@ -354921,7 +354921,7 @@ ra_class_add_reg
 # Num Counters:
 1
 # Counter Values:
-3600
+7200
 
 ra_get_best_spill_node
 # Func Hash:
@@ -354965,7 +354965,7 @@ ra_set_allocate_round_robin
 # Num Counters:
 1
 # Counter Values:
-2
+4
 
 ra_set_finalize
 # Func Hash:
@@ -354975,37 +354975,37 @@ ra_set_finalize
 # Counter Values:
 0
 0
-58750
+117500
 0
 0
 0
 0
-4350
-4350
-4350
-510
+8700
+8700
+8700
+1020
 0
 0
-2
-2
-512
+4
+4
+1024
 0
 0
-2
-510
-510
-2
-32
-240
-32
+4
+1020
+1020
+4
+64
+480
+64
 0
-240
+480
 0
-32
+64
 0
-2
-32
-3840
+4
+64
+7680
 0
 0
 0
@@ -355052,8 +355052,8 @@ ralloc_array_size
 # Num Counters:
 2
 # Counter Values:
-34
-34
+68
+68
 
 ralloc_asprintf
 # Func Hash:
@@ -355061,7 +355061,7 @@ ralloc_asprintf
 # Num Counters:
 1
 # Counter Values:
-2
+4
 
 ralloc_asprintf_append
 # Func Hash:
@@ -355069,8 +355069,8 @@ ralloc_asprintf_append
 # Num Counters:
 2
 # Counter Values:
-55
-55
+110
+110
 
 ralloc_asprintf_rewrite_tail
 # Func Hash:
@@ -355086,7 +355086,7 @@ ralloc_context
 # Num Counters:
 1
 # Counter Values:
-274
+548
 
 ralloc_free
 # Func Hash:
@@ -355094,10 +355094,10 @@ ralloc_free
 # Num Counters:
 6
 # Counter Values:
-860
-514
-240
-240
+1720
+1028
+480
+480
 0
 0
 
@@ -355125,11 +355125,11 @@ ralloc_size
 # Num Counters:
 5
 # Counter Values:
-962
-684
+1924
+1368
 0
-361
-278
+722
+556
 
 ralloc_steal
 # Func Hash:
@@ -355161,7 +355161,7 @@ ralloc_strdup
 # Num Counters:
 2
 # Counter Values:
-311
+622
 0
 # Num Value Kinds:
 1
@@ -355170,17 +355170,17 @@ ralloc_strdup
 # NumValueSites:
 1
 11
-9:128
-7:54
-17:32
-5:29
-6:22
-8:21
-4:14
-16:6
-3:3
-33:1
-0:1
+9:256
+7:108
+17:64
+5:58
+6:44
+8:42
+4:28
+16:12
+3:6
+0:2
+33:2
 
 ralloc_strndup
 # Func Hash:
@@ -355204,8 +355204,8 @@ ralloc_vasprintf
 # Num Counters:
 2
 # Counter Values:
-2
-2
+4
+4
 
 ralloc_vasprintf_append
 # Func Hash:
@@ -355222,7 +355222,7 @@ ralloc_vasprintf_rewrite_tail
 # Num Counters:
 3
 # Counter Values:
-55
+110
 0
 0
 
@@ -355843,9 +355843,9 @@ rbug_screen_create
 # Num Counters:
 19
 # Counter Values:
-1
+2
 0
-1
+2
 0
 0
 0
@@ -356305,9 +356305,9 @@ reralloc_array_size
 # Num Counters:
 3
 # Counter Values:
-32
-30
-2
+64
+60
+4
 
 reralloc_size
 # Func Hash:
@@ -356395,8 +356395,8 @@ rzalloc_array_size
 # Num Counters:
 3
 # Counter Values:
-284
-284
+568
+568
 0
 # Num Value Kinds:
 1
@@ -356405,12 +356405,12 @@ rzalloc_array_size
 # NumValueSites:
 1
 6
-16:272
-129:4
-513:3
-33:2
-65:2
-257:1
+16:544
+129:8
+513:6
+33:4
+65:4
+257:2
 
 rzalloc_size
 # Func Hash:
@@ -356418,7 +356418,7 @@ rzalloc_size
 # Num Counters:
 2
 # Counter Values:
-52
+104
 0
 # Num Value Kinds:
 1
@@ -356427,11 +356427,11 @@ rzalloc_size
 # NumValueSites:
 1
 5
-33:32
-129:15
-513:2
-32:2
-257:1
+33:64
+129:30
+32:4
+513:4
+257:2
 
 s_rand_xorshift128plus
 # Func Hash:
@@ -356439,7 +356439,7 @@ s_rand_xorshift128plus
 # Num Counters:
 5
 # Counter Values:
-1
+2
 0
 0
 0
@@ -365717,7 +365717,7 @@ slab_create_parent
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 slab_destroy_child
 # Func Hash:
@@ -395469,7 +395469,7 @@ st_gl_api_create
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 st_gl_texture_dims_to_pipe_dims
 # Func Hash:
@@ -395592,191 +395592,191 @@ st_init_extensions
 0
 0
 0
-420
-4
-256
-4
-4
-4
-68
+840
+8
+512
+8
+8
+8
+136
 0
-256
-0
-0
-0
-64
-316
+512
 0
 0
 0
-0
-12
-12
-0
-64
-0
-0
-0
-64
-4
-0
-4
-4
-0
-4
-4
+128
+632
 0
 0
 0
 0
+24
+24
+0
+128
 0
 0
-4
-4
-4
+0
+128
+8
+0
+8
+8
+0
+8
+8
 0
 0
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-0
-4
-0
-4
 0
 0
-4
-4
-4
-4
-0
-4
 0
 0
-4
-0
-4
-0
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-0
-4
-4
-4
-0
-1
-0
-4
-4
-4
-4
-4
-0
-4
-0
-4
-4
-4
-0
-4
-4
-4
-4
+8
+8
+8
 0
 0
-4
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
 0
-4
-4
-4
-4
-4
+8
 0
-1
-4
+8
 0
 0
-4
+8
+8
+8
+8
 0
-4
-4
-4
-4
+8
 0
-4
 0
-4
-4
-4
-4
-4
+8
 0
-4
+8
 0
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-1
-4
-1
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
 0
-4
-1
+8
+8
+8
 0
-4
+2
 0
-4
-4
-4
+8
+8
+8
+8
+8
+0
+8
+0
+8
+8
+8
+0
+8
+8
+8
+8
+0
+0
+8
+0
+8
+8
+8
+8
+8
+0
+2
+8
+0
+0
+8
+0
+8
+8
+8
+8
+0
+8
+0
+8
+8
+8
+8
+8
+0
+8
+0
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+2
+8
+2
+0
+8
+2
+0
+8
+0
+8
+8
+8
 0
 # Num Value Kinds:
 1
@@ -395785,132 +395785,132 @@ st_init_extensions
 # NumValueSites:
 70
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:420
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:840
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 0
 0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
 1
-iris_is_format_supported:4
+iris_is_format_supported:8
 1
-iris_is_format_supported:256
+iris_is_format_supported:512
 1
-iris_is_format_supported:4
+iris_is_format_supported:8
 1
-iris_is_format_supported:4
+iris_is_format_supported:8
 1
-iris_is_format_supported:4
+iris_is_format_supported:8
 1
-iris_is_format_supported:68
-0
-0
-0
-0
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:1
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
-1
-iris_is_format_supported:4
-1
-iris_is_format_supported:4
-1
-iris_is_format_supported:4
-1
-iris_is_format_supported:4
-1
-iris_is_format_supported:4
-1
-iris_is_format_supported:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-0
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-0
-0
+iris_is_format_supported:136
 0
 0
 0
 0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:2
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
+1
+iris_is_format_supported:8
+1
+iris_is_format_supported:8
+1
+iris_is_format_supported:8
+1
+iris_is_format_supported:8
+1
+iris_is_format_supported:8
+1
+iris_is_format_supported:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+0
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compute_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+0
+0
+0
+0
+0
+0
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 
 st_init_flush_functions
 # Func Hash:
@@ -395934,93 +395934,93 @@ st_init_limits
 # Num Counters:
 87
 # Counter Values:
-4
-4
 8
-24
-24
-4
-24
+8
+16
+48
+48
+8
+48
 0
-24
-0
-0
-24
-4
+48
 0
 0
-24
-24
-24
-0
+48
 8
 0
-4
-4
-4
-4
-4
-24
+0
+48
+48
+48
+0
+16
+0
+8
+8
+8
+8
+8
+48
 0
 0
 0
 0
-4
+8
 0
-4
-4
-4
-4
-4
+8
+8
+8
+8
+8
 0
-4
+8
 0
-4
-4
+8
+8
 0
-4
-4
-4
-4
-4
-4
-4
+8
+8
+8
+8
+8
+8
+8
 0
-4
-0
-0
-4
+8
 0
 0
-0
-4
-4
-4
+8
 0
 0
 0
-0
-0
-4
-0
-0
-0
-0
-0
-0
-24
+8
+8
+8
 0
 0
 0
 0
 0
+8
 0
-4
 0
 0
-4
-4
-4
+0
+0
+0
+48
+0
+0
+0
+0
+0
+0
+8
+0
+0
+8
+8
+8
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -396028,249 +396028,249 @@ st_init_limits
 # NumValueSites:
 125
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_compiler_options:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_compiler_options:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:12
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:12
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-0
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-0
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-0
-0
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:24
 1
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_param:24
 1
 ../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:24
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
-1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
+0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
+0
+0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:16
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:16
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_disk_shader_cache:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_shader_param:48
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+0
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 1
-../src/gallium/drivers/iris/iris_screen.c:iris_get_param:4
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_disk_shader_cache:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_paramf:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
+1
+../src/gallium/drivers/iris/iris_screen.c:iris_get_param:8
 
 st_init_pbo_helpers
 # Func Hash:
@@ -402597,7 +402597,7 @@ trace_dump_trace_begin
 # Num Counters:
 13
 # Counter Values:
-1
+2
 0
 0
 0
@@ -402720,8 +402720,8 @@ trace_screen_create
 # Num Counters:
 27
 # Counter Values:
-1
-1
+2
+2
 0
 0
 0
@@ -403121,14 +403121,14 @@ u_driconf_fill_st_options
 # Num Counters:
 12
 # Counter Values:
-4
-128
-128
-9
+8
+256
+256
+18
 0
-41
-5
-1
+82
+10
+2
 0
 0
 0
@@ -403363,9 +403363,82 @@ u_pipe_screen_get_param_defaults
 0
 0
 0
-4
-4
-4
+8
+8
+8
+16
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+8
+0
+0
+8
+8
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+2
+0
+0
+8
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+8
+8
+16
+0
+0
+0
 8
 0
 0
@@ -403387,116 +403460,6 @@ u_pipe_screen_get_param_defaults
 0
 0
 0
-0
-0
-0
-0
-0
-0
-0
-0
-4
-0
-0
-4
-4
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-1
-0
-0
-4
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-4
-4
-8
-0
-0
-0
-4
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-4
-0
-0
-0
-0
-0
-0
-0
-8
-4
-0
-0
-0
-0
-0
-0
-8
-0
-4
-4
-4
-0
-0
-0
-0
-0
-0
-0
-0
-4
-0
-0
-0
-0
-0
-0
-4
 8
 0
 0
@@ -403504,47 +403467,20 @@ u_pipe_screen_get_param_defaults
 0
 0
 0
-4
 0
-0
-0
-0
-0
-4
-4
-4
-0
-0
-0
-0
-0
-4
-0
-0
-0
-4
-0
-0
-4
+16
 8
-4
+0
+0
+0
+0
+0
+0
+16
+0
 8
-4
-0
-4
-0
-0
-0
-0
-0
-0
-4
-0
-4
-0
-0
-4
-0
+8
+8
 0
 0
 0
@@ -403554,62 +403490,126 @@ u_pipe_screen_get_param_defaults
 0
 0
 8
-8
-4
-0
-4
-0
-4
-0
-4
-4
-0
-4
-12
 0
 0
 0
 0
 0
-0
-4
-302
-32
-0
-4
-0
-0
-0
-0
-0
-4
-4
-0
-0
-0
-4
-0
-0
-0
-0
-4
-4
-0
-0
-0
-4
-4
-0
-4
-0
-0
-0
-0
-4
 0
 8
-4
-1
+16
+0
+0
+0
+0
+0
+0
+8
+0
+0
+0
+0
+0
+8
+8
+8
+0
+0
+0
+0
+0
+8
+0
+0
+0
+8
+0
+0
+8
+16
+8
+16
+8
+0
+8
+0
+0
+0
+0
+0
+0
+8
+0
+8
+0
+0
+8
+0
+0
+0
+0
+0
+0
+0
+0
+0
+16
+16
+8
+0
+8
+0
+8
+0
+8
+8
+0
+8
+24
+0
+0
+0
+0
+0
+0
+8
+604
+64
+0
+8
+0
+0
+0
+0
+0
+8
+8
+0
+0
+0
+8
+0
+0
+0
+0
+8
+8
+0
+0
+0
+8
+8
+0
+8
+0
+0
+0
+0
+8
+0
+16
+8
+2
 0
 0
 
@@ -403619,7 +403619,7 @@ u_printf_length
 # Num Counters:
 1
 # Counter Values:
-57
+114
 
 u_sampler_view_default_template
 # Func Hash:
@@ -403813,7 +403813,7 @@ u_transfer_helper_create
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 u_transfer_helper_deinterleave_transfer_map
 # Func Hash:
@@ -406448,7 +406448,7 @@ util_cpu_detect
 # Num Counters:
 1
 # Counter Values:
-12
+24
 
 util_draw_indirect
 # Func Hash:
@@ -411219,7 +411219,7 @@ util_format_description
 # Num Counters:
 2
 # Counter Values:
-967
+1934
 0
 
 util_format_dxt1_rgb_fetch_rgba
@@ -413184,9 +413184,9 @@ util_format_is_alpha
 # Num Counters:
 6
 # Counter Values:
-164
-164
-164
+328
+328
+328
 0
 0
 0
@@ -413235,10 +413235,10 @@ util_format_is_luminance_alpha
 # Num Counters:
 6
 # Counter Values:
-164
-164
-164
-114
+328
+328
+328
+228
 0
 0
 
@@ -424509,11 +424509,11 @@ util_get_process_name
 # Num Counters:
 8
 # Counter Values:
-5
-5
-5
+10
+10
+10
 0
-1
+2
 0
 0
 0
@@ -425523,18 +425523,18 @@ util_queue_init
 # Num Counters:
 12
 # Counter Values:
-10
-2
-2
-2
+20
+4
+4
+4
 0
 0
+4
+0
+0
+4
+0
 2
-0
-0
-2
-0
-1
 
 util_resource_copy_region
 # Func Hash:
@@ -426137,16 +426137,16 @@ util_vma_heap_alloc
 15
 # Counter Values:
 0
-1
+2
 0
 0
 0
-1
+2
 0
-1
+2
 0
 0
-1
+2
 0
 0
 0
@@ -426175,7 +426175,7 @@ util_vma_heap_free
 0
 0
 0
-6
+12
 0
 
 util_vma_heap_init
@@ -426184,7 +426184,7 @@ util_vma_heap_init
 # Num Counters:
 1
 # Counter Values:
-6
+12
 
 vbo_copy_vertices
 # Func Hash:
@@ -431648,33 +431648,33 @@ wl_argument_from_va_list
 28
 # Counter Values:
 0
-8
-0
-4
-0
 12
 0
-12
+6
 0
-24
-24
+18
 0
+18
 0
-4
-4
-0
-0
-0
-4
+36
+36
 0
 0
-8
-4
+6
+6
 0
 0
+0
+6
 0
 0
 12
+6
+0
+0
+0
+0
+18
 
 wl_array_add
 # Func Hash:
@@ -431682,12 +431682,12 @@ wl_array_add
 # Num Counters:
 6
 # Counter Values:
-4
-12
-4
 6
-2
-2
+18
+6
+9
+3
+3
 
 wl_array_copy
 # Func Hash:
@@ -431730,19 +431730,19 @@ wl_closure_destroy
 14
 # Counter Values:
 0
-190
+285
 0
-90
+135
 0
-12
+18
 0
-2
-292
-292
+3
+438
+438
 0
 0
-112
-112
+168
+168
 
 wl_closure_dispatch
 # Func Hash:
@@ -431777,45 +431777,45 @@ wl_closure_invoke
 41
 # Counter Values:
 0
-182
+273
 0
-86
-0
-0
-0
-0
-182
-0
-86
+129
 0
 0
 0
 0
-182
+273
 0
-86
-0
-0
-0
-2
-2
-268
-270
-268
-268
-268
-0
-0
-182
-0
-86
+129
 0
 0
 0
 0
+273
+0
+129
 0
 0
-100
+0
+3
+3
+402
+405
+402
+402
+402
+0
+0
+273
+0
+129
+0
+0
+0
+0
+0
+0
+150
 0
 
 wl_closure_lookup_objects
@@ -431825,30 +431825,30 @@ wl_closure_lookup_objects
 27
 # Counter Values:
 0
-182
+273
 0
-86
-0
-0
-0
-0
-182
-0
-86
+129
 0
 0
 0
 0
-2
-270
-268
-268
-268
+273
+0
+129
 0
 0
 0
 0
-100
+3
+405
+402
+402
+402
+0
+0
+0
+0
+150
 0
 0
 
@@ -431859,36 +431859,36 @@ wl_closure_marshal
 31
 # Counter Values:
 0
-8
-0
-4
-0
 12
 0
+6
 0
-8
-0
-0
-0
-0
-24
-24
-4
-0
-12
-0
-0
-12
-0
-12
-12
-4
+18
 0
 0
 12
 0
 0
-12
+0
+0
+36
+36
+6
+0
+18
+0
+0
+18
+0
+18
+18
+6
+0
+0
+18
+0
+0
+18
 
 wl_closure_print
 # Func Hash:
@@ -431949,9 +431949,9 @@ wl_closure_send
 # Num Counters:
 4
 # Counter Values:
-12
-12
-12
+18
+18
+18
 0
 
 wl_closure_vmarshal
@@ -431984,7 +431984,7 @@ wl_connection_copy
 # Num Counters:
 2
 # Counter Values:
-100
+150
 0
 # Num Value Kinds:
 1
@@ -431993,7 +431993,7 @@ wl_connection_copy
 # NumValueSites:
 3
 1
-8:100
+8:150
 0
 0
 
@@ -432003,8 +432003,8 @@ wl_connection_create
 # Num Counters:
 2
 # Counter Values:
-2
-2
+3
+3
 
 wl_connection_demarshal
 # Func Hash:
@@ -432013,32 +432013,30 @@ wl_connection_demarshal
 38
 # Counter Values:
 0
-182
+273
 0
-86
-0
-0
-0
-2
-0
-268
-0
-0
-182
+129
 0
 0
 0
+3
+0
+402
 0
 0
-86
+273
 0
 0
 0
 0
 0
-100
+129
 0
 0
+0
+0
+0
+150
 0
 0
 0
@@ -432046,8 +432044,10 @@ wl_connection_demarshal
 0
 0
 0
-268
-86
+0
+0
+402
+129
 0
 0
 # Num Value Kinds:
@@ -432057,11 +432057,11 @@ wl_connection_demarshal
 # NumValueSites:
 5
 5
-33:72
-9:14
-17:8
-32:4
-64:2
+33:108
+9:21
+17:12
+32:6
+64:3
 0
 0
 0
@@ -432073,7 +432073,7 @@ wl_connection_destroy
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 wl_connection_flush
 # Func Hash:
@@ -432082,15 +432082,15 @@ wl_connection_flush
 11
 # Counter Values:
 0
-11
-6
-6
+14
+9
+9
 0
 0
 0
 0
-6
-6
+9
+9
 0
 # Num Value Kinds:
 1
@@ -432144,13 +432144,13 @@ wl_connection_read
 0
 0
 0
-6
-6
+9
+9
 0
 0
-4
 6
-2
+9
+3
 0
 0
 0
@@ -432162,9 +432162,9 @@ wl_connection_write
 4
 # Counter Values:
 0
-12
+18
 0
-12
+18
 
 wl_display_cancel_read
 # Func Hash:
@@ -432182,23 +432182,23 @@ wl_display_connect
 18
 # Counter Values:
 0
-2
+3
 0
-2
-0
-0
-2
-0
-2
+3
 0
 0
+3
+0
+3
 0
 0
 0
 0
 0
 0
-2
+0
+0
+3
 
 wl_display_connect_to_fd
 # Func Hash:
@@ -432207,7 +432207,7 @@ wl_display_connect_to_fd
 6
 # Counter Values:
 0
-2
+3
 0
 0
 0
@@ -432228,7 +432228,7 @@ wl_display_disconnect
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 wl_display_dispatch
 # Func Hash:
@@ -432255,10 +432255,10 @@ wl_display_dispatch_queue
 0
 0
 0
-6
+9
 0
 0
-6
+9
 0
 0
 
@@ -432268,11 +432268,11 @@ wl_display_dispatch_queue_pending
 # Num Counters:
 6
 # Counter Values:
-6
-6
-94
-94
-11
+9
+9
+141
+141
+14
 0
 
 wl_display_flush
@@ -432283,7 +432283,7 @@ wl_display_flush
 # Counter Values:
 0
 0
-11
+14
 0
 0
 0
@@ -432303,7 +432303,7 @@ wl_display_get_fd
 # Num Counters:
 1
 # Counter Values:
-2
+3
 
 wl_display_get_protocol_error
 # Func Hash:
@@ -432329,7 +432329,7 @@ wl_display_prepare_read_queue
 # Num Counters:
 2
 # Counter Values:
-6
+9
 0
 
 wl_display_read_events
@@ -432340,27 +432340,15 @@ wl_display_read_events
 # Counter Values:
 0
 0
-268
-100
-100
+402
+150
+150
 0
 0
-268
+402
 0
 0
-100
-0
-0
-0
-0
-0
-0
-0
-0
-0
-100
-0
-6
+150
 0
 0
 0
@@ -432370,8 +432358,20 @@ wl_display_read_events
 0
 0
 0
-94
-6
+150
+0
+9
+0
+0
+0
+0
+0
+0
+0
+0
+0
+141
+9
 0
 0
 0
@@ -432382,7 +432382,7 @@ wl_display_roundtrip
 # Num Counters:
 1
 # Counter Values:
-6
+9
 
 wl_display_roundtrip_queue
 # Func Hash:
@@ -432390,15 +432390,15 @@ wl_display_roundtrip_queue
 # Num Counters:
 9
 # Counter Values:
-6
-6
-6
-6
+9
+9
+9
+9
 0
 0
 0
-6
-6
+9
+9
 
 wl_event_loop_add_destroy_listener
 # Func Hash:
@@ -432414,8 +432414,8 @@ wl_event_loop_add_fd
 # Num Counters:
 2
 # Counter Values:
-4
-4
+6
+6
 
 wl_event_loop_add_idle
 # Func Hash:
@@ -432432,8 +432432,8 @@ wl_event_loop_add_signal
 # Num Counters:
 2
 # Counter Values:
-6
-6
+9
+9
 
 wl_event_loop_add_timer
 # Func Hash:
@@ -432458,8 +432458,8 @@ wl_event_loop_create
 # Num Counters:
 3
 # Counter Values:
-2
-2
+3
+3
 0
 
 wl_event_loop_destroy
@@ -432470,7 +432470,7 @@ wl_event_loop_destroy
 # Counter Values:
 0
 0
-1
+2
 0
 # Num Value Kinds:
 1
@@ -432490,7 +432490,7 @@ wl_event_loop_dispatch
 0
 0
 0
-7
+8
 5
 5
 0
@@ -432501,8 +432501,8 @@ wl_event_loop_dispatch
 0
 0
 0
-7
-7
+8
+8
 5
 0
 0
@@ -432519,7 +432519,7 @@ wl_event_loop_dispatch
 0
 0
 1
-../src/event-loop.c:wl_event_source_fd_dispatch:7
+../src/event-loop.c:wl_event_source_fd_dispatch:8
 0
 1
 ../src/event-loop.c:wl_event_source_fd_dispatch:10
@@ -432572,7 +432572,7 @@ wl_event_source_check
 # Num Counters:
 1
 # Counter Values:
-4
+6
 
 wl_event_source_fd_update
 # Func Hash:
@@ -432632,7 +432632,7 @@ wl_list_empty
 # Num Counters:
 1
 # Counter Values:
-144
+207
 
 wl_list_init
 # Func Hash:
@@ -432640,7 +432640,7 @@ wl_list_init
 # Num Counters:
 1
 # Counter Values:
-34
+49
 
 wl_list_insert
 # Func Hash:
@@ -432648,7 +432648,7 @@ wl_list_insert
 # Num Counters:
 1
 # Counter Values:
-106
+159
 
 wl_list_insert_list
 # Func Hash:
@@ -432674,7 +432674,7 @@ wl_list_remove
 # Num Counters:
 1
 # Counter Values:
-100
+150
 
 wl_log
 # Func Hash:
@@ -432705,14 +432705,14 @@ wl_map_for_each
 # Num Counters:
 8
 # Counter Values:
-6
-6
-4
+12
+12
+8
 0
 0
 0
-1
-1
+2
+2
 # Num Value Kinds:
 1
 # ValueKind = IPVK_IndirectCallTarget:
@@ -432720,7 +432720,7 @@ wl_map_for_each
 # NumValueSites:
 2
 1
-../src/wayland-client.c:free_zombies:4
+../src/wayland-client.c:free_zombies:8
 0
 
 wl_map_init
@@ -432729,7 +432729,7 @@ wl_map_init
 # Num Counters:
 1
 # Counter Values:
-2
+3
 
 wl_map_insert_at
 # Func Hash:
@@ -432749,11 +432749,11 @@ wl_map_insert_new
 # Num Counters:
 5
 # Counter Values:
-4
-12
-12
-16
-16
+6
+18
+18
+24
+24
 
 wl_map_lookup
 # Func Hash:
@@ -432761,11 +432761,11 @@ wl_map_lookup
 # Num Counters:
 5
 # Counter Values:
-106
-106
-106
-106
-106
+159
+159
+159
+159
+159
 
 wl_map_lookup_flags
 # Func Hash:
@@ -432773,11 +432773,11 @@ wl_map_lookup_flags
 # Num Counters:
 5
 # Counter Values:
-106
-106
-106
-106
-106
+159
+159
+159
+159
+159
 
 wl_map_release
 # Func Hash:
@@ -432785,7 +432785,7 @@ wl_map_release
 # Num Counters:
 1
 # Counter Values:
-1
+2
 
 wl_map_remove
 # Func Hash:
@@ -432793,9 +432793,9 @@ wl_map_remove
 # Num Counters:
 4
 # Counter Values:
-6
+9
 0
-6
+9
 0
 
 wl_map_reserve_new
@@ -432837,8 +432837,8 @@ wl_object_is_zombie
 # Num Counters:
 2
 # Counter Values:
-106
-106
+159
+159
 
 wl_os_accept_cloexec
 # Func Hash:
@@ -432856,7 +432856,7 @@ wl_os_dupfd_cloexec
 # Num Counters:
 3
 # Counter Values:
-4
+6
 0
 0
 
@@ -432866,7 +432866,7 @@ wl_os_epoll_create_cloexec
 # Num Counters:
 3
 # Counter Values:
-2
+3
 0
 0
 
@@ -432895,7 +432895,7 @@ wl_os_recvmsg_cloexec
 # Counter Values:
 0
 0
-6
+9
 0
 0
 0
@@ -432914,7 +432914,7 @@ wl_os_socket_cloexec
 # Num Counters:
 3
 # Counter Values:
-2
+3
 0
 0
 
@@ -432946,8 +432946,8 @@ wl_proxy_add_listener
 # Counter Values:
 0
 0
-10
-10
+15
+15
 
 wl_proxy_create
 # Func Hash:
@@ -432963,8 +432963,8 @@ wl_proxy_create_wrapper
 # Num Counters:
 2
 # Counter Values:
-6
-6
+9
+9
 
 wl_proxy_destroy
 # Func Hash:
@@ -433020,7 +433020,7 @@ wl_proxy_get_version
 # Num Counters:
 1
 # Counter Values:
-2
+3
 
 wl_proxy_marshal
 # Func Hash:
@@ -433061,13 +433061,13 @@ wl_proxy_marshal_array_flags
 15
 # Counter Values:
 0
-24
-12
-12
-12
-12
+36
+18
+18
+18
+18
 0
-12
+18
 0
 0
 0
@@ -433098,7 +433098,7 @@ wl_proxy_marshal_flags
 # Num Counters:
 1
 # Counter Values:
-12
+18
 
 wl_proxy_set_queue
 # Func Hash:
@@ -433132,7 +433132,7 @@ wl_proxy_wrapper_destroy
 # Num Counters:
 3
 # Counter Values:
-6
+9
 0
 0
 
