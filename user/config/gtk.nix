@@ -6,10 +6,9 @@
 }: let
   nix-colors-lib = nix-colors.lib {inherit pkgs;};
   inherit (nix-colors-lib) gtkThemeFromScheme;
+  isDark = config.colorscheme.kind == "dark";
 in {
-  gtk = let
-    isDark = config.colorscheme.kind == "dark";
-  in {
+  gtk = {
     enable = true;
     theme.name = "Adwaita";
     iconTheme.package = pkgs.gnome.adwaita-icon-theme;
@@ -30,4 +29,8 @@ in {
     @define-color accent_bg_color @purple_3;
     @define-color accent_color #{if($variant == 'dark', "@purple_2", "@purple_4")};
   '';
+  dconf.settings."org/gnome/desktop/interface".color-scheme =
+    if isDark
+    then "prefer-dark"
+    else "prefer-light";
 }
