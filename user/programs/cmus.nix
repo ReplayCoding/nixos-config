@@ -4,6 +4,6 @@
     set repeat=true
     set repeat_current=true
     set shuffle=true
-    set replaygain=track-preferred
+    set replaygain=album-preferred
   '';
 }
