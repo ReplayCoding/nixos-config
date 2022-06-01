@@ -27,9 +27,17 @@
   programs = {
     fzf.enable = true;
     lazygit.enable = true;
-    taskwarrior.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     mangohud = {
       enable = true;
       enableSessionWide = true;
@@ -39,14 +47,13 @@
       package =
         pkgs.librewolf.override {forceWayland = true;};
     };
+  };
 
-    direnv.enable = true;
-    direnv.nix-direnv.enable = true;
-
-    exa = {
-      enable = true;
-      enableAliases = true;
-    };
+  services = {
+    mpris-proxy.enable = true;
+    playerctld.enable = true;
+    syncthing.enable = true;
+    easyeffects.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -80,11 +87,4 @@
     wl-clipboard
     xdg-utils
   ];
-
-  services = {
-    mpris-proxy.enable = true;
-    playerctld.enable = true;
-    syncthing.enable = true;
-    easyeffects.enable = true;
-  };
 }
