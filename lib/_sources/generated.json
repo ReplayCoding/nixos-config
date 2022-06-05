@@ -10,12 +10,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ebeaac6d60df0fdc8772f84d43a310eeed877185",
-            "sha256": "sha256-qIFDldc7FiBgmQUNSwrNyDC0XBbNJI9ub9S868lnMno=",
+            "rev": "7576cd572f3ab5f6543a70dcc606e131110dbcd8",
+            "sha256": "sha256-1GXlFKqrkhGCgatgCXXs8SNX4FAdRTm9bZ3sVmcK6KU=",
             "type": "git",
             "url": "https://code.videolan.org/videolan/dav1d"
         },
-        "version": "ebeaac6d60df0fdc8772f84d43a310eeed877185"
+        "version": "7576cd572f3ab5f6543a70dcc606e131110dbcd8"
     },
     "fuzzel": {
         "cargoLocks": null,
@@ -28,12 +28,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "e661458d795e42733df2cb439d951bcde62fde8f",
-            "sha256": "sha256-+eKA72LKfaktW0c3VMJSgjEW+DexrI6K3S4/LE7M8L8=",
+            "rev": "db2ce5a1ab51edc9d4f7920aa9f3abbd90e1b39b",
+            "sha256": "sha256-RhCHQTIgTg3pTpjbwZt4NrnsxEqB4Vab2A58ZM0DztA=",
             "type": "git",
             "url": "https://codeberg.org/dnkl/fuzzel"
         },
-        "version": "e661458d795e42733df2cb439d951bcde62fde8f"
+        "version": "db2ce5a1ab51edc9d4f7920aa9f3abbd90e1b39b"
     },
     "libplacebo": {
         "cargoLocks": null,
@@ -46,12 +46,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "b4867541d4ba4fe7a2243d00a77d0bd348714bd8",
-            "sha256": "sha256-m+4brYk+9Str0hKUik54UaFOrYFcaLF1yq8Bp9Ab388=",
+            "rev": "24c30bf91a3389fd381d5949bcc27319233eea6f",
+            "sha256": "sha256-yb8f0CsOQM0KjiS+Y6QyXXoHQtGSZNxvS2r0ajV0cT4=",
             "type": "git",
             "url": "https://code.videolan.org/videolan/libplacebo/"
         },
-        "version": "b4867541d4ba4fe7a2243d00a77d0bd348714bd8"
+        "version": "24c30bf91a3389fd381d5949bcc27319233eea6f"
     },
     "mpv": {
         "cargoLocks": null,
@@ -66,11 +66,11 @@
             "name": null,
             "owner": "mpv-player",
             "repo": "mpv",
-            "rev": "afe29026edcb3104cd64764f79fe8630e3d37242",
-            "sha256": "sha256-ZoEFecJl6puSRCvMkkIr9XUl9iLFEF8Rh91r3uEHCWo=",
+            "rev": "c4c7b07acfa58166f47136aca8187fb7e175b79e",
+            "sha256": "sha256-fRLAP7Z5IN2aUkmLEbyXK756sSYP6w+NWfZoevCDIeE=",
             "type": "github"
         },
-        "version": "afe29026edcb3104cd64764f79fe8630e3d37242"
+        "version": "c4c7b07acfa58166f47136aca8187fb7e175b79e"
     },
     "spellsitter": {
         "cargoLocks": null,
@@ -85,10 +85,10 @@
             "name": null,
             "owner": "lewis6991",
             "repo": "spellsitter.nvim",
-            "rev": "f84e7a31c516f2a9cb857a02e4b551b009a81afb",
-            "sha256": "sha256-lYyTA9hvxljNy0n3xZCCwC1e+W1mBBwdGDKXiWY1x4E=",
+            "rev": "430a25393abbf482bddf03c224cd5b8eeb27b5e1",
+            "sha256": "sha256-0RvHUhfi/cn8rpGYf08oEhesLxTuMWHjZMlmpfzd17M=",
             "type": "github"
         },
-        "version": "f84e7a31c516f2a9cb857a02e4b551b009a81afb"
+        "version": "430a25393abbf482bddf03c224cd5b8eeb27b5e1"
     }
 }
