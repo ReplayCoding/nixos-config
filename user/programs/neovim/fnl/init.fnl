@@ -29,8 +29,11 @@
               :sources (cmp.config.sources [{:name :nvim_lsp} {:name :luasnip}])
               :experimental {:ghost_text true}}))
 
+
 (fn map [mode buffer lhs rhs]
   (vim.keymap.set mode lhs rhs {:noremap true :silent true : buffer}))
+
+(map :n false :<Leader>ff "<cmd>Telescope find_files<CR>")
 
 (let [servers [:pyright :rnix :rust_analyzer :clangd]
       capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))
@@ -57,6 +60,7 @@
 ((. (require :Comment) :setup))
 ((. (require :fidget) :setup))
 ((. (require :spellsitter) :setup))
+((. (require :project_nvim) :setup))
 
 (set vim.g.tokyonight_style :night)
 (set vim.opt.termguicolors true)

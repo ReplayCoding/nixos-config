@@ -47,6 +47,7 @@
         fidget-nvim
         luasnip
         spellsitter
+        project-nvim
       ];
   };
   xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl {};
