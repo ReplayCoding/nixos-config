@@ -19,6 +19,12 @@ in {
       services.transmission = {
         enable = true;
         group = "mediapiracy";
+        settings = {
+          idle-seeding-limit = 1;
+          idle-seeding-limit-enabled = true;
+          ratio-limit = 0;
+          ratio-limit-enabled = true;
+        };
         openPeerPorts = true;
       };
       system.stateVersion = "22.05";
