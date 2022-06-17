@@ -11,7 +11,3 @@
 [mpv]
   src.git = "https://github.com/mpv-player/mpv"
   fetch.github = "mpv-player/mpv"
-
-[spellsitter]
-  src.git = "https://github.com/lewis6991/spellsitter.nvim"
-  fetch.github = "lewis6991/spellsitter.nvim"

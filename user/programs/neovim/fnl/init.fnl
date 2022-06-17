@@ -5,7 +5,6 @@
 (set vim.opt.tabstop 2)
 
 (set vim.opt.wrap false)
-(set vim.opt.spell true)
 
 (set vim.opt.number true)
 (set vim.opt.cursorline true)
@@ -59,7 +58,6 @@
 ((. (require :lualine) :setup))
 ((. (require :Comment) :setup))
 ((. (require :fidget) :setup))
-((. (require :spellsitter) :setup))
 ((. (require :project_nvim) :setup))
 
 (set vim.g.tokyonight_style :night)

@@ -20,35 +20,24 @@
         rust-analyzer
         clangd
       ];
-    plugins = let
-      sources = flib.sources pkgs;
-      spellsitter = pkgs.vimUtils.buildVimPlugin {
-        # The plugin has a makefile which tries to run tests which try to pull neovim from git
-        prePatch = ''
-          rm Makefile
-        '';
-        inherit (sources.spellsitter) pname src version;
-      };
-    in
-      with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
-        nvim-lspconfig
-        lightspeed-nvim
-        gitsigns-nvim
-        lualine-nvim
-        comment-nvim
-        tokyonight-nvim
-        telescope-nvim
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp_luasnip
-        lspkind-nvim
-        nvim-ts-rainbow
-        fidget-nvim
-        luasnip
-        spellsitter
-        project-nvim
-      ];
+    plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
+      nvim-lspconfig
+      lightspeed-nvim
+      gitsigns-nvim
+      lualine-nvim
+      comment-nvim
+      tokyonight-nvim
+      telescope-nvim
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp_luasnip
+      lspkind-nvim
+      nvim-ts-rainbow
+      fidget-nvim
+      luasnip
+      project-nvim
+    ];
   };
   xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl {};
 }

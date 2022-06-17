@@ -51,15 +51,4 @@
       sha256 = "sha256-fRLAP7Z5IN2aUkmLEbyXK756sSYP6w+NWfZoevCDIeE=";
     };
   };
-  spellsitter = {
-    pname = "spellsitter";
-    version = "430a25393abbf482bddf03c224cd5b8eeb27b5e1";
-    src = fetchFromGitHub {
-      owner = "lewis6991";
-      repo = "spellsitter.nvim";
-      rev = "430a25393abbf482bddf03c224cd5b8eeb27b5e1";
-      fetchSubmodules = false;
-      sha256 = "sha256-0RvHUhfi/cn8rpGYf08oEhesLxTuMWHjZMlmpfzd17M=";
-    };
-  };
 }
