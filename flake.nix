@@ -47,6 +47,11 @@ rec {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fuzzel = {
+      url = "git+https://codeberg.org/dnkl/fuzzel";
+      flake = false;
+    };
   };
 
   outputs = {

@@ -1,7 +1,6 @@
-self: super: let
-  sources = (import ../lib).sources super;
-in {
+self: super: {
   fuzzel = super.fuzzel.overrideAttrs (old: {
-    inherit (sources.fuzzel) src version;
+    src = super.nixosFlakeInputs.fuzzel;
+    version = super.nixosFlakeInputs.fuzzel.rev;
   });
 }

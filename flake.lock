@@ -176,6 +176,22 @@
         "type": "github"
       }
     },
+    "fuzzel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655583267,
+        "narHash": "sha256-LPcCAu49PF/l4pC2urRqUtWFP6y0hX+5obhKv9vb6cc=",
+        "ref": "refs/heads/master",
+        "rev": "4e1c1914417de5e2738923159973fa41b6145436",
+        "revCount": 850,
+        "type": "git",
+        "url": "https://codeberg.org/dnkl/fuzzel"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/dnkl/fuzzel"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -436,6 +452,7 @@
     },
     "root": {
       "inputs": {
+        "fuzzel": "fuzzel",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
