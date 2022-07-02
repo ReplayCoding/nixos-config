@@ -52,6 +52,19 @@ rec {
       url = "git+https://codeberg.org/dnkl/fuzzel";
       flake = false;
     };
+
+    dav1d = {
+      url = "git+https://code.videolan.org/videolan/dav1d";
+      flake = false;
+    };
+    libplacebo = {
+      url = "git+https://code.videolan.org/videolan/libplacebo";
+      flake = false;
+    };
+    mpv = {
+      url = "github:mpv-player/mpv";
+      flake = false;
+    };
   };
 
   outputs = {

@@ -19,7 +19,13 @@
     nixpkgs.lib.composeManyExtensions [
       (self: super: {
         nixosPassthru = fixNixosPassthru nixosPassthru';
+
+        mkOverridesFromFlakeInput = input: {
+          src = inputs."${input}";
+          version = inputs."${input}".rev;
+        };
         nixosFlakeInputs = inputs;
+
         # This will be used to correlate the pgo results with the derivation it comes from
         pkgsToExtractBuildId = [];
       })

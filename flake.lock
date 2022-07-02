@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "dav1d": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655910105,
+        "narHash": "sha256-/27mcXTBosW8YKV146qbaRNbwxLGiDc7vw5dC/81lJU=",
+        "ref": "master",
+        "rev": "233737c9b18e84372701e89bf57098257a30c8e4",
+        "revCount": 2043,
+        "type": "git",
+        "url": "https://code.videolan.org/videolan/dav1d"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.videolan.org/videolan/dav1d"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -247,6 +263,38 @@
         "type": "github"
       }
     },
+    "libplacebo": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656151713,
+        "narHash": "sha256-x1QHiD98ffu8WU2EC0ArLixq53WJl1oevLYIgB3dOBU=",
+        "ref": "master",
+        "rev": "669139cd48424821c3adc57c61d6bc265631e69a",
+        "revCount": 1970,
+        "type": "git",
+        "url": "https://code.videolan.org/videolan/libplacebo"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.videolan.org/videolan/libplacebo"
+      }
+    },
+    "mpv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656684799,
+        "narHash": "sha256-RmyeeEcgSjx0EiivuD/+88qRs8M75hIGbyvg+sYfwAk=",
+        "owner": "mpv-player",
+        "repo": "mpv",
+        "rev": "369168b9be2f00c79fe5f5332b9054e047745de2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mpv-player",
+        "repo": "mpv",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -452,8 +500,11 @@
     },
     "root": {
       "inputs": {
+        "dav1d": "dav1d",
         "fuzzel": "fuzzel",
         "home-manager": "home-manager",
+        "libplacebo": "libplacebo",
+        "mpv": "mpv",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
