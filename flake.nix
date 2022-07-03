@@ -21,10 +21,6 @@ rec {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -71,7 +67,6 @@ rec {
     self,
     nixpkgs,
     ragenix,
-    nvfetcher,
     home-manager,
     pre-commit-hooks,
     ...
@@ -176,7 +171,6 @@ rec {
               statix
               fnlfmt
               ragenix.defaultPackage."${system}"
-              nvfetcher.defaultPackage."${system}"
               (callPackage ./overlays/optimise/extract-pgo-data {
                 nixosPassthru = {
                   hostname = "fake";
