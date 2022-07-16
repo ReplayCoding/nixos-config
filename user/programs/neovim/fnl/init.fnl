@@ -1,8 +1,10 @@
 (set vim.opt.expandtab true)
 (set vim.opt.smarttab true)
-
 (set vim.opt.shiftwidth 0)
 (set vim.opt.tabstop 2)
+
+(set vim.opt.ignorecase true)
+(set vim.opt.smartcase true)
 
 (set vim.opt.wrap false)
 
