@@ -36,7 +36,7 @@
 
 (map :n false :<Leader>ff "<cmd>Telescope find_files<CR>")
 
-(let [servers [:pyright :rnix :rust_analyzer :clangd]
+(let [servers [:pyright :rnix :rust_analyzer :clangd :tsserver]
       capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))
       on_attach (fn [client bufnr]
                   (map :n bufnr :gD "<cmd>lua vim.lsp.buf.declaration()<CR>")

@@ -19,6 +19,7 @@
         rnix-lsp
         rust-analyzer
         clangd
+        nodePackages.typescript-language-server
       ];
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
