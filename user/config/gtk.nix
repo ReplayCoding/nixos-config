@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  nix-colors-lib = nix-colors.lib {inherit pkgs;};
+  nix-colors-lib = nix-colors.lib-contrib {inherit pkgs;};
   inherit (nix-colors-lib) gtkThemeFromScheme;
   isDark = config.colorscheme.kind == "dark";
 in {

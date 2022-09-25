@@ -45,7 +45,7 @@ in {
   };
 
   nix = {
-    package = pkgs.nix-optimised;
+    package = pkgs.nixVersions.unstable;
     nixPath =
       builtins.map
       (name: "${name}=${filteredInputs.${name}}")

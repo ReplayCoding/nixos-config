@@ -67,7 +67,7 @@
     age
     polymc
     tdesktop
-    fluffychat
+    # fluffychat
     signal-desktop
     imv
     btop

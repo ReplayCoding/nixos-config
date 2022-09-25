@@ -22,6 +22,7 @@ self: super: let
       .override {
         stdenv = makeStatic stdenv;
         ffmpeg = super.ffmpeg_5;
+        vid-stab = null;
         inherit dav1d;
         # Building these programs takes a looooong time
         ffmpegProgram = false;
@@ -36,6 +37,7 @@ self: super: let
     libplacebo = (super.libplacebo.override {stdenv = makeStatic stdenv;}).overrideAttrs (mesonOptions_pgo pgoName pgoMode "sample" (old: {
       inherit (super.mkOverridesFromFlakeInput "libplacebo") src version;
 
+      nativeBuildInputs = old.nativeBuildInputs ++ [(super.python3.withPackages (p: with p; [setuptools]))];
       mesonFlags = old.mesonFlags ++ ["-Dunwind=disabled"];
     }));
   in {

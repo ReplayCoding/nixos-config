@@ -6,10 +6,6 @@ self: super: {
         # Implement startup notifications for workspace matching
         # https://github.com/swaywm/sway/pull/6639
         ./patches/sway-6639.patch
-
-        # Tray D-Bus Menu
-        # https://github.com/swaywm/sway/pull/6249
-        ./patches/sway-6249.patch
       ];
   });
   cmus = super.cmus.overrideAttrs (old: {

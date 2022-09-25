@@ -54,7 +54,7 @@ rec {
       flake = false;
     };
     libplacebo = {
-      url = "git+https://code.videolan.org/videolan/libplacebo";
+      url = "git+https://code.videolan.org/videolan/libplacebo?submodules=1";
       flake = false;
     };
     mpv = {
@@ -116,7 +116,7 @@ rec {
               modules = [./hosts/librem];
               overlayConfig = {
                 arch = "skylake";
-                pgoMode = "use";
+                pgoMode = "off"; # TODO
                 mesaConfig = {
                   galliumDrivers = ["iris" "zink" "swrast"];
                   vulkanDrivers = ["intel"];

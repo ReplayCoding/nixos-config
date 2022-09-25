@@ -1,7 +1,7 @@
 _: {
   programs.rtorrent = {
     enable = true;
-    settings = "
+    extraConfig = "
       session.path.set = ./.rtorrent_session
     ";
   };

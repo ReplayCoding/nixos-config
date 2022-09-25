@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  nix-colors-lib = nix-colors.lib {inherit pkgs;};
+  nix-colors-lib = nix-colors.lib-contrib {inherit pkgs;};
   inherit (config.colorscheme) colors;
   inherit (nix-colors-lib) nixWallpaperFromScheme;
 in {
