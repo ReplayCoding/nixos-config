@@ -221,26 +221,15 @@ in {
         Restart = "on-failure";
       };
     };
-    swayidle = {
-      Unit = {
-        Description = "Idle manager for Wayland";
-        Documentation = "man:swayidle(1)";
-        PartOf = "sway-session.target";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = let
-          config = pkgs.writeText "swayidle-config" ''
-            lock "${pkgs.systemd}/bin/systemctl start --user swaylock.service"
-          '';
-        in "${pkgs.swayidle}/bin/swayidle -C ${config}";
-        RestartSec = 5;
-        Restart = "always";
-      };
-      Install = {
-        WantedBy = ["sway-session.target"];
-      };
-    };
+  };
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "lock";
+        command = "${pkgs.systemd}/bin/systemctl start --user swaylock.service";
+      }
+    ];
   };
   home.file.".swaylock/config".text = "color=000000FF";
 }
