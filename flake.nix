@@ -116,7 +116,7 @@ rec {
               modules = [./hosts/librem];
               overlayConfig = {
                 arch = "skylake";
-                pgoMode = "off"; # TODO
+                pgoMode = "off";
                 mesaConfig = {
                   galliumDrivers = ["iris" "zink" "swrast"];
                   vulkanDrivers = ["intel"];

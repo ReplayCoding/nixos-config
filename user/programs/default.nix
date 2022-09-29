@@ -42,10 +42,16 @@
       enable = true;
       enableSessionWide = true;
     };
+
     firefox = {
       enable = true;
       package =
         pkgs.librewolf.override {forceWayland = true;};
+    };
+
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
     };
   };
 
