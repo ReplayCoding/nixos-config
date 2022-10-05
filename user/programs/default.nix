@@ -92,5 +92,6 @@
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     wl-clipboard
     xdg-utils
+    (discord.override {withOpenASAR = true;})
   ];
 }
