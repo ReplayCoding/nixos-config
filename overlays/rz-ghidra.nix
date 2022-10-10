@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
     owner = "rizinorg";
     repo = pname;
     rev = "rz-${version}";
-    sha256 = "sha256-rCNpTLbS1UkOGULbJUBPNScV7kvB+22vdErTJGEXhvE=";
+    sha256 = "sha256-7GZdrxHGSAf1MlMdEpKDOa4Dxu5ckG+IlgAN+mp/U5E=";
     fetchSubmodules = true;
   };
 

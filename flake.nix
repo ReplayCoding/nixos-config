@@ -170,7 +170,7 @@ rec {
             packages = with pkgs; [
               statix
               fnlfmt
-              ragenix.defaultPackage."${system}"
+              ragenix.packages."${system}".default
               (callPackage ./overlays/optimise/extract-pgo-data {
                 nixosPassthru = {
                   hostname = "fake";
