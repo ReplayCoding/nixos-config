@@ -61,7 +61,9 @@
 ((. (require :Comment) :setup))
 ((. (require :fidget) :setup))
 ((. (require :project_nvim) :setup))
+((. (require :tokyonight) :setup) {
+                                    :style :night
+                                  })
 
-(set vim.g.tokyonight_style :night)
 (set vim.opt.termguicolors true)
 (vim.cmd "colorscheme tokyonight")
