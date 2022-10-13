@@ -94,6 +94,7 @@
     wl-clipboard
     xdg-utils
     jetbrains.idea-community
+    pstack
     (discord.override {withOpenASAR = true;})
   ];
 }

@@ -461,6 +461,22 @@
         "type": "github"
       }
     },
+    "pstack": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664361700,
+        "narHash": "sha256-SZhyu9WUhW9pitH6u+O2mAYavBh7zKcG2Svjogv2fJk=",
+        "owner": "peadar",
+        "repo": "pstack",
+        "rev": "58269f703c6920dabe34baeff50647c3a30fc7c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "peadar",
+        "repo": "pstack",
+        "type": "github"
+      }
+    },
     "ragenix": {
       "inputs": {
         "agenix": "agenix",
@@ -497,6 +513,7 @@
         "nixpkgs-wayland": "nixpkgs-wayland",
         "polymc": "polymc",
         "pre-commit-hooks": "pre-commit-hooks",
+        "pstack": "pstack",
         "ragenix": "ragenix"
       }
     },

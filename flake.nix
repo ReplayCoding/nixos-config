@@ -61,6 +61,11 @@ rec {
       url = "github:mpv-player/mpv";
       flake = false;
     };
+
+    pstack = {
+      url = "github:peadar/pstack";
+      flake = false;
+    };
   };
 
   outputs = {
