@@ -29,6 +29,7 @@
     lazygit.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    chromium.enable = true;
     exa = {
       enable = true;
       enableAliases = true;
