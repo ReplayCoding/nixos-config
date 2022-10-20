@@ -66,7 +66,7 @@
     yt-dlp
     picard
     age
-    polymc
+    prismlauncher
     tdesktop
     # fluffychat
     signal-desktop

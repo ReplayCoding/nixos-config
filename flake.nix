@@ -34,8 +34,8 @@ rec {
       url = "github:Misterio77/nix-colors";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    polymc = {
-      url = "github:PolyMC/PolyMC";
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -238,13 +238,13 @@
       "locked": {
         "lastModified": 1650031308,
         "narHash": "sha256-TvVOjkUobYJD9itQYueELJX3wmecvEdCbJ0FinW2mL4=",
-        "owner": "PolyMC",
+        "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
         "rev": "2203af7eeb48c45398139b583615134efd8d407f",
         "type": "github"
       },
       "original": {
-        "owner": "PolyMC",
+        "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
         "type": "github"
       }
@@ -417,29 +417,6 @@
         "type": "github"
       }
     },
-    "polymc": {
-      "inputs": {
-        "flake-compat": "flake-compat_3",
-        "libnbtplusplus": "libnbtplusplus",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "tomlplusplus": "tomlplusplus"
-      },
-      "locked": {
-        "lastModified": 1665252760,
-        "narHash": "sha256-2ALq7WxwqyyaQq0aip+r5rP9pm1M8djw20M+hjHWpLU=",
-        "owner": "PolyMC",
-        "repo": "PolyMC",
-        "rev": "fafc9cf9ca86fd66db09e9ccc1cdb53520fd7c16",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PolyMC",
-        "repo": "PolyMC",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -458,6 +435,29 @@
       "original": {
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
+    "prismlauncher": {
+      "inputs": {
+        "flake-compat": "flake-compat_3",
+        "libnbtplusplus": "libnbtplusplus",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tomlplusplus": "tomlplusplus"
+      },
+      "locked": {
+        "lastModified": 1666227623,
+        "narHash": "sha256-/qmZn7x7/RalrPXOs3QAnGVtcMVZv+qqudjPnYef5is=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "d35920f356e8a2bcbb6501da5dd4ec1c769ba6ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
         "type": "github"
       }
     },
@@ -511,8 +511,8 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "polymc": "polymc",
         "pre-commit-hooks": "pre-commit-hooks",
+        "prismlauncher": "prismlauncher",
         "pstack": "pstack",
         "ragenix": "ragenix"
       }
@@ -545,11 +545,11 @@
     "tomlplusplus": {
       "flake": false,
       "locked": {
-        "lastModified": 1664034574,
-        "narHash": "sha256-EFMAl6tsTvkgK0DWC/pZfOIq06b2e5SnxJa1ngGRIQA=",
+        "lastModified": 1666091090,
+        "narHash": "sha256-djpMCFPvkJcfynV8WnsYdtwLq+J7jpV1iM4C6TojiyM=",
         "owner": "marzer",
         "repo": "tomlplusplus",
-        "rev": "8aa5c8b2a4ff2c440d4630addf64fa4f62146170",
+        "rev": "1e4a3833d013aee08f58c5b31c69f709afc69f73",
         "type": "github"
       },
       "original": {
