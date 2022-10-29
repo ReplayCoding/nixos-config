@@ -3,6 +3,7 @@
     useDHCP = false;
     networkmanager = {
       enable = true;
+      dns = "systemd-resolved";
       wifi = {
         # backend = "iwd";
         macAddress = "stable";
@@ -23,8 +24,11 @@
 
   programs.bandwhich.enable = true;
 
-  services.tor = {
-    enable = true;
-    client.enable = true;
+  services = {
+    resolved.enable = true;
+    tor = {
+      # enable = true;
+      # client.enable = true;
+    };
   };
 }
