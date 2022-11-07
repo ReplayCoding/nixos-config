@@ -19,6 +19,7 @@
         rnix-lsp
         rust-analyzer
         clangd
+        gopls
         nodePackages.typescript-language-server
       ];
     plugins = with pkgs.vimPlugins; [

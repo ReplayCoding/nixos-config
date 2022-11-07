@@ -41,6 +41,7 @@
 in {
   nixpkgs.config = {
     allowUnfree = true;
+    allowBroken = true; # zfs
     # allowAliases = false;
   };
 

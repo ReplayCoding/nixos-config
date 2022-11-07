@@ -7,7 +7,7 @@ self: super: {
         # https://github.com/swaywm/sway/pull/6639
         ./patches/sway-6639.patch
 
-        ./patches/sway-6249.patch
+        # ./patches/sway-6249.patch
       ];
   });
   cmus = super.cmus.overrideAttrs (old: {

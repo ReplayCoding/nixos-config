@@ -19,7 +19,9 @@ self: super: let
         # This breaks the build
         withValgrind = false;
       })
-      .overrideAttrs (mesonOptions_pgo (getDrvName mesa-optimised) pgoMode pgoType fakeExtra);
+      .overrideAttrs (mesonOptions_pgo (getDrvName mesa-optimised) pgoMode pgoType (old: {
+        mesonFlags = (old.mesonFlags or []) ++ ["-Dvalgrind=disabled"];
+      }));
     vulkan-loader =
       (super'.vulkan-loader.overrideAttrs (old: {
         cmakeBuildType = "plain";
@@ -37,18 +39,7 @@ self: super: let
       .override (
         {
           inherit stdenv;
-          llvmPackages = let
-            llvmPackages = super'."${llvmPackages_version}";
-          in
-            llvmPackages
-            // (
-              if isi686
-              then rec {
-                libllvm = llvmPackages.libllvm.override {inherit stdenv;};
-                llvm = libllvm.out // {outputSpecified = false;};
-              }
-              else {}
-            );
+          llvmPackages = super'."${llvmPackages_version}";
           wayland = wayland-optimised;
           libdrm = libdrm-optimised;
         }

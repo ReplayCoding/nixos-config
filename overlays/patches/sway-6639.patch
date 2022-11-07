@@ -1,4 +1,4 @@
-From a8f253cddabde9a5093151127a115aa7ecf1dace Mon Sep 17 00:00:00 2001
+From b8ec826c1f43a05876470170bb44387075446982 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Sun, 24 Oct 2021 16:18:49 -0700
 Subject: [PATCH 01/12] root: move the workspace matching code to its own file
@@ -41,10 +41,10 @@ index 0000000000..cb22eb9809
 +
 +#endif
 diff --git a/include/sway/tree/root.h b/include/sway/tree/root.h
-index 5d4a2f2dff..18c59249b9 100644
+index af4124a18b..a2c088e768 100644
 --- a/include/sway/tree/root.h
 +++ b/include/sway/tree/root.h
-@@ -68,12 +68,6 @@ void root_scratchpad_show(struct sway_container *con);
+@@ -69,12 +69,6 @@ void root_scratchpad_show(struct sway_container *con);
   */
  void root_scratchpad_hide(struct sway_container *con);
  
@@ -57,7 +57,7 @@ index 5d4a2f2dff..18c59249b9 100644
  void root_for_each_workspace(void (*f)(struct sway_workspace *ws, void *data),
  		void *data);
  
-@@ -91,6 +85,4 @@ struct sway_container *root_find_container(
+@@ -92,6 +86,4 @@ struct sway_container *root_find_container(
  
  void root_get_box(struct sway_root *root, struct wlr_box *box);
  
@@ -284,10 +284,10 @@ index 0000000000..4e0d9dc1f4
 +	}
 +}
 diff --git a/sway/meson.build b/sway/meson.build
-index 8eab31a221..348ae1ddbc 100644
+index c7b9d6e6ce..e544c3a2bc 100644
 --- a/sway/meson.build
 +++ b/sway/meson.build
-@@ -19,6 +19,7 @@ sway_sources = files(
+@@ -21,6 +21,7 @@ sway_sources = files(
  	'desktop/surface.c',
  	'desktop/transaction.c',
  	'desktop/xdg_shell.c',
@@ -296,10 +296,10 @@ index 8eab31a221..348ae1ddbc 100644
  	'input/input-manager.c',
  	'input/cursor.c',
 diff --git a/sway/tree/root.c b/sway/tree/root.c
-index 8508e9eb99..0b821e5348 100644
+index 7df0b23785..8934721fd9 100644
 --- a/sway/tree/root.c
 +++ b/sway/tree/root.c
-@@ -183,172 +183,6 @@ void root_scratchpad_hide(struct sway_container *con) {
+@@ -184,172 +184,6 @@ void root_scratchpad_hide(struct sway_container *con) {
  	ipc_event_window(con, "move");
  }
  
@@ -472,7 +472,7 @@ index 8508e9eb99..0b821e5348 100644
  void root_for_each_workspace(void (*f)(struct sway_workspace *ws, void *data),
  		void *data) {
  	for (int i = 0; i < root->outputs->length; ++i) {
-@@ -443,17 +277,3 @@ void root_get_box(struct sway_root *root, struct wlr_box *box) {
+@@ -444,17 +278,3 @@ void root_get_box(struct sway_root *root, struct wlr_box *box) {
  	box->width = root->width;
  	box->height = root->height;
  }
@@ -503,7 +503,7 @@ index 7d9e038d26..c0571d7258 100644
  #include "sway/ipc-server.h"
  #include "sway/output.h"
 
-From da2a36cad0a03f36c4536fb228c0e80db8ea2b83 Mon Sep 17 00:00:00 2001
+From 96f83e455c25099f96539c21baa20e6274e909f5 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 03:58:15 -0700
 Subject: [PATCH 02/12] node: prettify node type names
@@ -535,7 +535,7 @@ index bc7e2aa59c..12361c75b4 100644
  	return "";
  }
 
-From c6f189414069dba7a6c99c7bc104c0bdfbb41926 Mon Sep 17 00:00:00 2001
+From cf1ff3d0f0c91395722fed608e039004b46d2711 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 18:12:30 -0700
 Subject: [PATCH 03/12] launcher: track workspaces by node
@@ -784,7 +784,7 @@ index 4e0d9dc1f4..16f6d4a09c 100644
 -	}
 -}
 
-From 4a7088519c3d9b89687bb01f3eee14015705ffa3 Mon Sep 17 00:00:00 2001
+From f8f3146226b12be6e23eeddab2b4b766d4138a64 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Mon, 25 Oct 2021 22:55:44 -0700
 Subject: [PATCH 04/12] launcher: use xdga tokens
@@ -876,7 +876,7 @@ index 16f6d4a09c..fde69db702 100644
  }
  
 
-From 70d9161575d578ac8148ce5ab0203a38be06b540 Mon Sep 17 00:00:00 2001
+From cfa2ef8960e562b3a11db3c38e83c78ad98a284a Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:20:41 -0700
 Subject: [PATCH 05/12] launcher: rename pid_workspace to launcher_ctx
@@ -1210,7 +1210,7 @@ index c0571d7258..12e14a57d7 100644
  		return ws;
  	}
 
-From 8bfe0ea9a8853fd619722388cfba84d4974ecb8c Mon Sep 17 00:00:00 2001
+From 1b9c379ae68b4b6c432ef86c313e5a84f54feaaf Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:29:20 -0700
 Subject: [PATCH 06/12] view: associate launch contexts with views
@@ -1261,7 +1261,7 @@ index 7802bee15b..c64c895188 100644
  
  #endif
 diff --git a/include/sway/tree/view.h b/include/sway/tree/view.h
-index 95708a049c..3f566aca97 100644
+index 0dcbf1aa66..ca09943181 100644
 --- a/include/sway/tree/view.h
 +++ b/include/sway/tree/view.h
 @@ -74,6 +74,7 @@ struct sway_view {
@@ -1272,7 +1272,7 @@ index 95708a049c..3f566aca97 100644
  
  	// The size the view would want to be if it weren't tiled.
  	// Used when changing a view from tiled to floating.
-@@ -371,4 +372,6 @@ void view_save_buffer(struct sway_view *view);
+@@ -372,4 +373,6 @@ void view_save_buffer(struct sway_view *view);
  
  bool view_is_transient_for(struct sway_view *child, struct sway_view *ancestor);
  
@@ -1433,7 +1433,7 @@ index 12e14a57d7..b1d316a2ee 100644
  	// to honor that request. Otherwise, fallback to assigns, pid mappings,
  	// focused workspace, etc
 
-From ead85a53e18c9edde4d77f8a246acd5dd807f6fb Mon Sep 17 00:00:00 2001
+From 03bdb977d110ea046d176a513369bdd2319bdf80 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 21:34:42 -0700
 Subject: [PATCH 07/12] launcher: initialize launcher_ctxs once on startup
@@ -1459,10 +1459,10 @@ index c64c895188..39084d3082 100644
  
  #endif
 diff --git a/include/sway/server.h b/include/sway/server.h
-index 0bd860b24c..9484875d31 100644
+index 4cce17cc43..a5e31023d8 100644
 --- a/include/sway/server.h
 +++ b/include/sway/server.h
-@@ -98,6 +98,8 @@ struct sway_server {
+@@ -112,6 +112,8 @@ struct sway_server {
  	struct wlr_xdg_activation_v1 *xdg_activation_v1;
  	struct wl_listener xdg_activation_v1_request_activate;
  
@@ -1558,10 +1558,10 @@ index 676cea08f6..321f149c4e 100644
  
  const char *launcher_ctx_get_name(struct launcher_ctx *ctx) {
 diff --git a/sway/server.c b/sway/server.c
-index 8de9f62942..2b76e0db70 100644
+index a87fc7cf1d..b009e2d3e1 100644
 --- a/sway/server.c
 +++ b/sway/server.c
-@@ -211,6 +211,8 @@ bool server_init(struct sway_server *server) {
+@@ -213,6 +213,8 @@ bool server_init(struct sway_server *server) {
  	wl_signal_add(&server->xdg_activation_v1->events.request_activate,
  		&server->xdg_activation_v1_request_activate);
  
@@ -1569,9 +1569,9 @@ index 8de9f62942..2b76e0db70 100644
 +
  	// Avoid using "wayland-0" as display socket
  	char name_candidate[16];
- 	for (int i = 1; i <= 32; ++i) {
+ 	for (unsigned int i = 1; i <= 32; ++i) {
 
-From fbdfb0a227dfe5f0a9cb808bed0b529b5d1aadb7 Mon Sep 17 00:00:00 2001
+From 19d67b89679dc4a5b2082e8c651ef1be4f3dafce Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Tue, 26 Oct 2021 16:38:31 -0700
 Subject: [PATCH 08/12] launcher: fudge the interface a bit
@@ -1651,7 +1651,7 @@ index 321f149c4e..4cdf7bb976 100644
  	ctx->node_destroy.notify = ctx_handle_node_destroy;
  	wl_signal_add(&ctx->node->events.destroy, &ctx->node_destroy);
 
-From cf9d4b0151c12e6d791713928d4553d033a664f6 Mon Sep 17 00:00:00 2001
+From 433c36cb7030c3be5a6fc7bd9999c4af91adf0d9 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Wed, 27 Oct 2021 23:02:34 -0700
 Subject: [PATCH 09/12] launcher: export xdga tokens and use them for workspace
@@ -1687,7 +1687,7 @@ index 694f646c13..e432c463bc 100644
  			sway_log_errno(SWAY_ERROR, "execlp failed");
  			_exit(1);
 diff --git a/sway/xdg_activation_v1.c b/sway/xdg_activation_v1.c
-index 6c70c78596..e1776e7dbc 100644
+index 99e7f9b54a..4c79ae591a 100644
 --- a/sway/xdg_activation_v1.c
 +++ b/sway/xdg_activation_v1.c
 @@ -1,4 +1,5 @@
@@ -1696,9 +1696,9 @@ index 6c70c78596..e1776e7dbc 100644
  #include "sway/tree/view.h"
  
  void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
-@@ -12,7 +13,15 @@ void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
- 	struct wlr_xdg_surface *xdg_surface =
- 		wlr_xdg_surface_from_wlr_surface(event->surface);
+@@ -15,7 +16,15 @@ void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
+ 		return;
+ 	}
  	struct sway_view *view = xdg_surface->data;
 -	if (!xdg_surface->mapped || view == NULL) {
 +	if (view == NULL) {
@@ -1714,7 +1714,7 @@ index 6c70c78596..e1776e7dbc 100644
  	}
  
 
-From f4911bc64bc26c0436461cb0dfcded6100fe68ee Mon Sep 17 00:00:00 2001
+From 37d4a7003cd11f9a11aa6da09d9d72444d74929f Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Fri, 29 Oct 2021 15:56:47 -0700
 Subject: [PATCH 10/12] launcher: export X startup ids and use them for
@@ -1727,10 +1727,10 @@ Subject: [PATCH 10/12] launcher: export X startup ids and use them for
  3 files changed, 39 insertions(+), 1 deletion(-)
 
 diff --git a/include/sway/tree/view.h b/include/sway/tree/view.h
-index 3f566aca97..3584952ff2 100644
+index ca09943181..1b033ee50e 100644
 --- a/include/sway/tree/view.h
 +++ b/include/sway/tree/view.h
-@@ -155,6 +155,7 @@ struct sway_xwayland_view {
+@@ -156,6 +156,7 @@ struct sway_xwayland_view {
  	struct wl_listener set_title;
  	struct wl_listener set_class;
  	struct wl_listener set_role;
@@ -1772,7 +1772,7 @@ index e432c463bc..59a076685a 100644
  			sway_log_errno(SWAY_ERROR, "execlp failed");
  			_exit(1);
 diff --git a/sway/desktop/xwayland.c b/sway/desktop/xwayland.c
-index 2f11b5fc4f..1563fd8a03 100644
+index 7c5dde530d..923c06242a 100644
 --- a/sway/desktop/xwayland.c
 +++ b/sway/desktop/xwayland.c
 @@ -5,6 +5,7 @@
@@ -1781,9 +1781,9 @@ index 2f11b5fc4f..1563fd8a03 100644
  #include <wlr/types/wlr_output.h>
 +#include <wlr/types/wlr_xdg_activation_v1.h>
  #include <wlr/xwayland.h>
+ #include <xcb/xcb_icccm.h>
  #include "log.h"
- #include "sway/desktop.h"
-@@ -15,6 +16,7 @@
+@@ -16,6 +17,7 @@
  #include "sway/output.h"
  #include "sway/tree/arrange.h"
  #include "sway/tree/container.h"
@@ -1791,7 +1791,7 @@ index 2f11b5fc4f..1563fd8a03 100644
  #include "sway/tree/view.h"
  #include "sway/tree/workspace.h"
  
-@@ -465,6 +467,7 @@ static void handle_destroy(struct wl_listener *listener, void *data) {
+@@ -466,6 +468,7 @@ static void handle_destroy(struct wl_listener *listener, void *data) {
  	wl_list_remove(&xwayland_view->set_title.link);
  	wl_list_remove(&xwayland_view->set_class.link);
  	wl_list_remove(&xwayland_view->set_role.link);
@@ -1799,7 +1799,7 @@ index 2f11b5fc4f..1563fd8a03 100644
  	wl_list_remove(&xwayland_view->set_window_type.link);
  	wl_list_remove(&xwayland_view->set_hints.link);
  	wl_list_remove(&xwayland_view->set_decorations.link);
-@@ -664,6 +667,27 @@ static void handle_set_role(struct wl_listener *listener, void *data) {
+@@ -666,6 +669,27 @@ static void handle_set_role(struct wl_listener *listener, void *data) {
  	view_execute_criteria(view);
  }
  
@@ -1827,7 +1827,7 @@ index 2f11b5fc4f..1563fd8a03 100644
  static void handle_set_window_type(struct wl_listener *listener, void *data) {
  	struct sway_xwayland_view *xwayland_view =
  		wl_container_of(listener, xwayland_view, set_window_type);
-@@ -748,6 +772,10 @@ struct sway_xwayland_view *create_xwayland_view(struct wlr_xwayland_surface *xsu
+@@ -751,6 +775,10 @@ struct sway_xwayland_view *create_xwayland_view(struct wlr_xwayland_surface *xsu
  	wl_signal_add(&xsurface->events.set_role, &xwayland_view->set_role);
  	xwayland_view->set_role.notify = handle_set_role;
  
@@ -1839,7 +1839,7 @@ index 2f11b5fc4f..1563fd8a03 100644
  			&xwayland_view->set_window_type);
  	xwayland_view->set_window_type.notify = handle_set_window_type;
 
-From 4c02fbd31da32e0d04003adfb617561ad5b699f7 Mon Sep 17 00:00:00 2001
+From 0a9bf38e0f031b85f2322791bd91c315f1fac205 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Tue, 8 Feb 2022 16:38:34 -0700
 Subject: [PATCH 11/12] fixup: 8bfe0ea9
@@ -1922,15 +1922,15 @@ index b1d316a2ee..4909aad64e 100644
  	view->ctx = ctx;
  }
 diff --git a/sway/xdg_activation_v1.c b/sway/xdg_activation_v1.c
-index e1776e7dbc..72138daa58 100644
+index 4c79ae591a..2b94136c3b 100644
 --- a/sway/xdg_activation_v1.c
 +++ b/sway/xdg_activation_v1.c
-@@ -21,7 +21,14 @@ void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
+@@ -24,7 +24,14 @@ void xdg_activation_v1_handle_request_activate(struct wl_listener *listener,
  		// This is a startup notification. If we are tracking it, the data
  		// field is a launcher_ctx.
  		struct launcher_ctx *ctx = event->token->data;
 -		view_assign_ctx(view, ctx);
-+		if (ctx->activated) {
++		if (!ctx || ctx->activated) {
 +			// This ctx has already been activated and cannot be used again
 +			// for a startup notification. It will be destroyed
 +			return;
@@ -1942,7 +1942,7 @@ index e1776e7dbc..72138daa58 100644
  	}
  
 
-From ad5517b51807b9a5257f956e4c23b516af03a457 Mon Sep 17 00:00:00 2001
+From 6650fa4a7da2d69590b756416540e77b33210b03 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <rpigott@berkeley.edu>
 Date: Tue, 8 Feb 2022 16:40:20 -0700
 Subject: [PATCH 12/12] fixup: 70d91615

@@ -64,7 +64,7 @@
     libreoffice
     restic
     yt-dlp
-    picard
+    # picard
     age
     prismlauncher
     tdesktop

@@ -46,13 +46,14 @@
       })
 
       (import ./optimise/ccache-stats.nix)
-      (import ./optimise/unoptimise-foot.nix)
-      (import ./optimise/unsandbox-wob.nix)
       (import ./optimise/misc.nix)
-      (import ./optimise/wayland.nix)
       (import ./optimise/mpv.nix)
       (import ./optimise/pipewire.nix)
-      (import ./optimise/mesa.nix)
+      # (import ./optimise/mesa.nix)
+
+      # (import ./optimise/wayland.nix)
+      # (import ./optimise/unoptimise-foot.nix)
+      # (import ./optimise/unsandbox-wob.nix)
       (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];
 in {
