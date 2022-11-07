@@ -89,6 +89,7 @@
     xdg-utils
     jetbrains.idea-community
     pstack
+    crc32
     (discord.override {withOpenASAR = true;})
   ];
 }

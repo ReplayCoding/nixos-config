@@ -41,6 +41,7 @@
       (self: super: {
         rz-ghidra = super.callPackage ./rz-ghidra.nix {};
         pstack = super.callPackage ./pstack.nix {};
+        crc32 = super.callPackage ./crc32 {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
       })
