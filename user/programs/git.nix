@@ -16,6 +16,7 @@
       rebase.autoSquash = true;
       commit.gpgsign = true;
       gpg.format = "ssh"; # Great name don't you think?
+      push.autoSetupRemote = "true";
       user.signingkey = "key::${flib.pubkeys.user}";
       gpg.ssh.allowedSignersFile = toString (pkgs.writeText "git-allowed-signers" ''
         replaycoding@gmail.com ${flib.pubkeys.user}
