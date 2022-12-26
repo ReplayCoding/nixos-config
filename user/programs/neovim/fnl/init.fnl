@@ -23,7 +23,7 @@
   (cmp.setup {:formatting {:format ((. (require :lspkind) :cmp_format) {:mode :symbol})}
               :snippet {:expand (fn [args]
                                   ((. (require :luasnip) :lsp_expand) args.body))}
-              :window {:documentation cmp.config.disable}
+              :window {:documentation cmp.config.enable}
               :mapping (cmp.mapping.preset.insert {:<C-Space> (cmp.mapping.complete)
                                                    :<C-e> (cmp.mapping.abort)
                                                    :<CR> (cmp.mapping.confirm {:select true})})
