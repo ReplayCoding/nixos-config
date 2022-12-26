@@ -68,7 +68,7 @@ in {
           });
         accept-flake-config = true;
         auto-optimise-store = true;
-        keep-outputs = true;
+        # keep-outputs = true;
         keep-derivations = true;
       };
   };
