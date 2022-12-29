@@ -15,7 +15,7 @@
     isNormalUser = true;
     home = "/home/user";
     shell = pkgs.fish;
-    extraGroups = ["wheel" "video" "audio" "networkmanager"];
+    extraGroups = ["wheel" "video" "audio" "networkmanager" "libvirtd"];
     openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 

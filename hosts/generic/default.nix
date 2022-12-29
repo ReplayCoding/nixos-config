@@ -1,4 +1,5 @@
-_: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./sound.nix
     ./console.nix
@@ -22,4 +23,19 @@ _: {
 
   # misc. options
   i18n.defaultLocale = "en_US.UTF-8";
+
+  virtualisation.libvirtd = {
+    enable = true;
+
+    onShutdown = "suspend";
+    onBoot = "ignore";
+
+    qemu = {
+      package = pkgs.qemu_kvm;
+      ovmf.enable = true;
+      ovmf.packages = [ pkgs.OVMFFull.fd ];
+      swtpm.enable = true;
+      runAsRoot = false;
+    };
+  };
 }

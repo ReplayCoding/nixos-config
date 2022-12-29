@@ -90,5 +90,6 @@
     pstack
     crc32
     (discord.override {withOpenASAR = true;})
+    virt-manager
   ];
 }
