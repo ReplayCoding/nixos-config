@@ -3,10 +3,6 @@ self: super: {
     patches =
       (old.patches or [])
       ++ [
-        # Implement startup notifications for workspace matching
-        # https://github.com/swaywm/sway/pull/6639
-        ./patches/sway-6639.patch
-
         # ./patches/sway-6249.patch
       ];
   });

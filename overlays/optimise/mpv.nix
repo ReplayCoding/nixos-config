@@ -14,13 +14,11 @@ self: super: let
       # While ffmpeg is not using autotools, its build system
       # is close enough to be compatible with it.
       (super.ffmpeg-full.overrideAttrs (autotoolsOptions_pgo pgoName pgoMode "sample" (old: {
-        configureFlags = builtins.filter (f: f != "--enable-shared") old.configureFlags;
-        # Disable tests :O
         checkPhase = null;
         safeBitstreamReaderBuild = false;
       })))
       .override {
-        stdenv = makeStatic stdenv;
+        inherit stdenv;
         ffmpeg = super.ffmpeg_5;
         vid-stab = null;
         inherit dav1d;
@@ -37,18 +35,22 @@ self: super: let
     libplacebo = (super.libplacebo.override {stdenv = makeStatic stdenv;}).overrideAttrs (mesonOptions_pgo pgoName pgoMode "sample" (old: {
       inherit (super.mkOverridesFromFlakeInput "libplacebo") src version;
 
-      nativeBuildInputs = old.nativeBuildInputs ++ [(super.python3.withPackages (p: with p; [setuptools]))];
       mesonFlags = old.mesonFlags ++ ["-Dunwind=disabled"];
     }));
   in {
     mpv-unwrapped =
       (super.mpv-unwrapped.override {
-        inherit stdenv ffmpeg libass libplacebo;
+        inherit
+          stdenv
+          ffmpeg
+          libass
+          # libplacebo FIXME
+          
+          ;
         lua = super.luajit;
       })
-      .overrideAttrs (autotoolsOptions_pgo pgoName pgoMode "sample" (old: {
+      .overrideAttrs (mesonOptions_pgo pgoName pgoMode "sample" (old: {
         inherit (super.mkOverridesFromFlakeInput "mpv") src version;
-        wafFlags = (old.wafFlags or []) ++ ["--verbose"];
       }));
   };
 in

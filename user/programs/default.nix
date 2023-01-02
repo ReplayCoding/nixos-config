@@ -81,7 +81,7 @@
     bitwarden-cli
     python39Packages.deemix
     baobab
-    aseprite-unfree
+    # aseprite-unfree
     gnome.nautilus
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     wl-clipboard
