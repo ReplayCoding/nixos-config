@@ -29,7 +29,13 @@
     lazygit.enable = true;
     dircolors.enable = true;
     bat.enable = true;
-    chromium.enable = true;
+    chromium = {
+      enable = true;
+      commandLineArgs = [
+        "--enable-features=WebUIDarkMode"
+        "--force-dark-mode"
+      ];
+    };
     exa = {
       enable = true;
       enableAliases = true;
