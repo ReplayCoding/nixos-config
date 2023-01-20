@@ -42,11 +42,11 @@ self: super: let
       (super.mpv-unwrapped.override {
         inherit
           stdenv
-          ffmpeg
           libass
           # libplacebo FIXME
-          
           ;
+
+        ffmpeg_5 = ffmpeg;
         lua = super.luajit;
       })
       .overrideAttrs (mesonOptions_pgo pgoName pgoMode "sample" (old: {
