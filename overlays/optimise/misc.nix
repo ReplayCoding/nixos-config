@@ -16,9 +16,10 @@ in {
     )
     (with super.tree-sitter.builtGrammars; [
       tree-sitter-c
-      tree-sitter-cmake
+      # tree-sitter-cmake
+      tree-sitter-fennel
       tree-sitter-comment
-      tree-sitter-cpp
+      # tree-sitter-cpp
       tree-sitter-dot
       tree-sitter-fish
       tree-sitter-glsl
