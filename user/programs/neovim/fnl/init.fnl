@@ -56,6 +56,8 @@
   (each [_ value (ipairs servers)]
     ((. (. (require :lspconfig) value) :setup) {: on_attach : capabilities})))
 
+(vim.lsp.set_log_level :OFF)
+
 ((. (require :gitsigns) :setup))
 ((. (require :lualine) :setup))
 ((. (require :Comment) :setup))
