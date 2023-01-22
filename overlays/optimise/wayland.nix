@@ -11,7 +11,6 @@ self: super: let
     "mako"
     "fuzzel"
     "foot"
-    "cage"
   ];
   mkWayland = wayland: pgoMode: name:
     (wayland.override {
@@ -32,9 +31,9 @@ self: super: let
             wayland = mkWayland old.wayland pgoMode name;
           }
           // (
-            if builtins.elem name ["cage" "sway-unwrapped"]
+            if name == "sway-unwrapped"
             then {
-              wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
+              wlroots_0_16 = (old.wlroots_0_16.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
                 stdenv = makeStatic stdenv;
                 wayland = mkWayland super.wayland pgoMode name;
               });

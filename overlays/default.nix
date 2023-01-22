@@ -29,7 +29,7 @@
         # This will be used to correlate the pgo results with the derivation it comes from
         pkgsToExtractBuildId = [];
       })
-      (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
+      # (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
       # (fixSystemAlias neovim-nightly-overlay.overlay)
       (fixSystemAlias prismlauncher.overlay)
 
@@ -52,9 +52,9 @@
       (import ./optimise/pipewire.nix)
       (import ./optimise/mesa.nix)
 
-      # (import ./optimise/wayland.nix)
-      # (import ./optimise/unoptimise-foot.nix)
-      # (import ./optimise/unsandbox-wob.nix)
+      (import ./optimise/wayland.nix)
+      (import ./optimise/unoptimise-foot.nix)
+      (import ./optimise/unsandbox-wob.nix)
       (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];
 in {
