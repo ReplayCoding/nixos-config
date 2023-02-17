@@ -4,5 +4,5 @@ _: {
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
   };
-  users.users.root.openssh.authorizedKeys.keys = (import ../../lib/pubkeys.nix).roots;
+  # users.users.root.openssh.authorizedKeys.keys = (import ../../lib/pubkeys.nix).roots;
 }
