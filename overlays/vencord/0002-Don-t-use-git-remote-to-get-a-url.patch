@@ -1,0 +1,31 @@
+From c61944830f2caf94d86b10820b82de9d1cf75865 Mon Sep 17 00:00:00 2001
+From: ReplayCoding <replaycoding@gmail.com>
+Date: Tue, 21 Feb 2023 16:10:24 -0800
+Subject: [PATCH 2/3] Don't use `git remote` to get a url
+
+---
+ scripts/build/common.mjs | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/scripts/build/common.mjs b/scripts/build/common.mjs
+index a1d6460..b22e5d9 100644
+--- a/scripts/build/common.mjs
++++ b/scripts/build/common.mjs
+@@ -114,13 +114,7 @@ export const gitRemotePlugin = {
+             namespace: "git-remote", path: args.path
+         }));
+         build.onLoad({ filter, namespace: "git-remote" }, async () => {
+-            const res = await promisify(exec)("git remote get-url origin", { encoding: "utf-8" });
+-            const remote = res.stdout.trim()
+-                .replace("https://github.com/", "")
+-                .replace("git@github.com:", "")
+-                .replace(/.git$/, "");
+-
+-            return { contents: `export default "${remote}"` };
++            return { contents: `export default "${NIX_GIT_REMOTE_HERE}"` };
+         });
+     }
+ };
+-- 
+2.39.0
+

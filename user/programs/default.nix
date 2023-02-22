@@ -95,7 +95,7 @@
     jetbrains.idea-community
     pstack
     crc32
-    (discord.override {withOpenASAR = true;})
+    (vencord.override {discord = discord.override {withOpenASAR = true;};})
     virt-manager
   ];
 }

@@ -66,6 +66,11 @@ rec {
       url = "github:peadar/pstack";
       flake = false;
     };
+
+    vencord = {
+      url = "github:Vendicated/Vencord";
+      flake = false;
+    };
   };
 
   outputs = {

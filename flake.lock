@@ -610,7 +610,8 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "prismlauncher": "prismlauncher",
         "pstack": "pstack",
-        "ragenix": "ragenix"
+        "ragenix": "ragenix",
+        "vencord": "vencord"
       }
     },
     "rust-overlay": {
@@ -650,6 +651,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "vencord": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677215325,
+        "narHash": "sha256-Clrnk1sv9eF97bp6v+2eUiHepyRcvdS4c7sgobP1DIY=",
+        "owner": "Vendicated",
+        "repo": "Vencord",
+        "rev": "ccca41a16832a34efa83506a6baf23d8bd2a6367",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Vendicated",
+        "repo": "Vencord",
         "type": "github"
       }
     }

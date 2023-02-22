@@ -42,6 +42,7 @@
         rz-ghidra = super.callPackage ./rz-ghidra.nix {};
         pstack = super.callPackage ./pstack.nix {};
         crc32 = super.callPackage ./crc32 {};
+        vencord = super.callPackage ./vencord {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
       })
