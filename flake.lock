@@ -657,11 +657,11 @@
     "vencord": {
       "flake": false,
       "locked": {
-        "lastModified": 1677215325,
-        "narHash": "sha256-Clrnk1sv9eF97bp6v+2eUiHepyRcvdS4c7sgobP1DIY=",
+        "lastModified": 1677548638,
+        "narHash": "sha256-LWL8TdvZ8AhYE2T9F11M07WkEfnbqoB+rFIVYjTLk8k=",
         "owner": "Vendicated",
         "repo": "Vencord",
-        "rev": "ccca41a16832a34efa83506a6baf23d8bd2a6367",
+        "rev": "cf56ad985b94e76f79348b8af45e648aa36ef144",
         "type": "github"
       },
       "original": {
