@@ -92,7 +92,7 @@
     (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
     wl-clipboard
     xdg-utils
-    jetbrains.idea-community
+    # jetbrains.idea-community
     pstack
     crc32
     (vencord.override {discord = discord.override {withOpenASAR = true;};})

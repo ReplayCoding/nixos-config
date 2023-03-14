@@ -30,8 +30,8 @@
         pkgsToExtractBuildId = [];
       })
       # (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
-      # (fixSystemAlias neovim-nightly-overlay.overlay)
-      (fixSystemAlias prismlauncher.overlay)
+      (fixSystemAlias neovim-nightly-overlay.overlay)
+      (fixSystemAlias prismlauncher.overlays.default)
 
       (import ./fuzzel.nix)
       (import ./fish.nix)

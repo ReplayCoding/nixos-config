@@ -58,10 +58,10 @@ super: let
           old:
             if (super.nixosPassthru ? arch)
             then {
-              NIX_CFLAGS_COMPILE =
-                toString (old.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
-              NIX_CFLAGS_COMPILE_FOR_TARGET =
-                toString (old.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
+              env.NIX_CFLAGS_COMPILE =
+                toString (old.env.NIX_CFLAGS_COMPILE or "") + " -march=${super.nixosPassthru.arch}"; # host platform
+              env.NIX_CFLAGS_COMPILE_FOR_TARGET =
+                toString (old.env.NIX_CFLAGS_COMPILE_FOR_TARGET or "") + " -march=${super.nixosPassthru.arch}";
               dontStrip = true;
               separateDebugInfo = false;
             }
@@ -167,10 +167,10 @@ super: let
           if pgoType == "sample"
           then {
             # Allow using perf for sampling pgo
-            NIX_CFLAGS_COMPILE =
+            env.NIX_CFLAGS_COMPILE =
               if pgoType == "sample"
-              then (toString old.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
-              else old.NIX_CFLAGS_COMPILE;
+              then (toString old.env.NIX_CFLAGS_COMPILE or "") + " -fno-profile-instr-use -fprofile-sample-use"
+              else old.env.NIX_CFLAGS_COMPILE;
           }
           else {})
         extra

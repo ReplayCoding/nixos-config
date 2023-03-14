@@ -19,14 +19,13 @@ self: super: let
       })))
       .override {
         inherit stdenv;
-        ffmpeg = super.ffmpeg_5;
-        vid-stab = null;
+        withVidStab = false;
         inherit dav1d;
         # Building these programs takes a looooong time
-        ffmpegProgram = false;
-        ffplayProgram = false;
-        ffprobeProgram = false;
-        qtFaststartProgram = false;
+        buildFfmpeg = false;
+        buildFfplay = false;
+        buildFfprobe = false;
+        buildQtFaststart = false;
       };
 
     libass =

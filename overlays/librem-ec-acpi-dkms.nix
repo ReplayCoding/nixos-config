@@ -4,7 +4,7 @@
   fetchFromGitLab,
   kernel,
 }: let
-  rev = "v0.9.1";
+  rev = "v0.9.2";
 in
   stdenv.mkDerivation rec {
     pname = "librem-ec-acpi-dkms";
@@ -14,7 +14,7 @@ in
       domain = "source.puri.sm";
       owner = "nicole.faerber";
       repo = "librem-ec-acpi-dkms";
-      sha256 = "sha256-0d3iABtOaP7i6GY0GigHa6XTeiz3C/mgEtaiCIx0y+I=";
+      sha256 = "sha256-gPb1/4UPbwjJiqtP27KKjiIKxIYEl2nlQACUAlxVEFU=";
       inherit rev;
     };
 
