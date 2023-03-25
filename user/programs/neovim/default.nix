@@ -39,7 +39,6 @@
       fidget-nvim
       luasnip
       project-nvim
-      presence-nvim
     ];
   };
   xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl {};
