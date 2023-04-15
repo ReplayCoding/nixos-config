@@ -43,6 +43,7 @@ self: super: let
           stdenv
           libass
           # libplacebo FIXME
+          
           ;
 
         ffmpeg_5 = ffmpeg;
@@ -50,6 +51,7 @@ self: super: let
       })
       .overrideAttrs (mesonOptions_pgo pgoName pgoMode "sample" (old: {
         inherit (super.mkOverridesFromFlakeInput "mpv") src version;
+        patches = [];
       }));
   };
 in

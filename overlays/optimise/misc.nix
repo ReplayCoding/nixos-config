@@ -29,7 +29,7 @@ in {
       tree-sitter-kotlin
       tree-sitter-lua
       tree-sitter-nix
-      tree-sitter-python
+      # tree-sitter-python
       tree-sitter-rust
       tree-sitter-toml
       tree-sitter-zig

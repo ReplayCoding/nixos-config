@@ -3,7 +3,7 @@ self: super: {
     patches =
       (old.patches or [])
       ++ [
-        # ./patches/sway-6249.patch
+        ./patches/sway-6249.patch
       ];
   });
   cmus = super.cmus.overrideAttrs (old: {

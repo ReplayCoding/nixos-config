@@ -2,10 +2,7 @@
   makeMusicBlock = player: {
     inherit player;
     block = "music";
-    format = "{title} ";
-    dynamic_width = true;
-    hide_when_empty = true;
-    marquee = false;
+    format = "{$icon $title.str(max_w:25)|}";
   };
 in {
   programs.i3status-rust = {
@@ -19,30 +16,24 @@ in {
         {
           block = "bluetooth";
           mac = "4C:87:5D:6B:72:B1";
-          hide_disconnected = true;
-          format = "{percentage}";
+          disconnected_format = "";
         }
         (makeMusicBlock "cmus")
         (makeMusicBlock "ncspot")
         {
           block = "net";
-          format = "{ip} ({signal_strength})";
+          format = "$icon $ip ($signal_strength)";
           interval = 5;
         }
         {
           block = "memory";
-          format_mem = "{mem_used;M}/{mem_total;M}({mem_used_percents})";
-          clickable = false;
+          # clickable = false;
         }
-        {
-          block = "temperature";
-          collapsed = false;
-        }
-        {block = "load";}
+        {block = "temperature";}
         {
           block = "cpu";
           interval = 2;
-          format = "{barchart} {utilization}";
+          format = "$icon $barchart $utilization";
         }
         {
           block = "time";
@@ -51,14 +42,14 @@ in {
         {
           block = "battery";
           driver = "upower";
-          format = "{percentage} {time}";
+          format = "$icon $percentage {$time|}";
         }
       ];
       icons = "awesome6";
       settings.theme = let
         inherit (config.colorscheme) colors;
       in {
-        name = "slick";
+        theme = "slick";
         overrides = {
           idle_bg = "#${colors.base00}";
           idle_fg = "#${colors.base05}";

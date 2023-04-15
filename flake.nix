@@ -13,6 +13,7 @@ rec {
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-colors.url = "github:Misterio77/nix-colors";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,10 +29,6 @@ rec {
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-colors = {
-      url = "github:Misterio77/nix-colors";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prismlauncher = {

@@ -31,7 +31,7 @@
       nix-colors.homeManagerModule
     ];
 
-    colorscheme = nix-colors.colorSchemes.catppuccin;
+    colorscheme = nix-colors.colorSchemes.catppuccin-frappe;
     systemd.user.startServices = "sd-switch";
     home.stateVersion = config.system.stateVersion;
   };

@@ -14,7 +14,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
 
-    media-session.enable = false;
     wireplumber.enable = true;
   };
 

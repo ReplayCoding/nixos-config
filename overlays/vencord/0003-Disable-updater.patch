@@ -1,19 +1,18 @@
-From 536e72541dae70ea39924e842f8a977f096091e4 Mon Sep 17 00:00:00 2001
+From 3f7877aa846c03c6e687c397fe5a5f8db3484020 Mon Sep 17 00:00:00 2001
 From: ReplayCoding <replaycoding@gmail.com>
 Date: Tue, 21 Feb 2023 16:18:49 -0800
 Subject: [PATCH 3/3] Disable updater
 
 ---
- src/components/VencordSettings/index.tsx |  2 +-
- src/plugins/settings.tsx                 | 14 +++++++-------
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ src/components/VencordSettings/index.tsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/components/VencordSettings/index.tsx b/src/components/VencordSettings/index.tsx
-index acd81c3..6e32e06 100644
+index c15944c..ddd6250 100644
 --- a/src/components/VencordSettings/index.tsx
 +++ b/src/components/VencordSettings/index.tsx
 @@ -50,7 +50,7 @@ const SettingsTabs: Record<string, SettingsTab> = {
-     VencordSettingsSync: { name: "Backup & Restore", component: () => <BackupRestoreTab /> },
+     VencordSettingsSync: { name: "Backup & Restore", component: () => <BackupRestoreTab /> }
  };
  
 -if (!IS_WEB) SettingsTabs.VencordUpdater.component = () => Updater && <Updater />;
@@ -21,31 +20,6 @@ index acd81c3..6e32e06 100644
  
  function Settings(props: SettingsProps) {
      const { tab = "VencordSettings" } = props;
-diff --git a/src/plugins/settings.tsx b/src/plugins/settings.tsx
-index 67d1f8d..a156ca2 100644
---- a/src/plugins/settings.tsx
-+++ b/src/plugins/settings.tsx
-@@ -98,13 +98,13 @@ export default definePlugin({
-             onClick?(): void;
-         }>;
- 
--        if (!IS_WEB)
--            cats.push({
--                section: "VencordUpdater",
--                label: "Updater",
--                element: () => <SettingsComponent tab="VencordUpdater" />,
--                onClick: makeOnClick("VencordUpdater")
--            });
-+        // if (!IS_WEB)
-+        //     cats.push({
-+        //         section: "VencordUpdater",
-+        //         label: "Updater",
-+        //         element: () => <SettingsComponent tab="VencordUpdater" />,
-+        //         onClick: makeOnClick("VencordUpdater")
-+        //     });
- 
-         cats.push({
-             section: "VencordSettingsSync",
 -- 
-2.39.0
+2.39.2
 
