@@ -49,7 +49,7 @@
 
       (import ./optimise/ccache-stats.nix)
       (import ./optimise/misc.nix)
-      (import ./optimise/mpv.nix)
+      # (import ./optimise/mpv.nix)
       (import ./optimise/pipewire.nix)
       (import ./optimise/mesa.nix)
 
