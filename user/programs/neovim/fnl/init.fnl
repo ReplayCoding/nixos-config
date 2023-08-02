@@ -30,13 +30,13 @@
               :sources (cmp.config.sources [{:name :nvim_lsp} {:name :luasnip}])
               :experimental {:ghost_text true}}))
 
-
 (fn map [mode buffer lhs rhs]
   (vim.keymap.set mode lhs rhs {:noremap true :silent true : buffer}))
 
 (map :n false :<Leader>ff "<cmd>Telescope find_files<CR>")
 
 (let [servers [:pyright :rnix :rust_analyzer :clangd :tsserver :gopls]
+      lspconfig (require :lspconfig)
       capabilities ((. (require :cmp_nvim_lsp) :default_capabilities) (vim.lsp.protocol.make_client_capabilities))
       on_attach (fn [client bufnr]
                   (map :n bufnr :gD "<cmd>lua vim.lsp.buf.declaration()<CR>")
@@ -44,17 +44,30 @@
                   (map :n bufnr :gi "<cmd>lua vim.lsp.buf.implementation()<CR>")
                   (map :n bufnr :gr "<cmd>Telescope lsp_references<CR>")
                   (map :n bufnr :K "<cmd>lua vim.lsp.buf.hover()<CR>")
-                  (map :n bufnr :<Leader>lD "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+                  (map :n bufnr :<Leader>lD
+                       "<cmd>lua vim.lsp.buf.type_definition()<CR>")
                   (map :n bufnr :<Leader>lr "<cmd>lua vim.lsp.buf.rename()<CR>")
-                  (map :n bufnr :<Leader>la "<cmd>lua vim.lsp.buf.code_action()<CR>")
-                  (map :n bufnr :<Leader>ls "<cmd>Telescope lsp_document_symbols<CR>")
-                  (map :n bufnr :<Leader>lS "<cmd>Telescope lsp_workspace_symbols<CR>")
-                  (map :n bufnr :<Leader>lf "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
-                  (map :n bufnr :<Leader>wa "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-                  (map :n bufnr :<Leader>wr "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-                  (map :n bufnr :<Leader>wl "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"))]
+                  (map :n bufnr :<Leader>la
+                       "<cmd>lua vim.lsp.buf.code_action()<CR>")
+                  (map :n bufnr :<Leader>ls
+                       "<cmd>Telescope lsp_document_symbols<CR>")
+                  (map :n bufnr :<Leader>lS
+                       "<cmd>Telescope lsp_workspace_symbols<CR>")
+                  (map :n bufnr :<Leader>lf
+                       "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
+                  (map :n bufnr :<Leader>wa
+                       "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+                  (map :n bufnr :<Leader>wr
+                       "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+                  (map :n bufnr :<Leader>wl
+                       "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"))]
   (each [_ value (ipairs servers)]
-    ((. (. (require :lspconfig) value) :setup) {: on_attach : capabilities})))
+    ((. (. lspconfig value) :setup) {: on_attach : capabilities}))
+  ((. (. lspconfig :omnisharp) :setup) {: on_attach
+                                        : capabilities
+                                        :handlers {:textDocument/definition (. (require :omnisharp_extended)
+                                                                               :handler)}
+                                        :cmd [:OMNISHARP_REPLACE_ME]}))
 
 (vim.lsp.set_log_level :OFF)
 
@@ -63,9 +76,7 @@
 ((. (require :Comment) :setup))
 ((. (require :fidget) :setup))
 ((. (require :project_nvim) :setup))
-((. (require :tokyonight) :setup) {
-                                    :style :night
-                                  })
+((. (require :tokyonight) :setup) {:style :night})
 
 (set vim.opt.termguicolors true)
 (vim.cmd "colorscheme tokyonight")

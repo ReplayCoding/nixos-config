@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./sound.nix
     ./console.nix
@@ -24,6 +27,17 @@
   # misc. options
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.adb.enable = true;
+
+  virtualisation.kvmgt = {
+    enable = true;
+    vgpus = {
+      "i915-GVTg_V5_4" = {
+        uuid = ["ef328ade-07f0-11ee-883d-a7d2c7c761e7"];
+      };
+    };
+  };
+
   virtualisation.libvirtd = {
     enable = true;
 
@@ -33,9 +47,12 @@
     qemu = {
       package = pkgs.qemu_kvm;
       ovmf.enable = true;
-      ovmf.packages = [ pkgs.OVMFFull.fd ];
+      ovmf.packages = [pkgs.OVMFFull.fd];
       swtpm.enable = true;
       runAsRoot = false;
     };
   };
+
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mariadb;
 }

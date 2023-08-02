@@ -1,6 +1,6 @@
 _: {
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     initrd.systemd.enable = true;
   };
 }

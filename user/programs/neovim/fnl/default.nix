@@ -1,5 +1,6 @@
 {
   stdenv,
+  omnisharp-roslyn,
   fennel,
 }:
 stdenv.mkDerivation {
@@ -14,6 +15,8 @@ stdenv.mkDerivation {
     runHook preInstall
     mkdir -p $out
     cp ./init.lua $out/init.lua
+    substituteInPlace $out/init.lua \
+      --replace OMNISHARP_REPLACE_ME "${omnisharp-roslyn}/bin/OmniSharp"
     runHook postInstall
   '';
 }

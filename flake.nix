@@ -12,7 +12,7 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nix-colors.url = "github:Misterio77/nix-colors";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -125,7 +125,7 @@ rec {
                 arch = "skylake";
                 pgoMode = "off";
                 mesaConfig = {
-                  galliumDrivers = ["iris" "zink" "swrast"];
+                  galliumDrivers = ["iris" "i915" "zink" "swrast" "virgl"];
                   vulkanDrivers = ["intel"];
                 };
               };

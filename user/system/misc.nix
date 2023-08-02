@@ -8,6 +8,7 @@
     steam = {
       enable = true;
       package = pkgs.steam.override {
+        extraArgs = "-dev -cef-enable-debugging";
         extraLibraries = pkgs:
           with config.hardware.opengl;
             if pkgs.stdenv.hostPlatform.is64bit

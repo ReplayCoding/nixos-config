@@ -21,6 +21,8 @@
         clangd
         gopls
         nodePackages.typescript-language-server
+        # Included from fnl/default.nix, ugly but it works
+        # omnisharp-roslyn
       ];
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter-optimised-grammars))
@@ -39,6 +41,7 @@
       fidget-nvim
       luasnip
       project-nvim
+      omnisharp-extended-lsp-nvim
     ];
   };
   xdg.configFile."nvim/lua".source = pkgs.callPackage ./fnl {};

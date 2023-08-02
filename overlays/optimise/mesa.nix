@@ -29,7 +29,6 @@ self: super: let
           old.cmakeFlags
           ++ ["-DCMAKE_VERBOSE_MAKEFILE=ON"]
           ++ (super'.lib.optionals (super'.stdenv.hostPlatform != super'.stdenv.buildPlatform) ["-DUSE_GAS=OFF"]);
-        patches = (old.patches or []) ++ [../patches/vulkan-fix-cross.patch];
       }))
       .override {inherit stdenv;};
     mesa-optimised =

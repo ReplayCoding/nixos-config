@@ -5,7 +5,7 @@
       enable = true;
       wifi = {
         # backend = "iwd";
-        macAddress = "stable";
+        macAddress = "random";
       };
     };
 
@@ -19,8 +19,14 @@
     firewall.allowedTCPPorts = [];
     firewall.allowedUDPPorts = [];
     firewall.enable = true;
+
+    extraHosts = ''
+      127.0.0.1 master.pwn3
+      127.0.0.1 game.pwn3
+    '';
   };
 
+  networking.wireless.scanOnLowSignal = false;
   programs.bandwhich.enable = true;
 
   services.tor = {

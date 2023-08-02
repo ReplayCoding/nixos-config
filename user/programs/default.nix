@@ -8,6 +8,7 @@
     ./rtorrent.nix
     ./i3status-rust.nix
     ./evince.nix
+    ./firefox.nix
     ./sway.nix
     ./irssi.nix
     ./mako.nix
@@ -29,7 +30,6 @@
     lazygit.enable = true;
     dircolors.enable = true;
     bat.enable = true;
-    firefox.enable = true;
     chromium = {
       enable = true;
       commandLineArgs = [
@@ -71,12 +71,13 @@
     libreoffice
     restic
     yt-dlp
-    # picard
+    picard
     age
     prismlauncher
     tdesktop
-    # fluffychat
+    fluffychat
     signal-desktop
+    slack
     imv
     btop
     amfora
@@ -98,5 +99,11 @@
     crc32
     (vencord.override {discord = discord.override {withOpenASAR = true;};})
     virt-manager
+    bottles
+    (unityhub.override {extraLibs = p: [p.openssl_1_1];})
+    jq
+    file
+    ida
+    github-cli
   ];
 }

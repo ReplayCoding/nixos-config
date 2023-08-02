@@ -33,7 +33,7 @@ self: super: let
           // (
             if name == "sway-unwrapped"
             then {
-              wlroots_0_16 = (old.wlroots_0_16.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
+              wlroots = (old.wlroots.overrideAttrs (mesonOptions_pgo (getDrvName self.${name}) pgoMode "instr" fakeExtra)).override (old': {
                 stdenv = makeStatic stdenv;
                 wayland = mkWayland super.wayland pgoMode name;
               });

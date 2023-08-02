@@ -30,7 +30,7 @@
         pkgsToExtractBuildId = [];
       })
       # (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
-      (fixSystemAlias neovim-nightly-overlay.overlay)
+      # (fixSystemAlias neovim-nightly-overlay.overlay)
       (fixSystemAlias prismlauncher.overlays.default)
 
       (import ./fuzzel.nix)
@@ -43,6 +43,7 @@
         pstack = super.callPackage ./pstack.nix {};
         crc32 = super.callPackage ./crc32 {};
         vencord = super.callPackage ./vencord {};
+        ida = super.callPackage ./ida {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
       })
