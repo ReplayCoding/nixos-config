@@ -22,7 +22,6 @@ in {
       height = 720;
       logoScale = 2.0;
     };
-    backgroundColor = "#${colors.base00}";
     device = "/dev/disk/by-id/nvme-eui.0025385711903f71";
   };
 }

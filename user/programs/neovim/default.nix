@@ -20,6 +20,7 @@
         rust-analyzer
         clangd
         gopls
+        zls
         nodePackages.typescript-language-server
         # Included from fnl/default.nix, ugly but it works
         # omnisharp-roslyn

@@ -12,7 +12,7 @@
     ./nix.nix
     ./power.nix
     ./greetd.nix
-    ./printing.nix
+    # ./printing.nix
     ./journal.nix
     ./bluetooth.nix
     ./opengl.nix
@@ -38,6 +38,7 @@
     };
   };
 
+  environment.systemPackages = [pkgs.virtiofsd];
   virtualisation.libvirtd = {
     enable = true;
 
@@ -55,4 +56,6 @@
 
   services.mysql.enable = true;
   services.mysql.package = pkgs.mariadb;
+  services.mysql.settings.mysqld.bind-address = "127.0.0.1";
+  services.joycond.enable = true;
 }

@@ -15,7 +15,7 @@
     isNormalUser = true;
     home = "/home/user";
     shell = pkgs.fish;
-    extraGroups = ["wheel" "video" "audio" "networkmanager" "libvirtd" "docker" "adbusers" "kvm"];
+    extraGroups = ["wheel" "video" "audio" "networkmanager" "libvirtd" "adbusers" "kvm" "docker"];
     openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 
@@ -31,7 +31,7 @@
       nix-colors.homeManagerModule
     ];
 
-    colorscheme = nix-colors.colorSchemes.catppuccin-frappe;
+    colorscheme = nix-colors.colorSchemes.rose-pine-dawn;
     systemd.user.startServices = "sd-switch";
     home.stateVersion = config.system.stateVersion;
   };

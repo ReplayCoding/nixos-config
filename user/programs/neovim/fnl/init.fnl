@@ -14,9 +14,9 @@
 
 (set vim.g.mapleader "\\")
 
-((. (require :nvim-treesitter.configs) :setup) {:highlight {:enable true}
-                                                :indent {:enable true}
-                                                :rainbow {:enable true}})
+; ((. (require :nvim-treesitter.configs) :setup) {:highlight {:enable true}
+;                                                 :indent {:enable true}
+;                                                 :rainbow {:enable true}})
 
 (set vim.opt.completeopt "menu,menuone,noselect")
 (let [cmp (require :cmp)]
@@ -35,7 +35,7 @@
 
 (map :n false :<Leader>ff "<cmd>Telescope find_files<CR>")
 
-(let [servers [:pyright :rnix :rust_analyzer :clangd :tsserver :gopls]
+(let [servers [:pyright :rnix :rust_analyzer :clangd :tsserver :gopls :zls]
       lspconfig (require :lspconfig)
       capabilities ((. (require :cmp_nvim_lsp) :default_capabilities) (vim.lsp.protocol.make_client_capabilities))
       on_attach (fn [client bufnr]

@@ -5,9 +5,13 @@
 }: {
   programs = {
     dconf.enable = true;
+    gamescope.enable = true;
     steam = {
       enable = true;
       package = pkgs.steam.override {
+        extraEnv = {
+          MANGOHUD = true;
+        };
         extraArgs = "-dev -cef-enable-debugging";
         extraLibraries = pkgs:
           with config.hardware.opengl;

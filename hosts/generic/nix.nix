@@ -44,7 +44,7 @@ in {
     allowBroken = true; # zfs
     # Unity
     permittedInsecurePackages = [
-      "openssl-1.1.1u"
+      "openssl-1.1.1v"
     ];
     # allowAliases = false;
   };
@@ -71,7 +71,6 @@ in {
             flakes = [];
           });
         accept-flake-config = true;
-        auto-optimise-store = true;
         # keep-outputs = true;
         keep-derivations = true;
       };

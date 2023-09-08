@@ -28,9 +28,4 @@
 
   networking.wireless.scanOnLowSignal = false;
   programs.bandwhich.enable = true;
-
-  services.tor = {
-    enable = true;
-    client.enable = true;
-  };
 }

@@ -225,5 +225,6 @@ in {
     getDrvName
     makeStatic
     createWithBuildIdList
+    mkOptions
     ;
 }

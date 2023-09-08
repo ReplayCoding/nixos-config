@@ -19,7 +19,7 @@
     ./wlsunset.nix
     ./fuzzel.nix
     ./cmus.nix
-    ./kdeconnect.nix
+    # ./kdeconnect.nix
     ./reversing.nix
     ./documentation.nix
     ./ssh.nix
@@ -49,6 +49,12 @@
     mangohud = {
       enable = true;
       enableSessionWide = true;
+      settings = {
+        engine_version = true;
+        gpu_name = true;
+        vulkan_driver = true;
+        wine = true;
+      };
     };
 
     obs-studio = {
@@ -91,7 +97,7 @@
     baobab
     # aseprite-unfree
     gnome.nautilus
-    (tor-browser-bundle-bin.override {useHardenedMalloc = false;})
+    tor-browser-bundle-bin
     wl-clipboard
     xdg-utils
     # jetbrains.idea-community
