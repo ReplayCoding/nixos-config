@@ -111,5 +111,6 @@
     file
     ida
     github-cli
+    intel-gpu-tools
   ];
 }
