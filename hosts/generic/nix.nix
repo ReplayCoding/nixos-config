@@ -44,7 +44,7 @@ in {
     allowBroken = true; # zfs
     # Unity
     permittedInsecurePackages = [
-      "openssl-1.1.1v"
+      "openssl-1.1.1w"
     ];
     # allowAliases = false;
   };
