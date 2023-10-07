@@ -103,7 +103,10 @@
     # jetbrains.idea-community
     pstack
     crc32
-    (vencord.override {discord = discord.override {withOpenASAR = true;};})
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
     virt-manager
     bottles
     (unityhub.override {extraLibs = p: [p.openssl_1_1];})
