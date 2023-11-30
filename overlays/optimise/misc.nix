@@ -32,6 +32,7 @@ in {
       tree-sitter-python
       tree-sitter-rust
       tree-sitter-toml
+      tree-sitter-html
       # tree-sitter-zig
     ]);
   rizin =

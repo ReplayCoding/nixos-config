@@ -6,10 +6,7 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    delta.options = {
-      line-numbers = true;
-    };
-    delta.enable = true;
+    difftastic.enable = true;
     userName = "ReplayCoding";
     userEmail = "replaycoding@gmail.com";
     extraConfig = {

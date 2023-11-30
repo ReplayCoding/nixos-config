@@ -201,12 +201,6 @@ in {
           output = "VGA-1";
         }
       ];
-      window.commands = [
-        {
-          criteria.app_id = "foot";
-          command = "opacity 0.9";
-        }
-      ];
     };
   };
 

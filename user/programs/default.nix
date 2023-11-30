@@ -37,7 +37,7 @@
         "--force-dark-mode"
       ];
     };
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };
@@ -109,7 +109,7 @@
     })
     virt-manager
     bottles
-    (unityhub.override {extraLibs = p: [p.openssl_1_1];})
+    # (unityhub.override {extraLibs = p: [p.openssl_1_1];})
     jq
     file
     ida
