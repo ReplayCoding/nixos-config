@@ -12,7 +12,6 @@
 in {
   boot.loader.grub = {
     enable = true;
-    version = 2;
     gfxpayloadBios = "keep";
     gfxmodeBios = "1280x720";
     font = "${pkgs.cozette}/share/fonts/misc/cozette.bdf";

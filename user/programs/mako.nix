@@ -6,7 +6,7 @@
 }: let
   inherit (config.colorscheme) colors;
 in {
-  programs.mako = {
+  services.mako = {
     enable = true;
     defaultTimeout = 5000;
     backgroundColor = "#${colors.base00}";

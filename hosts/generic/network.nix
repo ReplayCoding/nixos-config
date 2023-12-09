@@ -5,7 +5,7 @@
       enable = true;
       wifi = {
         # backend = "iwd";
-        macAddress = "random";
+        # macAddress = "random";
       };
     };
 
