@@ -36,18 +36,18 @@ rec {
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dav1d = {
-      url = "git+https://code.videolan.org/videolan/dav1d";
-      flake = false;
-    };
-    libplacebo = {
-      url = "git+https://code.videolan.org/videolan/libplacebo?submodules=1";
-      flake = false;
-    };
-    mpv = {
-      url = "github:mpv-player/mpv";
-      flake = false;
-    };
+    # dav1d = {
+    #   url = "git+https://code.videolan.org/videolan/dav1d";
+    #   flake = false;
+    # };
+    # libplacebo = {
+    #   url = "git+https://code.videolan.org/videolan/libplacebo?submodules=1";
+    #   flake = false;
+    # };
+    # mpv = {
+    #   url = "github:mpv-player/mpv";
+    #   flake = false;
+    # };
 
     pstack = {
       url = "github:peadar/pstack";

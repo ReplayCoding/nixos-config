@@ -64,5 +64,9 @@
   services.xserver.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+
+    settings = {
+      AutoLogin = { User = "user"; };
+    };
   };
 }

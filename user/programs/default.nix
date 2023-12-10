@@ -33,7 +33,6 @@
 
     mangohud = {
       enable = true;
-      enableSessionWide = true;
       settings = {
         engine_version = true;
         gpu_name = true;
