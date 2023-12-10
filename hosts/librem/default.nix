@@ -7,8 +7,4 @@ _: {
     ./ssd.nix
     ./power.nix
   ];
-
-  home-manager.users.user = {
-    imports = [./user];
-  };
 }

@@ -5,19 +5,11 @@
     ./git.nix
     ./tmux.nix
     ./starship.nix
-    ./rtorrent.nix
-    ./i3status-rust.nix
-    ./evince.nix
     ./firefox.nix
-    ./sway.nix
+    ./rtorrent.nix
     ./irssi.nix
-    ./mako.nix
     ./mpv.nix
     ./spotify.nix
-    ./wob.nix
-    ./polkit.nix
-    ./wlsunset.nix
-    ./fuzzel.nix
     ./cmus.nix
     # ./kdeconnect.nix
     ./reversing.nix
@@ -30,13 +22,7 @@
     lazygit.enable = true;
     dircolors.enable = true;
     bat.enable = true;
-    chromium = {
-      enable = true;
-      commandLineArgs = [
-        "--enable-features=WebUIDarkMode"
-        "--force-dark-mode"
-      ];
-    };
+    chromium.enable = true;
     eza = {
       enable = true;
       enableAliases = true;
@@ -57,10 +43,7 @@
       };
     };
 
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [wlrobs];
-    };
+    obs-studio.enable = true;
   };
 
   services = {
@@ -96,7 +79,6 @@
     python39Packages.deemix
     baobab
     # aseprite-unfree
-    gnome.nautilus
     tor-browser-bundle-bin
     wl-clipboard
     xdg-utils

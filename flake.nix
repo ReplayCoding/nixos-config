@@ -2,11 +2,10 @@ rec {
   description = "NixOS configuration flake";
 
   nixConfig = {
-    extra-substituters = ["https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org"];
+    extra-substituters = ["https://nix-community.cachix.org"];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
     experimental-features = "nix-command flakes";
   };
@@ -27,10 +26,6 @@ rec {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,11 +34,6 @@ rec {
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    fuzzel = {
-      url = "git+https://codeberg.org/dnkl/fuzzel";
-      flake = false;
     };
 
     dav1d = {

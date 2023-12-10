@@ -1,7 +1,6 @@
 {
   nixpkgs,
   neovim-nightly-overlay,
-  nixpkgs-wayland,
   prismlauncher,
   ...
 } @ inputs: let
@@ -29,13 +28,10 @@
         # This will be used to correlate the pgo results with the derivation it comes from
         pkgsToExtractBuildId = [];
       })
-      # (self: super: (nixpkgs-wayland.overlays.default self super) // {inherit (super) i3status-rust;})
       # (fixSystemAlias neovim-nightly-overlay.overlay)
       (fixSystemAlias prismlauncher.overlays.default)
 
-      (import ./fuzzel.nix)
       (import ./fish.nix)
-      (import ./patches.nix)
       (import ./kernel.nix)
 
       (self: super: {
@@ -53,9 +49,6 @@
       (import ./optimise/pipewire.nix)
       (import ./optimise/mesa.nix)
 
-      (import ./optimise/wayland.nix)
-      (import ./optimise/unoptimise-foot.nix)
-      (import ./optimise/unsandbox-wob.nix)
       (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];
 in {

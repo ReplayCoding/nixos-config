@@ -11,7 +11,6 @@
     ./ssh.nix
     ./nix.nix
     ./power.nix
-    ./greetd.nix
     # ./printing.nix
     ./journal.nix
     ./bluetooth.nix
@@ -58,4 +57,12 @@
   services.mysql.package = pkgs.mariadb;
   services.mysql.settings.mysqld.bind-address = "127.0.0.1";
   services.joycond.enable = true;
+
+  services.xserver.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 }
