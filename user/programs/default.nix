@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./fish.nix
-    ./foot.nix
     ./git.nix
     ./tmux.nix
     ./starship.nix
