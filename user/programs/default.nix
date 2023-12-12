@@ -14,13 +14,14 @@
     ./reversing.nix
     ./documentation.nix
     ./ssh.nix
-    ./neovim
+    ./kate.nix
   ];
   programs = {
     fzf.enable = true;
     lazygit.enable = true;
     dircolors.enable = true;
     bat.enable = true;
+    neovim.enable = true;
     chromium.enable = true;
     eza = {
       enable = true;

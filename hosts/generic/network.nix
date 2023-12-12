@@ -4,8 +4,8 @@
     networkmanager = {
       enable = true;
       wifi = {
-        # backend = "iwd";
-        # macAddress = "random";
+        backend = "iwd";
+        macAddress = "random";
       };
     };
 
