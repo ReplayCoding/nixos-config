@@ -96,5 +96,6 @@
     ida
     github-cli
     intel-gpu-tools
+    xwaylandvideobridge
   ];
 }

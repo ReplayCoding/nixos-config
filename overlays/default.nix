@@ -41,6 +41,10 @@
         ida = super.callPackage ./ida {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
+
+        xwaylandvideobridge = super.xwaylandvideobridge.overrideAttrs (old: {
+	  patches = (old.patches or []) ++ [ ./patches/xwaylandvideobridge-skip-switcher.patch ];
+	});
       })
 
       (import ./optimise/ccache-stats.nix)
