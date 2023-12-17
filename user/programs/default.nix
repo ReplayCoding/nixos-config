@@ -97,5 +97,8 @@
     github-cli
     intel-gpu-tools
     xwaylandvideobridge
+
+    hotspot
+    linuxPackages.perf
   ];
 }
