@@ -56,7 +56,7 @@
     ripgrep
     fd
     croc
-    libreoffice
+    libreoffice-qt
     restic
     yt-dlp
     picard
