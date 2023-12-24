@@ -35,10 +35,20 @@
     mangohud = {
       enable = true;
       settings = {
-        engine_version = true;
-        gpu_name = true;
-        vulkan_driver = true;
-        wine = true;
+         horizontal = true;
+         legacy_layout = false;
+         table_columns = 20;
+         hud_no_margin = true;
+
+         fps = true;
+         frametime = true;
+         frame_timing = true;
+         ram = true;
+         debug = false;
+
+	 engine_version = true;
+	 wine = true;
+	 vulkan_driver = true;
       };
     };
 
