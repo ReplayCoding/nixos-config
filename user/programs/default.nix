@@ -94,6 +94,7 @@
     jq
     file
     ida
+    blender
     github-cli
     intel-gpu-tools
     xwaylandvideobridge
