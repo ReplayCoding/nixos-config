@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./sound.nix
-    ./console.nix
     ./zfs.nix
     ./network.nix
     ./ssh.nix
@@ -66,7 +65,7 @@
     wayland.enable = true;
 
     settings = {
-      AutoLogin = { User = "user"; };
+      Autologin = { User = "user"; Session = "plasmawayland"; };
     };
   };
 }
