@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  nixpkgs-ghidra-11,
   neovim-nightly-overlay,
   prismlauncher,
   ...
@@ -35,7 +36,7 @@
       (import ./kernel.nix)
 
       (self: super: {
-        rz-ghidra = super.callPackage ./rz-ghidra.nix {};
+        ghidra = nixpkgs-ghidra-11.legacyPackages.${super.system}.ghidra;
         pstack = super.callPackage ./pstack.nix {};
         crc32 = super.callPackage ./crc32 {};
         ida = super.callPackage ./ida {};
@@ -43,7 +44,7 @@
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
 
         xwaylandvideobridge = super.xwaylandvideobridge.overrideAttrs (old: {
-	  patches = (old.patches or []) ++ [ ./patches/xwaylandvideobridge-skip-switcher.patch ];
+	  patches = (old.patches or []) ++ [ ./patches/xwaylandvideobridge-22.patch ];
 	});
       })
 

@@ -107,6 +107,7 @@
     blender
     github-cli
     intel-gpu-tools
+    konversation
     xwaylandvideobridge
 
     hotspot
