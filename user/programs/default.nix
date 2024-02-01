@@ -57,9 +57,7 @@
 
   services = {
     mpris-proxy.enable = true;
-    playerctld.enable = true;
     syncthing.enable = true;
-    easyeffects.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -71,22 +69,19 @@
     yt-dlp
     picard
     age
-    prismlauncher
     tdesktop
     fluffychat
     signal-desktop
     slack
-    imv
     btop
     amfora
     glow
     nix-tree
     qbittorrent
-    libarchive-optimised # bsdtar is amazing
+    libarchive-optimised
     ccache-stats
     bitwarden-cli
     python39Packages.deemix
-    baobab
     # aseprite-unfree
     tor-browser-bundle-bin
     wl-clipboard
@@ -94,10 +89,7 @@
     # jetbrains.idea-community
     pstack
     crc32
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    vesktop
     virt-manager
     bottles
     # (unityhub.override {extraLibs = p: [p.openssl_1_1];})
@@ -109,6 +101,11 @@
     intel-gpu-tools
     konversation
     xwaylandvideobridge
+    speedcrunch
+    citra-canary
+    yuzu
+    spirv-cross
+    eclipses.eclipse-java
 
     hotspot
     linuxPackages.perf

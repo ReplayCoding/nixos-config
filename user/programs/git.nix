@@ -6,7 +6,7 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    difftastic.enable = true;
+    # difftastic.enable = true;
     userName = "ReplayCoding";
     userEmail = "replaycoding@gmail.com";
     extraConfig = {

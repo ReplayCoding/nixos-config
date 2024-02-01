@@ -11,8 +11,7 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-ghidra-11.url = "github:roblabla/nixpkgs/update-ghidra-11/";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-colors.url = "github:Misterio77/nix-colors";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";

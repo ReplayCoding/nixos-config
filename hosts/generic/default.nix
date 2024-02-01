@@ -10,7 +10,7 @@
     ./ssh.nix
     ./nix.nix
     ./power.nix
-    # ./printing.nix
+    ./printing.nix
     ./journal.nix
     ./bluetooth.nix
     ./opengl.nix
@@ -68,4 +68,6 @@
       Autologin = { User = "user"; Session = "plasmawayland"; };
     };
   };
+
+  boot.supportedFilesystems = [ "ntfs" ];
 }
