@@ -35,20 +35,20 @@
     mangohud = {
       enable = true;
       settings = {
-         horizontal = true;
-         legacy_layout = false;
-         table_columns = 20;
-         hud_no_margin = true;
+        horizontal = true;
+        legacy_layout = false;
+        table_columns = 20;
+        hud_no_margin = true;
 
-         fps = true;
-         frametime = true;
-         frame_timing = true;
-         ram = true;
-         debug = false;
+        fps = true;
+        frametime = true;
+        frame_timing = true;
+        ram = true;
+        debug = false;
 
-	 engine_version = true;
-	 wine = true;
-	 vulkan_driver = true;
+        engine_version = true;
+        wine = true;
+        vulkan_driver = true;
       };
     };
 
@@ -105,7 +105,6 @@
     citra-canary
     yuzu
     spirv-cross
-    eclipses.eclipse-java
 
     hotspot
     linuxPackages.perf

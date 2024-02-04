@@ -40,6 +40,7 @@
         ida = super.callPackage ./ida {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
+        kate = super.kate.overrideAttrs (old: {patches = (old.patches or []) ++ [./patches/kate-git-diff-no-ext-diff.patch];});
       })
 
       (import ./optimise/ccache-stats.nix)

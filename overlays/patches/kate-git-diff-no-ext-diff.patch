@@ -1,0 +1,13 @@
+diff --git a/addons/project/gitwidget.cpp b/addons/project/gitwidget.cpp
+index c33e053e9..a1dcc99c4 100644
+--- a/addons/project/gitwidget.cpp
++++ b/addons/project/gitwidget.cpp
+@@ -710,7 +710,7 @@ void GitWidget::openAtHEAD(const QString &file)
+ 
+ void GitWidget::showDiff(const QString &file, bool staged)
+ {
+-    auto args = QStringList{QStringLiteral("diff")};
++    auto args = QStringList{QStringLiteral("diff"), QStringLiteral("--no-ext-diff")};
+     if (staged) {
+         args.append(QStringLiteral("--staged"));
+     }

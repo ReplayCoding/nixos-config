@@ -38,4 +38,6 @@
 
   networking.wireless.scanOnLowSignal = false;
   programs.bandwhich.enable = true;
+
+  location.provider = "geoclue2";
 }

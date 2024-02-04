@@ -16,7 +16,7 @@
         extraLibraries = pkgs:
           with config.hardware.opengl;
             if pkgs.stdenv.hostPlatform.is64bit
-            then [package pkgs.libunwind] ++ extraPackages
+            then [package pkgs.libunwind pkgs.gperftools] ++ extraPackages
             else [package32 pkgs.libunwind pkgs.gperftools] ++ extraPackages32;
       };
     };

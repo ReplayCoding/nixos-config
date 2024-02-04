@@ -23,7 +23,7 @@
   ];
 
   # misc. options
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_CA.UTF-8";
 
   programs.adb.enable = true;
 
@@ -65,9 +65,12 @@
     wayland.enable = true;
 
     settings = {
-      Autologin = { User = "user"; Session = "plasmawayland"; };
+      Autologin = {
+        User = "user";
+        Session = "plasmawayland";
+      };
     };
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 }
