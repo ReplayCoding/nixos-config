@@ -57,6 +57,8 @@
   services.mysql.settings.mysqld.bind-address = "127.0.0.1";
   services.joycond.enable = true;
 
+  programs.partition-manager.enable = true;
+
   services.xserver.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.displayManager.defaultSession = "plasmawayland";
