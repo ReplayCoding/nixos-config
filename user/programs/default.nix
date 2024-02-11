@@ -10,7 +10,7 @@
     ./mpv.nix
     ./spotify.nix
     ./cmus.nix
-    # ./kdeconnect.nix
+    ./kdeconnect.nix
     ./reversing.nix
     ./documentation.nix
     ./ssh.nix
@@ -81,7 +81,6 @@
     libarchive-optimised
     ccache-stats
     bitwarden-cli
-    python39Packages.deemix
     # aseprite-unfree
     tor-browser-bundle-bin
     wl-clipboard
@@ -105,8 +104,9 @@
     citra-canary
     yuzu
     spirv-cross
-
-    hotspot
+    kcachegrind
+    valgrind
+    graphviz
     linuxPackages.perf
   ];
 }

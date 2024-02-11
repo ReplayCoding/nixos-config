@@ -75,4 +75,8 @@
   };
 
   boot.supportedFilesystems = ["ntfs"];
+
+  security.apparmor.enable = true;
+  services.dbus.apparmor = "enabled";
+  services.dbus.implementation = "broker";
 }

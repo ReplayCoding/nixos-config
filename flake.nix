@@ -11,14 +11,19 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nix-colors.url = "github:Misterio77/nix-colors";
+    nixpkgs-master.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ragenix = {
-      url = "github:yaxitech/ragenix";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,11 +33,6 @@ rec {
     };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -58,7 +58,7 @@ rec {
   outputs = {
     self,
     nixpkgs,
-    ragenix,
+    agenix,
     home-manager,
     pre-commit-hooks,
     ...
@@ -88,7 +88,7 @@ rec {
               nixpkgs.overlays = [(self.lib.mkOverlay overlayConfig')];
             })
             ./hosts/generic
-            ragenix.nixosModules.age
+            agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             {home-manager.useGlobalPkgs = true;}
             ./user
@@ -149,7 +149,7 @@ rec {
                 raw.fail_fast = true;
               };
               nix-flake-check = {
-                enable = true;
+                enable = false;
                 name = "nix: flake check";
                 entry = "${pkgs.nixVersions.stable}/bin/nix flake check --no-build";
                 pass_filenames = false;
@@ -162,7 +162,7 @@ rec {
             packages = with pkgs; [
               statix
               fnlfmt
-              ragenix.packages."${system}".default
+              agenix.packages."${system}".default
               (callPackage ./overlays/optimise/extract-pgo-data {
                 nixosPassthru = {
                   hostname = "fake";

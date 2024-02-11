@@ -21,17 +21,14 @@
 
   home-manager.extraSpecialArgs = {
     inherit (config.age) secrets;
-    inherit (inputs) nix-colors;
     inherit flib;
   };
-  home-manager.users.user = {nix-colors, ...}: {
+  home-manager.users.user = {...}: {
     imports = [
       ./programs
       ./config
-      nix-colors.homeManagerModule
     ];
 
-    colorscheme = nix-colors.colorSchemes.rose-pine-dawn;
     systemd.user.startServices = "sd-switch";
     home.stateVersion = config.system.stateVersion;
   };
