@@ -90,7 +90,6 @@
     crc32
     vesktop
     virt-manager
-    bottles
     # (unityhub.override {extraLibs = p: [p.openssl_1_1];})
     jq
     file
@@ -108,5 +107,8 @@
     valgrind
     graphviz
     linuxPackages.perf
+    toolbox
+    zeal
+    p7zip
   ];
 }

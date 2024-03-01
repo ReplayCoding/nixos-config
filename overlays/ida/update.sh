@@ -4,9 +4,9 @@
 set -e
 
 urls=(
-  https://out7.hex-rays.com/files/idafree82_linux.run
-  https://out7.hex-rays.com/files/idafree82_mac.app.zip
-  https://out7.hex-rays.com/files/arm_idafree82_mac.app.zip
+  https://out7.hex-rays.com/files/idafree84_linux.run
+  https://out7.hex-rays.com/files/idafree84_mac.app.zip
+  https://out7.hex-rays.com/files/arm_idafree84_mac.app.zip
 )
 
 archs=(

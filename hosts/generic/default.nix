@@ -52,16 +52,16 @@
     };
   };
 
-  services.mysql.enable = true;
+  # services.mysql.enable = true;
   services.mysql.package = pkgs.mariadb;
   services.mysql.settings.mysqld.bind-address = "127.0.0.1";
-  services.joycond.enable = true;
+  # services.joycond.enable = true;
 
   programs.partition-manager.enable = true;
 
   services.xserver.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.desktopManager.plasma6.enable = true;
+  services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -69,14 +69,15 @@
     settings = {
       Autologin = {
         User = "user";
-        Session = "plasmawayland";
+        Session = "plasma";
       };
     };
   };
 
   boot.supportedFilesystems = ["ntfs"];
 
-  security.apparmor.enable = true;
-  services.dbus.apparmor = "enabled";
+  # not really useful on nixos, unfortunately
+  # security.apparmor.enable = true;
+  # services.dbus.apparmor = "enabled";
   services.dbus.implementation = "broker";
 }

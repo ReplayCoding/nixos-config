@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     kate
 
@@ -14,6 +13,7 @@
     zls
     nodePackages.typescript-language-server
     omnisharp-roslyn
+    # jdt-language-server
 
     # Debugging integration
     gdb
