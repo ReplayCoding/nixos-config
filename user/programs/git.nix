@@ -10,7 +10,12 @@
     userName = "ReplayCoding";
     userEmail = "replaycoding@gmail.com";
     extraConfig = {
+      submodule.recurse = true;
+      diff.submodule = "log";
+      status.submoduleSummary = true;
+
       rebase.autoSquash = true;
+
       commit.gpgsign = true;
       gpg.format = "ssh"; # Great name don't you think?
       push.autoSetupRemote = "true";

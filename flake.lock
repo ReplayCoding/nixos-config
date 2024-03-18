@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706830856,
-        "narHash": "sha256-a0NYyp+h9hlb7ddVz4LUn1vT/PLwqfrWYcHMvFB1xYg=",
+        "lastModified": 1709336216,
+        "narHash": "sha256-Dt/wOWeW6Sqm11Yh+2+t0dfEWxoMxGBvv3JpIocFl9E=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "b253292d9c0a5ead9bc98c4e9a26c6312e27d69f",
+        "rev": "f7b3c975cf067e56e7cda6cb098ebe3fb4d74ca2",
         "type": "github"
       },
       "original": {
@@ -123,11 +123,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701473968,
-        "narHash": "sha256-YcVE5emp1qQ8ieHUnxt1wCZCC3ZfAS+SRRWZ2TMda7E=",
+        "lastModified": 1709336216,
+        "narHash": "sha256-Dt/wOWeW6Sqm11Yh+2+t0dfEWxoMxGBvv3JpIocFl9E=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "34fed993f1674c8d06d58b37ce1e0fe5eebcb9f5",
+        "rev": "f7b3c975cf067e56e7cda6cb098ebe3fb4d74ca2",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706830856,
-        "narHash": "sha256-a0NYyp+h9hlb7ddVz4LUn1vT/PLwqfrWYcHMvFB1xYg=",
+        "lastModified": 1709336216,
+        "narHash": "sha256-Dt/wOWeW6Sqm11Yh+2+t0dfEWxoMxGBvv3JpIocFl9E=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "b253292d9c0a5ead9bc98c4e9a26c6312e27d69f",
+        "rev": "f7b3c975cf067e56e7cda6cb098ebe3fb4d74ca2",
         "type": "github"
       },
       "original": {
@@ -262,11 +262,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708547820,
-        "narHash": "sha256-xU/KC1PWqq5zL9dQ9wYhcdgxAwdeF/dJCLPH3PNZEBg=",
+        "lastModified": 1710478346,
+        "narHash": "sha256-Xjf8BdnQG0tLhPMlqQdwCIjOp7Teox0DP3N/jjyiGM4=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "0ca27bd58e4d5be3135a4bef66b582e57abe8f4a",
+        "rev": "64e7763d72c1e4c1e5e6472640615b6ae2d40fbf",
         "type": "github"
       },
       "original": {
@@ -303,11 +303,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708988456,
-        "narHash": "sha256-RCz7Xe64tN2zgWk+MVHkzg224znwqknJ1RnB7rVqUWw=",
+        "lastModified": 1710532761,
+        "narHash": "sha256-SUXGZNrXX05YA9G6EmgupxhOr3swI1gcxLUeDMUhrEY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1d085ea4444d26aa52297758b333b449b2aa6fca",
+        "rev": "206f457fffdb9a73596a4cb2211a471bd305243d",
         "type": "github"
       },
       "original": {
@@ -342,11 +342,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1709162366,
-        "narHash": "sha256-A18s9ThfCGEPzUsqzZnV9+l3oVcjAwU+mkzOxArwqbs=",
+        "lastModified": 1710534764,
+        "narHash": "sha256-SIyMG29FKoLD0U/W4Q0AdsCcHm4Li4lSdyaBDGEdv+c=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "ce7c51a1a3b2b38cdba730aeb53840d0ace32173",
+        "rev": "102a72a21e2b5177516d2d3c44bd464e9b363bb9",
         "type": "github"
       },
       "original": {
@@ -367,11 +367,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709165056,
-        "narHash": "sha256-S+cQn7qnqGtpvxqgcTS/oSixxEDHvQqEhvUVGnjljs0=",
+        "lastModified": 1710547418,
+        "narHash": "sha256-YTXUNA5alKTAFQ1HV8V9ptbyiHLnbQE3Aqo8txEQLGk=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "ba07638ead045e7e2ecf9415727a694ad7cb7a66",
+        "rev": "bba6e6ec0b22e63e34a80bb10ec6df9b23ecbbbb",
         "type": "github"
       },
       "original": {
@@ -382,27 +382,27 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1709136964,
-        "narHash": "sha256-XD6GfVgSfWjqqWAuybkvaxS1/xrwTrh3V1dSkoYJW3Q=",
+        "lastModified": 1710451336,
+        "narHash": "sha256-pP86Pcfu3BrAvRO7R64x7hs+GaQrjFes+mEPowCfkxY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "96990c69fd59e807cee8ff874d0526c70dffdf8f",
+        "rev": "d691274a972b3165335d261cc4671335f5c67de9",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable-small",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1709169320,
-        "narHash": "sha256-ZhJsl21UB+Z72Oj3PNvZSwU4MobiC8a2jezAccLkXcI=",
+        "lastModified": 1710603541,
+        "narHash": "sha256-0bVr88bI3evUhWmY1CHPm3oC7bEQnk3j9dit60E40fs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b910faca051d432a5c1d12fe7044766cc47add40",
+        "rev": "428564f7529d94ca2dd2c505ce573699d3153916",
         "type": "github"
       },
       "original": {
@@ -493,32 +493,16 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1708857972,
-        "narHash": "sha256-qdo/yKeehH+C+xKqBWYuzYnUeMJ5Vdzv2kfCe/hAbK8=",
+        "lastModified": 1710590658,
+        "narHash": "sha256-oc49iFuaIH1gNN45xm2OfoBP78Mbg1ZELlCd2ROl09A=",
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "rev": "fba2ce3c9f504bdff95e8eedf055bea4bc1935f2",
+        "rev": "e288ee6ddd26143a8e6c31db67a55a592d3ea38f",
         "type": "github"
       },
       "original": {
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "type": "github"
-      }
-    },
-    "pstack": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708960287,
-        "narHash": "sha256-AyLxgDGYiT1HZYMk2Ph8055PZoFaFSDEGdB16DE9cRo=",
-        "owner": "peadar",
-        "repo": "pstack",
-        "rev": "b562aadcc130760a59a5fd9e37371ba5ca19244f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "peadar",
-        "repo": "pstack",
         "type": "github"
       }
     },
@@ -530,8 +514,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
         "pre-commit-hooks": "pre-commit-hooks",
-        "prismlauncher": "prismlauncher",
-        "pstack": "pstack"
+        "prismlauncher": "prismlauncher"
       }
     },
     "systems": {

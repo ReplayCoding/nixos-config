@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   boot = {
     tmp.cleanOnBoot = true;
     initrd.systemd.enable = true;
@@ -19,5 +19,13 @@ _: {
       enable = true;
       theme = "breeze";
     };
+  };
+
+  services.kmscon = {
+    enable = true;
+    hwRender = true;
+    fonts = [
+    	{ name = "JetBrains Mono NL"; package = pkgs.jetbrains-mono; }
+    ];
   };
 }

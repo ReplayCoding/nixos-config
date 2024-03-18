@@ -6,7 +6,7 @@
 
     # LSP servers
     python3Packages.python-lsp-server
-    rnix-lsp
+    # rnix-lsp
     rust-analyzer
     (pkgs.clang-tools.override {llvmPackages = pkgs.llvmPackages_14;})
     gopls

@@ -22,6 +22,21 @@
     };
     fish.enable = true; # Without this, fish doesn't complete man pages
     gamemode.enable = true;
+    kdeconnect.enable = true;
   };
+
   services.flatpak.enable = true;
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    dbus.lib
+    fontconfig.lib
+    freetype.out
+    libgcc.lib
+    libglvnd.out
+    libxkbcommon.out
+    xorg.libX11.out
+    zlib.out
+    python3.out
+  ];
 }

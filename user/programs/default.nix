@@ -5,18 +5,17 @@
     ./tmux.nix
     ./starship.nix
     ./firefox.nix
-    ./rtorrent.nix
     ./irssi.nix
     ./mpv.nix
     ./spotify.nix
     ./cmus.nix
-    ./kdeconnect.nix
     ./reversing.nix
     ./documentation.nix
     ./ssh.nix
     ./kate.nix
   ];
   programs = {
+    ripgrep.enable = true;
     fzf.enable = true;
     lazygit.enable = true;
     dircolors.enable = true;
@@ -25,7 +24,7 @@
     chromium.enable = true;
     eza = {
       enable = true;
-      enableAliases = true;
+      enableFishIntegration = true;
     };
     direnv = {
       enable = true;
@@ -61,7 +60,6 @@
   };
 
   home.packages = with pkgs; [
-    ripgrep
     fd
     croc
     libreoffice-qt
@@ -74,7 +72,6 @@
     signal-desktop
     slack
     btop
-    amfora
     glow
     nix-tree
     qbittorrent
@@ -86,7 +83,6 @@
     wl-clipboard
     xdg-utils
     # jetbrains.idea-community
-    pstack
     crc32
     vesktop
     virt-manager
@@ -97,16 +93,16 @@
     blender
     github-cli
     intel-gpu-tools
-    konversation
     xwaylandvideobridge
     speedcrunch
-    citra-canary
-    yuzu
+    # citra :(
+    # yuzu
     spirv-cross
     kcachegrind
     valgrind
     graphviz
     linuxPackages.perf
+    hotspot
     toolbox
     zeal
     p7zip

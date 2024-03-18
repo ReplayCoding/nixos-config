@@ -36,12 +36,12 @@
       (import ./kernel.nix)
 
       (self: super: {
-        pstack = super.callPackage ./pstack.nix {};
         crc32 = super.callPackage ./crc32 {};
         ida = super.callPackage ./ida {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
         kate = super.kate.overrideAttrs (old: {patches = (old.patches or []) ++ [./patches/kate-git-diff-no-ext-diff.patch];});
+        picard = super.picard.overrideAttrs (old: { buildInputs = old.buildInputs ++ [self.libsForQt5.kio]; });
       })
 
       (import ./optimise/ccache-stats.nix)

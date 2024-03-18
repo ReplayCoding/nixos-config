@@ -1,6 +1,5 @@
-_: {
+{pkgs, ...}: {
   boot.zfs = {
-    enableUnstable = true;
     forceImportRoot = false;
   };
   boot.supportedFilesystems = ["zfs"];
