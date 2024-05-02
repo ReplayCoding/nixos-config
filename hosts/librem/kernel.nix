@@ -5,7 +5,8 @@
 }: {
   boot.kernelPackages = pkgs.myLinuxPackages-librem;
   boot.extraModulePackages = with config.boot.kernelPackages; [librem-ec-acpi-dkms];
-  boot.kernelParams = ["usbcore.autosuspend=-1"];
+  boot.kernelParams = ["usbcore.autosuspend=-1" "resume_offset=34088192"];
+  boot.resumeDevice = "/dev/mapper/enc";
   boot.initrd.kernelModules = ["i915"];
   zramSwap = {
     enable = true;
@@ -15,7 +16,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 8192;
+      size = 20000; # be on the safe side
       priority = 1;
     }
   ];

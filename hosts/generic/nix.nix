@@ -27,7 +27,7 @@
           --subst-var-by HOSTNAME ${pkgs.nixosPassthru.hostname}
       '';
       buildPhase = ''
-        NIX_STORE_DIR=$(mktemp -d) NIX_STATE_DIR=$(mktemp -d) ${pkgs.nixVersions.unstable}/bin/nix \
+        NIX_STORE_DIR=$(mktemp -d) NIX_STATE_DIR=$(mktemp -d) ${config.nix.package}/bin/nix \
           --extra-experimental-features nix-command \
           --extra-experimental-features flakes \
           flake lock flake.nix
@@ -50,7 +50,6 @@ in {
   };
 
   nix = {
-    package = pkgs.nixVersions.unstable;
     nixPath =
       builtins.map
       (name: "${name}=${filteredInputs.${name}}")

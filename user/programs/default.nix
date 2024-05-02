@@ -68,7 +68,6 @@
     picard
     age
     tdesktop
-    fluffychat
     signal-desktop
     slack
     btop
@@ -97,7 +96,6 @@
     speedcrunch
     # citra :(
     # yuzu
-    spirv-cross
     kcachegrind
     valgrind
     graphviz
@@ -106,5 +104,8 @@
     toolbox
     zeal
     p7zip
+    unrar
+    neochat
+    thunderbird
   ];
 }

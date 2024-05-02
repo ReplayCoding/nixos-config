@@ -36,7 +36,11 @@
     libglvnd.out
     libxkbcommon.out
     xorg.libX11.out
+    xcb-util-cursor.out
     zlib.out
     python3.out
+    libxml2.out
+    wayland.out
+    xorg.xcbutilwm.out
   ];
 }

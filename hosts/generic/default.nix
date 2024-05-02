@@ -45,7 +45,7 @@
 
     qemu = {
       package = pkgs.qemu_kvm;
-      vhostUserPackages = [ pkgs.virtiofsd ];
+      vhostUserPackages = [pkgs.virtiofsd];
       ovmf.enable = true;
       ovmf.packages = [pkgs.OVMFFull.fd];
       swtpm.enable = true;
@@ -81,4 +81,5 @@
   # security.apparmor.enable = true;
   # services.dbus.apparmor = "enabled";
   services.dbus.implementation = "broker";
+  services.logind.killUserProcesses = true;
 }
