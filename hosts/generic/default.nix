@@ -40,7 +40,7 @@
   virtualisation.libvirtd = {
     enable = true;
 
-    onShutdown = "suspend";
+    onShutdown = "shutdown";
     onBoot = "ignore";
 
     qemu = {
@@ -61,9 +61,9 @@
   programs.partition-manager.enable = true;
 
   services.xserver.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
-  services.xserver.displayManager.defaultSession = "plasma";
-  services.xserver.displayManager.sddm = {
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.defaultSession = "plasma";
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
 

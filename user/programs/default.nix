@@ -21,7 +21,10 @@
     dircolors.enable = true;
     bat.enable = true;
     neovim.enable = true;
-    chromium.enable = true;
+    chromium = {
+      enable = true;
+      package = pkgs.chromium.override {enableWideVine = true;};
+    };
     eza = {
       enable = true;
       enableFishIntegration = true;
@@ -65,7 +68,7 @@
     libreoffice-qt
     restic
     yt-dlp
-    picard
+    # picard
     age
     tdesktop
     signal-desktop
@@ -75,7 +78,7 @@
     nix-tree
     qbittorrent
     libarchive-optimised
-    ccache-stats
+    # ccache-stats
     bitwarden-cli
     # aseprite-unfree
     tor-browser-bundle-bin
@@ -94,7 +97,7 @@
     intel-gpu-tools
     xwaylandvideobridge
     speedcrunch
-    # citra :(
+    # citra
     # yuzu
     kcachegrind
     valgrind
@@ -107,5 +110,8 @@
     unrar
     neochat
     thunderbird
+    filelight
+    wireshark
+    prismlauncher
   ];
 }

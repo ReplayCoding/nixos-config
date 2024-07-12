@@ -8,7 +8,7 @@
     python3Packages.python-lsp-server
     # rnix-lsp
     rust-analyzer
-    (pkgs.clang-tools.override {llvmPackages = pkgs.llvmPackages_14;})
+    clang-tools
     gopls
     zls
     nodePackages.typescript-language-server

@@ -4,7 +4,7 @@
     ghidra
     python3
     imhex
-    (renderdoc.override {waylandSupport = true;})
+    # (renderdoc.override {waylandSupport = true;})
     pahole
     llvmPackages.bintools
     spirv-cross

@@ -41,7 +41,7 @@
 in {
   nixpkgs.config = {
     allowUnfree = true;
-    allowBroken = true; # zfs
+    # allowBroken = true; # zfs
     permittedInsecurePackages = [
       # For Unity
       # "openssl-1.1.1w"

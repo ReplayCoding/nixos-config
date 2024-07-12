@@ -14,7 +14,7 @@
         };
         extraArgs = "-dev -cef-enable-debugging";
         extraLibraries = pkgs:
-          with config.hardware.opengl;
+          with config.hardware.graphics;
             if pkgs.stdenv.hostPlatform.is64bit
             then [package pkgs.libunwind pkgs.gperftools pkgs.noto-fonts-emoji] ++ extraPackages
             else [package32 pkgs.libunwind pkgs.gperftools] ++ extraPackages32;
@@ -43,4 +43,6 @@
     wayland.out
     xorg.xcbutilwm.out
   ];
+
+  programs.wireshark.enable = true;
 }

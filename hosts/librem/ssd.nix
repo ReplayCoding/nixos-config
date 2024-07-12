@@ -6,4 +6,5 @@ _: {
   };
 
   # boot.initrd.luks.devices."enc".allowDiscards = true;
+  services.btrfs.autoScrub.enable = true;
 }

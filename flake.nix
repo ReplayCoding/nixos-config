@@ -135,7 +135,7 @@ rec {
                 raw.fail_fast = true;
               };
               shellcheck = {
-                enable = true;
+                enable = false;
                 raw.fail_fast = true;
               };
               alejandra = {

@@ -1,7 +1,7 @@
 {
   stdenv,
   python310,
-  llvmPackages_14,
+  llvmPackages_18,
   linuxPackages,
   pkgsToExtractBuildId,
   nixosPassthru,
@@ -18,7 +18,7 @@ in
       name = "pgo-script-src";
       filter = path: _: builtins.elem (builtins.baseNameOf path) ["extract-pgo-data.py"];
     };
-    inherit (llvmPackages_14) libllvm;
+    inherit (llvmPackages_18) libllvm;
     inherit (linuxPackages) perf;
     inherit pgoDir;
     passthru = {pythonEnv = pythonWithPkgs;};

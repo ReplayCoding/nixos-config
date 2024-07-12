@@ -1,5 +1,5 @@
 super: let
-  llvmPackages_version = "llvmPackages_14";
+  llvmPackages_version = "llvmPackages_18";
   llvmPackages = super.buildPackages."${llvmPackages_version}".override {
     bootBintoolsNoLibc = null;
     bootBintools = null;

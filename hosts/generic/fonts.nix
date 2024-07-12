@@ -11,6 +11,7 @@
       noto-fonts-cjk-sans
       font-awesome
       jetbrains-mono
+      corefonts
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
     fontconfig.defaultFonts = {

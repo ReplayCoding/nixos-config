@@ -1,18 +1,14 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p bash curl jq
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p bash curl jq
 
 set -e
 
 urls=(
   https://out7.hex-rays.com/files/idafree84_linux.run
-  https://out7.hex-rays.com/files/idafree84_mac.app.zip
-  https://out7.hex-rays.com/files/arm_idafree84_mac.app.zip
 )
 
 archs=(
   x86_64-linux
-  x86_64-darwin
-  aarch64-darwin
 )
 
 hashes=()

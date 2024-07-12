@@ -2,5 +2,5 @@
   boot.zfs = {
     forceImportRoot = false;
   };
-  # boot.supportedFilesystems = ["zfs"];
+  boot.supportedFilesystems = ["zfs"];
 }

@@ -22,7 +22,7 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
 
-    opengl.extraPackages = [pkgs.vaapiVdpau];
+    graphics.extraPackages = [pkgs.vaapiVdpau];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
