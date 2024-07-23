@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     # rizin
     ghidra
-    python3
+    python312
     imhex
     # (renderdoc.override {waylandSupport = true;})
     pahole

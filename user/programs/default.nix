@@ -60,6 +60,7 @@
   services = {
     mpris-proxy.enable = true;
     syncthing.enable = true;
+    easyeffects.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -113,5 +114,8 @@
     filelight
     wireshark
     prismlauncher
+    bubblewrap
+    easyeffects
+    newsflash
   ];
 }
