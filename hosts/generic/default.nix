@@ -82,4 +82,9 @@
   # services.dbus.apparmor = "enabled";
   services.dbus.implementation = "broker";
   services.logind.killUserProcesses = true;
+  virtualisation.spiceUSBRedirection.enable = true; # secure my ass
+
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+  '';
 }
