@@ -12,7 +12,7 @@
         extraEnv = {
           MANGOHUD = true;
         };
-        extraArgs = "-dev -cef-enable-debugging";
+        extraArgs = "-dev";
         extraLibraries = pkgs:
           with config.hardware.graphics;
             if pkgs.stdenv.hostPlatform.is64bit

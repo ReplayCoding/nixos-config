@@ -45,7 +45,7 @@
     url = "https://web.archive.org/web/20231111133415/https://api.citra-emu.org/gamedb";
     hash = "sha256-J+zqtWde5NgK2QROvGewtXGRAWUTNSKHNMG6iu9m1fU=";
   };
-  version = "4f174f1c0b81266170aa8dac226be1b772f4c94d";
+  version = "e55e619328afdcb25df701f07e315fdf10bee71c";
 in
   stdenv.mkDerivation {
     pname = "citra";
@@ -57,7 +57,7 @@ in
       fetchSubmodules = true;
 
       rev = version;
-      sha256 = "sha256-aqA7THU4rp4YnrnO0Usym0UMyB7jlKP0RLF4hm0VkC0=";
+      sha256 = "sha256-d+UiUNAb9My+DCnT5EzQdhVp5NTQxkvOo0P1t81OigU=";
     };
 
     nativeBuildInputs =

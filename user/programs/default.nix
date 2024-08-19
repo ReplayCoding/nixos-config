@@ -12,7 +12,7 @@
     ./reversing.nix
     ./documentation.nix
     ./ssh.nix
-    ./kate.nix
+    ./vscode.nix
   ];
   programs = {
     ripgrep.enable = true;
@@ -98,7 +98,7 @@
     intel-gpu-tools
     xwaylandvideobridge
     speedcrunch
-    # citra
+    citra
     # yuzu
     kcachegrind
     valgrind
@@ -117,5 +117,6 @@
     bubblewrap
     easyeffects
     newsflash
+    heroic
   ];
 }
