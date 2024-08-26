@@ -109,7 +109,6 @@
     zeal
     p7zip
     unrar
-    neochat
     thunderbird
     filelight
     wireshark

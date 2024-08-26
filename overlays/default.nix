@@ -40,7 +40,6 @@
         ida = super.callPackage ./ida {};
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
-        kate = super.kate.overrideAttrs (old: {patches = (old.patches or []) ++ [./patches/kate-git-diff-no-ext-diff.patch];});
         picard = super.picard.overrideAttrs (old: {buildInputs = old.buildInputs ++ [self.libsForQt5.kio];});
         citra = super.qt6Packages.callPackage ./citra.nix {};
 
@@ -78,7 +77,7 @@
       (import ./optimise/misc.nix)
       # (import ./optimise/mpv.nix)
       (import ./optimise/pipewire.nix)
-      (import ./optimise/mesa.nix)
+      # (import ./optimise/mesa.nix)
 
       (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];

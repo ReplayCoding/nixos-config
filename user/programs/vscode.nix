@@ -6,6 +6,7 @@
       vscodevim.vim
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
+      llvm-vs-code-extensions.vscode-clangd
       eamodio.gitlens
     ];
 
