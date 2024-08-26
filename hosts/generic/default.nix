@@ -7,7 +7,6 @@
     ./sound.nix
     ./zfs.nix
     ./network.nix
-    ./ssh.nix
     ./nix.nix
     ./power.nix
     ./printing.nix

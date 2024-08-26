@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./system
-    ./secrets
   ];
 
   users.users.user = {
@@ -16,11 +15,9 @@
     home = "/home/user";
     shell = pkgs.fish;
     extraGroups = ["wheel" "video" "audio" "networkmanager" "libvirtd" "adbusers" "kvm" "docker" "wireshark"];
-    openssh.authorizedKeys.keys = (import ../lib/pubkeys.nix).all;
   };
 
   home-manager.extraSpecialArgs = {
-    inherit (config.age) secrets;
     inherit flib;
   };
   home-manager.users.user = {...}: {

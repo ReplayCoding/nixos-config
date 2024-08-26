@@ -22,10 +22,6 @@ rec {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -53,7 +49,6 @@ rec {
   outputs = {
     self,
     nixpkgs,
-    agenix,
     home-manager,
     pre-commit-hooks,
     ...
@@ -83,7 +78,6 @@ rec {
               nixpkgs.overlays = [(self.lib.mkOverlay overlayConfig')];
             })
             ./hosts/generic
-            agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             {home-manager.useGlobalPkgs = true;}
             ./user
@@ -157,7 +151,6 @@ rec {
             packages = with pkgs; [
               statix
               fnlfmt
-              agenix.packages."${system}".default
               (callPackage ./overlays/optimise/extract-pgo-data {
                 nixosPassthru = {
                   hostname = "fake";

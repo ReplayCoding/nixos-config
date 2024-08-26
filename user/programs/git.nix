@@ -1,6 +1,6 @@
 {
-  flib,
   pkgs,
+  config,
   ...
 }: {
   programs.git = {
@@ -19,10 +19,8 @@
       commit.gpgsign = true;
       gpg.format = "ssh"; # Great name don't you think?
       push.autoSetupRemote = "true";
-      user.signingkey = "key::${flib.pubkeys.user}";
-      gpg.ssh.allowedSignersFile = toString (pkgs.writeText "git-allowed-signers" ''
-        replaycoding@gmail.com ${flib.pubkeys.user}
-      '');
+      user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519";
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
       sendemail = {
         smtpuser = "replaycoding@gmail.com";
         smtpserver = "smtp.gmail.com";
