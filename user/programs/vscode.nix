@@ -8,6 +8,12 @@
       vadimcn.vscode-lldb
       llvm-vs-code-extensions.vscode-clangd
       eamodio.gitlens
+      vscjava.vscode-gradle
+      redhat.java
+      vscjava.vscode-java-debug
+      vscjava.vscode-maven
+      vscjava.vscode-java-test
+      vscjava.vscode-java-dependency
     ];
 
     userSettings = {
@@ -15,6 +21,7 @@
       "explorer.excludeGitIgnore" = true;
       "window.dialogStyle" = "custom";
       "window.titleBarStyle" = "custom";
+      "window.autoDetectColorScheme" = true;
       "terminal.integrated.sendKeybindingsToShell" = true;
     };
   };
@@ -28,7 +35,7 @@
     #zls
     #nodePackages.typescript-language-server
     #omnisharp-roslyn
-    # jdt-language-server
+    jdt-language-server
 
     lldb
     gdb

@@ -70,10 +70,8 @@
     restic
     yt-dlp
     # picard
-    age
     tdesktop
     signal-desktop
-    slack
     btop
     glow
     nix-tree
@@ -117,5 +115,6 @@
     easyeffects
     newsflash
     heroic
+    jdk22
   ];
 }
