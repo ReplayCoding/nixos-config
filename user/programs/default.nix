@@ -116,5 +116,6 @@
     newsflash
     heroic
     jdk22
+    zig
   ];
 }

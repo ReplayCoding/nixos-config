@@ -9,7 +9,7 @@
     ./network.nix
     ./nix.nix
     ./power.nix
-    ./printing.nix
+    #    ./printing.nix
     ./journal.nix
     ./bluetooth.nix
     ./opengl.nix

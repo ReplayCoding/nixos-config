@@ -14,6 +14,9 @@
       vscjava.vscode-maven
       vscjava.vscode-java-test
       vscjava.vscode-java-dependency
+      iliazeus.vscode-ansi
+      ziglang.vscode-zig
+      tamasfe.even-better-toml
     ];
 
     userSettings = {
@@ -23,6 +26,10 @@
       "window.titleBarStyle" = "custom";
       "window.autoDetectColorScheme" = true;
       "terminal.integrated.sendKeybindingsToShell" = true;
+      "terminal.integrated.scrollback" = 10000;
+      "zig.path" = "${pkgs.zig}/bin/zig";
+      "zig.zls.path" = "${pkgs.zls}/bin/zls";
+      "zig.initialSetupDone" = true;
     };
   };
   home.packages = with pkgs; [
@@ -32,7 +39,6 @@
     rust-analyzer
     clang-tools
     #gopls
-    #zls
     #nodePackages.typescript-language-server
     #omnisharp-roslyn
     jdt-language-server
