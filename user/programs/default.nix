@@ -117,5 +117,6 @@
     heroic
     jdk22
     zig
+    bottles
   ];
 }
