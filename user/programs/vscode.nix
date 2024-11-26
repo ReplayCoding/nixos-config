@@ -17,6 +17,7 @@
       iliazeus.vscode-ansi
       ziglang.vscode-zig
       tamasfe.even-better-toml
+      vadimcn.vscode-lldb
     ];
 
     userSettings = {

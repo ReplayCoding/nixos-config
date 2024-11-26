@@ -60,7 +60,6 @@
   services = {
     mpris-proxy.enable = true;
     syncthing.enable = true;
-    easyeffects.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -91,12 +90,12 @@
     jq
     file
     ida
-    blender
+    # blender
     github-cli
     intel-gpu-tools
     xwaylandvideobridge
     speedcrunch
-    citra
+    # citra
     # yuzu
     kcachegrind
     valgrind
@@ -112,10 +111,9 @@
     wireshark
     prismlauncher
     bubblewrap
-    easyeffects
     newsflash
     heroic
-    jdk22
+    jdk23
     zig
     bottles
   ];

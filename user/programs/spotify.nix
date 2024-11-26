@@ -19,4 +19,6 @@
       backend = "pulseaudio";
     };
   };
+
+  home.packages = with pkgs; [spotify];
 }
