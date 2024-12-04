@@ -61,7 +61,6 @@ in {
     settings =
       nixConfig
       // {
-        extra-sandbox-paths = [pkgs.nixosPassthru.ccacheDir];
         flake-registry =
           pkgs.writeText
           "flake-registry"
@@ -74,7 +73,6 @@ in {
         keep-derivations = true;
       };
   };
-  systemd.tmpfiles.rules = ["d ${pkgs.nixosPassthru.ccacheDir} 0775 root nixbld -"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

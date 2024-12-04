@@ -96,12 +96,6 @@ rec {
               hostname = "librem";
               modules = [./hosts/librem];
               overlayConfig = {
-                arch = "skylake";
-                pgoMode = "off";
-                mesaConfig = {
-                  galliumDrivers = ["iris" "i915" "zink" "swrast" "virgl"];
-                  vulkanDrivers = ["intel"];
-                };
               };
             }
             {
@@ -109,10 +103,6 @@ rec {
               hostname = "thinkpad";
               modules = [./hosts/thinkpad];
               overlayConfig = {
-                arch = "btver2";
-                mesaConfig = {
-                  galliumDrivers = ["radeonsi" "swrast"];
-                };
               };
             }
           ]

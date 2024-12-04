@@ -5,15 +5,7 @@
   prismlauncher,
   ...
 } @ inputs: let
-  fixNixosPassthru = args:
-    nixpkgs.lib.recursiveUpdate
-    {
-      pgoMode = "off";
-      mesaConfig = {};
-      ccacheDir = "/var/cache/ccache";
-      llvmProfdataDir = "/var/cache/llvm-profdata";
-    }
-    args;
+  fixNixosPassthru = args: nixpkgs.lib.recursiveUpdate {} args;
   fixSystemAlias = overlay: (self: super: let mkSystemAlias = pkgs: {inherit (pkgs.stdenv.hostPlatform) system;} // pkgs; in overlay (mkSystemAlias self) (mkSystemAlias super));
   mkOverlay = nixosPassthru':
     nixpkgs.lib.composeManyExtensions [
@@ -72,14 +64,6 @@
             '';
         });
       })
-
-      (import ./optimise/ccache-stats.nix)
-      (import ./optimise/misc.nix)
-      # (import ./optimise/mpv.nix)
-      (import ./optimise/pipewire.nix)
-      # (import ./optimise/mesa.nix)
-
-      (self: super: {extract-pgo-data = super.callPackage ./optimise/extract-pgo-data {};})
     ];
 in {
   lib = {

@@ -75,7 +75,7 @@
     glow
     nix-tree
     qbittorrent
-    libarchive-optimised
+    libarchive
     # ccache-stats
     bitwarden-cli
     # aseprite-unfree

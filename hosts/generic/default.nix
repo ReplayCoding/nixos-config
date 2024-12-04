@@ -16,7 +16,6 @@
     ./fonts.nix
     ./documentation.nix
     ./firmware.nix
-    ./pgo.nix
     ./boot.nix
     ./containers
   ];
