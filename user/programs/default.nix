@@ -116,5 +116,6 @@
     jdk23
     zig
     bottles
+    zed-editor
   ];
 }
