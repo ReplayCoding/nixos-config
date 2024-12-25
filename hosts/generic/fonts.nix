@@ -12,7 +12,7 @@
       font-awesome
       jetbrains-mono
       corefonts
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      nerd-fonts.jetbrains-mono
     ];
     fontconfig.defaultFonts = {
       serif = ["Noto Serif"];
