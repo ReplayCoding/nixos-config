@@ -10,7 +10,7 @@
   cpp-jwt,
   cryptopp,
   enet,
-  ffmpeg,
+  ffmpeg_7,
   fmt,
   gamemode,
   glslang,
@@ -45,7 +45,7 @@
     url = "https://web.archive.org/web/20231111133415/https://api.citra-emu.org/gamedb";
     hash = "sha256-J+zqtWde5NgK2QROvGewtXGRAWUTNSKHNMG6iu9m1fU=";
   };
-  version = "e55e619328afdcb25df701f07e315fdf10bee71c";
+  version = "864414f8fd79c90feff29f674898993f0053552f";
 in
   stdenv.mkDerivation {
     pname = "citra";
@@ -57,14 +57,14 @@ in
       fetchSubmodules = true;
 
       rev = version;
-      sha256 = "sha256-d+UiUNAb9My+DCnT5EzQdhVp5NTQxkvOo0P1t81OigU=";
+      sha256 = "sha256-H/vxbz25tsIwOHM6iyT6IuWkFHdvuxiEOwzpLne7S1E=";
     };
 
     nativeBuildInputs =
       [
         cmake
         pkg-config
-        ffmpeg
+        ffmpeg_7
         glslang
       ]
       ++ lib.optionals enableQt [wrapQtAppsHook];

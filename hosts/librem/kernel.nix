@@ -16,7 +16,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 20000; # be on the safe side
+      size = 5120; # be on the safe side
       priority = 1;
     }
   ];

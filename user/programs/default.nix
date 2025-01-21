@@ -95,7 +95,7 @@
     intel-gpu-tools
     xwaylandvideobridge
     speedcrunch
-    # citra
+    citra
     # yuzu
     kcachegrind
     valgrind
