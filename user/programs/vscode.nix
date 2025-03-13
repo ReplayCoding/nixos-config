@@ -5,7 +5,7 @@
       mkhl.direnv
       vscodevim.vim
       rust-lang.rust-analyzer
-      vadimcn.vscode-lldb
+      # vadimcn.vscode-lldb
       llvm-vs-code-extensions.vscode-clangd
       eamodio.gitlens
       vscjava.vscode-gradle
@@ -17,7 +17,6 @@
       iliazeus.vscode-ansi
       ziglang.vscode-zig
       tamasfe.even-better-toml
-      vadimcn.vscode-lldb
     ];
 
     userSettings = {
@@ -44,7 +43,7 @@
     #omnisharp-roslyn
     jdt-language-server
 
-    lldb
+    # lldb
     gdb
   ];
 }

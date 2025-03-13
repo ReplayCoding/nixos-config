@@ -33,7 +33,6 @@
         lutris-unwrapped = super.lutris-unwrapped.override {wine = super.wineWowPackages.stagingFull;};
         nixpkgs-manual = nixpkgs.htmlDocs.nixpkgsManual;
         picard = super.picard.overrideAttrs (old: {buildInputs = old.buildInputs ++ [self.libsForQt5.kio];});
-        citra = super.qt6Packages.callPackage ./citra.nix {};
 
         glfw3-fixed = super.glfw3.overrideAttrs (old: {
           postPatch = ''

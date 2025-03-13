@@ -77,7 +77,6 @@
     qbittorrent
     libarchive
     # ccache-stats
-    bitwarden-cli
     # aseprite-unfree
     tor-browser-bundle-bin
     wl-clipboard
@@ -93,11 +92,9 @@
     # blender
     github-cli
     intel-gpu-tools
-    xwaylandvideobridge
     speedcrunch
-    citra
+    # lime3ds TODO
     # yuzu
-    kcachegrind
     valgrind
     graphviz
     linuxPackages.perf
@@ -107,15 +104,14 @@
     p7zip
     unrar
     thunderbird
-    filelight
+    kdePackages.filelight
     wireshark
-    prismlauncher
+    # prismlauncher
     bubblewrap
     newsflash
     heroic
     jdk23
     zig
     bottles
-    zed-editor
   ];
 }

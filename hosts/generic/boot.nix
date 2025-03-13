@@ -22,10 +22,13 @@
   };
 
   services.kmscon = {
-    enable = true;
+    enable = false;
     hwRender = true;
     fonts = [
-    	{ name = "JetBrains Mono NL"; package = pkgs.jetbrains-mono; }
+      {
+        name = "JetBrains Mono NL";
+        package = pkgs.jetbrains-mono;
+      }
     ];
   };
 }
